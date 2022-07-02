@@ -1,3 +1,16 @@
+# Phone++
+## How to run
+```shell
+# Get yarn if you don't have it already
+npm i -g yarn
+
+# Install, then start dev server
+yarn
+yarn dev
+
+# then go to localhost:3000
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
