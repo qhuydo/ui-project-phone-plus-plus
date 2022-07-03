@@ -1,15 +1,13 @@
 import { GlobalRouter } from "./routes";
-import theme from "./theme";
-import { CssBaseline, ThemeProvider } from "@mui/material";
 import { HelmetProvider } from "react-helmet-async";
+import { ThemeConfig } from "./features/misc";
 
 function App() {
   return (
     <HelmetProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+      <ThemeConfig>
         <GlobalRouter />
-      </ThemeProvider>
+      </ThemeConfig>
     </HelmetProvider>
   );
 }
