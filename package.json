@@ -14,11 +14,21 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.0"
   },
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier-format": "yarn prettier --config .prettierrc.yml \"src/**/{**/*,*}.{js,ts,jsx,tsx}\" --write",
+    "lint": "yarn lint"
   },
   "eslintConfig": {
     "extends": [
