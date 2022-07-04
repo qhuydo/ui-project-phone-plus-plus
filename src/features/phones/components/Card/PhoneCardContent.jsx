@@ -98,7 +98,7 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
           sx={{
             mt: 1,
             "&.MuiButton-outlinedPrimary": {
-              border: "1.5px solid",
+              border: "2px solid",
             },
           }}
           startIcon={<AddShoppingCartOutlinedIcon />}

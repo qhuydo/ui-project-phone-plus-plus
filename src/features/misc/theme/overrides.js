@@ -1,8 +1,9 @@
-import { APPBAR_BACKGROUND_LIGHT } from "./palette";
+import { APPBAR_BACKGROUND_LIGHT, ON_APPBAR_BACKGROUND_LIGHT } from "./palette";
 import {
   APPBAR_BACKGROUND_DARK,
   ON_APPBAR_BACKGROUND_DARK,
 } from "./palette-dark";
+import { alpha } from "@mui/material";
 
 const SHAPE = {
   borderRadius: 8,
@@ -10,14 +11,14 @@ const SHAPE = {
 
 const APP_BAR = {
   colorInherit: {
-    backgroundColor: APPBAR_BACKGROUND_LIGHT,
-    color: ON_APPBAR_BACKGROUND_DARK,
+    backgroundColor: alpha(APPBAR_BACKGROUND_LIGHT, 0.95),
+    color: ON_APPBAR_BACKGROUND_LIGHT,
   },
 };
 
 const APP_BAR_DARK = {
   colorInherit: {
-    backgroundColor: APPBAR_BACKGROUND_DARK,
+    backgroundColor: alpha(APPBAR_BACKGROUND_DARK, 0.95),
     color: ON_APPBAR_BACKGROUND_DARK,
   },
 };

@@ -2,7 +2,6 @@ const PRIMARY = {
   light: "#7EC6FF",
   main: "#4496E0",
   dark: "#0069AE",
-  contrastText: "",
 };
 
 const SECONDARY = {
@@ -28,8 +27,8 @@ const SUCCESS = {
 };
 
 const BACKGROUND = {
-  default: "#FFFFFFFF",
-  paper: "#FFFFFFFF",
+  default: "#FEFEFE",
+  paper: "#FFFFFF",
 };
 
 export const APPBAR_BACKGROUND_LIGHT = "#FFFFFF";

@@ -6,9 +6,9 @@ import PhoneCardTitle from "features/phones/components/Card/PhoneCardTitle";
 import PhoneCardContent from "features/phones/components/Card/PhoneCardContent";
 
 const cardStyle = (theme) => ({
-  borderWidth: `2.25px`,
+  borderWidth: `2px`,
   "&:hover": {
-    borderColor: theme.palette.primary.dark,
+    borderColor: theme.palette.primary.main,
     boxShadow: 5,
   },
 });

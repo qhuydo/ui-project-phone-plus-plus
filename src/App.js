@@ -1,6 +1,6 @@
 import { GlobalRouter } from "./routes";
 import { HelmetProvider } from "react-helmet-async";
-import { ThemeConfig } from "./features/misc";
+import { ThemeConfig } from "features/misc";
 
 function App() {
   return (

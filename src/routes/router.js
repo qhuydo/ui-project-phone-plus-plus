@@ -1,4 +1,4 @@
-const Router = {
+const router = {
   HOME: "/",
   CART: "/cart",
   LOGIN: "/login",
@@ -8,4 +8,4 @@ const Router = {
   REGISTER: "/register",
 };
 
-export default Router;
+export default router;
