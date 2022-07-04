@@ -15,7 +15,6 @@ export const theme = createTheme({
 });
 
 export const darkTheme = createTheme({
-  mode: "dark",
   palette: PALETTE_DARK,
   shape: SHAPE,
   overrides: {

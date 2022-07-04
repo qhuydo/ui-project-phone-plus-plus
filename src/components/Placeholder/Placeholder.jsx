@@ -1,5 +1,5 @@
-import { Grid, Link, styled, Typography } from "@mui/material";
-import logo from "../../assets/logo.svg";
+import { Box, Link, styled, Typography } from "@mui/material";
+import logo from "assets/logo.svg";
 
 const RotatingImg = styled("img")({
   pointerEvents: "none",
@@ -14,25 +14,25 @@ const RotatingImg = styled("img")({
 
 const Placeholder = () => {
   return (
-    <Grid container display="flex" alignItems="center" flexDirection="column">
+    <Box display="flex" alignItems="center" flexDirection="column">
       <RotatingImg
         src={logo}
         className="App-logo"
         alt="logo"
         sx={{ height: "40vmin", pointerEvents: "none", padding: 4 }}
       />
-      <Typography variant={"h5"} fontWeight={"bold"}>
+      <Typography variant="h5" fontWeight="bold">
         Placeholder
       </Typography>
       <Link
-        color={"secondary"}
+        color="secondary"
         href="https://mui.com/material-ui/getting-started/overview/"
         target="_blank"
         rel="noopener noreferrer"
       >
         Learn Material UI
       </Link>
-    </Grid>
+    </Box>
   );
 };
 

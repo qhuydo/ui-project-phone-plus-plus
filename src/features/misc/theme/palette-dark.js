@@ -19,7 +19,7 @@ export const APPBAR_BACKGROUND_DARK = "#F1A1D1F";
 export const ON_APPBAR_BACKGROUND_DARK = "#FFFFFF";
 
 export const PALETTE_DARK = {
-  type: "dark",
+  mode: "dark",
   primary: PRIMARY,
   secondary: SECONDARY,
   error: ERROR,

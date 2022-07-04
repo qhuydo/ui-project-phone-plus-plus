@@ -1,4 +1,4 @@
-import { useDarkMode } from "../../../hooks";
+import { useDarkMode } from "hooks";
 import {
   CssBaseline,
   StyledEngineProvider,
@@ -10,13 +10,10 @@ import PropTypes from "prop-types";
 
 export function ThemeConfig({ children }) {
   const { isDarkMode } = useDarkMode();
-  console.log(isDarkMode);
-
-  const mode = isDarkMode ? "dark" : "light";
 
   const appTheme = useMemo(
-    () => (mode === "light" ? theme : darkTheme),
-    [mode]
+    () => (isDarkMode ? darkTheme : theme),
+    [isDarkMode]
   );
 
   return (
