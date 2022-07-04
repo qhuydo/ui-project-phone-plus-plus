@@ -3,14 +3,17 @@ import { Box } from "@mui/material";
 
 const ColourSelector = ({ colours, selectedColour, onColourSelected }) => {
   return (
-    <Box display="flex" flexDirection="row" height="40px">
+    <Box display="flex" flexDirection="row" height="40px" flexWrap="wrap">
       {colours.map((colour) => (
         <Box
           key={colour}
-          sx={{
+          sx={(theme) => ({
             borderRadius: "50%",
             border: `2px solid ${
               colour === selectedColour ? colour : "rgba(0, 0, 0, 0)"
+            }`,
+            boxShadow: `${
+              colour === selectedColour ? theme.shadows[3] : undefined
             }`,
             margin: 0.25,
             padding: 0.5,
@@ -20,8 +23,9 @@ const ColourSelector = ({ colours, selectedColour, onColourSelected }) => {
             "&:hover": {
               cursor: "pointer",
               border: `2px solid ${colour}`,
+              boxShadow: theme.shadows[3],
             },
-          }}
+          })}
           onClick={(e) => {
             e.preventDefault();
             return onColourSelected ? onColourSelected(colour) : null;
