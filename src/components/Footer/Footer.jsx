@@ -1,7 +1,19 @@
-import { Box, Container, Divider, Link, Typography } from "@mui/material";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import {
+  Box,
+  Container,
+  Divider,
+  IconButton,
+  Link,
+  Stack,
+  Typography
+} from "@mui/material";
 import AppBarLogo from "components/AppBar/AppBarLogo";
 import React from "react";
 import EmailSubscriber from "./EmailSubcriber";
+import LanguageSelection from "./LanguageSelection";
 
 const footerStyle = {
   pt: 3,
@@ -32,6 +44,30 @@ const footerLinks = [
   { title: "Our Stores", links: ["< Nearby Stores >", "IMG"] },
 ];
 
+//footer link content
+const bottomfooterLinks = [
+  {
+    title: "Accessibility Help",
+    links: "/",
+  },
+  {
+    title: "Terms And Conditions",
+    links: "/",
+  },
+  {
+    title: "Cookies",
+    links: "/",
+  },
+  {
+    title: "Legals",
+    links: "/",
+  },
+  {
+    title: "Stay in the loop?",
+    links: "/",
+  },
+];
+
 //footer style background color
 const footerBoxContainer = {
   display: "grid",
@@ -55,7 +91,7 @@ const footerBoxContainer = {
   },
 };
 
-const bottomFooterContainer = {
+const copyrightContainer = {
   py: 3,
   display: { xs: "block", sm: "flex" },
   alignItems: { sm: "center" },
@@ -73,6 +109,12 @@ const footerLinkInnerContainer = {
   display: "flex",
   flexDirection: "column",
   color: "text.primary",
+};
+const bottomFooterContainer = {
+  py: 3,
+  display: { xs: "block", sm: "flex" },
+  alignItems: { sm: "center" },
+  justifyContent: { sm: "space-between" },
 };
 
 function FooterLinks() {
@@ -140,10 +182,63 @@ export default function AppFooter() {
 
         <EmailSubscriber />
 
-        <Box sx={bottomFooterContainer}>
+        <Box sx={copyrightContainer}>
           <Typography color="text.secondary" variant="body2">
             Copyright © {new Date().getFullYear()} HCMUS. All rights reserved.
           </Typography>
+        </Box>
+        <Box sx={bottomFooterContainer}>
+          <LanguageSelection />
+          <Box>
+            <Stack spacing={6} direction="row">
+              {bottomfooterLinks.map((item) => {
+                return (
+                  <Link
+                    underline="none"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={item.links}
+                    variant="body1"
+                    color="text.secondary"
+                    key={item.title}
+                  >
+                    {item.title}
+                  </Link>
+                );
+              })}
+            </Stack>
+          </Box>
+          <Box sx={{ py: { xs: 2, sm: 0 } }}>
+            <Stack spacing={1} direction="row">
+              <IconButton
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.facebook.com/groups/1089774231587514"
+                aria-label="github"
+                title="Reddit"
+              >
+                <FacebookIcon />
+              </IconButton>
+              <IconButton
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.facebook.com/groups/1089774231587514"
+                aria-label="github"
+                title="Reddit"
+              >
+                <TwitterIcon />
+              </IconButton>
+              <IconButton
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://youtu.be/dQw4w9WgXcQ"
+                aria-label="github"
+                title="GitHub"
+              >
+                <YouTubeIcon />
+              </IconButton>
+            </Stack>
+          </Box>
         </Box>
       </Box>
     </Container>
