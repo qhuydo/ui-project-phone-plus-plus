@@ -1,0 +1,2 @@
+export const GOLDEN_RATIO = 1.61803398875;
+export const GOLDEN_RATIO_INVERSE = 1 / GOLDEN_RATIO;

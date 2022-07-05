@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import { useMemo } from "react";
 import { Box, CardMedia } from "@mui/material";
+import { GOLDEN_RATIO } from "utils/constants";
 
 const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {
   const cardMediaStyle = useMemo(() => {
     return {
       width: "inherit",
-      height: "inherit",
+      aspectRatio: `${GOLDEN_RATIO}`,
       transition: `transform .3s`,
       transform: `scale(${isSelected ? 1.1 : 1.0})`,
       ...imageSx,
@@ -19,7 +20,7 @@ const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {
       <CardMedia
         component="img"
         sx={cardMediaStyle}
-        image="https://images.unsplash.com/photo-1634403665481-74948d815f03?&fit=crop&w=512&h=512"
+        image="https://images.unsplash.com/photo-1629494893504-d41e26a02631?fit=crop&w=828&h=512"
       />
     </Box>
   );
