@@ -1,9 +1,11 @@
 import { Container, Typography } from "@mui/material";
+import PhoneBannerCarousel from "features/phones/components/Carousel/PhoneBannerCarousel";
 import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCarousel";
 
 export const Home = () => {
   return (
     <Container>
+      <PhoneBannerCarousel />
       <Typography variant={"h4"} my={2} textAlign="center">
         {"<<Đề xuất | Top nổi bật | Danh sách điện thoại>>"}
       </Typography>
