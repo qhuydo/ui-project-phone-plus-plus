@@ -16,6 +16,7 @@ const subscribeInputContainer = {
   overflow: "hidden",
   width: { xs: "100%", sm: "auto" },
   maxWidth: 360,
+  borderRadius: "8px",
 };
 
 const subscribeInput = {
