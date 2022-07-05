@@ -60,7 +60,7 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
             variant="button"
             fontSize={`${theme.typography.body1.fontSize}`}
           >
-            6,900,000₫
+            6.900.000₫
           </Typography>
         </Grid>
 

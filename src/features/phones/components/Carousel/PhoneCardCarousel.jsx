@@ -2,14 +2,26 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { alpha, Box, IconButton, Tooltip, useTheme } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { PhoneCard } from "features/phones/components/Card";
+import { PhoneCard, PhoneCardSkeleton } from "features/phones/components/Card";
 import { Navigation, Pagination, Thumbs } from "swiper";
 import "./PhoneCardCarousel.css";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { useEffect, useState } from "react";
+
 // TODO: refactor me
+const N_CARDS = 5;
+
 const PhoneCardCarousel = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   const theme = useTheme();
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <Box position="relative">
       <Box
@@ -79,21 +91,11 @@ const PhoneCardCarousel = () => {
           },
         }}
       >
-        <SwiperSlide>
-          <PhoneCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneCard />
-        </SwiperSlide>
+        {[...Array(N_CARDS).keys()].map((key) => (
+          <SwiperSlide key={key}>
+            {isLoading ? <PhoneCardSkeleton /> : <PhoneCard />}
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Box>
   );

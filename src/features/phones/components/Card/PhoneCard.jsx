@@ -13,19 +13,10 @@ const cardStyle = (theme) => ({
   },
 });
 
-const imageBoxStyle = (theme) => ({
-  [theme.breakpoints.up("xs")]: {
-    height: 200,
-  },
-  [theme.breakpoints.up("md")]: {
-    height: 240,
-  },
-  [theme.breakpoints.up("lg")]: {
-    height: 256,
-  },
+const imageBoxStyle = {
   overflow: "hidden",
   cursor: "pointer",
-});
+};
 
 const imageThumbnailStyle = {
   width: 1,
