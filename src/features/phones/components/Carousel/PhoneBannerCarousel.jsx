@@ -1,7 +1,7 @@
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { alpha, Box, IconButton, Tooltip, useTheme } from "@mui/material";
-import { Navigation, Pagination, Thumbs } from "swiper";
+import { Autoplay, Navigation, Pagination, Thumbs } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -53,6 +53,10 @@ const PhoneBannerCarousel = () => {
       </Box>
 
       <Swiper
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
           type: "bullets",
@@ -61,7 +65,7 @@ const PhoneBannerCarousel = () => {
           prevEl: ".prev-button",
           nextEl: ".next-button",
         }}
-        modules={[Pagination, Navigation, Thumbs]}
+        modules={[Autoplay, Pagination, Navigation, Thumbs]}
       >
         <SwiperSlide>
           <PhoneBanner />
