@@ -28,19 +28,6 @@ const cardActionArea = {
 };
 
 const imageBoxStyle = (theme) => ({
-  [theme.breakpoints.up("xs")]: {
-    width: 120,
-    height: 120,
-    overflow: "visible",
-  },
-  [theme.breakpoints.up("sm")]: {
-    width: 175,
-    height: 175,
-  },
-  [theme.breakpoints.up("lg")]: {
-    width: 200,
-    height: 200,
-  },
   width: 250,
   height: 250,
   overflow: "hidden",
