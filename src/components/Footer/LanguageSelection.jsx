@@ -1,14 +1,15 @@
 import GTranslateIcon from "@mui/icons-material/GTranslate";
 import { Box, FormControl, MenuItem, Select, Typography } from "@mui/material";
 import * as React from "react";
+import { useCallback } from "react";
 
 const languageOptions = [
   {
-    value: "eng",
+    value: "en",
     label: "English",
   },
   {
-    value: "vie",
+    value: "vi",
     label: "Vietnamese",
   },
 ];
@@ -16,19 +17,18 @@ const itemContainer = {
   display: "flex",
   alignItems: "center",
 };
+
 export default function LanguageSelection() {
-  const [language, setLanguage] = React.useState("eng");
-  const handleChange = (event) => {
+  const [language, setLanguage] = React.useState("en");
+
+  const handleChange = useCallback((event) => {
     setLanguage(event.target.value);
-    console.log(language);
-  };
+    // console.log(language);
+  }, []);
+
   return (
     <FormControl>
-      <Select
-        inputProps={{ style: { fontFamily: "Jetbrains Mono" } }}
-        onChange={handleChange}
-        value={language}
-      >
+      <Select onChange={handleChange} value={language} size="small">
         {languageOptions.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             <Box sx={itemContainer}>

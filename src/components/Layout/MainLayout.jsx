@@ -3,7 +3,7 @@ import { AppBar } from "components/AppBar";
 import { Container } from "@mui/material";
 import PropTypes from "prop-types";
 import { Outlet } from "react-router-dom";
-import Footer from "components/Footer/Footer";
+import { Footer } from "components/Footer";
 import StyledToolbar from "components/AppBar/StyledToolbar";
 
 const MainLayout = ({ children }) => {

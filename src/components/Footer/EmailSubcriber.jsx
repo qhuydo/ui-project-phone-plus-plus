@@ -1,4 +1,4 @@
-import { Box, FormLabel } from "@mui/material";
+import { Box, FormLabel, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
@@ -48,11 +48,13 @@ const subscribeButton = {
   },
 };
 
-export default function EmailSubscriber(sx) {
+export default function EmailSubscriber() {
   return (
-    <Form sx={sx}>
+    <Form>
       <FormLabel htmlFor="email-subscribe" sx={emailTitle}>
-        Enter your email to receive news
+        <Typography component={Typography} variant="body2">
+          Enter your email to receive news
+        </Typography>
       </FormLabel>
 
       <Box sx={subscribeInputContainer}>

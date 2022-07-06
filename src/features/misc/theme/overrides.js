@@ -55,6 +55,12 @@ const SWITCH = {
   },
 };
 
+const CONTAINER = {
+  defaultProps: {
+    maxWidth: "xl",
+  },
+};
+
 const PROPS = {
   MuiAppBar: {
     color: "inherit",
@@ -64,4 +70,4 @@ const PROPS = {
   },
 };
 
-export { SHAPE, APP_BAR, APP_BAR_DARK, SWITCH, PROPS };
+export { SHAPE, APP_BAR, APP_BAR_DARK, SWITCH, PROPS, CONTAINER };

@@ -7,8 +7,10 @@ const ColourSelector = ({ colours, selectedColour, onColourSelected }) => {
       {colours.map((colour) => (
         <Box
           key={colour}
+          component="button"
           sx={(theme) => ({
             borderRadius: "50%",
+            bgcolor: "transparent",
             border: `2px solid ${
               colour === selectedColour ? colour : "rgba(0, 0, 0, 0)"
             }`,

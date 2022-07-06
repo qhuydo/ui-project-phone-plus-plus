@@ -85,11 +85,7 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
       </Grid>
 
       <Grid item container flexDirection="column" rowSpacing={1} mt={1.25}>
-        <Button
-          variant="contained"
-          color="secondary"
-          startIcon={<PaymentOutlinedIcon />}
-        >
+        <Button variant="contained" startIcon={<PaymentOutlinedIcon />}>
           Buy now
         </Button>
 

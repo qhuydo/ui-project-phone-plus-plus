@@ -1,15 +1,23 @@
 import { createTheme } from "@mui/material";
 import { PALETTE } from "./palette";
-import { APP_BAR, APP_BAR_DARK, PROPS, SHAPE, SWITCH } from "./overrides";
+import {
+  APP_BAR,
+  APP_BAR_DARK,
+  CONTAINER,
+  PROPS,
+  SHAPE,
+  SWITCH,
+} from "./overrides";
 import { PALETTE_DARK } from "./palette-dark";
 
 export const theme = createTheme({
   mode: "light",
   palette: PALETTE,
   shape: SHAPE,
-  overrides: {
+  components: {
     MuiAppBar: APP_BAR,
     MuiSwitch: SWITCH,
+    MuiContainer: CONTAINER,
   },
   props: PROPS,
 });

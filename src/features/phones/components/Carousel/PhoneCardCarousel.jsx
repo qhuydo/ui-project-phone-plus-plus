@@ -89,6 +89,10 @@ const PhoneCardCarousel = () => {
             slidesPerView: 4,
             spaceBetween: 12,
           },
+          [theme.breakpoints.values["xl"]]: {
+            slidesPerView: 5,
+            spaceBetween: 12,
+          },
         }}
       >
         {[...Array(N_CARDS).keys()].map((key) => (
