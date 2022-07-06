@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier-format": "yarn prettier --config .prettierrc.yml \"src/**/{**/*,*}.{js,ts,jsx,tsx}\" --write",
+    "prettier-format": "yarn prettier --config .prettierrc \"src/**/{**/*,*}.{js,ts,jsx,tsx}\" --write",
     "lint": "yarn lint"
   },
   "eslintConfig": {

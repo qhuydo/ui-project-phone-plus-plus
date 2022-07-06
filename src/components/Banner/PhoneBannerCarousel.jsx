@@ -5,15 +5,15 @@ import { Autoplay, Navigation, Pagination, Thumbs } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
-import PhoneBanner from "../Card/PhoneBanner";
-import "./PhoneCardCarousel.css";
+import "../../features/phones/components/Carousel/PhoneCardCarousel.css";
+import PhoneBanner from "./PhoneBanner";
 // TODO: refactor me
 const PhoneBannerCarousel = () => {
   const theme = useTheme();
   return (
     <Box position="relative">
       <Box
-        className="prev-button"
+        id="phone-banner-prev-button"
         style={{
           position: "absolute",
           top: "40%",
@@ -33,7 +33,7 @@ const PhoneBannerCarousel = () => {
       </Box>
 
       <Box
-        className="next-button"
+        id="phone-banner-next-button"
         style={{
           position: "absolute",
           top: "40%",
@@ -55,15 +55,15 @@ const PhoneBannerCarousel = () => {
       <Swiper
         autoplay={{
           delay: 5000,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
         }}
         pagination={{
           clickable: true,
           type: "bullets",
         }}
         navigation={{
-          prevEl: ".prev-button",
-          nextEl: ".next-button",
+          prevEl: "#phone-banner-prev-button",
+          nextEl: "#phone-banner-next-button",
         }}
         modules={[Autoplay, Pagination, Navigation, Thumbs]}
       >

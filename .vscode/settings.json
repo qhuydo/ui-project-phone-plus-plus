@@ -1,0 +1,6 @@
+{
+    "files.eol": "\n",
+    "editor.formatOnPaste": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": ".prettierrc",
+}

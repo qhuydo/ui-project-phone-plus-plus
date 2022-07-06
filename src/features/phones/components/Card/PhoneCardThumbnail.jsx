@@ -1,6 +1,6 @@
+import { Box, CardMedia } from "@mui/material";
 import PropTypes from "prop-types";
 import { useMemo } from "react";
-import { Box, CardMedia } from "@mui/material";
 import { GOLDEN_RATIO } from "utils/constants";
 
 const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {

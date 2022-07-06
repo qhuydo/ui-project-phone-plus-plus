@@ -1,6 +1,6 @@
+import { useEventCallback } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import useEventListener from "./use-event-listener";
-import { useEventCallback } from "@mui/material";
 
 // See: https://usehooks-ts.com/react-hook/use-event-listener
 

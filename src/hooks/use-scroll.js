@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // https://gist.github.com/joshuacerbito/ea318a6a7ca4336e9fadb9ae5bbb87f4
 export const useScroll = () => {
@@ -10,7 +10,7 @@ export const useScroll = () => {
     scrollDirection: "", // down, up
   });
 
-  const handleScrollEvent = useCallback((e) => {
+  const handleScrollEvent = useCallback(() => {
     setState((prevState) => {
       const prevLastScrollTop = prevState.lastScrollTop;
       const bodyOffset = document.body.getBoundingClientRect();

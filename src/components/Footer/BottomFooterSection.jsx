@@ -1,8 +1,8 @@
-import { Box, IconButton, Link, Stack, Typography } from "@mui/material";
-import LanguageSelection from "components/Footer/LanguageSelection";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Box, IconButton, Link, Stack, Typography } from "@mui/material";
+import LanguageSelection from "components/Footer/LanguageSelection";
 
 //footer link content
 const bottomFooterLinks = [

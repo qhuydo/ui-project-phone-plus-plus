@@ -1,3 +1,5 @@
+import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import {
   Box,
   Button,
@@ -7,13 +9,11 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import OutlinedChip from "components/Chip/OutlinedChip";
 import ColourSelector from "features/phones/components/Card/ColourSelector";
-import { useState } from "react";
 import PhonePropertySelector from "features/phones/components/Card/PhonePropertySelector";
-import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
-import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import PropTypes from "prop-types";
+import { useState } from "react";
 
 const PHONE_COLOURS = ["#4496E0", "#202B6D", "#00AB55"];
 const PHONE_PROPERTIES = ["128GB", "256GB"];

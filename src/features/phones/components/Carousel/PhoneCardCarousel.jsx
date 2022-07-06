@@ -1,13 +1,13 @@
-import "swiper/css";
-import "swiper/css/pagination";
-import { alpha, Box, IconButton, Tooltip, useTheme } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { PhoneCard, PhoneCardSkeleton } from "features/phones/components/Card";
-import { Navigation, Pagination, Thumbs } from "swiper";
-import "./PhoneCardCarousel.css";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { alpha, Box, IconButton, Tooltip, useTheme } from "@mui/material";
+import { PhoneCard, PhoneCardSkeleton } from "features/phones/components/Card";
 import { useEffect, useState } from "react";
+import { Navigation, Pagination, Thumbs } from "swiper";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./PhoneCardCarousel.css";
 
 // TODO: refactor me
 const N_CARDS = 5;

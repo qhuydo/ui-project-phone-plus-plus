@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-
 import useIsFirstRender from "./use-is-first-render";
 
 /**

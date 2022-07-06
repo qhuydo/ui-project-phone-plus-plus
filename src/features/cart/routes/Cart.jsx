@@ -1,6 +1,6 @@
-import { Head } from "components/Head/Head";
 import { Box, Container, Grid } from "@mui/material";
 import { APPBAR_LARGE } from "components/AppBar/AppBar";
+import { Head } from "components/Head/Head";
 import CheckoutSection from "features/cart/components/CheckoutSection";
 import { useScroll } from "hooks";
 

@@ -1,12 +1,12 @@
-import { useDarkMode } from "hooks";
 import {
   CssBaseline,
   StyledEngineProvider,
   ThemeProvider,
 } from "@mui/material";
+import { useDarkMode } from "hooks";
+import PropTypes from "prop-types";
 import { useMemo } from "react";
 import { darkTheme, theme } from "./theme";
-import PropTypes from "prop-types";
 
 export function ThemeConfig({ children }) {
   const { isDarkMode } = useDarkMode();

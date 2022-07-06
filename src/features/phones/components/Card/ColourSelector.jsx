@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import { Box } from "@mui/material";
+import PropTypes from "prop-types";
 
 const ColourSelector = ({ colours, selectedColour, onColourSelected }) => {
   return (

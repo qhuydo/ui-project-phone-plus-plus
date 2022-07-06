@@ -1,16 +1,16 @@
 import {
-    Box,
-    Button,
-    Card,
-    CardActionArea,
-    CardContent,
-    Grid,
-    Link,
-    Typography
+  Box,
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  Grid,
+  Link,
+  Typography,
 } from "@mui/material";
 import PhoneCardTitle from "features/phones/components/Card/PhoneCardTitle";
 import { useCallback, useState } from "react";
-import PhoneCardThumbnail from "./PhoneCardThumbnail";
+import PhoneCardThumbnail from "../../features/phones/components/Card/PhoneCardThumbnail";
 
 const cardStyle = {
   borderWidth: `2px`,
@@ -27,7 +27,7 @@ const cardActionArea = {
   cursor: "unset",
 };
 
-const imageBoxStyle = (theme) => ({
+const imageBoxStyle = () => ({
   width: 250,
   height: 250,
   overflow: "hidden",

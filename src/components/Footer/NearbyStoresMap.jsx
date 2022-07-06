@@ -1,7 +1,7 @@
-import { Box, Link, Stack, Typography } from "@mui/material";
-import { GOLDEN_RATIO } from "utils/constants";
-import map from "assets/images/nearby-store-map.png";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { Box, Link, Stack, Typography } from "@mui/material";
+import map from "assets/images/nearby-store-map.png";
+import { GOLDEN_RATIO } from "utils/constants";
 import "./NearbyStores.css";
 
 const NearbyStoresMap = () => {

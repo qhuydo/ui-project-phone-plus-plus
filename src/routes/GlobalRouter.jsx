@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import ROUTER from "./router";
-import { Home } from "features/home";
-import { Cart } from "features/cart";
-import { PhoneDetails, PhoneComparison } from "features/phones";
 import MainLayout from "components/Layout/MainLayout";
+import { Cart } from "features/cart";
+import { Home } from "features/home";
+import { PhoneComparison, PhoneDetails } from "features/phones";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import ROUTER from "./router";
 
 const GlobalRouter = () => {
   return (

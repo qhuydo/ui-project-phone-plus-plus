@@ -1,9 +1,9 @@
+import { alpha } from "@mui/material";
 import { APPBAR_BACKGROUND_LIGHT, ON_APPBAR_BACKGROUND_LIGHT } from "./palette";
 import {
   APPBAR_BACKGROUND_DARK,
   ON_APPBAR_BACKGROUND_DARK,
 } from "./palette-dark";
-import { alpha } from "@mui/material";
 
 const SHAPE = {
   borderRadius: 8,

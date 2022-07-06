@@ -1,9 +1,9 @@
 import { Box, Container, Divider, Typography } from "@mui/material";
 import AppBarLogo from "components/AppBar/AppBarLogo";
+import BottomFooterSection from "components/Footer/BottomFooterSection";
+import { FooterLinks } from "components/Footer/FooterLinks";
 import React from "react";
 import EmailSubscriber from "./EmailSubcriber";
-import { FooterLinks } from "components/Footer/FooterLinks";
-import BottomFooterSection from "components/Footer/BottomFooterSection";
 
 const footerStyle = {
   pt: 3,
