@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import log from "assets/console-log";
+import log from "assets/misc/console-log";
 
 fetch(log)
   .then((r) => r.text())

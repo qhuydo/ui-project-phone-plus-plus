@@ -25,9 +25,10 @@ export const theme = createTheme({
 export const darkTheme = createTheme({
   palette: PALETTE_DARK,
   shape: SHAPE,
-  overrides: {
+  components: {
     MuiAppBar: APP_BAR_DARK,
     MuiSwitch: SWITCH,
+    MuiContainer: CONTAINER,
   },
   props: PROPS,
 });

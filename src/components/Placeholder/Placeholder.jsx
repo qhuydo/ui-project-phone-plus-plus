@@ -1,5 +1,5 @@
 import { Box, Link, styled, Typography } from "@mui/material";
-import logo from "assets/logo.svg";
+import logo from "assets/logo/logo.svg";
 
 const RotatingImg = styled("img")({
   pointerEvents: "none",

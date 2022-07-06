@@ -1,5 +1,5 @@
 import { Box, Link, styled } from "@mui/material";
-import logo from "assets/logo.svg";
+import logo from "assets/logo/logo.svg";
 import { APPBAR_LARGE, APPBAR_SMALL } from "components/AppBar/AppBar";
 import { Link as RouterLink } from "react-router-dom";
 import PropTypes from "prop-types";

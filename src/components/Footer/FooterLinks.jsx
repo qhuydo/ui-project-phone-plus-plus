@@ -1,4 +1,5 @@
 import { Box, Link, Typography } from "@mui/material";
+import NearbyStoresMap from "components/Footer/NearbyStoresMap";
 
 //footer link content
 const footerLinks = [
@@ -21,7 +22,7 @@ const footerLinks = [
     title: "About us",
     links: ["Our info", "News", "Careers", "Policies", "Contact Us"],
   },
-  { title: "Our Stores", links: ["< Nearby Stores >", "IMG"] },
+  { title: "Our Stores", links: ["Velstone PHONE++"] },
 ];
 
 const footerLinkContainer = {
@@ -55,7 +56,6 @@ export function FooterLinks() {
                     target="_blank"
                     rel="noopener noreferrer"
                     href="https://youtu.be/dQw4w9WgXcQ"
-                    variant="body2"
                     color="text.secondary"
                     sx={{ mt: 1.5 }}
                     key={links}
@@ -66,8 +66,18 @@ export function FooterLinks() {
               })
             ) : (
               <>
-                <Typography variant="body2">{column.links[0]}</Typography>
-                <Typography variant="h1">{column.links[1]}</Typography>
+                <Link
+                  underline="none"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://youtu.be/dQw4w9WgXcQ"
+                  color="text.primary"
+                  style={{ fontWeight: "bold" }}
+                >
+                  {column.links[0]}
+                </Link>
+
+                <NearbyStoresMap />
               </>
             )}
           </Box>
