@@ -7,6 +7,7 @@ import StyledToolbar from "components/AppBar/StyledToolbar";
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
 import router from "routes/router";
+import { SearchBar } from "components/SearchBar";
 
 export const APPBAR_LARGE = 92;
 export const APPBAR_SMALL = 80;
@@ -17,6 +18,8 @@ const AppBar = () => {
       <StyledAppBar>
         <StyledToolbar>
           <AppBarLogo />
+
+          <SearchBar />
 
           <Box style={{ flexGrow: 1 }} />
 

@@ -7,6 +7,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 const cardStyle = (theme) => ({
   borderWidth: `2px`,
+  transition: theme.transitions.create("border-color"),
   "&:hover": {
     borderColor: theme.palette.primary.main,
     boxShadow: 5,

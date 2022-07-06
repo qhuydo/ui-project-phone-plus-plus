@@ -26,6 +26,9 @@ const NearbyStoresMap = () => {
           width: "280px",
         },
         width: "120px",
+        "&:hover": {
+          boxShadow: theme.shadows[5],
+        },
       })}
     >
       <Box
