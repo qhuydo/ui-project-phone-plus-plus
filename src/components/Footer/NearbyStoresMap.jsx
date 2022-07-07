@@ -51,6 +51,7 @@ const NearbyStoresMap = () => {
         color="black"
         sx={{
           transform: "translate(-50%, -50%)",
+          width: 1,
         }}
         zIndex={1}
       >

@@ -2,7 +2,9 @@ import { alpha, ButtonBase, Stack, Tooltip, Typography } from "@mui/material";
 import BackgroundOrLetterAvatar from "components/Avatar/BackgroundOrLetterAvatar";
 import PropTypes from "prop-types";
 
-const ProfileMenuButton = ({ openMenu, closeMenu, isSelected }) => {
+const rippleColor = alpha("#000000", 0.08);
+
+const ProfileMenuButton = ({ openMenu, isSelected }) => {
   return (
     <Tooltip title="Profile menu">
       <ButtonBase
@@ -12,25 +14,24 @@ const ProfileMenuButton = ({ openMenu, closeMenu, isSelected }) => {
           borderRadius: "32px",
           py: 1,
           px: 1.25,
-          bgcolor: isSelected
-            ? alpha(theme.palette.primary.main, 0.08)
-            : "transparent",
+          bgcolor: isSelected ? rippleColor : "transparent",
           "&:hover": {
-            bgcolor: alpha(theme.palette.primary.main, 0.08),
+            bgcolor: rippleColor,
           },
         })}
       >
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="row" spacing={0.75} alignItems="center">
           <BackgroundOrLetterAvatar
             name={"Huy"}
             src="https://i1.sndcdn.com/avatars-000098677007-iayi3j-t500x500.jpg"
+            sx={{ width: "32px", height: "32px" }}
           />
 
           <Typography
             maxWidth="200px"
             textOverflow="ellipsis"
             fontWeight="bold"
-            variant="h6"
+            variant="body1"
             noWrap
           >
             Huy cbd

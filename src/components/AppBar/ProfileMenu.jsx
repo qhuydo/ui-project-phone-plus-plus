@@ -47,6 +47,14 @@ const ProfileMenu = ({ id, anchorEl, onMenuClosed }) => {
       PaperProps={profileMenu}
       transformOrigin={{ horizontal: "right", vertical: "top" }}
       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      sx={{
+        ".MuiMenuItem-root:hover": {
+          color: "primary.main",
+        },
+        ".MuiListItemIcon-root": {
+          color: "inherit",
+        },
+      }}
     >
       <MenuItem component={RouterLink} to="/">
         <ListItemIcon>

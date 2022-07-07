@@ -39,25 +39,17 @@ const AppBar = () => {
             <Stack direction="row" mx={2} alignItems="center" spacing={2}>
               <Box>
                 <Tooltip title={"My shopping cart"}>
-                  <Badge badgeContent={2} color="primary">
-                    <IconButton
-                      size="large"
-                      color="inherit"
-                      edge="end"
-                      component={RouterLink}
-                      to={router.CART}
-                    >
-                      <SvgIcon
-                        component={ShoppingCart}
-                        sx={{
-                          width: "40px",
-                          height: "40px",
-                          transform: "scale(0.9)",
-                        }}
-                        inheritViewBox
-                      />
-                    </IconButton>
-                  </Badge>
+                  <IconButton
+                    size="large"
+                    color="inherit"
+                    edge="end"
+                    component={RouterLink}
+                    to={router.CART}
+                  >
+                    <Badge badgeContent={2} color="primary">
+                      <SvgIcon component={ShoppingCart} inheritViewBox />
+                    </Badge>
+                  </IconButton>
                 </Tooltip>
               </Box>
 

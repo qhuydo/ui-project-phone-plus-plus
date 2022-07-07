@@ -2,7 +2,7 @@ import useLocalStorage from "./use-local-storage";
 import useMediaQuery from "./use-media-query";
 import useUpdateEffect from "./use-update-effect";
 
-// const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
+const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
 
 /**
  * This React Hook offers you an interface to enable, disable, toggle
@@ -11,7 +11,10 @@ import useUpdateEffect from "./use-update-effect";
  * @see https://usehooks-ts.com/react-hook/use-dark-mode
  */
 export function useDarkMode() {
-  const isDarkOS = useMediaQuery("(prefers-color-scheme: dark)");
+  // temporarily disable system dark mode
+  // const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
+  const isDarkOS = false;
+
   const [isDarkMode, setDarkMode] = useLocalStorage(
     "dark-mode-enabled",
     isDarkOS ? isDarkOS : false

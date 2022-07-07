@@ -6,7 +6,7 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   display: "flex",
   width: "100%",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1.75, 0, 1.75, 2),
+    padding: theme.spacing(1.5, 0, 1.5, 2),
     // vertical padding + font size from searchIcon
     paddingRight: `calc(1em + ${theme.spacing(3)})`,
     width: "100%",
@@ -16,7 +16,10 @@ export const StyledInputBase = styled(InputBase)(({ theme }) => ({
       theme.palette.mode === "light"
         ? `2px solid  ${alpha(theme.palette.grey[300], 0.8)}`
         : `2px solid  ${alpha(theme.palette.grey[300], 0.3)}`,
-    borderRadius: `${theme.shape.borderRadius}px`,
+    borderRadius: `${theme.shape.borderRadius + 8}px`,
+    "&:focus": {
+      borderColor: theme.palette.primary.main,
+    },
     "&:hover": {
       borderColor: theme.palette.primary.main,
     },
