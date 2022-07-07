@@ -1,56 +1,22 @@
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { alpha, Box, IconButton, Tooltip, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import { Autoplay, Navigation, Pagination, Thumbs } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../features/phones/components/Carousel/PhoneCardCarousel.css";
 import PhoneBanner from "./PhoneBanner";
+import CarouselButton from "components/Button/CarouselButton";
+
+const PREV_BUTTON_ID = "phone-banner-prev-button";
+const NEXT_BUTTON_ID = "phone-banner-next-button";
+
 // TODO: refactor me
 const PhoneBannerCarousel = () => {
-  const theme = useTheme();
   return (
     <Box position="relative">
-      <Box
-        id="phone-banner-prev-button"
-        style={{
-          position: "absolute",
-          top: "40%",
-          zIndex: 10,
-          left: -10,
-          transform: "translateY(-50%)",
-          background: alpha(theme.palette.grey[500], 0.4),
-          borderRadius: "50%",
-        }}
-        role="button"
-      >
-        <Tooltip title={"Previous slide"}>
-          <IconButton>
-            <NavigateBeforeIcon />
-          </IconButton>
-        </Tooltip>
-      </Box>
+      <CarouselButton id={PREV_BUTTON_ID} />
 
-      <Box
-        id="phone-banner-next-button"
-        style={{
-          position: "absolute",
-          top: "40%",
-          zIndex: 10,
-          right: -10,
-          transform: "translateY(-50%)",
-          background: alpha(theme.palette.grey[500], 0.4),
-          borderRadius: "50%",
-        }}
-        role="button"
-      >
-        <Tooltip title={"Next slide"}>
-          <IconButton>
-            <NavigateNextIcon />
-          </IconButton>
-        </Tooltip>
-      </Box>
+      <CarouselButton id={NEXT_BUTTON_ID} type="next" />
 
       <Swiper
         autoplay={{
@@ -62,26 +28,16 @@ const PhoneBannerCarousel = () => {
           type: "bullets",
         }}
         navigation={{
-          prevEl: "#phone-banner-prev-button",
-          nextEl: "#phone-banner-next-button",
+          prevEl: `#${PREV_BUTTON_ID}`,
+          nextEl: `#${NEXT_BUTTON_ID}`,
         }}
         modules={[Autoplay, Pagination, Navigation, Thumbs]}
       >
-        <SwiperSlide>
-          <PhoneBanner />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneBanner />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneBanner />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneBanner />
-        </SwiperSlide>
-        <SwiperSlide>
-          <PhoneBanner />
-        </SwiperSlide>
+        {[...Array(5).keys()].map((key) => (
+          <SwiperSlide key={key}>
+            <PhoneBanner />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Box>
   );
