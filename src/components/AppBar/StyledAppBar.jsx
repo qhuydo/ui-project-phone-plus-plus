@@ -15,13 +15,14 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
     theme.palette.mode === "light"
       ? theme.palette.grey[800]
       : theme.palette.text.primary,
-  // "&.MuiIconButton-root": {
+  //
+  // ".MuiIconButton-root": {
   //   borderRadius: theme.shape.borderRadius,
   //   color: "inherit",
   //   background: theme.palette.background.default,
   //   padding: theme.spacing(1.5),
   //   [theme.breakpoints.up("sm")]: {
-  //     border: `1px solid ${theme.palette.grey[300]}`,
+  //     border: `1.75px solid ${theme.palette.grey[300]}`,
   //     borderRadius: theme.shape.borderRadius,
   //   },
   // },

@@ -7,6 +7,7 @@ import HistoryOutlinedIcon from "@mui/icons-material/HistoryOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import { useAuth } from "features/auth";
 
 const profileMenu = {
   elevation: 0,
@@ -38,6 +39,8 @@ const profileMenu = {
 
 // TODO: refactor me
 const ProfileMenu = ({ id, anchorEl, onMenuClosed }) => {
+  const { signOut } = useAuth();
+
   return (
     <Menu
       id={id}
@@ -91,7 +94,15 @@ const ProfileMenu = ({ id, anchorEl, onMenuClosed }) => {
         Exchanges & returns
       </MenuItem>
 
-      <MenuItem component={RouterLink} to="/">
+      <MenuItem
+        component={RouterLink}
+        to="/"
+        onClick={() =>
+          signOut(() => {
+            onMenuClosed();
+          })
+        }
+      >
         <ListItemIcon>
           <LogoutOutlinedIcon fontSize="small" />
         </ListItemIcon>

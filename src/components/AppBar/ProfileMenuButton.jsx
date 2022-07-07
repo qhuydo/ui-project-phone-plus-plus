@@ -1,11 +1,13 @@
 import { alpha, ButtonBase, Stack, Tooltip, Typography } from "@mui/material";
 import BackgroundOrLetterAvatar from "components/Avatar/BackgroundOrLetterAvatar";
 import PropTypes from "prop-types";
+import { useAuth } from "features/auth";
 
 const rippleColor = alpha("#000000", 0.08);
 
 const ProfileMenuButton = ({ openMenu, isSelected }) => {
-  return (
+  const { user } = useAuth();
+  return user ? (
     <Tooltip title="Profile menu">
       <ButtonBase
         onClick={openMenu}
@@ -22,8 +24,8 @@ const ProfileMenuButton = ({ openMenu, isSelected }) => {
       >
         <Stack direction="row" spacing={0.75} alignItems="center">
           <BackgroundOrLetterAvatar
-            name={"Huy"}
-            src="https://i1.sndcdn.com/avatars-000098677007-iayi3j-t500x500.jpg"
+            name={user.name}
+            src={user.avatar}
             sx={{ width: "32px", height: "32px" }}
           />
 
@@ -34,12 +36,12 @@ const ProfileMenuButton = ({ openMenu, isSelected }) => {
             variant="body1"
             noWrap
           >
-            Huy cbd
+            {user.name}
           </Typography>
         </Stack>
       </ButtonBase>
     </Tooltip>
-  );
+  ) : null;
 };
 
 ProfileMenuButton.propTypes = {
