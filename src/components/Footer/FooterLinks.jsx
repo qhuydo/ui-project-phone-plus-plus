@@ -1,5 +1,6 @@
 import { Box, Link, Typography } from "@mui/material";
-import NearbyStoresMap from "components/Footer/NearbyStoresMap";
+import { NearbyStoresMap } from "features/stores/components";
+import { GOLDEN_RATIO } from "utils/constants";
 
 //footer link content
 const footerLinks = [
@@ -77,7 +78,21 @@ export function FooterLinks() {
                   {column.links[0]}
                 </Link>
 
-                <NearbyStoresMap />
+                <NearbyStoresMap
+                  sx={(theme) => ({
+                    width: "120px",
+                    aspectRatio: `${GOLDEN_RATIO}`,
+                    [theme.breakpoints.up("sm")]: {
+                      width: "160px",
+                    },
+                    [theme.breakpoints.up("md")]: {
+                      width: "200px",
+                    },
+                    [theme.breakpoints.up("lg")]: {
+                      width: "280px",
+                    },
+                  })}
+                />
               </>
             )}
           </Box>
