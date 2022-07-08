@@ -2,6 +2,7 @@ import { Box, Card, Link, Stack, SvgIcon } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { GOLDEN_RATIO } from "utils/constants";
+import { useCallback, useState } from "react";
 
 const cardStyle = (theme) => ({
   alignItems: "center",
@@ -26,7 +27,6 @@ const cardStyle = (theme) => ({
     py: 2,
   },
   "&:hover": {
-    // color: theme.palette.getContrastText(theme.palette.primary.dark),
     // backgroundColor: theme.palette.primary.dark,
     // textDecoration: "underline",
     boxShadow: 5,
@@ -38,6 +38,16 @@ const cardStyle = (theme) => ({
     ".end-color": {
       "--color-stop": theme.palette.secondary.main,
     },
+  },
+  ".start-color": {
+    "--color-start": theme.palette.getContrastText(
+      theme.palette.background.default
+    ),
+  },
+  ".end-color": {
+    "--color-stop": theme.palette.getContrastText(
+      theme.palette.background.default
+    ),
   },
 });
 
@@ -58,9 +68,29 @@ const iconStyle = (theme) => ({
   },
 });
 
-function ServiceCard({ iconImage: IconImage, name: serviceName }) {
+function ServiceCard({
+  iconImage: IconImage,
+  filledIconImage: FilledIconImage,
+  name: serviceName,
+}) {
+  const [isSelected, setSelected] = useState(false);
+
+  const onMouseOver = useCallback(() => {
+    setSelected(true);
+  }, []);
+
+  const onMouseOut = useCallback(() => {
+    setSelected(false);
+  }, []);
+
   return (
-    <Card variant="outlined" sx={cardStyle} className="service-card">
+    <Card
+      variant="outlined"
+      sx={cardStyle}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+      className="service-card"
+    >
       <Link
         color="inherit"
         underline="none"
@@ -80,7 +110,7 @@ function ServiceCard({ iconImage: IconImage, name: serviceName }) {
           alignItems="center"
         >
           <SvgIcon
-            component={IconImage}
+            component={isSelected ? FilledIconImage : IconImage}
             sx={iconStyle}
             className="svg-gradient-wrapper"
             inheritViewBox
@@ -94,6 +124,7 @@ function ServiceCard({ iconImage: IconImage, name: serviceName }) {
 
 ServiceCard.propTypes = {
   iconImage: PropTypes.elementType,
+  filledIconImage: PropTypes.elementType,
   name: PropTypes.string,
 };
 

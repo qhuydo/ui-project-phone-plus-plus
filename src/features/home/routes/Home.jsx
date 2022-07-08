@@ -1,7 +1,7 @@
 import { Container, Typography } from "@mui/material";
 import PhoneBannerCarousel from "components/Banner/PhoneBannerCarousel";
 import { Head } from "components/Head/Head";
-import ServiceList from "components/Service/ServiceList";
+import ServiceList from "features/home/components/Service/ServiceList";
 import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCarousel";
 import { PhoneCategoryRow } from "features/phones/components/CategoryRow";
 import { NearbyStoreList } from "features/stores/components";
