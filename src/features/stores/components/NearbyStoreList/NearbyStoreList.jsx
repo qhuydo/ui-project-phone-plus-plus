@@ -30,7 +30,7 @@ const NearbyStoreList = ({ sx }) => {
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Container px={4}>
+    <Container px={6}>
       <Grid
         container
         overflow="hidden"
