@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
-import { alpha, Box, IconButton, Tooltip } from "@mui/material";
+import { alpha, IconButton } from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-const CarouselButton = ({ id, sx, tooltipContent, type, variant }) => {
+const CarouselButton = ({ id, sx, type, variant }) => {
   return (
-    <Box
+    <IconButton
       id={id}
-      style={{
+      sx={(theme) => ({
         position: "absolute",
         top: "50%",
         zIndex: 10,
@@ -15,30 +15,30 @@ const CarouselButton = ({ id, sx, tooltipContent, type, variant }) => {
         borderRadius: "50%",
         left: type === "next" ? null : -10,
         right: type === "next" ? -10 : null,
-      }}
-      sx={{
-        background:
-          variant === "outlined"
-            ? "transparent"
-            : (theme) => alpha(theme.palette.grey[500], 0.4),
+        padding: "4px",
+        "&:not(.Mui-disabled)": {
+          border: variant === "outlined" ? `1.75px solid transparent` : 0,
+          background:
+            variant === "outlined"
+              ? "transparent"
+              : alpha(theme.palette.grey[500], 0.4),
+
+          "&:hover": {
+            border:
+              variant === "outlined"
+                ? `1.75px solid ${alpha(theme.palette.grey[500], 0.4)}`
+                : null,
+            background:
+              variant === "outlined"
+                ? "transparent"
+                : alpha(theme.palette.grey[500], 0.6),
+          },
+        },
         ...sx,
-      }}
-      role="button"
+      })}
     >
-      <Tooltip
-        title={
-          tooltipContent
-            ? tooltipContent
-            : type === "next"
-            ? "Next slide"
-            : "Previous slide"
-        }
-      >
-        <IconButton style={{ padding: "4px" }}>
-          {type === "next" ? <NavigateNextIcon /> : <NavigateBeforeIcon />}
-        </IconButton>
-      </Tooltip>
-    </Box>
+      {type === "next" ? <NavigateNextIcon /> : <NavigateBeforeIcon />}
+    </IconButton>
   );
 };
 

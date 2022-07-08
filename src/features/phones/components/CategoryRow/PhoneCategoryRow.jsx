@@ -26,9 +26,10 @@ const PhoneCategoryRow = ({ sx }) => {
         navigation={{
           prevEl: `#${PREV_BUTTON_ID}`,
           nextEl: `#${NEXT_BUTTON_ID}`,
+          disabledClass: "Mui-disabled",
         }}
         modules={[Navigation]}
-        id="category-swiper"
+        className="category-swiper"
       >
         {categories.map((category) => (
           <SwiperSlide key={category.key} style={{ width: "auto" }}>

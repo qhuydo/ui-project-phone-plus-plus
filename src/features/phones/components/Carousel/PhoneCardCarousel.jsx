@@ -31,6 +31,7 @@ const PhoneCardCarousel = () => {
       <CarouselButton id={NEXT_BUTTON_ID} type="next" />
 
       <Swiper
+        className="phone-swiper"
         slidesPerView={1}
         spaceBetween={8}
         pagination={{
@@ -40,6 +41,7 @@ const PhoneCardCarousel = () => {
         navigation={{
           prevEl: `#${PREV_BUTTON_ID}`,
           nextEl: `#${NEXT_BUTTON_ID}`,
+          disabledClass: "Mui-disabled",
         }}
         modules={[Pagination, Navigation, Thumbs]}
         breakpoints={{
@@ -62,7 +64,7 @@ const PhoneCardCarousel = () => {
         }}
       >
         {[...Array(N_CARDS).keys()].map((key) => (
-          <SwiperSlide key={key}>
+          <SwiperSlide key={key} className="phone-swiper-slide">
             {isLoading ? <PhoneCardSkeleton /> : <PhoneCard />}
           </SwiperSlide>
         ))}
