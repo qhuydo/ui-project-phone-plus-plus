@@ -1,51 +1,47 @@
-import { Card, CardActionArea } from "@mui/material";
+import { Box } from "@mui/material";
 import ServiceCard from "./ServiceCard";
-import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
-import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
-import BuildIcon from "@mui/icons-material/Build";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import HandshakeIcon from "@mui/icons-material/Handshake";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import { ReactComponent as GiftCardIcon } from "assets/icons/redeem.svg";
+import { ReactComponent as PhoneIcon } from "assets/icons/phone-android.svg";
+import { ReactComponent as BuildIcon } from "assets/icons/build.svg";
+import { ReactComponent as SupportAgentIcon } from "assets/icons/support-agent.svg";
+import { ReactComponent as HandshakeIcon } from "assets/icons/handshake.svg";
+import { ReactComponent as LocalPhoneIcon } from "assets/icons/call.svg";
 
 const categoryArr = [
-  { name: "Gifts & Awards", Icon: CardGiftcardIcon },
-  { name: "3D Interaction", Icon: PhoneIphoneIcon },
-  { name: "Repair Appointment", Icon: BuildIcon },
-  { name: "24/7 Support", Icon: SupportAgentIcon },
-  { name: "Phone Comparison", Icon: HandshakeIcon },
-  { name: "Return Support", Icon: LocalPhoneIcon },
+  { id: "gift-n-awards", name: "Gifts & Awards", Icon: GiftCardIcon },
+  { id: "id-3d-interaction", name: "3D Interaction", Icon: PhoneIcon },
+  { id: "repair-appointment", name: "Repair Appointment", Icon: BuildIcon },
+  { id: "id-247-support", name: "24/7 Support", Icon: SupportAgentIcon },
+  { id: "phone-comparison", name: "Phone Comparison", Icon: HandshakeIcon },
+  { id: "return-support", name: "Return Support", Icon: LocalPhoneIcon },
 ];
 
-const cardStyle = {
-  mx: 6,
-  borderStyle: "none",
-};
-
-const cardActionArea = {
-  ".MuiCardActionArea-focusHighlight": {
-    bgcolor: "transparent",
-  },
+const boxStyle = (theme) => ({
   display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr",
+  gridTemplateColumns: "repeat(3, 1fr)",
   gridAutoColumns: "1fr",
-  gap: 6,
-};
+  gap: 1,
+  mx: 0,
+  [theme.breakpoints.up("lg")]: {
+    gridTemplateColumns: "repeat(6, 1fr)",
+    gap: 1,
+    mx: 6,
+  },
+  [theme.breakpoints.only("md")]: {
+    gap: 1.75,
+    mx: 4,
+  },
+});
 
 function ServiceList() {
   return (
-    <Card variant="outlined" sx={cardStyle}>
-      <CardActionArea sx={cardActionArea} component="div">
-        {categoryArr.map((item) => {
-          return (
-            <ServiceCard
-              iconImage={item.Icon}
-              name={item.name}
-              key={item.name}
-            />
-          );
-        })}
-      </CardActionArea>
-    </Card>
+    <Box my={2} sx={boxStyle}>
+      {categoryArr.map((item) => {
+        return (
+          <ServiceCard iconImage={item.Icon} name={item.name} key={item.name} />
+        );
+      })}
+    </Box>
   );
 }
 

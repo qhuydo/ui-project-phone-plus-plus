@@ -13,7 +13,6 @@ const NearbyStoresMap = ({ sx, imageSx, srcMap, typographySx, iconSx }) => {
       href="https://youtu.be/dQw4w9WgXcQ"
       overflow="hidden"
       position="relative"
-      borderRadius="8px"
       sx={(theme) => {
         const sxProps = sx ? sx(theme) : {};
         return {
@@ -41,6 +40,7 @@ const NearbyStoresMap = ({ sx, imageSx, srcMap, typographySx, iconSx }) => {
             },
           },
           width: "120px",
+          borderRadius: `${theme.shape.borderRadius}px`,
           aspectRatio: `${GOLDEN_RATIO}`,
           ...sxProps,
         };

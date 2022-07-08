@@ -95,7 +95,9 @@ const NearbyStoreList = ({ sx }) => {
 
             <Divider />
 
-            <Button>See more</Button>
+            <Box px={2}>
+              <Button fullWidth>See more</Button>
+            </Box>
           </Stack>
         </Grid>
       </Grid>
