@@ -1,4 +1,4 @@
-import { Box, Container, Divider, Typography } from "@mui/material";
+import { Box, Container, Divider, Typography, useTheme } from "@mui/material";
 import AppBarLogo from "components/AppBar/AppBarLogo";
 import BottomFooterSection from "components/Footer/BottomFooterSection";
 import { FooterLinks } from "components/Footer/FooterLinks";
@@ -45,6 +45,7 @@ const copyrightContainer = {
 };
 
 export default function AppFooter() {
+  const theme = useTheme();
   return (
     <Container component="footer">
       <Divider />
@@ -52,7 +53,16 @@ export default function AppFooter() {
       <Box sx={footerStyle}>
         <Box sx={footerBoxContainer}>
           <Box my={1.5}>
-            <AppBarLogo size={100} />
+            <AppBarLogo
+              size={200}
+              sx={{
+                position: "relative",
+                top: "-15%",
+                [theme.breakpoints.down("lg")]: {
+                  top: "0%",
+                },
+              }}
+            />
             <Typography
               variant="subtitle1"
               color="text.primary"
