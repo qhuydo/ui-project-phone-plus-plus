@@ -4,23 +4,26 @@ import PropTypes from "prop-types";
 
 const PhonePropertySelector = ({
   properties,
-  selectedProperty,
+  selectedProperty: selectedPropertyObj,
   onPropertySelected,
 }) => {
   return (
     <BorderlessToggleButtonGroup
       size="small"
       color="primary"
-      value={selectedProperty}
+      value={selectedPropertyObj.name}
       exclusive
       onChange={(e) => {
+        console.log(e.target);
         e.preventDefault();
-        return onPropertySelected(e.target.value);
+        return onPropertySelected(
+          properties.find((value) => value.name === e.target.value)
+        );
       }}
     >
       {properties.map((property) => (
-        <ToggleButton value={property} key={property}>
-          {property}
+        <ToggleButton value={property.name} key={property.name}>
+          {property.name}
         </ToggleButton>
       ))}
     </BorderlessToggleButtonGroup>
@@ -29,12 +32,12 @@ const PhonePropertySelector = ({
 
 PhonePropertySelector.defaultProps = {
   properties: [],
-  selectedProperty: "",
+  selectedProperty: {},
 };
 
 PhonePropertySelector.propTypes = {
-  properties: PropTypes.arrayOf(PropTypes.string),
-  selectedProperty: PropTypes.string,
+  properties: PropTypes.arrayOf(PropTypes.object),
+  selectedProperty: PropTypes.object,
   onPropertySelected: PropTypes.func,
 };
 

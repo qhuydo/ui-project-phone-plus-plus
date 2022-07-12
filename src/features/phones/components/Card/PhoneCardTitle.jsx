@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { usePhoneCardContext } from "features/phones/context";
 
 const boxStyle =
   (maxLine = 2) =>
@@ -25,6 +26,8 @@ const titleStyle = (maxLine = 2) => {
 };
 
 const PhoneCardTitle = ({ isSelected }) => {
+  const { phone } = usePhoneCardContext();
+
   return (
     <Box sx={boxStyle(1)}>
       <Typography
@@ -33,7 +36,7 @@ const PhoneCardTitle = ({ isSelected }) => {
         sx={titleStyle(1)}
         textAlign="center"
       >
-        SONEY XPERIYA IV
+        {phone.name}
       </Typography>
     </Box>
   );

@@ -6,8 +6,15 @@ import PropTypes from "prop-types";
 const PhoneCategoryItem = ({ category }) => {
   const theme = useTheme();
   return (
-    <Button>
-      <Link component={RouterLink} underline="none" to="/">
+    <Button
+      sx={{
+        color: "text.primary",
+        "&:hover": {
+          color: "primary.main",
+        },
+      }}
+    >
+      <Link component={RouterLink} underline="none" to="/" color="inherit">
         <Stack
           direction="row"
           alignItems="center"
@@ -30,7 +37,9 @@ const PhoneCategoryItem = ({ category }) => {
             }}
           />
 
-          <Typography fontWeight="bold">{category.name}</Typography>
+          <Typography fontWeight="bold" color="inherit">
+            {category.name}
+          </Typography>
         </Stack>
       </Link>
     </Button>

@@ -7,14 +7,14 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "./PhoneCardCarousel.css";
 import CarouselButton from "components/Button/CarouselButton";
-
-// TODO: refactor me
-const N_CARDS = 5;
+import PropTypes from "prop-types";
+import { PhoneCardContextProvider } from "features/phones/context/PhoneCardContext";
 
 const PREV_BUTTON_ID = "phone-carousel-prev-button";
 const NEXT_BUTTON_ID = "phone-carousel-next-button";
+const N_CARDS = 5;
 
-const PhoneCardCarousel = () => {
+const PhoneCardCarousel = ({ phones }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const theme = useTheme();
@@ -63,14 +63,27 @@ const PhoneCardCarousel = () => {
           },
         }}
       >
-        {[...Array(N_CARDS).keys()].map((key) => (
-          <SwiperSlide key={key} className="phone-swiper-slide">
-            {isLoading ? <PhoneCardSkeleton /> : <PhoneCard />}
-          </SwiperSlide>
-        ))}
+        {isLoading &&
+          [...Array(N_CARDS).keys()].map((key) => (
+            <SwiperSlide key={key} className="phone-swiper-slide">
+              <PhoneCardSkeleton key={key} />
+            </SwiperSlide>
+          ))}
+        {!isLoading &&
+          phones.map((phone) => (
+            <SwiperSlide key={phone.id} className="phone-swiper-slide">
+              <PhoneCardContextProvider phone={phone}>
+                <PhoneCard />
+              </PhoneCardContextProvider>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </Box>
   );
+};
+
+PhoneCardCarousel.propTypes = {
+  phones: PropTypes.array,
 };
 
 export default PhoneCardCarousel;

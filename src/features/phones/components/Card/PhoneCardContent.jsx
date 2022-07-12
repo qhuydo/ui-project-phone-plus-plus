@@ -13,32 +13,35 @@ import OutlinedChip from "components/Chip/OutlinedChip";
 import ColourSelector from "features/phones/components/Card/ColourSelector";
 import PhonePropertySelector from "features/phones/components/Card/PhonePropertySelector";
 import PropTypes from "prop-types";
-import { useState } from "react";
-
-const PHONE_COLOURS = ["#4496E0", "#202B6D", "#00AB55"];
-const PHONE_PROPERTIES = ["128GB", "256GB"];
+import { usePhoneCardContext } from "features/phones/context";
 
 const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
   const theme = useTheme();
-  const [selectedColour, setSelectedColour] = useState("#4496E0");
-  const [selectedProperty, setSelectedProperty] = useState("128GB");
+  const {
+    phone,
+    selectedColour,
+    changeColour,
+    selectedVersion,
+    changeVersion,
+    priceOffPercentage,
+  } = usePhoneCardContext();
 
   return (
     <CardContent component={Box} display="flex" flexDirection="column" sx={sx}>
       <Grid container flexDirection="row" columnSpacing={1}>
         <Grid item container alignItems="center" justifyContent="center">
           <ColourSelector
-            colours={PHONE_COLOURS}
+            colours={phone.colours}
             selectedColour={selectedColour}
-            onColourSelected={(colour) => setSelectedColour(colour)}
+            onColourSelected={changeColour}
           />
         </Grid>
 
         <Grid item container alignItems="center" justifyContent="center">
           <PhonePropertySelector
-            properties={PHONE_PROPERTIES}
-            selectedProperty={selectedProperty}
-            onPropertySelected={setSelectedProperty}
+            properties={phone.versions}
+            selectedProperty={selectedVersion}
+            onPropertySelected={changeVersion}
           />
         </Grid>
 
@@ -50,17 +53,20 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
           justifyContent="center"
           my={1}
         >
-          <OutlinedChip
-            label="Save 5%"
-            // isSelected={isSelected}
-            sx={{ mr: 0.5 }}
-          />
+          {+priceOffPercentage !== 0 && !isNaN(+priceOffPercentage) && (
+            <OutlinedChip
+              label={`Save ${parseInt(priceOffPercentage)}%`}
+              // isSelected={isSelected}
+              sx={{ mr: 0.5 }}
+            />
+          )}
+
           <Typography
             sx={{ ml: 0.5 }}
             variant="button"
             fontSize={`${theme.typography.body1.fontSize}`}
           >
-            6.900.000₫
+            {selectedVersion.displaySalePrice}
           </Typography>
         </Grid>
 
@@ -73,13 +79,13 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
         >
           <Rating
             size="medium"
-            value={5.0}
+            value={phone.ratingPoints}
             precision={0.5}
             readOnly
             sx={{ mr: 0.5 }}
           />
           <Typography variant="caption" sx={{ ml: 0.5 }}>
-            (120)
+            {`(${phone.numberOfRatings})`}
           </Typography>
         </Grid>
       </Grid>

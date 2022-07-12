@@ -4,6 +4,7 @@ import PhoneCardThumbnail from "features/phones/components/Card/PhoneCardThumbna
 import PhoneCardTitle from "features/phones/components/Card/PhoneCardTitle";
 import { useCallback, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { usePhoneCardContext } from "features/phones/context";
 
 const cardStyle = (theme) => ({
   borderWidth: `2px`,
@@ -33,6 +34,7 @@ const imageThumbnailStyle = {
 
 function PhoneCard() {
   const [isSelected, setSelected] = useState(false);
+  const { phone } = usePhoneCardContext();
 
   const onMouseOver = useCallback(() => {
     setSelected(true);
@@ -54,7 +56,7 @@ function PhoneCard() {
         color="inherit"
         underline="none"
         component={RouterLink}
-        to={`/phones/`}
+        to={`/phones/${phone.id}`}
       >
         {/*<CardActionArea component="div" sx={cardAreaStyle}>*/}
         <PhoneCardThumbnail
