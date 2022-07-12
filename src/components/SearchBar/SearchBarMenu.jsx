@@ -10,10 +10,9 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { GOLDEN_RATIO } from "utils/constants";
-import { COLOUR_OUTLINE } from "features/misc/theme/theme";
 import { useMemo } from "react";
 
-const N_ITEMS = 1;
+const N_ITEMS = 5;
 
 const searchBarMenu = {
   overflow: "visible",
@@ -77,7 +76,7 @@ const SearchBarMenu = ({ searchResults, shouldShowSearchMenu }) => {
                 style={{
                   height: 54,
                   aspectRatio: `${GOLDEN_RATIO}`,
-                  border: `1px solid ${COLOUR_OUTLINE}`,
+                  border: (theme) => `1px solid ${theme.palette.divider}`,
                 }}
               />
 
