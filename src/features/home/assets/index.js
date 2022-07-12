@@ -1,10 +1,2 @@
-export { ReactComponent as GiftCardIcon } from "./redeem.svg";
-export { ReactComponent as PhoneIcon } from "./phone-android.svg";
-export { ReactComponent as PhoneFilledIcon } from "./phone-android-filled.svg";
-export { ReactComponent as BuildIcon } from "./build.svg";
-export { ReactComponent as BuildFilledIcon } from "./build-filled.svg";
-export { ReactComponent as SupportAgentIcon } from "./support-agent.svg";
-export { ReactComponent as HandshakeIcon } from "./handshake.svg";
-export { ReactComponent as HandshakeFilledIcon } from "./handshake-filled.svg";
-export { ReactComponent as LocalPhoneIcon } from "./call.svg";
-export { ReactComponent as LocalPhoneFilledIcon } from "./call-filled.svg";
+export * from "./data";
+export * from "./icons";

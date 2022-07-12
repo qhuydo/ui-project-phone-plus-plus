@@ -1,0 +1,48 @@
+[
+  {
+    "id": "0",
+    "imgSrc": "https://images.unsplash.com/photo-1611120159972-050e0fbb7ab4?fit=crop&w=4000&h=1800",
+    "title": "#OpenUp",
+    "subTitle": "To the next generation of Rotom Phone",
+    "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "textColour": "#FFFFFF",
+    "textPosition": "top-middle",
+    "textBoxWidth": "30%"
+  },
+  {
+    "id": "1",
+    "imgSrc": "https://images.unsplash.com/photo-1516648612766-d5f00245f63e?fit=crop&w=4000&h=1800",
+    "title": "Lorem ipsum",
+    "subTitle": "Dolor sit amet, consectetur adipiscing elit",
+    "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "textColour": "#FFFFFF",
+    "textPosition": "middle-left"
+  },
+  {
+    "id": "2",
+    "imgSrc": "https://images.unsplash.com/photo-1634403665443-81dc4d75843a?&fit=crop&crop=left&w=4000&h=1800",
+    "title": "Lorem ipsum",
+    "subTitle": "Dolor sit amet, consectetur adipiscing elit",
+    "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "textPosition": "middle-left"
+  },
+  {
+    "id": "3",
+    "imgSrc": "https://images.unsplash.com/photo-1519326882834-04c334752f58?fit=crop&w=4000&h=1800",
+    "title": "A Phone",
+    "subTitle": "Buy this phone please",
+    "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "textColour": "#FFFFFF",
+    "textPosition": "top-right",
+    "textBoxWidth": "30%"
+  },
+  {
+    "id": "4",
+    "imgSrc": "https://images.unsplash.com/photo-1609177336889-4e69aa3b1ff6?fit=crop&crop=top&w=4000&h=1800",
+    "title": "Another Phone",
+    "subTitle": "Buy this phone please",
+    "content": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "textPosition": "middle-left",
+    "textBoxWidth": "30%"
+  }
+]

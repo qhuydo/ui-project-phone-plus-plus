@@ -6,42 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "features/phones/components/Carousel/PhoneCardCarousel.css";
 import PhoneBanner from "features/home/components/Banner/PhoneBanner";
 import CarouselButton from "components/Button/CarouselButton";
-import { LOREM_IPSUM } from "utils/constants";
+import { banners } from "features/home/assets";
 
 const PREV_BUTTON_ID = "phone-banner-prev-button";
 const NEXT_BUTTON_ID = "phone-banner-next-button";
-
-const BANNERS = [
-  {
-    id: "0",
-    imgSrc:
-      "https://images.unsplash.com/photo-1634403665443-81dc4d75843a?&fit=crop&crop=left&w=4000&h=1800",
-    title: "#OpenUp",
-    subTitle: "To the next generation of Rotom Phone",
-    content: LOREM_IPSUM,
-  },
-  {
-    id: "1",
-    imgSrc:
-      "https://images.unsplash.com/photo-1519326882834-04c334752f58?fit=crop&w=4000&h=1800",
-    title: "A Phone",
-    subTitle: "Buy this phone please",
-    content: LOREM_IPSUM,
-    textColour: "#FFFFFF",
-    textPosition: "top-right",
-    textBoxWidth: "30%",
-  },
-  {
-    id: "2",
-    imgSrc:
-      "https://images.unsplash.com/photo-1609177336889-4e69aa3b1ff6?fit=crop&crop=top&w=4000&h=1800",
-    title: "Another Phone",
-    subTitle: "Buy this phone please",
-    content: LOREM_IPSUM,
-    textPosition: "middle-left",
-    textBoxWidth: "30%",
-  },
-];
 
 // TODO: refactor me
 const PhoneBannerCarousel = () => {
@@ -73,7 +41,7 @@ const PhoneBannerCarousel = () => {
         }}
         modules={[Autoplay, Pagination, Navigation, Thumbs]}
       >
-        {BANNERS.map((banner) => (
+        {banners.map((banner) => (
           <SwiperSlide key={banner.id}>
             <PhoneBanner {...banner} />
           </SwiperSlide>

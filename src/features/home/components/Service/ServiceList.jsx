@@ -11,7 +11,7 @@ import {
   PhoneFilledIcon,
   PhoneIcon,
   SupportAgentIcon,
-} from "features/home/assets";
+} from "features/home/assets/icons";
 
 const categoryArr = [
   {

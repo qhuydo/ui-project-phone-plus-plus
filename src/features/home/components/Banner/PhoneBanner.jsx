@@ -22,6 +22,13 @@ function getTextBoxStyleFromPosition(textPosition) {
         // textAlign: "right",
         transform: "translateY(-50%)",
       };
+    case "top-middle":
+      return {
+        top: "6%",
+        left: "50%",
+        right: "50%",
+        transform: "translateX(-50%)",
+      };
     default:
       // middle-left
       return {
@@ -235,6 +242,7 @@ PhoneBanner.propTypes = {
   textPosition: PropTypes.oneOf([
     "middle-left",
     "top-left",
+    "top-middle",
     "top-right",
     "middle-right",
   ]),
