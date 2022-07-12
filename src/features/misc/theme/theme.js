@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { alpha, createTheme } from "@mui/material";
 import {
   APP_BAR,
   APP_BAR_DARK,
@@ -32,3 +32,5 @@ export const darkTheme = createTheme({
   },
   props: PROPS,
 });
+
+export const COLOUR_OUTLINE = alpha("#000000", 0.12);

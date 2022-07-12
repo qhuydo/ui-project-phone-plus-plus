@@ -14,7 +14,6 @@ const PhonePropertySelector = ({
       value={selectedPropertyObj.name}
       exclusive
       onChange={(e) => {
-        console.log(e.target);
         e.preventDefault();
         return onPropertySelected(
           properties.find((value) => value.name === e.target.value)

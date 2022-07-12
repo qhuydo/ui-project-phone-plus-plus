@@ -4,7 +4,13 @@ import { SearchIconWrapper } from "components/SearchBar/SearchIconWrapper";
 import SearchIcon from "@mui/icons-material/Search";
 import { StyledInputBase } from "components/SearchBar/SearchInputBase";
 
-const SearchBar = ({ onKeyPressed, onSearchKeyChanged, value }) => {
+const SearchBar = ({
+  onKeyPressed,
+  onSearchKeyChanged,
+  value,
+  onBlurred,
+  onFocused,
+}) => {
   return (
     <SearchBarContainer>
       <StyledInputBase
@@ -13,6 +19,8 @@ const SearchBar = ({ onKeyPressed, onSearchKeyChanged, value }) => {
         onKeyPress={onKeyPressed}
         value={value}
         onChange={onSearchKeyChanged}
+        onFocus={onFocused}
+        onBlur={onBlurred}
       />
 
       <SearchIconWrapper>
@@ -26,6 +34,8 @@ SearchBar.propTypes = {
   onKeyPressed: PropTypes.func,
   onSearchKeyChanged: PropTypes.func,
   value: PropTypes.string,
+  onFocused: PropTypes.func,
+  onBlurred: PropTypes.func,
 };
 
 export default SearchBar;
