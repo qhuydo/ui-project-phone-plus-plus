@@ -12,9 +12,8 @@ import { PhoneCardContextProvider } from "features/phones/context/PhoneCardConte
 
 const PREV_BUTTON_ID = "phone-carousel-prev-button";
 const NEXT_BUTTON_ID = "phone-carousel-next-button";
-const N_CARDS = 5;
 
-const PhoneCardCarousel = ({ phones }) => {
+const PhoneCardCarousel = ({ phones, phonesPerView }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const theme = useTheme();
@@ -32,7 +31,7 @@ const PhoneCardCarousel = ({ phones }) => {
 
       <Swiper
         className="phone-swiper"
-        slidesPerView={1}
+        slidesPerView={phonesPerView.xs}
         spaceBetween={8}
         pagination={{
           clickable: true,
@@ -46,25 +45,25 @@ const PhoneCardCarousel = ({ phones }) => {
         modules={[Pagination, Navigation, Thumbs]}
         breakpoints={{
           [theme.breakpoints.values["sm"]]: {
-            slidesPerView: 2,
+            slidesPerView: phonesPerView.sm,
             spaceBetween: 4,
           },
           [theme.breakpoints.values["md"]]: {
-            slidesPerView: 3,
+            slidesPerView: phonesPerView.md,
             spaceBetween: 8,
           },
           [theme.breakpoints.values["lg"]]: {
-            slidesPerView: 4,
+            slidesPerView: phonesPerView.lg,
             spaceBetween: 12,
           },
           [theme.breakpoints.values["xl"]]: {
-            slidesPerView: 5,
+            slidesPerView: phonesPerView.xl,
             spaceBetween: 12,
           },
         }}
       >
         {isLoading &&
-          [...Array(N_CARDS).keys()].map((key) => (
+          [...Array(phonesPerView.xl).keys()].map((key) => (
             <SwiperSlide key={key} className="phone-swiper-slide">
               <PhoneCardSkeleton key={key} />
             </SwiperSlide>
@@ -82,8 +81,19 @@ const PhoneCardCarousel = ({ phones }) => {
   );
 };
 
+PhoneCardCarousel.defaultValues = {
+  phonesPerView: {
+    xs: 1,
+    sm: 2,
+    md: 3,
+    lg: 4,
+    xl: 5,
+  },
+};
+
 PhoneCardCarousel.propTypes = {
   phones: PropTypes.array,
+  phonesPerView: PropTypes.object,
 };
 
 export default PhoneCardCarousel;

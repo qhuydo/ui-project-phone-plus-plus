@@ -1,12 +1,10 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { APPBAR_LARGE } from "components/AppBar/AppBar";
 import { Head } from "components/Head/Head";
 import { CheckoutSection } from "features/cart/components";
 import { useScroll } from "hooks";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
-import { CartItemContextProvider } from "features/cart/context";
-import { phones } from "features/phones/assets";
-import CartItem from "features/cart/components/CartItem/CartItem";
+import CartInfoSection from "features/cart/components/CartInfoSection/CartInfoSection";
 
 export const Cart = () => {
   const { scrollY } = useScroll();
@@ -16,17 +14,6 @@ export const Cart = () => {
 
       <Container>
         <DefaultBreadcrumb currentPage={"My cart"} />
-
-        <CartItemContextProvider
-          cartItem={{
-            phone: phones[0],
-            colour: phones[0].colours[0],
-            version: phones[0].versions[0],
-            quantity: 1,
-          }}
-        >
-          <CartItem />
-        </CartItemContextProvider>
 
         <Typography variant={"h4"} textAlign="center" my={1}>
           My cart
@@ -47,7 +34,7 @@ export const Cart = () => {
           {/*</Grid>*/}
 
           <Grid item xs={12} md={7} lg={7.75} padding={1}>
-            <Box height="1000px" bgcolor="primary.light" />
+            <CartInfoSection />
           </Grid>
 
           <Grid
