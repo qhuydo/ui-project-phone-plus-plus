@@ -47,7 +47,7 @@ const SupportPaymentTypes = () => {
           </Stack>
         ))}
       </Stack>
-      <Divider />
+      <Divider sx={{ pt: 1 }} />
     </Stack>
   );
 };

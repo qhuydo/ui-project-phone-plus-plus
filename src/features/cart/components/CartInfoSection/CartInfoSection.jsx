@@ -2,6 +2,7 @@ import { Stack } from "@mui/material";
 import { phones } from "features/phones/assets";
 import CartItemList from "features/cart/components/CartInfoSection/CartItemList";
 import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
+import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 
 const cartItems = [
   {
@@ -23,6 +24,7 @@ const CartInfoSection = () => {
     <Stack direction="column" spacing={1}>
       <CartItemList items={cartItems} />
       <SupportPaymentTypes />
+      <VoucherSection />
     </Stack>
   );
 };

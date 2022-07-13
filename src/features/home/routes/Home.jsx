@@ -7,8 +7,6 @@ import { PhoneCategoryRow } from "features/phones/components/CategoryRow";
 import { NearbyStoreList } from "features/stores/components";
 import { phones } from "features/phones/assets";
 
-const N_ITEMS = 5;
-
 export const Home = () => {
   return (
     <>
@@ -27,7 +25,7 @@ export const Home = () => {
         <Typography variant={"h4"} textAlign="center">
           Latest offer
         </Typography>
-        <PhoneCardCarousel phones={phones.slice(0, N_ITEMS)} />
+        <PhoneCardCarousel phones={phones} />
 
         <Typography variant={"h4"} textAlign="center">
           Stores near you

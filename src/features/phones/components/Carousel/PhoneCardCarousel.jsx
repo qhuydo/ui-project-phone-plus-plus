@@ -81,7 +81,7 @@ const PhoneCardCarousel = ({ phones, phonesPerView }) => {
   );
 };
 
-PhoneCardCarousel.defaultValues = {
+PhoneCardCarousel.defaultProps = {
   phonesPerView: {
     xs: 1,
     sm: 2,
