@@ -6,7 +6,7 @@ import { useMemo } from "react";
 
 const PeopleAlsoBuySection = () => {
   const offers = useMemo(() => {
-    return shuffle(phones);
+    return shuffle(phones).slice(0, 4);
   }, []);
 
   return (

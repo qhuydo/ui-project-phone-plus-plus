@@ -1,4 +1,5 @@
 import { phones } from "features/phones/assets";
+import allPhoneDetails from "features/phones/assets/details";
 
 export const findPhoneByKeyword = (keyword) => {
   return new Promise((resolve) => {
@@ -8,5 +9,24 @@ export const findPhoneByKeyword = (keyword) => {
         phone.name.toLowerCase().includes(trimmedKeyword)
       )
     );
+  });
+};
+
+export const getPhoneById = (id) => {
+  return new Promise((resolve) => {
+    const trimmedId = id.trim();
+    const phone = phones.find((phone) => phone.id === trimmedId);
+    if (!phone) {
+      resolve(null);
+      return;
+    }
+
+    const phoneDetails = allPhoneDetails.find(
+      (phone) => phone.id === trimmedId
+    );
+    resolve({
+      ...phone,
+      ...phoneDetails,
+    });
   });
 };

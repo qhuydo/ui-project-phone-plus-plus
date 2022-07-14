@@ -66,7 +66,7 @@ const PhoneSearchResultBody = () => {
           variant="h4"
           textAlign="center"
           sx={{
-            my: 1,
+            my: 2,
           }}
         >
           Search results for {'"'}

@@ -3,7 +3,7 @@ import { alpha, IconButton } from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
-const CarouselButton = ({ id, sx, type, variant }) => {
+const CarouselButton = ({ id, sx, type, variant, fontSize }) => {
   return (
     <IconButton
       id={id}
@@ -37,7 +37,11 @@ const CarouselButton = ({ id, sx, type, variant }) => {
         ...sx,
       })}
     >
-      {type === "next" ? <NavigateNextIcon /> : <NavigateBeforeIcon />}
+      {type === "next" ? (
+        <NavigateNextIcon fontSize={fontSize} />
+      ) : (
+        <NavigateBeforeIcon fontSize={fontSize} />
+      )}
     </IconButton>
   );
 };
@@ -53,6 +57,7 @@ CarouselButton.propTypes = {
   tooltipContent: PropTypes.string,
   type: PropTypes.oneOf(["previous", "next"]),
   variant: PropTypes.oneOf(["filled", "outlined"]),
+  fontSize: PropTypes.oneOf(["inherit", "medium", "large", "small"]),
 };
 
 export default CarouselButton;

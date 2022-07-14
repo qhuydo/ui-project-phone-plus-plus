@@ -29,11 +29,11 @@ const PhoneCardTitle = ({ isSelected }) => {
   const { phone } = usePhoneCardContext();
 
   return (
-    <Box sx={boxStyle(1)}>
+    <Box sx={boxStyle(2)}>
       <Typography
         variant="h6"
         color={isSelected ? "primary.dark" : "auto"}
-        sx={titleStyle(1)}
+        sx={titleStyle(2)}
         textAlign="center"
       >
         {phone.name}

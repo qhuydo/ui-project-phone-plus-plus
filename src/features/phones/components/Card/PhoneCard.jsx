@@ -56,7 +56,7 @@ function PhoneCard() {
         color="inherit"
         underline="none"
         component={RouterLink}
-        to={`/phones/${phone.id}`}
+        to={`/phone/${phone.id}`}
       >
         {/*<CardActionArea component="div" sx={cardAreaStyle}>*/}
         <PhoneCardThumbnail

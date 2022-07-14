@@ -1,0 +1,35 @@
+.phone-details-swiper {
+    max-width: 500px;
+    aspect-ratio: 1;
+}
+
+.phone-details-thumbnail-swiper {
+    height: 20%;
+    /*aspect-ratio: 1;*/
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.swiper-slide .phone-details-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.phone-details-thumbnail-swiper .swiper-slide {
+    width: 20%;
+    height: 100%;
+    opacity: 0.4;
+}
+
+.phone-details-thumbnail-swiper .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+.swiper-slide .phone-details-thumbnail {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

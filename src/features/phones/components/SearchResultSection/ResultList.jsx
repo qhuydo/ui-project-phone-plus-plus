@@ -18,8 +18,8 @@ const ResultList = () => {
 
   return (
     <Grid container sx={{ width: 1, alignItems: "center" }}>
-      {phones.map((phone, idx) => (
-        <Grid item xs={6} lg={4} xl={3} key={idx} p={0.5}>
+      {phones.map((phone) => (
+        <Grid item xs={6} lg={4} xl={3} key={phone.id} p={0.5}>
           <PhoneCardContextProvider phone={phone}>
             <PhoneCard />
           </PhoneCardContextProvider>
