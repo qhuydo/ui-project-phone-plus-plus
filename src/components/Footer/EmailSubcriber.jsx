@@ -14,8 +14,7 @@ const emailTitle = {
 const subscribeInputContainer = {
   display: "flex",
   overflow: "hidden",
-  width: { xs: "100%", sm: "auto" },
-  maxWidth: 360,
+  width: { xs: "100%", md: 360 },
   borderRadius: "8px",
 };
 

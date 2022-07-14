@@ -1,10 +1,15 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import { APPBAR_LARGE } from "components/AppBar/AppBar";
 import { Head } from "components/Head/Head";
 import { CheckoutSection } from "features/cart/components";
 import { useScroll } from "hooks";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
-import CartInfoSection from "features/cart/components/CartInfoSection/CartInfoSection";
+import CartInfoSection, {
+  cartItems,
+} from "features/cart/components/CartInfoSection/CartInfoSection";
+import CartItemList from "features/cart/components/CartInfoSection/CartItemList";
+import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
+import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 
 export const Cart = () => {
   const { scrollY } = useScroll();
@@ -20,20 +25,36 @@ export const Cart = () => {
         </Typography>
 
         <Grid container alignItems="start">
-          {/*<Grid*/}
-          {/*  item*/}
-          {/*  xs={12}*/}
-          {/*  padding={1}*/}
-          {/*  sx={(theme) => ({*/}
-          {/*    [theme.breakpoints.up("sm")]: {*/}
-          {/*      display: "none",*/}
-          {/*    },*/}
-          {/*  })}*/}
-          {/*>*/}
-          {/*  <Box height="120px" bgcolor="primary.dark" />*/}
-          {/*</Grid>*/}
+          <Grid
+            item
+            xs={12}
+            padding={1}
+            sx={(theme) => ({
+              [theme.breakpoints.up("md")]: {
+                display: "none",
+              },
+            })}
+          >
+            <Stack direction="column" spacing={1} alignItems="center">
+              <CartItemList items={cartItems} />
+              <SupportPaymentTypes />
+              <VoucherSection />
+              <CheckoutSection />
+            </Stack>
+          </Grid>
 
-          <Grid item xs={12} md={7} lg={7.75} padding={1}>
+          <Grid
+            item
+            xs={12}
+            md={7}
+            lg={8}
+            padding={1}
+            sx={(theme) => ({
+              [theme.breakpoints.down("md")]: {
+                display: "none",
+              },
+            })}
+          >
             <CartInfoSection />
           </Grid>
 
@@ -41,7 +62,7 @@ export const Cart = () => {
             item
             xs={12}
             md={5}
-            lg={4.25}
+            lg={4}
             padding={1}
             position="sticky"
             alignSelf="flex-start"

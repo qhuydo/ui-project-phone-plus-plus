@@ -17,15 +17,32 @@ const CartItem = () => {
   return (
     <Stack direction="row" p={1} spacing={3}>
       <Box
-        component="img"
-        src={cartItem?.colour.thumbnail ?? FALLBACK_IMG}
-        sx={{
-          width: 300,
+        sx={(theme) => ({
+          height: 80,
           aspectRatio: `${GOLDEN_RATIO}`,
-          border: (theme) => `1px solid ${theme.palette.divider}`,
+          border: `1px solid ${theme.palette.divider}`,
           borderRadius: "8px",
-        }}
-      />
+          overflow: "hidden",
+          [theme.breakpoints.up("lg")]: {
+            height: 185,
+          },
+        })}
+      >
+        <Box
+          component="img"
+          src={cartItem?.colour.thumbnail ?? FALLBACK_IMG}
+          sx={{
+            height: "100%",
+            aspectRatio: `${GOLDEN_RATIO}`,
+            objectFit: "cover",
+            transition: `transform .3s`,
+            transform: `scale(1.0)`,
+            "&:hover": {
+              transform: `scale(1.1)`,
+            },
+          }}
+        />
+      </Box>
 
       <Stack direction="column" flexGrow={1} spacing={1}>
         <Stack

@@ -8,6 +8,7 @@ const VoucherItem = ({ voucherItem }) => {
       direction="row"
       display="inline-flex"
       spacing={0.75}
+      width="auto"
       p={1}
       alignItems="center"
       sx={(theme) => ({
@@ -15,7 +16,9 @@ const VoucherItem = ({ voucherItem }) => {
         borderRadius: `${theme.shape.borderRadius}px`,
       })}
     >
-      <Typography variant="button">{voucherItem.name}</Typography>
+      <Typography variant="button" width="auto" noWrap>
+        {voucherItem.name}
+      </Typography>
 
       <Divider orientation="vertical" flexItem />
 

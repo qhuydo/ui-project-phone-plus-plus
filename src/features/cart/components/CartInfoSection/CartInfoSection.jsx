@@ -4,7 +4,7 @@ import CartItemList from "features/cart/components/CartInfoSection/CartItemList"
 import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
 import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 
-const cartItems = [
+export const cartItems = [
   {
     phone: phones[0],
     colour: phones[0].colours[0],
@@ -21,7 +21,7 @@ const cartItems = [
 
 const CartInfoSection = () => {
   return (
-    <Stack direction="column" spacing={1}>
+    <Stack direction="column" spacing={1} alignItems="center" width={1}>
       <CartItemList items={cartItems} />
       <SupportPaymentTypes />
       <VoucherSection />
