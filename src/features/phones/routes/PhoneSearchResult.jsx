@@ -9,6 +9,7 @@ import {
   SearchResultContextProvider,
   useSearchResultContext,
 } from "features/phones/context/SearchResultContext";
+import FilterColumn from "../components/SearchResultSection/FilterColumn";
 
 const PhoneSearchResult = () => {
   return (
@@ -77,15 +78,7 @@ const PhoneSearchResultBody = () => {
 
         <Grid container>
           <Grid item xs={3}>
-            <Box
-              minHeight={1000}
-              sx={(theme) => ({
-                my: 1,
-                bgcolor: "primary.50",
-                border: `2px solid ${theme.palette.divider}`,
-                borderRadius: `${theme.shape.borderRadius}px`,
-              })}
-            />
+            <FilterColumn />
           </Grid>
 
           <Grid item xs={9}>
