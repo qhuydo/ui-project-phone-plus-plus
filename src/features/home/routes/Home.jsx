@@ -6,6 +6,7 @@ import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCaro
 import { PhoneCategoryRow } from "features/phones/components/CategoryRow";
 import { NearbyStoreList } from "features/stores/components";
 import { phones } from "features/phones/assets";
+import { shuffle } from "lodash-es";
 
 export const Home = () => {
   return (
@@ -17,17 +18,30 @@ export const Home = () => {
 
         <PhoneBannerCarousel />
 
-        <Typography variant={"h4"} textAlign="center">
+        <Typography variant={"h2"} textAlign="center" sx={{ py: 2 }}>
+          Best Promotion
+        </Typography>
+        <Typography
+          variant={"h4"}
+          textAlign="center"
+          color="primary"
+          sx={{ py: 1 }}
+        >
+          Buy phone to make us rich
+        </Typography>
+        <PhoneCardCarousel phones={shuffle(phones)} />
+
+        <Typography variant={"h4"} textAlign="center" sx={{ py: 2 }}>
           {"Our Services"}
         </Typography>
         <ServiceList />
 
-        <Typography variant={"h4"} textAlign="center">
+        <Typography variant={"h2"} textAlign="center" sx={{ py: 2 }}>
           Latest offer
         </Typography>
-        <PhoneCardCarousel phones={phones} />
+        <PhoneCardCarousel phones={shuffle(phones)} />
 
-        <Typography variant={"h4"} textAlign="center">
+        <Typography variant={"h4"} textAlign="center" sx={{ py: 2 }}>
           Stores near you
         </Typography>
 
