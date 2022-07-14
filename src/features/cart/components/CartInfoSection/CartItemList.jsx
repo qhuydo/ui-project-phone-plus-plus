@@ -5,7 +5,7 @@ import { CartItemContextProvider } from "features/cart/context";
 
 const CartItemList = ({ items }) => {
   return (
-    <List py={2}>
+    <List py={2} sx={{ width: 1 }}>
       {items.map((item, idx) => (
         <ListItem key={idx} sx={{ width: 1, display: "block" }} divider>
           <CartItemContextProvider cartItem={item} key={idx}>

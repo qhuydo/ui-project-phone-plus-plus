@@ -31,7 +31,8 @@ const VoucherSection = () => {
       px={1}
       py={2}
       spacing={1}
-      width={670}
+      maxWidth={{ sm: "auto", md: 740 }}
+      width={1}
     >
       <Typography variant="h4">Voucher</Typography>
 

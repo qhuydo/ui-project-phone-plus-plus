@@ -6,7 +6,7 @@ const voucherInputContainer = {
   display: "flex",
   overflow: "hidden",
   width: "100%",
-  maxWidth: 574,
+  maxWidth: { xs: "100%", md: 574 },
   borderRadius: "8px",
 };
 

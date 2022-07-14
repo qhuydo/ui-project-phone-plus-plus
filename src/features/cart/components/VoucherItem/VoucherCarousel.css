@@ -1,5 +1,5 @@
 .voucher-swiper {
-    width: 606px;
+    width: calc(100% - 64px);
     height: auto;
 }
 

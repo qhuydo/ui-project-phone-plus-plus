@@ -14,6 +14,8 @@ import ColourSelector from "features/phones/components/Card/ColourSelector";
 import PhonePropertySelector from "features/phones/components/Card/PhonePropertySelector";
 import PropTypes from "prop-types";
 import { usePhoneCardContext } from "features/phones/context";
+import { useCartContext } from "features/cart/context/CartContext";
+import { useCallback } from "react";
 
 const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
   const theme = useTheme();
@@ -25,6 +27,21 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
     changeVersion,
     priceOffPercentage,
   } = usePhoneCardContext();
+
+  const { addItem } = useCartContext();
+
+  const onCartItemAdded = useCallback(
+    (e) => {
+      e.preventDefault();
+      return addItem({
+        phone: phone,
+        colour: selectedColour,
+        version: selectedVersion,
+        quantity: 1,
+      });
+    },
+    [addItem, phone, selectedColour, selectedVersion]
+  );
 
   return (
     <CardContent component={Box} display="flex" flexDirection="column" sx={sx}>
@@ -104,6 +121,7 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
             },
           }}
           startIcon={<AddShoppingCartOutlinedIcon />}
+          onClick={onCartItemAdded}
         >
           Add to cart
         </Button>

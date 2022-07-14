@@ -27,9 +27,9 @@ const PAYMENT_TYPES = [
 
 const SupportPaymentTypes = () => {
   return (
-    <Stack direction="column" spacing={1} px={2}>
+    <Stack direction="column" spacing={1} px={2} width={1}>
       <Typography variant="h6">Support payment methods</Typography>
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={1} overflow="auto">
         {PAYMENT_TYPES.map((item, index) => (
           <Stack
             direction="row"
@@ -43,7 +43,9 @@ const SupportPaymentTypes = () => {
             })}
           >
             <Box component="img" height={40} width="auto" src={item.src} />
-            <Typography variant="button">{item.name}</Typography>
+            <Typography variant="button" noWrap>
+              {item.name}
+            </Typography>
           </Stack>
         ))}
       </Stack>

@@ -11,21 +11,43 @@ import { useCartItemContext } from "features/cart/context";
 import ItemQuantityInput from "features/cart/components/CartItem/ItemQuantityInput";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { useCartContext } from "features/cart/context/CartContext";
+import formatNumberToVND from "utils/currency-formatter";
 
 const CartItem = () => {
   const { cartItem } = useCartItemContext();
+  const { increaseItemQuantity, decreaseItemQuantity, removeItem } =
+    useCartContext();
+
   return (
     <Stack direction="row" p={1} spacing={3}>
       <Box
-        component="img"
-        src={cartItem?.colour.thumbnail ?? FALLBACK_IMG}
-        sx={{
-          width: 300,
+        sx={(theme) => ({
+          height: 80,
           aspectRatio: `${GOLDEN_RATIO}`,
-          border: (theme) => `1px solid ${theme.palette.divider}`,
+          border: `1px solid ${theme.palette.divider}`,
           borderRadius: "8px",
-        }}
-      />
+          overflow: "hidden",
+          [theme.breakpoints.up("lg")]: {
+            height: 185,
+          },
+        })}
+      >
+        <Box
+          component="img"
+          src={cartItem?.colour.thumbnail ?? FALLBACK_IMG}
+          sx={{
+            height: "100%",
+            aspectRatio: `${GOLDEN_RATIO}`,
+            objectFit: "cover",
+            transition: `transform .3s`,
+            transform: `scale(1.0)`,
+            "&:hover": {
+              transform: `scale(1.1)`,
+            },
+          }}
+        />
+      </Box>
 
       <Stack direction="column" flexGrow={1} spacing={1}>
         <Stack
@@ -38,12 +60,9 @@ const CartItem = () => {
           <Typography variant="h6">{cartItem.phone.name}</Typography>
 
           <Typography variant="h6">
-            {cartItem.version.displaySalePrice}
+            {formatNumberToVND(cartItem.version.salePrice * cartItem.quantity)}
           </Typography>
         </Stack>
-        <Typography variant="subtitle1" color="text.secondary">
-          {`${cartItem.version.name}, ${cartItem.colour.colourName}`}
-        </Typography>
 
         <Stack
           direction="row"
@@ -52,9 +71,31 @@ const CartItem = () => {
           alignItems="center"
           spacing={1}
         >
-          <ItemQuantityInput value={cartItem.quantity} />
+          <Typography variant="subtitle1" color="text.secondary">
+            {`${cartItem.version.name}, ${cartItem.colour.colourName}`}
+          </Typography>
 
-          <IconButton>
+          {cartItem.quantity > 1 && (
+            <Typography variant="subtitle1" color="text.secondary">
+              {`${cartItem.version.displaySalePrice} per item`}
+            </Typography>
+          )}
+        </Stack>
+
+        <Stack
+          direction="row"
+          width={1}
+          justifyContent="space-between"
+          alignItems="center"
+          spacing={1}
+        >
+          <ItemQuantityInput
+            value={cartItem.quantity}
+            onQuantityIncremented={() => increaseItemQuantity(cartItem)}
+            onQuantityDecremented={() => decreaseItemQuantity(cartItem)}
+          />
+
+          <IconButton onClick={() => removeItem(cartItem)}>
             <DeleteOutlinedIcon />
           </IconButton>
         </Stack>
