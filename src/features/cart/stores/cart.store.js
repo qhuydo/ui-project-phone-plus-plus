@@ -17,6 +17,7 @@ export const cartReducer = (state, action) => {
           cartItems[i].quantity++;
           newState = {
             ...state,
+            cartItems: [...cartItems],
           };
           break;
         }
@@ -62,6 +63,7 @@ export const cartReducer = (state, action) => {
           cartItems[i].quantity++;
           newState = {
             ...state,
+            cartItems: [...cartItems],
           };
         }
       }
@@ -85,6 +87,7 @@ export const cartReducer = (state, action) => {
           cartItems[i].quantity--;
           newState = {
             ...state,
+            cartItems: [...cartItems],
           };
           break;
         }

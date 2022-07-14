@@ -27,15 +27,15 @@ const ColourSelector = ({
                   ? theme.shadows[3]
                   : undefined
               }`,
-              outline: `1px solid ${
+              outline: `2px solid ${
                 colour === selectedColourObj.colour
                   ? `${alpha(theme.palette.grey[500], 0.8)}`
                   : "rgba(0, 0, 0, 0)"
               }`,
               margin: 0.25,
               padding: 0.5,
-              height: "32px",
-              width: "32px",
+              height: "36px",
+              width: "36px",
               outlineStyle: "dash",
               display: "inline-flex",
               alignItems: "center",
@@ -43,7 +43,7 @@ const ColourSelector = ({
                 cursor: "pointer",
                 border: `2px solid ${colour}`,
                 boxShadow: theme.shadows[3],
-                outline: `1px solid ${`${alpha(
+                outline: `2px solid ${`${alpha(
                   theme.palette.grey[500],
                   0.8
                 )}`}`,
@@ -57,12 +57,11 @@ const ColourSelector = ({
             <Box
               sx={{
                 border: (theme) =>
-                  `1px solid ${alpha(theme.palette.grey[500], 0.8)}`,
+                  `2px solid ${alpha(theme.palette.grey[500], 0.8)}`,
                 bgcolor: colour,
                 borderRadius: "50%",
+                aspectRatio: "1",
                 width: "100%",
-                height: "auto",
-                paddingBottom: "100%",
               }}
             />
           </Box>

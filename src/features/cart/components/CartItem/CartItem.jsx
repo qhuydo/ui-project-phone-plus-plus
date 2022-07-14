@@ -12,6 +12,7 @@ import ItemQuantityInput from "features/cart/components/CartItem/ItemQuantityInp
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { useCartContext } from "features/cart/context/CartContext";
+import formatNumberToVND from "utils/currency-formatter";
 
 const CartItem = () => {
   const { cartItem } = useCartItemContext();
@@ -59,12 +60,27 @@ const CartItem = () => {
           <Typography variant="h6">{cartItem.phone.name}</Typography>
 
           <Typography variant="h6">
-            {cartItem.version.displaySalePrice}
+            {formatNumberToVND(cartItem.version.salePrice * cartItem.quantity)}
           </Typography>
         </Stack>
-        <Typography variant="subtitle1" color="text.secondary">
-          {`${cartItem.version.name}, ${cartItem.colour.colourName}`}
-        </Typography>
+
+        <Stack
+          direction="row"
+          width={1}
+          justifyContent="space-between"
+          alignItems="center"
+          spacing={1}
+        >
+          <Typography variant="subtitle1" color="text.secondary">
+            {`${cartItem.version.name}, ${cartItem.colour.colourName}`}
+          </Typography>
+
+          {cartItem.quantity > 1 && (
+            <Typography variant="subtitle1" color="text.secondary">
+              {`${cartItem.version.displaySalePrice} per item`}
+            </Typography>
+          )}
+        </Stack>
 
         <Stack
           direction="row"

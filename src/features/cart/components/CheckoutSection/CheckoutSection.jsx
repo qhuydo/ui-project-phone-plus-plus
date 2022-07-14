@@ -8,8 +8,32 @@ import {
   Typography,
 } from "@mui/material";
 import PropTypes from "prop-types";
+import { useCartContext } from "features/cart/context/CartContext";
+import { useMemo } from "react";
+import formatNumberToVND from "utils/currency-formatter";
+import {
+  calculateEstimatePrice,
+  calculateSavingPrice,
+  calculateSubtotalPrice,
+} from "features/cart/utils";
 
 const CheckoutSection = ({ cardSx }) => {
+  const {
+    state: { cartItems },
+  } = useCartContext();
+
+  const estimatePrice = useMemo(() => {
+    return formatNumberToVND(calculateEstimatePrice(cartItems));
+  }, [cartItems]);
+
+  const subTotalPrice = useMemo(() => {
+    return formatNumberToVND(calculateSubtotalPrice(cartItems));
+  }, [cartItems]);
+
+  const savingPrice = useMemo(() => {
+    return formatNumberToVND(calculateSavingPrice(cartItems));
+  }, [cartItems]);
+
   return (
     <Stack direction="column" spacing={1}>
       <Card variant="outlined" sx={{ ...cardSx }}>
@@ -23,7 +47,7 @@ const CheckoutSection = ({ cardSx }) => {
               Total (estimate)
             </Typography>
             <Typography variant="h5" fontWeight="bold">
-              6.900.000₫
+              {estimatePrice}
             </Typography>
           </Stack>
           <Typography variant="subtitle2">VAT inclusive</Typography>
@@ -37,7 +61,7 @@ const CheckoutSection = ({ cardSx }) => {
             alignItems="baseline"
           >
             <Typography variant="subtitle1">Subtotal</Typography>
-            <Typography>7.000.000₫</Typography>
+            <Typography>{subTotalPrice}</Typography>
           </Stack>
 
           <Stack
@@ -47,7 +71,7 @@ const CheckoutSection = ({ cardSx }) => {
             alignItems="baseline"
           >
             <Typography variant="subtitle1">Saving</Typography>
-            <Typography>-100.000₫</Typography>
+            <Typography>{`-${savingPrice}`}</Typography>
           </Stack>
 
           <Stack
