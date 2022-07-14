@@ -37,7 +37,11 @@ const searchBarMenu = {
   },
 };
 
-const SearchBarMenu = ({ searchResults, shouldShowSearchMenu }) => {
+const SearchBarMenu = ({
+  searchResults,
+  shouldShowSearchMenu,
+  onSeeMoreButtonPressed,
+}) => {
   const result = useMemo(
     () => searchResults.slice(0, N_ITEMS),
     [searchResults]
@@ -105,7 +109,11 @@ const SearchBarMenu = ({ searchResults, shouldShowSearchMenu }) => {
         ))}
 
         {searchResults.length > N_ITEMS && (
-          <Button variant="text" sx={{ width: 1 }}>
+          <Button
+            variant="text"
+            sx={{ width: 1 }}
+            onClick={onSeeMoreButtonPressed}
+          >
             Show more results
           </Button>
         )}
@@ -121,6 +129,7 @@ SearchBarMenu.defaultProps = {
 SearchBarMenu.propTypes = {
   searchResults: PropTypes.array,
   shouldShowSearchMenu: PropTypes.bool,
+  onSeeMoreButtonPressed: PropTypes.func,
 };
 
 export default SearchBarMenu;

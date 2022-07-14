@@ -4,6 +4,7 @@ const router = {
   LOGIN: "/login",
   PAYMENT: "/payment",
   PHONE_COMPARISON: "/phone/compare",
+  PHONE_SEARCH_RESULT: "/phone/search",
   PHONE_DETAILS: "/phone/:id",
   REGISTER: "/register",
 };

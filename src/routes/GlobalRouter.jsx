@@ -5,6 +5,7 @@ import { PhoneComparison, PhoneDetails } from "features/phones";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ROUTER from "./router";
 import ScrollToTop from "components/Layout/ScrollToTop";
+import PhoneSearchResult from "features/phones/routes/PhoneSearchResult";
 
 const GlobalRouter = () => {
   return (
@@ -15,6 +16,10 @@ const GlobalRouter = () => {
           <Route index element={<Home />} />
           <Route path={ROUTER.CART} element={<Cart />} />
           <Route path={ROUTER.PHONE_DETAILS} element={<PhoneDetails />} />
+          <Route
+            path={ROUTER.PHONE_SEARCH_RESULT}
+            element={<PhoneSearchResult />}
+          />
           <Route path={ROUTER.PHONE_COMPARISON} element={<PhoneComparison />} />
           <Route path={"*"} element={<Navigate to={"."} />} />
         </Route>

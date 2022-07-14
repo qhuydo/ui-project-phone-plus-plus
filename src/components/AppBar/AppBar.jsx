@@ -12,7 +12,7 @@ import HideOnScroll from "components/AppBar/HideOnScroll";
 import StyledAppBar from "components/AppBar/StyledAppBar";
 import StyledToolbar from "components/AppBar/StyledToolbar";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import router from "routes/router";
 import { SearchBar } from "components/SearchBar";
 import ProfileMenuButton from "components/AppBar/ProfileMenuButton";
@@ -24,6 +24,7 @@ import { findPhoneByKeyword } from "features/phones/api";
 import SearchBarMenu from "components/SearchBar/SearchBarMenu";
 import { useCartContext } from "features/cart/context/CartContext";
 import { getNumberOfCartItem } from "features/cart/utils";
+import { Router } from "routes";
 
 export const APPBAR_LARGE = 92;
 export const APPBAR_SMALL = 80;
@@ -35,6 +36,8 @@ const AppBar = () => {
   const debouncedKeyword = useDebounce(keyword, 300);
   const [phoneResults, setPhoneResults] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
+
+  const navigate = useNavigate();
 
   const { state: cartState } = useCartContext();
 
@@ -50,12 +53,19 @@ const AppBar = () => {
     setKeyword(e.currentTarget.value);
   }, []);
 
-  const handleKeyPressed = useCallback((e) => {
-    if (e.key === "Enter") {
-      // TODO navigate to search result page
-      setShowSearchResults(false);
-    }
-  }, []);
+  const navigateToResultPage = useCallback(() => {
+    setShowSearchResults(false);
+    navigate(`${Router.PHONE_SEARCH_RESULT}?keyword=${keyword.trim()}`);
+  }, [keyword, navigate]);
+
+  const handleKeyPressed = useCallback(
+    (e) => {
+      if (e.key === "Enter") {
+        navigateToResultPage();
+      }
+    },
+    [navigateToResultPage]
+  );
 
   const onSearchBarFocused = useCallback(() => {
     if (phoneResults.length !== 0) {
@@ -114,6 +124,7 @@ const AppBar = () => {
               <SearchBarMenu
                 shouldShowSearchMenu={showSearchResults}
                 searchResults={phoneResults}
+                onSeeMoreButtonPressed={navigateToResultPage}
               />
             </Box>
 

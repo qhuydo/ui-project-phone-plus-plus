@@ -18,14 +18,14 @@ export const Home = () => {
 
         <PhoneBannerCarousel />
 
-        <Typography variant={"h2"} textAlign="center" sx={{ py: 2 }}>
+        <Typography variant={"h2"} textAlign="center" sx={{ pt: 2 }}>
           Best Promotion
         </Typography>
         <Typography
           variant={"h4"}
           textAlign="center"
           color="primary"
-          sx={{ py: 1 }}
+          sx={{ pt: "20px", pb: 2 }}
         >
           Buy phone to make us rich
         </Typography>

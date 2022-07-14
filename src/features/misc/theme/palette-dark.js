@@ -1,5 +1,6 @@
 const PRIMARY = {
   main: "#B4E6FF",
+  50: "#E4F2FB",
 };
 
 const SECONDARY = {
