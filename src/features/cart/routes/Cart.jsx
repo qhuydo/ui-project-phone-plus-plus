@@ -9,6 +9,8 @@ import CartItemList from "features/cart/components/CartInfoSection/CartItemList"
 import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
 import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 import { useCartContext } from "features/cart/context/CartContext";
+import SpecialOfferSection from "../components/CartInfoSection/SpecialOfferSection";
+import PeopleAlsoBuySection from "../components/CartInfoSection/PeopleAlsoBuySection";
 
 export const Cart = () => {
   const { scrollY } = useScroll();
@@ -41,6 +43,8 @@ export const Cart = () => {
               <SupportPaymentTypes />
               <VoucherSection />
               <CheckoutSection />
+              <SpecialOfferSection />
+              <PeopleAlsoBuySection />
             </Stack>
           </Grid>
 

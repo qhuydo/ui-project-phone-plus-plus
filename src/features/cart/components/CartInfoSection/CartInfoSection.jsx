@@ -3,6 +3,8 @@ import CartItemList from "features/cart/components/CartInfoSection/CartItemList"
 import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
 import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 import { useCartContext } from "features/cart/context/CartContext";
+import PeopleAlsoBuySection from "./PeopleAlsoBuySection";
+import SpecialOfferSection from "./SpecialOfferSection";
 
 // export const cartItems = [
 //   {
@@ -26,6 +28,8 @@ const CartInfoSection = () => {
       <CartItemList items={state.cartItems} />
       <SupportPaymentTypes />
       <VoucherSection />
+      <SpecialOfferSection />
+      <PeopleAlsoBuySection />
     </Stack>
   );
 };

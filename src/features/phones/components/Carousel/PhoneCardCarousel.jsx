@@ -24,7 +24,12 @@ const PhoneCardCarousel = ({ phones, phonesPerView }) => {
   }, []);
 
   return (
-    <Box position="relative">
+    <Box
+      position="relative"
+      width={1}
+      alignItems="center"
+      justifyContent="center"
+    >
       <CarouselButton id={PREV_BUTTON_ID} />
 
       <CarouselButton id={NEXT_BUTTON_ID} type="next" />
