@@ -4,19 +4,20 @@ import { Head } from "components/Head/Head";
 import { CheckoutSection } from "features/cart/components";
 import { useScroll } from "hooks";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
-import CartInfoSection, {
-  cartItems,
-} from "features/cart/components/CartInfoSection/CartInfoSection";
+import CartInfoSection from "features/cart/components/CartInfoSection/CartInfoSection";
 import CartItemList from "features/cart/components/CartInfoSection/CartItemList";
 import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
 import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
+import { useCartContext } from "features/cart/context/CartContext";
 
 export const Cart = () => {
   const { scrollY } = useScroll();
+  const { state } = useCartContext();
   return (
     <>
       <Head title={"My cart"} />
 
+      {/* TODO: add layout for empty cart state*/}
       <Container>
         <DefaultBreadcrumb currentPage={"My cart"} />
 
@@ -36,7 +37,7 @@ export const Cart = () => {
             })}
           >
             <Stack direction="column" spacing={1} alignItems="center">
-              <CartItemList items={cartItems} />
+              <CartItemList items={state.cartItems} />
               <SupportPaymentTypes />
               <VoucherSection />
               <CheckoutSection />

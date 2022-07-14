@@ -11,7 +11,7 @@ import AppBarLogo from "components/AppBar/AppBarLogo";
 import HideOnScroll from "components/AppBar/HideOnScroll";
 import StyledAppBar from "components/AppBar/StyledAppBar";
 import StyledToolbar from "components/AppBar/StyledToolbar";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import router from "routes/router";
 import { SearchBar } from "components/SearchBar";
@@ -22,6 +22,8 @@ import { useAuth } from "features/auth";
 import { useDebounce } from "hooks";
 import { findPhoneByKeyword } from "features/phones/api";
 import SearchBarMenu from "components/SearchBar/SearchBarMenu";
+import { useCartContext } from "features/cart/context/CartContext";
+import { getNumberOfCartItem } from "features/cart/utils";
 
 export const APPBAR_LARGE = 92;
 export const APPBAR_SMALL = 80;
@@ -33,6 +35,8 @@ const AppBar = () => {
   const debouncedKeyword = useDebounce(keyword, 300);
   const [phoneResults, setPhoneResults] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
+
+  const { state: cartState } = useCartContext();
 
   const openMenu = useCallback((e) => {
     setAnchorEl(e.currentTarget);
@@ -61,6 +65,11 @@ const AppBar = () => {
   const onSearchBarOutOfFocused = useCallback(() => {
     setShowSearchResults(false);
   }, []);
+
+  const nCartItem = useMemo(
+    () => getNumberOfCartItem(cartState.cartItems),
+    [cartState]
+  );
 
   useEffect(() => {
     if (debouncedKeyword.trim().length === 0) {
@@ -120,7 +129,7 @@ const AppBar = () => {
                     component={RouterLink}
                     to={router.CART}
                   >
-                    <Badge badgeContent={2} color="primary">
+                    <Badge badgeContent={nCartItem} color="primary">
                       <SvgIcon component={ShoppingCart} inheritViewBox />
                     </Badge>
                   </IconButton>

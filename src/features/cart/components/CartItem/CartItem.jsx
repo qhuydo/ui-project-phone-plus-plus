@@ -11,9 +11,13 @@ import { useCartItemContext } from "features/cart/context";
 import ItemQuantityInput from "features/cart/components/CartItem/ItemQuantityInput";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { useCartContext } from "features/cart/context/CartContext";
 
 const CartItem = () => {
   const { cartItem } = useCartItemContext();
+  const { increaseItemQuantity, decreaseItemQuantity, removeItem } =
+    useCartContext();
+
   return (
     <Stack direction="row" p={1} spacing={3}>
       <Box
@@ -69,9 +73,13 @@ const CartItem = () => {
           alignItems="center"
           spacing={1}
         >
-          <ItemQuantityInput value={cartItem.quantity} />
+          <ItemQuantityInput
+            value={cartItem.quantity}
+            onQuantityIncremented={() => increaseItemQuantity(cartItem)}
+            onQuantityDecremented={() => decreaseItemQuantity(cartItem)}
+          />
 
-          <IconButton>
+          <IconButton onClick={() => removeItem(cartItem)}>
             <DeleteOutlinedIcon />
           </IconButton>
         </Stack>
