@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { FALLBACK_IMG, GOLDEN_RATIO } from "utils/constants";
 import { useCartItemContext } from "features/cart/context";
-import ItemQuantityInput from "features/cart/components/CartItem/ItemQuantityInput";
+import ItemQuantityInput from "components/Input/ItemQuantityInput";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { useCartContext } from "features/cart/context/CartContext";

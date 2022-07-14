@@ -2,7 +2,7 @@ import { usePhoneDetailsContext } from "features/phones/context";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-import { Box } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import "./PhoneDetailsImage.css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -14,9 +14,11 @@ const NEXT_BUTTON_ID = "phone-details-thumbnail-next-button";
 
 const PhoneDetailsImage = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const { phoneDetails } = usePhoneDetailsContext();
+  const {
+    state: { phoneDetails },
+  } = usePhoneDetailsContext();
   return (
-    <Box position="relative" width={1}>
+    <Box position="relative" width={1} height="auto">
       <CarouselButton
         id={PREV_BUTTON_ID}
         variant="outlined"
@@ -68,6 +70,15 @@ const PhoneDetailsImage = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <Stack direction="row" spacing={1} width={1} pt={2}>
+        <Button fullWidth variant="contained">
+          View 3D model
+        </Button>
+        <Button fullWidth variant="outlined">
+          Compare phone
+        </Button>
+      </Stack>
     </Box>
   );
 };

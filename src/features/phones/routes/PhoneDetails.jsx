@@ -19,7 +19,10 @@ export const PhoneDetails = () => {
 };
 
 export const PhoneDetailsBody = () => {
-  const { phoneDetails, isLoading } = usePhoneDetailsContext();
+  const {
+    state: { phoneDetails, isLoading },
+  } = usePhoneDetailsContext();
+
   if (isLoading) return null;
   if (!phoneDetails && !isLoading) return null;
   return (
