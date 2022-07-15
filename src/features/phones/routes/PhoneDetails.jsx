@@ -7,7 +7,9 @@ import {
 import { Head } from "components/Head/Head";
 import { Container } from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
-import { PhoneDetailsFirstSection } from "features/phones/components/PhoneDetailSections";
+import { PhoneDetailsFirstSection } from "features/phones/components/PhoneDetailHeader";
+import NotFound from "features/misc/routes/NotFound";
+import PhoneSpecificationSection from "features/phones/components/PhoneSpecificationSection/PhoneSpecificationSection";
 
 export const PhoneDetails = () => {
   const { id } = useParams();
@@ -24,7 +26,8 @@ export const PhoneDetailsBody = () => {
   } = usePhoneDetailsContext();
 
   if (isLoading) return null;
-  if (!phoneDetails && !isLoading) return null;
+  if (!phoneDetails && !isLoading) return <NotFound />;
+
   return (
     <>
       <Head title={`${phoneDetails ? phoneDetails.name : "Details"}`} />
@@ -41,6 +44,8 @@ export const PhoneDetailsBody = () => {
         />
 
         <PhoneDetailsFirstSection />
+
+        <PhoneSpecificationSection />
       </Container>
     </>
   );

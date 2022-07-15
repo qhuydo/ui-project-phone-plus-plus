@@ -10,6 +10,7 @@ export const initialPhoneDetailsState = {
   currentDisplayOriginalPrice: 0,
   currentDisplaySalePrice: 0,
   priceOffPercentage: 0,
+  isSpecOpen: false,
 };
 
 export const phoneDetailsReducer = (state, action) => {
@@ -27,7 +28,17 @@ export const phoneDetailsReducer = (state, action) => {
       };
     }
     case "ADD_PHONE_DETAILS": {
-      if (!action.payload) return state;
+      if (!action.payload)
+        return {
+          phoneDetails: null,
+          selectedColour: null,
+          selectedVersion: null,
+          colourChanged: false,
+          quantity: 1,
+          currentDisplayOriginalPrice: 0,
+          currentDisplaySalePrice: 0,
+          priceOffPercentage: 0,
+        };
       const firstVersion = action.payload.versions[0];
       const originalPrice = +firstVersion.originalPrice;
       const salePrice = +firstVersion.salePrice;
@@ -76,6 +87,12 @@ export const phoneDetailsReducer = (state, action) => {
           quantity
         ),
         quantity,
+      };
+    }
+    case "CHANGE_SPEC_OPEN_STATE": {
+      return {
+        ...state,
+        isSpecOpen: !!action.payload,
       };
     }
     default:

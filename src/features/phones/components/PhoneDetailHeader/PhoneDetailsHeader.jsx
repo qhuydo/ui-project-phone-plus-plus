@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import { usePhoneDetailsContext } from "features/phones/context";
 import OutlinedChip from "components/Chip/OutlinedChip";
-import ColourPairSelector from "features/phones/components/PhoneDetailSections/ColourPairSelector";
+import ColourPairSelector from "features/phones/components/PhoneDetailHeader/ColourPairSelector";
 import { useCallback } from "react";
-import PhoneVersionSelector from "features/phones/components/PhoneDetailSections/PhoneVersionSelector";
+import PhoneVersionSelector from "features/phones/components/PhoneDetailHeader/PhoneVersionSelector";
 import ItemQuantityInput from "components/Input/ItemQuantityInput";
 import { GOLDEN_RATIO } from "utils/constants";
 import { useCartContext } from "features/cart/context/CartContext";

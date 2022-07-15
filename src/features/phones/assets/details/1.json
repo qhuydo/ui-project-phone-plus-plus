@@ -53,5 +53,20 @@
     "https://i.imgur.com/qJznsPn.png",
     "https://i.imgur.com/5RREpw6.jpg"
   ],
-  "nSold": 24
+  "nSold": 24,
+  "spec": {
+    "bannerImg": "https://gadget-initiative.com/wordpress-folder/wp-content/uploads/2015/12/xperiaxperformanceblack.jpg",
+    "collapsedText": "The Sony Xperia X Smartphone features a 5-inch Full HD display that offers an immersive viewing experience. This smartphone has a 23 MP camera for sharp pictures and clear videos. It runs on Android and is driven by a quad-core processor. For the user's data storage needs, this smartphone offers a 64 GB internal memory capacity. In addition, this graphite black smartphone is powered by a 2700 mAh battery.\n",
+    "captionText": "*Please note that all functions, features, specs and any other product information provided on any Sony and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
+    "contents": [
+      {
+        "type": "text",
+        "content": "\"Always one step ahead\" - this is the tagline the Sony Xperia X is promoted with. It hints at the phone's ability to \"predict\" the direction of moving objects, thus ensuring accurate focus when taking photos. Speaking of photography, the phone's main camera is a key selling feature, with 23MP of resolution, super-wide viewing angles, and extremely fast autofocus. We're also promised great battery life with Sony's optimizations, added on top of Android 6.0. As for the handset itself, it is designed in typical, stylish Sony fashion, with straight lines and flat sides. For convenience's sake, you get a fingerprint scanner embedded in the power button (not available in the US), as well as front stereo speakers. However, water resistance - a feature found on many other Xperia models - has been skipped.\n\n"
+      },
+      {
+        "type": "img",
+        "content": "https://m-cdn.phonearena.com/images/phones/60730-default/Sony-Xperia-X4additional.webp"
+      }
+    ]
+  }
 }

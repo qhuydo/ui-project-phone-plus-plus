@@ -50,6 +50,10 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     dispatch({ type: "CHANGE_QUANTITY", payload: quantity });
   }, []);
 
+  const changeSpecOpenState = useCallback((isOpen) => {
+    dispatch({ type: "CHANGE_SPEC_OPEN_STATE", payload: isOpen });
+  }, []);
+
   const contextValue = useMemo(() => {
     return {
       state,
@@ -57,8 +61,9 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
       changeColour,
       changeVersion,
       changeQuantity,
+      changeSpecOpenState,
     };
-  }, [state, changeColour, changeVersion, changeQuantity]);
+  }, [state, changeColour, changeVersion, changeQuantity, changeSpecOpenState]);
 
   return (
     <PhoneDetailsContext.Provider value={contextValue}>
