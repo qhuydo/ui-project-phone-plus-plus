@@ -14,7 +14,8 @@ export const cartReducer = (state, action) => {
           newCartItem.phone.id === cartItems[i].phone.id &&
           newCartItem.version.id === cartItems[i].version.id
         ) {
-          cartItems[i].quantity++;
+          cartItems[i].quantity +=
+            newCartItem.quantity > 1 ? newCartItem.quantity : 1;
           newState = {
             ...state,
             cartItems: [...cartItems],

@@ -20,6 +20,21 @@ export function calculateSubtotalPrice(cartItems) {
     0
   );
 }
+
 export function calculateSavingPrice(cartItems) {
   return calculateSubtotalPrice(cartItems) - calculateEstimatePrice(cartItems);
+}
+
+export function createCartItem(
+  phone,
+  selectedColour,
+  selectedVersion,
+  quantity
+) {
+  return {
+    phone: phone,
+    colour: selectedColour,
+    version: selectedVersion,
+    quantity: quantity > 1 ? quantity : 1,
+  };
 }

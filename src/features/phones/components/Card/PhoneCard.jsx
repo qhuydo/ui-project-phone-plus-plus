@@ -5,6 +5,7 @@ import PhoneCardTitle from "features/phones/components/Card/PhoneCardTitle";
 import { useCallback, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { usePhoneCardContext } from "features/phones/context";
+import { Router } from "routes";
 
 const cardStyle = (theme) => ({
   borderWidth: `2px`,
@@ -56,7 +57,7 @@ function PhoneCard() {
         color="inherit"
         underline="none"
         component={RouterLink}
-        to={`/phone/${phone.id}`}
+        to={`${Router.getPhoneDetailsPage(phone.id, phone.name)}`}
       >
         {/*<CardActionArea component="div" sx={cardAreaStyle}>*/}
         <PhoneCardThumbnail

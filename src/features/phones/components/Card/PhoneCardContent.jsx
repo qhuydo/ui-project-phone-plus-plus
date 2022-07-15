@@ -16,6 +16,7 @@ import PropTypes from "prop-types";
 import { usePhoneCardContext } from "features/phones/context";
 import { useCartContext } from "features/cart/context/CartContext";
 import { useCallback } from "react";
+import { createCartItem } from "features/cart/utils";
 
 const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
   const theme = useTheme();
@@ -33,12 +34,7 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
   const onCartItemAdded = useCallback(
     (e) => {
       e.preventDefault();
-      return addItem({
-        phone: phone,
-        colour: selectedColour,
-        version: selectedVersion,
-        quantity: 1,
-      });
+      return addItem(createCartItem(phone, selectedColour, selectedVersion));
     },
     [addItem, phone, selectedColour, selectedVersion]
   );

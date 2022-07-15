@@ -20,7 +20,7 @@ const ItemQuantityInput = ({
       alignItems="center"
       width="auto"
     >
-      <IconButton onClick={onQuantityDecremented}>
+      <IconButton onClick={onQuantityDecremented} disabled={value === 1}>
         <RemoveIcon />
       </IconButton>
 

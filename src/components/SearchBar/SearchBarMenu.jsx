@@ -10,7 +10,9 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { GOLDEN_RATIO } from "utils/constants";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import { Router } from "routes";
 
 const N_ITEMS = 5;
 
@@ -46,6 +48,15 @@ const SearchBarMenu = ({
     () => searchResults.slice(0, N_ITEMS),
     [searchResults]
   );
+
+  const navigate = useNavigate();
+  const onPhoneMenuItemClicked = useCallback(
+    (phone) => () => {
+      navigate(Router.getPhoneDetailsPage(phone.id, phone.name));
+    },
+    [navigate]
+  );
+
   return (
     <Grow
       in={shouldShowSearchMenu && searchResults.length !== 0}
@@ -61,9 +72,9 @@ const SearchBarMenu = ({
         sx={searchBarMenu}
         alignItems="center"
       >
-        {result.map((phone, idx) => (
+        {result.map((phone) => (
           <ListItemButton
-            key={idx}
+            key={phone.id}
             disableGutters
             divider
             sx={{
@@ -72,6 +83,7 @@ const SearchBarMenu = ({
               mt: "1px",
               width: 1,
             }}
+            onClick={onPhoneMenuItemClicked(phone)}
           >
             <Stack spacing={1} direction="row">
               <Box

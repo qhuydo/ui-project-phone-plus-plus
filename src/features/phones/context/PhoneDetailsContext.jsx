@@ -32,9 +32,9 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     dispatch({ type: "NOTIFY_LOADING" });
     getPhoneById(phoneId).then((value) => {
       dispatch({ type: "NOTIFY_LOADED" });
-      if (value) {
-        dispatch({ type: "ADD_PHONE_DETAILS", payload: value });
-      }
+      // if (value) {
+      dispatch({ type: "ADD_PHONE_DETAILS", payload: value });
+      // }
     });
   }, [phoneId]);
 
@@ -46,14 +46,19 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     dispatch({ type: "CHANGE_VERSION", payload: version });
   }, []);
 
+  const changeQuantity = useCallback((quantity) => {
+    dispatch({ type: "CHANGE_QUANTITY", payload: quantity });
+  }, []);
+
   const contextValue = useMemo(() => {
     return {
       state,
       dispatch,
       changeColour,
       changeVersion,
+      changeQuantity,
     };
-  }, [state, changeColour, changeVersion]);
+  }, [state, changeColour, changeVersion, changeQuantity]);
 
   return (
     <PhoneDetailsContext.Provider value={contextValue}>

@@ -24,6 +24,10 @@ export const getPhoneById = (id) => {
     const phoneDetails = allPhoneDetails.find(
       (phone) => phone.id === trimmedId
     );
+    if (!phoneDetails) {
+      resolve(null);
+      return;
+    }
     resolve({
       ...phone,
       ...phoneDetails,
