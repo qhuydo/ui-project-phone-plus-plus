@@ -1,3 +1,3 @@
-import { default as phone1 } from "./1.json";
+import { default as phone0 } from "./0.json";
 
-export default [phone1];
+export default [phone0];
