@@ -1,4 +1,7 @@
-import { calculatePhoneDetailsPrices } from "features/phones/utils";
+import {
+  calculatePhoneDetailsPrices,
+  countRating,
+} from "features/phones/utils";
 
 export const initialPhoneDetailsState = {
   phoneDetails: null,
@@ -11,6 +14,13 @@ export const initialPhoneDetailsState = {
   currentDisplaySalePrice: 0,
   priceOffPercentage: 0,
   isSpecOpen: false,
+  ratingCount: {
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+  },
 };
 
 export const phoneDetailsReducer = (state, action) => {
@@ -51,6 +61,7 @@ export const phoneDetailsReducer = (state, action) => {
         quantity: 1,
         colourChanged: false,
         ...calculatePhoneDetailsPrices(originalPrice, salePrice, 1),
+        ratingCount: countRating(action.payload.ratings),
       };
     }
     case "CHANGE_COLOUR": {
