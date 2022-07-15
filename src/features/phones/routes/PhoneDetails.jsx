@@ -10,6 +10,7 @@ import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { PhoneDetailsFirstSection } from "features/phones/components/PhoneDetailHeader";
 import NotFound from "features/misc/routes/NotFound";
 import PhoneSpecificationSection from "features/phones/components/PhoneSpecificationSection/PhoneSpecificationSection";
+import { PhoneCommentSection } from "features/phones/components/PhoneCommentSection";
 
 export const PhoneDetails = () => {
   const { id } = useParams();
@@ -46,6 +47,8 @@ export const PhoneDetailsBody = () => {
         <PhoneDetailsFirstSection />
 
         <PhoneSpecificationSection />
+
+        <PhoneCommentSection />
       </Container>
     </>
   );

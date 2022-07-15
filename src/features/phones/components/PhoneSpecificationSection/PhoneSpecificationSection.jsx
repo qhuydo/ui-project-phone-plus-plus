@@ -28,8 +28,8 @@ function renderContent(contents) {
               <Box
                 key={idx}
                 sx={(theme) => ({
-                  width: 0.5,
-                  border: `1px solid ${theme.palette.divider}`,
+                  width: 0.8,
+                  // border: `1px solid ${theme.palette.divider}`,
                   borderRadius: `${theme.shape.borderRadius}px`,
                   overflow: "hidden",
                 })}
@@ -41,11 +41,11 @@ function renderContent(contents) {
                     width: 1,
                     height: 1,
                     objectFit: "cover",
-                    transition: "transform .3s",
-                    transform: "scale(1.0)",
-                    "&:hover": {
-                      transform: "scale(1.1)",
-                    },
+                    // transition: "transform .3s",
+                    // transform: "scale(1.0)",
+                    // "&:hover": {
+                    //   transform: "scale(1.1)",
+                    // },
                   }}
                 />
               </Box>
