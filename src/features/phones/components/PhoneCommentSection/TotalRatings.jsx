@@ -11,7 +11,7 @@ const TotalRatings = ({ ratingCount, avgRating, totalRating }) => {
           precision={0.5}
           sx={{
             mr: 0.5,
-            fontSize: "3rem",
+            fontSize: "2rem",
           }}
           readOnly
         />
@@ -32,32 +32,36 @@ const TotalRatings = ({ ratingCount, avgRating, totalRating }) => {
           <Stack direction="row" key={key} spacing={1} alignItems="center">
             <Rating
               size="large"
-              value={key}
+              value={+key}
               precision={1}
               sx={{
                 mr: 0.5,
-                fontSize: "2.5rem",
+                fontSize: "1.5rem",
               }}
               readOnly
             />
 
             <Box display="flex" direction="row" flexGrow={1}>
               <Box
-                height={12}
+                height={8}
                 bgcolor="primary.main"
                 sx={{
                   width: `${(value / totalRating) * 100}%`,
                   borderTopLeftRadius: "8px",
                   borderBottomLeftRadius: "8px",
+                  borderTopRightRadius: value === totalRating ? "8px" : null,
+                  borderBottomRightRadius: value === totalRating ? "8px" : null,
                 }}
               />
               <Box
-                height={12}
+                height={8}
                 bgcolor="grey.400"
                 sx={{
                   width: `${
                     value === 0 ? 100 : (1 - value / totalRating) * 100
                   }%`,
+                  borderTopLeftRadius: value === 0 ? "8px" : null,
+                  borderBottomLeftRadius: value === 0 ? "8px" : null,
                   borderTopRightRadius: "8px",
                   borderBottomRightRadius: "8px",
                 }}

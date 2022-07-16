@@ -54,6 +54,26 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     dispatch({ type: "CHANGE_SPEC_OPEN_STATE", payload: isOpen });
   }, []);
 
+  const addCommentFilter = useCallback(
+    (value) => {
+      dispatch({
+        type: "CHANGE_FILTERS",
+        payload: [...state.filterCommentBy, value],
+      });
+    },
+    [state.filterCommentBy]
+  );
+
+  const removeCommentFilter = useCallback(
+    (value) => {
+      dispatch({
+        type: "CHANGE_FILTERS",
+        payload: state.filterCommentBy.filter((item) => item !== value),
+      });
+    },
+    [state.filterCommentBy]
+  );
+
   const contextValue = useMemo(() => {
     return {
       state,
@@ -62,8 +82,18 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
       changeVersion,
       changeQuantity,
       changeSpecOpenState,
+      addCommentFilter,
+      removeCommentFilter,
     };
-  }, [state, changeColour, changeVersion, changeQuantity, changeSpecOpenState]);
+  }, [
+    state,
+    changeColour,
+    changeVersion,
+    changeQuantity,
+    changeSpecOpenState,
+    addCommentFilter,
+    removeCommentFilter,
+  ]);
 
   return (
     <PhoneDetailsContext.Provider value={contextValue}>

@@ -18,11 +18,7 @@ function renderContent(contents) {
       {contents.map((item, idx) => {
         switch (item.type) {
           case "text":
-            return (
-              <Typography fontSize="1.25rem" key={idx}>
-                {item.content}
-              </Typography>
-            );
+            return <Typography key={idx}>{item.content}</Typography>;
           case "img":
             return (
               <Box
@@ -112,9 +108,7 @@ const PhoneSpecificationSection = () => {
         />
       </Box>
 
-      <Typography sx={{ width: 0.9 }} fontSize="1.25rem">
-        {spec.collapsedText}
-      </Typography>
+      <Typography sx={{ width: 0.9 }}>{spec.collapsedText}</Typography>
 
       <Collapse in={isSpecOpen} sx={{ width: 0.9 }}>
         <Stack direction="column" spacing={1} alignItems="center">

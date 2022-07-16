@@ -21,6 +21,8 @@ export const initialPhoneDetailsState = {
     4: 0,
     5: 0,
   },
+  filterCommentBy: [],
+  comments: [],
 };
 
 export const phoneDetailsReducer = (state, action) => {
@@ -48,6 +50,7 @@ export const phoneDetailsReducer = (state, action) => {
           currentDisplayOriginalPrice: 0,
           currentDisplaySalePrice: 0,
           priceOffPercentage: 0,
+          filterCommentBy: {},
         };
       const firstVersion = action.payload.versions[0];
       const originalPrice = +firstVersion.originalPrice;
@@ -62,6 +65,7 @@ export const phoneDetailsReducer = (state, action) => {
         colourChanged: false,
         ...calculatePhoneDetailsPrices(originalPrice, salePrice, 1),
         ratingCount: countRating(action.payload.ratings),
+        comments: action.payload.comments ?? [],
       };
     }
     case "CHANGE_COLOUR": {
@@ -105,6 +109,10 @@ export const phoneDetailsReducer = (state, action) => {
         ...state,
         isSpecOpen: !!action.payload,
       };
+    }
+    case "CHANGE_FILTERS": {
+      // TODO filter comment
+      return { ...state, filterCommentBy: action.payload };
     }
     default:
       return state;
