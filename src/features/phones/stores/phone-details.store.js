@@ -64,7 +64,7 @@ export const phoneDetailsReducer = (state, action) => {
         quantity: 1,
         colourChanged: false,
         ...calculatePhoneDetailsPrices(originalPrice, salePrice, 1),
-        ratingCount: countRating(action.payload.ratings),
+        ratingCount: countRating(action.payload.comments),
         comments: action.payload.comments ?? [],
       };
     }

@@ -11,10 +11,11 @@ import { usePhoneDetailsContext } from "features/phones/context";
 import CommentFilterGroups from "features/phones/components/PhoneCommentSection/CommentFilterGroup";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import CommentRow from "features/phones/components/PhoneCommentSection/CommentRow";
 
 const PhoneCommentSection = () => {
   const {
-    state: { phoneDetails, ratingCount },
+    state: { phoneDetails, ratingCount, comments },
   } = usePhoneDetailsContext();
 
   return (
@@ -39,7 +40,7 @@ const PhoneCommentSection = () => {
       <TotalRatings
         avgRating={phoneDetails.ratingPoints}
         ratingCount={ratingCount}
-        totalRating={phoneDetails.ratings ? phoneDetails.ratings.length : 0}
+        totalRating={phoneDetails.comments ? phoneDetails.comments.length : 0}
       />
 
       <Box width={0.8}>
@@ -68,6 +69,15 @@ const PhoneCommentSection = () => {
           </IconButton>
         </Stack>
       </Stack>
+
+      <Box width={0.8}>
+        {comments.map((item) => (
+          <Box display="flex" flexDirection="column" key={item.id}>
+            <Divider />
+            <CommentRow comment={item} phone={phoneDetails} />
+          </Box>
+        ))}
+      </Box>
     </Stack>
   );
 };

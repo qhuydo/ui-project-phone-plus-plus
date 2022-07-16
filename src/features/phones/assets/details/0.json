@@ -63,8 +63,9 @@
       }
     ]
   },
-  "ratings": [
+  "comments": [
     {
+      "id": 0,
       "by": "Jonnhy Henrich",
       "avatar": "https://i.imgur.com/qRwmPZK.jpg",
       "memberRank": "V.I.P 2 member",
@@ -92,6 +93,7 @@
       "images": []
     },
     {
+      "id": 1,
       "by": "Sam Ryder Robinson",
       "avatar": "https://i.imgur.com/qRwmPZK.jpg",
       "memberRank": "V.I.P 1 member",
@@ -116,9 +118,15 @@
         "salePrice": 6900000,
         "displaySalePrice": "6.900.000₫"
       },
-      "images": []
+      "images": [
+        "https://i.imgur.com/R5SDLp1.jpg",
+        "https://i.imgur.com/TRzkrwB.png",
+        "https://i.imgur.com/qJznsPn.png",
+        "https://gadget-initiative.com/wordpress-folder/wp-content/uploads/2015/12/xperiaxperformanceblack.jpg"
+      ]
     },
     {
+      "id": 2,
       "by": "Minh Pham",
       "avatar": "https://i.imgur.com/qRwmPZK.jpg",
       "memberRank": "V.I.P 4 member",
