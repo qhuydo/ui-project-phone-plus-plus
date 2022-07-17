@@ -19,7 +19,16 @@ export const SearchBarContainer = styled("div")(({ theme }) => ({
   marginRight: theme.spacing(1),
   marginLeft: theme.spacing(3),
   width: "100%",
-  maxWidth: `${theme.breakpoints.values["lg"]}px`,
+  maxWidth: 500,
+  [theme.breakpoints.up("md")]: {
+    maxWidth: theme.breakpoints.values["sm"],
+  },
+  [theme.breakpoints.up("lg")]: {
+    maxWidth: theme.breakpoints.values["md"],
+  },
+  [theme.breakpoints.up("xl")]: {
+    maxWidth: theme.breakpoints.values["lg"] - 100,
+  },
   // [theme.breakpoints.up("sm")]: {
   //   marginLeft: theme.spacing(3),
   //   width: "auto",

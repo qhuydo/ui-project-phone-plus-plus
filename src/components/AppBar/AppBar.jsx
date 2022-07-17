@@ -108,10 +108,19 @@ const AppBar = () => {
 
             <Box
               position="relative"
-              sx={{
+              sx={(theme) => ({
                 width: "100%",
-                maxWidth: (theme) => `${theme.breakpoints.values["lg"]}px`,
-              }}
+                maxWidth: 500,
+                [theme.breakpoints.up("md")]: {
+                  maxWidth: theme.breakpoints.values["sm"],
+                },
+                [theme.breakpoints.up("lg")]: {
+                  maxWidth: theme.breakpoints.values["md"],
+                },
+                [theme.breakpoints.up("xl")]: {
+                  maxWidth: theme.breakpoints.values["lg"] - 240,
+                },
+              })}
             >
               <SearchBar
                 value={keyword}

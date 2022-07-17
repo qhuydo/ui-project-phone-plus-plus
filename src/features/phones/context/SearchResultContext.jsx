@@ -27,7 +27,7 @@ export const SearchResultContextProvider = ({ children }) => {
   );
 
   const changeSortMethod = useCallback((e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     dispatch({ type: "CHANGE_SORT_METHOD", payload: e.target.value });
   }, []);
 

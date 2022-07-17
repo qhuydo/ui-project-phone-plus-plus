@@ -108,7 +108,11 @@ const PhoneSpecificationSection = () => {
         />
       </Box>
 
-      <Typography sx={{ width: 0.9 }}>{spec.collapsedText}</Typography>
+      <Box sx={{ width: 0.9 }}>
+        {spec.collapsedText.split("\n").map((i, key) => {
+          return <Typography key={key}>{i}</Typography>;
+        })}
+      </Box>
 
       <Collapse in={isSpecOpen} sx={{ width: 0.9 }}>
         <Stack direction="column" spacing={1} alignItems="center">

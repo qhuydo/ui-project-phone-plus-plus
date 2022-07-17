@@ -12,7 +12,7 @@ const CommentFilterGroups = () => {
 
   const onFilterValueChanged = useCallback(
     (value, isSelected) => {
-      console.log(value, isSelected);
+      // console.log(value, isSelected);
       if (isSelected) {
         addCommentFilter(value);
       } else {

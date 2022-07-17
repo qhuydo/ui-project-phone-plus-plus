@@ -1,10 +1,20 @@
-import { Box, CardMedia } from "@mui/material";
+import { Box, CardMedia, Skeleton } from "@mui/material";
 import PropTypes from "prop-types";
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { FALLBACK_IMG, GOLDEN_RATIO } from "utils/constants";
 import { usePhoneCardContext } from "features/phones/context";
 
+const skeletonStyle = {
+  width: "100%",
+  aspectRatio: `${GOLDEN_RATIO}`,
+  height: "100%",
+};
+
 const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastLoadedImg, setLastLoadedImg] = useState(null);
+  const { selectedThumbnail } = usePhoneCardContext();
+
   const cardMediaStyle = useMemo(() => {
     return {
       width: "inherit",
@@ -15,14 +25,34 @@ const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {
     };
   }, [imageSx, isSelected]);
 
-  const { selectedThumbnail } = usePhoneCardContext();
+  const cardMediaStyleWhenLoading = useMemo(() => {
+    return {
+      ...imageSx,
+      width: 0,
+      height: 0,
+    };
+  }, [imageSx]);
+
+  const imageLoaded = useCallback(() => {
+    setIsLoading(false);
+    setLastLoadedImg(selectedThumbnail);
+  }, [selectedThumbnail]);
+
+  useEffect(() => {
+    if (lastLoadedImg !== selectedThumbnail) {
+      setIsLoading(true);
+    }
+  }, [lastLoadedImg, selectedThumbnail]);
 
   return (
     <Box sx={boxSx} position="relative">
+      {isLoading && <Skeleton variant="rectangular" sx={skeletonStyle} />}
+
       <CardMedia
         component="img"
-        sx={cardMediaStyle}
+        sx={isLoading ? cardMediaStyleWhenLoading : cardMediaStyle}
         image={selectedThumbnail ?? FALLBACK_IMG}
+        onLoad={imageLoaded}
       />
     </Box>
   );

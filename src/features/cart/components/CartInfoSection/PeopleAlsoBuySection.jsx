@@ -1,12 +1,12 @@
 import { Stack, Typography } from "@mui/material";
-import { phones } from "features/phones/assets";
+import { allPhones } from "features/phones/assets";
 import { shuffle } from "lodash-es";
 import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCarousel";
 import { useMemo } from "react";
 
 const PeopleAlsoBuySection = () => {
   const offers = useMemo(() => {
-    return shuffle(phones).slice(0, 4);
+    return shuffle(allPhones).slice(0, 4);
   }, []);
 
   return (
@@ -30,8 +30,8 @@ const PeopleAlsoBuySection = () => {
         phones={offers}
         phonesPerView={{
           xs: 1,
-          sm: 1,
-          md: 3,
+          sm: 2,
+          md: 2,
           lg: 3,
           xl: 3,
         }}

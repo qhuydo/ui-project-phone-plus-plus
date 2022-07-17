@@ -33,6 +33,13 @@ const CommentRow = ({ comment, phone }) => {
           <Typography variant="h6" textAlign="center">
             {comment.by}
           </Typography>
+          <Typography
+            variant="subtitle1"
+            textAlign="center"
+            color="text.secondary"
+          >
+            {comment.memberRank}
+          </Typography>
         </Stack>
       </Grid>
 
@@ -102,7 +109,7 @@ const CommentRow = ({ comment, phone }) => {
             <Button sx={{ color: "text.primary" }}>Report abuse</Button>
           </Stack>
 
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" spacing={1} overflow="auto">
             {comment.images.map((image, idx) => (
               <Box
                 pt={2}
