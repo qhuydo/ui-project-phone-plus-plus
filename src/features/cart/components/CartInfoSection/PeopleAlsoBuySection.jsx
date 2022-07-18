@@ -3,11 +3,12 @@ import { allPhones } from "features/phones/assets";
 import { shuffle } from "lodash-es";
 import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCarousel";
 import { useMemo } from "react";
+import PropTypes from "prop-types";
 
-const PeopleAlsoBuySection = () => {
+const PeopleAlsoBuySection = ({ phonesPerView, maxItems }) => {
   const offers = useMemo(() => {
-    return shuffle(allPhones).slice(0, 4);
-  }, []);
+    return shuffle(allPhones).slice(0, maxItems);
+  }, [maxItems]);
 
   return (
     <Stack
@@ -27,17 +28,28 @@ const PeopleAlsoBuySection = () => {
       </Typography>
 
       <PhoneCardCarousel
+        id="cart-people-also-buy"
         phones={offers}
-        phonesPerView={{
-          xs: 1,
-          sm: 2,
-          md: 2,
-          lg: 3,
-          xl: 3,
-        }}
+        phonesPerView={phonesPerView}
       />
     </Stack>
   );
+};
+
+PeopleAlsoBuySection.defaultProps = {
+  phonesPerView: {
+    xs: 1,
+    sm: 2,
+    md: 2,
+    lg: 3,
+    xl: 3,
+  },
+  maxItems: 4,
+};
+
+PeopleAlsoBuySection.propTypes = {
+  phonesPerView: PropTypes.object,
+  maxItems: PropTypes.number,
 };
 
 export default PeopleAlsoBuySection;

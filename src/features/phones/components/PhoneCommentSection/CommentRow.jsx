@@ -13,7 +13,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const CommentRow = ({ comment, phone }) => {
   return (
-    <Grid container py={2} alignItems="center">
+    <Grid container py={2} alignItems="start">
       <Grid item xs={3} justifyContent="center" alignItems="center">
         <Stack direction="column" alignItems="center">
           <Avatar

@@ -99,7 +99,6 @@ const PhoneCommentSection = () => {
 
       <Stack direction="column" spacing={1} width={0.8}>
         <CommentFilterGroups />
-        {/*TODO add pagination*/}
         <Stack
           direction="row"
           spacing={1}

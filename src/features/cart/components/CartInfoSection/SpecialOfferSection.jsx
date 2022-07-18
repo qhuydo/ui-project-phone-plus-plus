@@ -27,6 +27,7 @@ const SpecialOfferSection = () => {
       </Typography>
 
       <PhoneCardCarousel
+        id="cart-special-offers"
         phones={offers}
         phonesPerView={{
           xs: 1,
