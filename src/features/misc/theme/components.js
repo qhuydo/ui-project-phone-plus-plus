@@ -70,4 +70,19 @@ const PROPS = {
   },
 };
 
-export { SHAPE, APP_BAR, APP_BAR_DARK, SWITCH, PROPS, CONTAINER };
+const TOOLTIP = {
+  styleOverrides: {
+    tooltip: {
+      fontSize: "0.95rem",
+    },
+  },
+};
+
+const COMPONENTS = {
+  MuiAppBar: APP_BAR_DARK,
+  MuiSwitch: SWITCH,
+  MuiContainer: CONTAINER,
+  MuiTooltip: TOOLTIP,
+};
+
+export { SHAPE, APP_BAR, APP_BAR_DARK, SWITCH, PROPS, CONTAINER, COMPONENTS };

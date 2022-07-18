@@ -52,7 +52,6 @@ function PhoneCard() {
       onMouseOut={onMouseOut}
       sx={cardStyle}
     >
-      {/*TODO navigate to product details page*/}
       <Link
         color="inherit"
         underline="none"

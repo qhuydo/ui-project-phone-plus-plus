@@ -6,19 +6,20 @@ import {
   CardContent,
   Grid,
   Rating,
+  Tooltip,
   Typography,
   useTheme,
 } from "@mui/material";
-import OutlinedChip from "components/Chip/OutlinedChip";
 import ColourSelector from "features/phones/components/Card/ColourSelector";
 import PhonePropertySelector from "features/phones/components/Card/PhonePropertySelector";
 import PropTypes from "prop-types";
 import { usePhoneCardContext } from "features/phones/context";
 import { useCartContext } from "features/cart/context/CartContext";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { createCartItem } from "features/cart/utils";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
-const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
+const PhoneCardContent = ({ sx }) => {
   const theme = useTheme();
   const {
     phone,
@@ -27,6 +28,7 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
     selectedVersion,
     changeVersion,
     priceOffPercentage,
+    pushSale,
   } = usePhoneCardContext();
 
   const { addItem } = useCartContext();
@@ -38,6 +40,34 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
     },
     [addItem, phone, selectedColour, selectedVersion]
   );
+
+  const percentOff = useMemo(
+    () => parseInt(priceOffPercentage),
+    [priceOffPercentage]
+  );
+
+  const pushSalePercentOff = useMemo(() => {
+    if (pushSale === null) return 0;
+
+    const currentPushSaleVersion = pushSale.versions[selectedVersion.id];
+
+    // console.log(selectedVersion);
+    // console.log(currentPushSaleVersion);
+
+    const percentOff =
+      ((selectedVersion.originalPrice - currentPushSaleVersion.pushSalePrice) /
+        selectedVersion.originalPrice) *
+      100;
+
+    return parseInt(percentOff);
+  }, [pushSale, selectedVersion]);
+
+  const displayPushSalePrice = useMemo(() => {
+    if (pushSale === null) return "0";
+
+    const currentPushSaleVersion = pushSale.versions[selectedVersion.id];
+    return currentPushSaleVersion.displayPushSalePrice;
+  }, [pushSale, selectedVersion.id]);
 
   return (
     <CardContent component={Box} display="flex" flexDirection="column" sx={sx}>
@@ -62,25 +92,63 @@ const PhoneCardContent = ({ /*isSelected,*/ sx }) => {
           container
           item
           flexDirection="row"
-          alignItems="baseline"
           justifyContent="center"
-          my={1}
+          alignItems="baseline"
+          mt={1}
         >
-          {+priceOffPercentage !== 0 && !isNaN(+priceOffPercentage) && (
-            <OutlinedChip
-              label={`Save ${parseInt(priceOffPercentage)}%`}
-              // isSelected={isSelected}
-              sx={{ mr: 0.5 }}
-            />
-          )}
-
           <Typography
-            sx={{ ml: 0.5 }}
+            sx={{ ml: 0.5, textDecoration: "line-through" }}
+            variant="button"
+            color={pushSale ? "error.main" : "text.secondary"}
+            fontSize={`${theme.typography.body1.fontSize}`}
+          >
+            {pushSale ||
+            (+priceOffPercentage !== 0 && !isNaN(+priceOffPercentage)) ? (
+              `${selectedVersion.displayOriginalPrice}`
+            ) : (
+              <span>&nbsp;&nbsp;&nbsp;</span>
+            )}
+          </Typography>
+
+          {!pushSale &&
+            +priceOffPercentage !== 0 &&
+            !isNaN(+priceOffPercentage) && (
+              <Typography sx={{ ml: 1 }}>{`-${percentOff}%`}</Typography>
+            )}
+
+          {pushSale && (
+            <Typography
+              fontWeight={pushSale ? "bold" : null}
+              color={pushSale ? "error.main" : null}
+              sx={{ ml: 1 }}
+            >{`-${pushSalePercentOff}%`}</Typography>
+          )}
+        </Grid>
+
+        <Grid
+          container
+          item
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+          color={pushSale ? "error.main" : null}
+          fontWeight={pushSale ? "bold" : null}
+          mb={1}
+        >
+          <Typography
+            sx={{ mr: 0.5 }}
             variant="button"
             fontSize={`${theme.typography.body1.fontSize}`}
           >
-            {selectedVersion.displaySalePrice}
+            {!pushSale && selectedVersion.displaySalePrice}
+            {pushSale && displayPushSalePrice}
           </Typography>
+
+          {pushSale && pushSale.description && (
+            <Tooltip title={pushSale.description}>
+              <InfoOutlinedIcon sx={{ ml: 0.5 }} />
+            </Tooltip>
+          )}
         </Grid>
 
         <Grid

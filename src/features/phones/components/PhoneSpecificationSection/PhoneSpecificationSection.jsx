@@ -18,7 +18,14 @@ function renderContent(contents) {
       {contents.map((item, idx) => {
         switch (item.type) {
           case "text":
-            return <Typography key={idx}>{item.content}</Typography>;
+            return (
+              <Box key={idx}>
+                {item.content.split("\n").map((i, key) => {
+                  return <Typography key={key}>{i}</Typography>;
+                })}
+              </Box>
+            );
+
           case "img":
             return (
               <Box
@@ -76,7 +83,7 @@ const PhoneSpecificationSection = () => {
       variant="outlined"
       p={2}
     >
-      <Typography variant="h4" textAlign="center">
+      <Typography variant="h3" textAlign="center">
         Product specification
       </Typography>
 

@@ -46,9 +46,11 @@ export const getRecommendedPhones = (fromPhoneId) => {
 
         if (!recommendedItemDetails) return null;
 
-        const pushSale = phoneDetails.pushSales.find(
-          (pushSaleItem) => pushSaleItem.phoneId === id
-        );
+        const pushSale = phoneDetails.pushSales
+          ? phoneDetails.pushSales.find(
+              (pushSaleItem) => pushSaleItem.phoneId === id
+            )
+          : null;
 
         return {
           phone: recommendedItemDetails,
@@ -57,7 +59,7 @@ export const getRecommendedPhones = (fromPhoneId) => {
       })
       .filter((item) => item != null);
 
-    console.log(list);
+    // console.log(list);
     resolve(list);
   });
 };

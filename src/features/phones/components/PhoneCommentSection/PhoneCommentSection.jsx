@@ -1,11 +1,4 @@
-import {
-  Box,
-  Divider,
-  IconButton,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Divider, IconButton, Stack, Typography } from "@mui/material";
 import TotalRatings from "features/phones/components/PhoneCommentSection/TotalRatings";
 import { usePhoneDetailsContext } from "features/phones/context";
 import CommentFilterGroups from "features/phones/components/PhoneCommentSection/CommentFilterGroup";
@@ -20,16 +13,16 @@ const PhoneCommentSection = () => {
 
   return (
     <Stack
-      component={Paper}
+      // component={Paper}
       direction="column"
       spacing={1}
       alignItems="center"
       justifyContent="center"
-      variant="outlined"
+      // variant="outlined"
       p={2}
       my={2}
     >
-      <Typography variant="h4" textAlign="center">
+      <Typography variant="h3" textAlign="center">
         User reviews & ratings
       </Typography>
 

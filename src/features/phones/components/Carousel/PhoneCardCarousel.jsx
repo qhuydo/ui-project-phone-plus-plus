@@ -13,7 +13,7 @@ import { PhoneCardContextProvider } from "features/phones/context/PhoneCardConte
 const PREV_BUTTON_ID = "phone-carousel-prev-button";
 const NEXT_BUTTON_ID = "phone-carousel-next-button";
 
-const PhoneCardCarousel = ({ phones, phonesPerView }) => {
+const PhoneCardCarousel = ({ phones, phonesPerView, renderPhoneCb, id }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const theme = useTheme();
@@ -30,9 +30,12 @@ const PhoneCardCarousel = ({ phones, phonesPerView }) => {
       alignItems="center"
       justifyContent="center"
     >
-      <CarouselButton id={PREV_BUTTON_ID} />
+      <CarouselButton id={id ? `${id}-prev-button` : PREV_BUTTON_ID} />
 
-      <CarouselButton id={NEXT_BUTTON_ID} type="next" />
+      <CarouselButton
+        id={id ? `${id}-next-button` : NEXT_BUTTON_ID}
+        type="next"
+      />
 
       <Swiper
         className="phone-swiper"
@@ -43,8 +46,8 @@ const PhoneCardCarousel = ({ phones, phonesPerView }) => {
           type: "bullets",
         }}
         navigation={{
-          prevEl: `#${PREV_BUTTON_ID}`,
-          nextEl: `#${NEXT_BUTTON_ID}`,
+          prevEl: `#${id ? `${id}-prev-button` : PREV_BUTTON_ID}`,
+          nextEl: `#${id ? `${id}-next-button` : NEXT_BUTTON_ID}`,
           disabledClass: "Mui-disabled",
         }}
         modules={[Pagination, Navigation, Thumbs]}
@@ -74,13 +77,15 @@ const PhoneCardCarousel = ({ phones, phonesPerView }) => {
             </SwiperSlide>
           ))}
         {!isLoading &&
-          phones.map((phone) => (
-            <SwiperSlide key={phone.id} className="phone-swiper-slide">
-              <PhoneCardContextProvider phone={phone}>
-                <PhoneCard />
-              </PhoneCardContextProvider>
-            </SwiperSlide>
-          ))}
+          (renderPhoneCb
+            ? renderPhoneCb()
+            : phones.map((phone) => (
+                <SwiperSlide key={phone.id} className="phone-swiper-slide">
+                  <PhoneCardContextProvider phone={phone}>
+                    <PhoneCard />
+                  </PhoneCardContextProvider>
+                </SwiperSlide>
+              )))}
       </Swiper>
     </Box>
   );
@@ -99,6 +104,8 @@ PhoneCardCarousel.defaultProps = {
 PhoneCardCarousel.propTypes = {
   phones: PropTypes.array,
   phonesPerView: PropTypes.object,
+  renderPhoneCb: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default PhoneCardCarousel;
