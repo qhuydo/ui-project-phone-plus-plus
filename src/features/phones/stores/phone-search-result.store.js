@@ -1,3 +1,5 @@
+import { getTotalPages } from "features/phones/utils";
+
 export const initialSearchResultState = {
   // sortBy: "RELEVANCE",
   sortBy: "NAME_ASC",
@@ -13,7 +15,7 @@ export const phoneSearchResultReducer = (state, action) => {
       return {
         ...state,
         allResults: action.payload,
-        nPages: Math.ceil(action.payload.length / state.pageLimit),
+        nPages: getTotalPages(action.payload.length, state.pageLimit),
       };
     }
     case "CHANGE_SORT_METHOD": {
@@ -33,7 +35,7 @@ export const phoneSearchResultReducer = (state, action) => {
         ...state,
         currentPage: 1,
         pageLimit: +action.payload,
-        nPages: Math.ceil(state.allResults.length / +action.payload),
+        nPages: getTotalPages(state.allResults.length, +action.payload),
       };
     }
     default:

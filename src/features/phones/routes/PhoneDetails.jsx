@@ -15,6 +15,7 @@ import { PhoneCommentSection } from "features/phones/components/PhoneCommentSect
 import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCarousel";
 import { SwiperSlide } from "swiper/react";
 import { PhoneCard } from "features/phones/components/Card";
+import { NearbyStoreList } from "features/stores/components";
 
 export const PhoneDetails = () => {
   const { id } = useParams();
@@ -80,6 +81,12 @@ export const PhoneDetailsBody = () => {
         <PhoneSpecificationSection />
 
         <PhoneCommentSection />
+
+        <Typography variant={"h3"} textAlign="center" sx={{ py: 2 }}>
+          Stores you can buy {phoneDetails.name}
+        </Typography>
+
+        <NearbyStoreList sx={{ my: 2 }} />
       </Container>
     </>
   );

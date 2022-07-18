@@ -77,6 +77,10 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     [state.filterCommentBy]
   );
 
+  const changeCommentPage = useCallback((page) => {
+    dispatch({ type: "CHANGE_COMMENT_PAGE", payload: page });
+  }, []);
+
   const contextValue = useMemo(() => {
     return {
       state,
@@ -87,6 +91,7 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
       changeSpecOpenState,
       addCommentFilter,
       removeCommentFilter,
+      changeCommentPage,
     };
   }, [
     state,
@@ -96,6 +101,7 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     changeSpecOpenState,
     addCommentFilter,
     removeCommentFilter,
+    changeCommentPage,
   ]);
 
   return (

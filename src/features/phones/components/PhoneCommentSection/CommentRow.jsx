@@ -97,7 +97,9 @@ const CommentRow = ({ comment, phone }) => {
             )}
           </Stack>
 
-          <Typography>{comment.comment}</Typography>
+          {comment.comment.split("\n").map((i, key) => {
+            return <Typography key={key}>{i}</Typography>;
+          })}
           {comment.nHelpful && (
             <Typography variant="caption">{`${comment.nHelpful} ${
               comment.nHelpful === 1 ? "person" : "people"

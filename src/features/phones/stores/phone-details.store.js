@@ -1,6 +1,7 @@
 import {
   calculatePhoneDetailsPrices,
   countRating,
+  getTotalPages,
 } from "features/phones/utils";
 
 export const initialPhoneDetailsState = {
@@ -24,6 +25,9 @@ export const initialPhoneDetailsState = {
   filterCommentBy: [],
   comments: [],
   recommendedPhones: [],
+  currentCommentPage: 1,
+  totalCommentPages: 1,
+  commentPageLimit: 5,
 };
 
 export const phoneDetailsReducer = (state, action) => {
@@ -57,6 +61,11 @@ export const phoneDetailsReducer = (state, action) => {
       const originalPrice = +firstVersion.originalPrice;
       const salePrice = +firstVersion.salePrice;
 
+      const totalCommentPages = getTotalPages(
+        action.payload.comments?.length ?? 0,
+        state.commentPageLimit
+      );
+
       return {
         ...state,
         phoneDetails: action.payload,
@@ -67,6 +76,7 @@ export const phoneDetailsReducer = (state, action) => {
         ...calculatePhoneDetailsPrices(originalPrice, salePrice, 1),
         ratingCount: countRating(action.payload.comments),
         comments: action.payload.comments ?? [],
+        totalCommentPages,
       };
     }
     case "CHANGE_COLOUR": {
@@ -117,6 +127,12 @@ export const phoneDetailsReducer = (state, action) => {
     }
     case "ADD_RECOMMENDED_PHONES": {
       return { ...state, recommendedPhones: action.payload ?? [] };
+    }
+    case "CHANGE_COMMENT_PAGE": {
+      return {
+        ...state,
+        currentCommentPage: +action.payload,
+      };
     }
     default:
       return state;

@@ -52,17 +52,17 @@
   "memory": [
     64
   ],
-  "ratingPoints": 4,
-  "numberOfRatings": 10,
+  "ratingPoints": 4.3,
+  "numberOfRatings": 6,
   "images": [
     "https://i.imgur.com/R5SDLp1.jpg",
     "https://i.imgur.com/TRzkrwB.png",
     "https://i.imgur.com/qJznsPn.png",
     "https://i.imgur.com/5RREpw6.jpg"
   ],
-  "nSold": 24,
+  "nSold": 15,
   "spec": {
-    "bannerImg": "https://gadget-initiative.com/wordpress-folder/wp-content/uploads/2015/12/xperiaxperformanceblack.jpg",
+    "bannerImg": "https://i.imgur.com/ntgEYyP.jpg",
     "collapsedText": "The Sony Xperia X Smartphone features a 5-inch Full HD display that offers an immersive viewing experience. This smartphone has a 23 MP camera for sharp pictures and clear videos. It runs on Android and is driven by a quad-core processor. For the user's data storage needs, this smartphone offers a 64 GB internal memory capacity. In addition, this graphite black smartphone is powered by a 2700 mAh battery.\n",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Sony and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
     "contents": [
@@ -81,10 +81,11 @@
       "id": 0,
       "by": "Jonnhy Henrich",
       "avatar": "https://i.imgur.com/8AQyCxP.png",
+      "location": "New York city, United States",
+      "locationCode": "us",
       "memberRank": "V.I.P 2 member",
       "displayTimestamp": "07/07/2022 23:00:00",
       "points": 5,
-      "location": "New York city, United States",
       "isVerifiedPurchase": true,
       "title": "Very satisfied",
       "comment": "Love everything about it except the volume on calls needs to be louder the speaker is very loud just not regular calls.  Phone is great and battery life. Takes great pics",
@@ -109,19 +110,20 @@
       "id": 1,
       "by": "Sam Ryder Robinson",
       "avatar": "https://i.imgur.com/T9wstvJ.jpg",
+      "location": "Essex, United Kingdom",
+      "locationCode": "gb",
       "memberRank": "V.I.P 1 member",
       "displayTimestamp": "07/07/2022 23:00:00",
       "points": 4,
-      "location": "Essex, United Kingdom",
       "isVerifiedPurchase": true,
       "title": "Easy to use",
       "comment": "I needed an upgrade to the Android system and functionality of my old phone so searched on Amazon for a tracfone because I had a balance of gift cards here. I had a little difficulty with set up and needed to contact tracfone for an update to the texting feature that did not happen automatically. I have not added the fingerpirnt or facial recognition features yet. Otherwise it seems to be working well.",
       "nHelpful": 3,
       "colour": {
-        "colour": "#FFFFFF",
-        "secondaryColour": "#FFFFFF",
-        "colourName": "White",
-        "thumbnail": "https://i.imgur.com/jzfGNj4.jpg"
+        "colour": "#27292B",
+        "secondaryColour": "#27292B",
+        "colourName": "Graphite Black",
+        "thumbnail": "https://i.imgur.com/3vMxpoI.jpg"
       },
       "version": {
         "id": "F5122",
@@ -142,10 +144,11 @@
       "id": 2,
       "by": "Tuan Cuong",
       "avatar": "https://i.imgur.com/qRwmPZK.jpg",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
       "memberRank": "V.I.P 4 member",
       "displayTimestamp": "07/07/2022 23:00:00",
       "points": 4,
-      "location": "Ho Chi Minh, Vietnam",
       "isVerifiedPurchase": true,
       "title": "Shipping very fast",
       "comment": "Big screen. Runs Smooth. 32gb of space. Great deal honestly. I'm happy with the purchase.\nWhat I like about my new android phone is the battery life is excellent and doesn’t drain out fast.",
@@ -165,6 +168,97 @@
         "displaySalePrice": "6.900.000₫"
       },
       "images": []
+    },
+    {
+      "id": 3,
+      "by": "Shiba Inu",
+      "avatar": "https://i.imgur.com/FiUogfd.jpg",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "10/07/2022 12:00:00",
+      "points": 4,
+      "isVerifiedPurchase": true,
+      "title": "Very Satisfied",
+      "comment": "Fast shipping. Easy setup to Trackfone.\nPro: Excellent photos\nCon: menu control leaves a lot to be desired. But I still rate 5 stars kk.",
+      "nHelpful": 3,
+      "colour": {
+        "colour": "#27292B",
+        "secondaryColour": "#27292B",
+        "colourName": "Graphite Black",
+        "thumbnail": "https://i.imgur.com/3vMxpoI.jpg"
+      },
+      "version": {
+        "id": "F5122",
+        "name": "Dual SIM",
+        "originalPrice": 7900000,
+        "displayOriginalPrice": "7.900.000₫",
+        "salePrice": 6900000,
+        "displaySalePrice": "6.900.000₫"
+      },
+      "images": []
+    },
+    {
+      "id": 4,
+      "by": "Ulrikke Branstorp",
+      "avatar": "https://i.imgur.com/gOTwUNg.jpeg",
+      "location": "Oslo, Norway",
+      "locationCode": "no",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "12/07/2022 09:10:00",
+      "points": 4,
+      "isVerifiedPurchase": true,
+      "title": "Good phone",
+      "comment": "I do light gaming as comp games are a tad pricy, and it hardly lags. The battery is great, ive had weeks where I didnt need to charge at all, and thats with hours of listening to music through a bluetooth headset. Wonderful cameras! And facial recognition can still recognise me with and without glasses.",
+      "nHelpful": 3,
+      "colour": {
+        "colour": "#FFFFFF",
+        "secondaryColour": "#FFFFFF",
+        "colourName": "White",
+        "thumbnail": "https://i.imgur.com/jzfGNj4.jpg"
+      },
+      "version": {
+        "id": "F5122",
+        "name": "Dual SIM",
+        "originalPrice": 7900000,
+        "displayOriginalPrice": "7.900.000₫",
+        "salePrice": 6900000,
+        "displaySalePrice": "6.900.000₫"
+      },
+      "images": []
+    },
+    {
+      "id": 5,
+      "by": "Thien Van Bui",
+      "avatar": "https://i.imgur.com/EZgnAoz.png",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "15/07/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Was waiting for a few months before review",
+      "comment": "I will never buy a flagship $600 phone again. Especially if they keep making \"midrange\" phones like this one. I'm coming from a iPhone 5s and was a little worried. Not about the OS which has been updated to N by the way. The performance is great and the battery lasts more than a day. I have about 40% left the next morning after a full day/eve of use. The size of the phone is perfect and feels very natural. I get people asking me what kind of phone is that? I am liking not being part of the Apple/Samsung crowds. People should start doing some research before just getting what everyone else has.",
+      "nHelpful": 3,
+      "colour": {
+        "colour": "#27292B",
+        "secondaryColour": "#27292B",
+        "colourName": "Graphite Black",
+        "thumbnail": "https://i.imgur.com/3vMxpoI.jpg"
+      },
+      "version": {
+        "id": "F5122",
+        "name": "Dual SIM",
+        "originalPrice": 7900000,
+        "displayOriginalPrice": "7.900.000₫",
+        "salePrice": 6900000,
+        "displaySalePrice": "6.900.000₫"
+      },
+      "images": [
+        "https://i.imgur.com/pY1aNL3.jpg",
+        "https://i.imgur.com/YjW0F48.jpg",
+        "https://i.imgur.com/doEum0y.jpg"
+      ]
     }
   ]
 }

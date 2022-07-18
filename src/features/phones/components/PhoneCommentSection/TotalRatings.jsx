@@ -1,7 +1,18 @@
 import { Box, Rating, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { useMemo } from "react";
 
-const TotalRatings = ({ ratingCount, avgRating, totalRating }) => {
+const TotalRatings = ({ ratingCount, totalRating }) => {
+  const avgRating = useMemo(() => {
+    const total = Object.entries(ratingCount).reduce(
+      (partialSum, [key, value]) => {
+        return partialSum + +key * value;
+      },
+      0
+    );
+    const avgRating = (total / totalRating).toFixed(1);
+    return isNaN(avgRating) ? 0 : avgRating;
+  }, [ratingCount, totalRating]);
   return (
     <Stack direction="column" spacing={1} width={0.45}>
       <Stack direction="row" spacing={1} alignItems="center" width={1}>
@@ -82,7 +93,6 @@ const TotalRatings = ({ ratingCount, avgRating, totalRating }) => {
 
 TotalRatings.propTypes = {
   ratingCount: PropTypes.object,
-  avgRating: PropTypes.number,
   totalRating: PropTypes.number,
 };
 
