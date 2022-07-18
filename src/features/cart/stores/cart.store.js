@@ -1,3 +1,5 @@
+import { isCartItemTheSame } from "features/cart/utils";
+
 export const initialCartState = {
   cartItems: [],
   voucher: null,
@@ -10,10 +12,7 @@ export const cartReducer = (state, action) => {
       const cartItems = state.cartItems;
       let newState;
       for (let i = 0; i < cartItems.length; ++i) {
-        if (
-          newCartItem.phone.id === cartItems[i].phone.id &&
-          newCartItem.version.id === cartItems[i].version.id
-        ) {
+        if (isCartItemTheSame(newCartItem, cartItems[i])) {
           cartItems[i].quantity +=
             newCartItem.quantity > 1 ? newCartItem.quantity : 1;
           newState = {
@@ -40,11 +39,7 @@ export const cartReducer = (state, action) => {
       const newState = {
         ...state,
         cartItems: cartItems.filter(
-          (item) =>
-            !(
-              removedCartItem.phone.id === item.phone.id &&
-              removedCartItem.version.id === item.version.id
-            )
+          (item) => !isCartItemTheSame(removedCartItem, item)
         ),
       };
       if (action.cb) {
@@ -57,10 +52,7 @@ export const cartReducer = (state, action) => {
       const cartItems = state.cartItems;
       let newState;
       for (let i = 0; i < cartItems.length; ++i) {
-        if (
-          itemToIncrease.phone.id === cartItems[i].phone.id &&
-          itemToIncrease.version.id === cartItems[i].version.id
-        ) {
+        if (isCartItemTheSame(itemToIncrease, cartItems[i])) {
           cartItems[i].quantity++;
           newState = {
             ...state,
@@ -81,8 +73,7 @@ export const cartReducer = (state, action) => {
       let newState;
       for (let i = 0; i < cartItems.length; ++i) {
         if (
-          itemToDecrease.phone.id === cartItems[i].phone.id &&
-          itemToDecrease.version.id === cartItems[i].version.id &&
+          isCartItemTheSame(itemToDecrease, cartItems[i]) &&
           cartItems[i].quantity > 1
         ) {
           cartItems[i].quantity--;
@@ -97,11 +88,7 @@ export const cartReducer = (state, action) => {
         newState = {
           ...state,
           cartItems: cartItems.filter(
-            (item) =>
-              !(
-                itemToDecrease.phone.id === item.phone.id &&
-                itemToDecrease.version.id === item.version.id
-              )
+            (item) => !isCartItemTheSame(itemToDecrease, item)
           ),
         };
       }

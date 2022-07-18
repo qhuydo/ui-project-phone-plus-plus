@@ -23,6 +23,7 @@ export const initialPhoneDetailsState = {
   },
   filterCommentBy: [],
   comments: [],
+  recommendedPhones: [],
 };
 
 export const phoneDetailsReducer = (state, action) => {
@@ -113,6 +114,9 @@ export const phoneDetailsReducer = (state, action) => {
     case "CHANGE_FILTERS": {
       // TODO filter comment
       return { ...state, filterCommentBy: action.payload };
+    }
+    case "ADD_RECOMMENDED_PHONES": {
+      return { ...state, recommendedPhones: action.payload ?? [] };
     }
     default:
       return state;

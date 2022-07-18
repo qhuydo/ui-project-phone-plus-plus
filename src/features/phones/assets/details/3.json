@@ -4,6 +4,31 @@
   "category": "sony",
   "categoryName": "Sony",
   "thumbnail": "https://i.imgur.com/ShV7fZk.jpg",
+  "recommendations": [
+    "0",
+    "1",
+    "2",
+    "4",
+    "5"
+  ],
+  "pushSales": [
+    {
+      "phoneId": "0",
+      "description": "Buy Sony Xperia IV and save off Sony Xperia X",
+      "versions": {
+        "F5121": {
+          "id": "F5121",
+          "pushSalePrice": 4200000,
+          "displayPushSalePrice": "4.200.000₫"
+        },
+        "F5122": {
+          "id": "F5122",
+          "pushSalePrice": 4900000,
+          "displayPushSalePrice": "4.900.000₫"
+        }
+      }
+    }
+  ],
   "versions": [
     {
       "id": "XQCT62-B",
@@ -36,18 +61,25 @@
       "thumbnail": "https://i.imgur.com/guWwOcG.jpg"
     }
   ],
-  "screenSize": [6.5],
-  "ram": [12],
-  "memory": [256, 512],
+  "screenSize": [
+    6.5
+  ],
+  "ram": [
+    12
+  ],
+  "memory": [
+    256,
+    512
+  ],
   "ratingPoints": 4.9,
   "numberOfRatings": 12,
   "images": [
-    "https://i.imgur.com/1mL6kNi.jpg",
-    "https://i.imgur.com/wPCbL28.jpg"
+    "https://i.imgur.com/VRpxMjE.jpg",
+    "https://i.imgur.com/WxMKfsk.jpg"
   ],
   "nSold": 24,
   "spec": {
-    "bannerImg": "https://i.imgur.com/1mL6kNi.jpg",
+    "bannerImg": "https://i.imgur.com/VRpxMjE.jpg",
     "collapsedText": "\"The Sony Xperia 1IV is Sony's product with a 6.5\" screen size and for the first time in an Sony, it comes with a 120Hz ProMotion display for super smooth scrolling. The list of innovations includes a more capable triple camera setup, with a wide, ultra-wide and zoom cameras, as well as a LiDAR scanner.\n",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Sony and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
     "contents": [

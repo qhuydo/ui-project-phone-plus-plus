@@ -38,3 +38,11 @@ export function createCartItem(
     quantity: quantity > 1 ? quantity : 1,
   };
 }
+
+export function isCartItemTheSame(cartItem1, cartItem2) {
+  return (
+    cartItem1.phone.id === cartItem2.phone.id &&
+    cartItem1.version.id === cartItem2.version.id &&
+    cartItem1.colour.colour === cartItem2.colour.colour
+  );
+}

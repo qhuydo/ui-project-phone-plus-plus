@@ -15,13 +15,14 @@ const PhoneCardContext = createContext({
   priceOffPercentage: 0,
   changeColour: () => {},
   changeVersion: () => {},
+  pushSale: null,
 });
 
 export const usePhoneCardContext = () => {
   return useContext(PhoneCardContext);
 };
 
-export const PhoneCardContextProvider = ({ phone, children }) => {
+export const PhoneCardContextProvider = ({ phone, pushSale, children }) => {
   const [selectedColour, setSelectedColour] = useState(phone.colours[0]);
   const [selectedThumbnail, setSelectedThumbnail] = useState(phone.thumbnail);
   const [selectedVersion, setSelectedVersion] = useState(phone.versions[0]);
@@ -65,15 +66,17 @@ export const PhoneCardContextProvider = ({ phone, children }) => {
       priceOffPercentage,
       changeColour,
       changeVersion,
+      pushSale,
     };
   }, [
-    changeColour,
-    changeVersion,
     phone,
+    selectedVersion,
     selectedColour,
     selectedThumbnail,
-    selectedVersion,
     priceOffPercentage,
+    changeColour,
+    changeVersion,
+    pushSale,
   ]);
 
   return (
@@ -83,7 +86,12 @@ export const PhoneCardContextProvider = ({ phone, children }) => {
   );
 };
 
+PhoneCardContextProvider.defaultProps = {
+  pushSale: null,
+};
+
 PhoneCardContextProvider.propTypes = {
   phone: PropTypes.object,
   children: PropTypes.element,
+  pushSale: PropTypes.object,
 };

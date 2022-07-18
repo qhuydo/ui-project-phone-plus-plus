@@ -4,6 +4,13 @@
   "category": "sony",
   "categoryName": "Sony",
   "thumbnail": "https://i.imgur.com/3vMxpoI.jpg",
+  "recommendations": [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
   "versions": [
     {
       "id": "F5121",
@@ -36,9 +43,15 @@
       "thumbnail": "https://i.imgur.com/jzfGNj4.jpg"
     }
   ],
-  "screenSize": [5],
-  "ram": [3],
-  "memory": [64],
+  "screenSize": [
+    5
+  ],
+  "ram": [
+    3
+  ],
+  "memory": [
+    64
+  ],
   "ratingPoints": 4,
   "numberOfRatings": 10,
   "images": [
@@ -67,7 +80,7 @@
     {
       "id": 0,
       "by": "Jonnhy Henrich",
-      "avatar": "https://i.imgur.com/qRwmPZK.jpg",
+      "avatar": "https://i.imgur.com/8AQyCxP.png",
       "memberRank": "V.I.P 2 member",
       "displayTimestamp": "07/07/2022 23:00:00",
       "points": 5,
@@ -95,11 +108,11 @@
     {
       "id": 1,
       "by": "Sam Ryder Robinson",
-      "avatar": "https://i.imgur.com/qRwmPZK.jpg",
+      "avatar": "https://i.imgur.com/T9wstvJ.jpg",
       "memberRank": "V.I.P 1 member",
       "displayTimestamp": "07/07/2022 23:00:00",
       "points": 4,
-      "location": "York, United Kingdom",
+      "location": "Essex, United Kingdom",
       "isVerifiedPurchase": true,
       "title": "Easy to use",
       "comment": "I needed an upgrade to the Android system and functionality of my old phone so searched on Amazon for a tracfone because I had a balance of gift cards here. I had a little difficulty with set up and needed to contact tracfone for an update to the texting feature that did not happen automatically. I have not added the fingerpirnt or facial recognition features yet. Otherwise it seems to be working well.",
@@ -127,7 +140,7 @@
     },
     {
       "id": 2,
-      "by": "Minh Pham",
+      "by": "Tuan Cuong",
       "avatar": "https://i.imgur.com/qRwmPZK.jpg",
       "memberRank": "V.I.P 4 member",
       "displayTimestamp": "07/07/2022 23:00:00",

@@ -7,7 +7,7 @@ import {
   useReducer,
 } from "react";
 import PropTypes from "prop-types";
-import { getPhoneById } from "features/phones/api";
+import { getPhoneById, getRecommendedPhones } from "features/phones/api";
 import {
   initialPhoneDetailsState,
   phoneDetailsReducer,
@@ -32,9 +32,12 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     dispatch({ type: "NOTIFY_LOADING" });
     getPhoneById(phoneId).then((value) => {
       dispatch({ type: "NOTIFY_LOADED" });
-      // if (value) {
+
       dispatch({ type: "ADD_PHONE_DETAILS", payload: value });
-      // }
+    });
+
+    getRecommendedPhones(phoneId).then((value) => {
+      dispatch({ type: "ADD_RECOMMENDED_PHONES", payload: value });
     });
   }, [phoneId]);
 
