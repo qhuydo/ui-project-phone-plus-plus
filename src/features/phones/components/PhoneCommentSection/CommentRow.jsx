@@ -119,9 +119,9 @@ const CommentRow = ({ comment, phone }) => {
                 component="img"
                 src={image}
                 maxHeight={160}
-                // sx={{
-                //   aspectRatio: "1",
-                // }}
+                sx={{
+                  objectFit: "cover",
+                }}
               />
             ))}
           </Stack>

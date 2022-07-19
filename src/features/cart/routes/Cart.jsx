@@ -41,9 +41,11 @@ export const Cart = () => {
       <Container>
         <DefaultBreadcrumb currentPage={"My cart"} />
 
-        <Typography variant={"h3"} textAlign="center" my={1}>
-          My cart
-        </Typography>
+        {state.cartItems.length !== 0 && (
+          <Typography variant={"h3"} textAlign="center" my={1}>
+            My cart
+          </Typography>
+        )}
 
         {state.cartItems.length === 0 && (
           <Stack direction="column" spacing={1} width={1} alignItems="center">

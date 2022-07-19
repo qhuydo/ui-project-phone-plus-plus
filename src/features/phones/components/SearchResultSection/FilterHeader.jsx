@@ -22,17 +22,7 @@ const FilterHeader = () => {
         <FilterAltOutlinedIcon sx={iconStyle} />
         <Typography variant={"h4"}>Filter</Typography>
       </Stack>
-      <Button
-        variant="text"
-        sx={{
-          "&:hover": {
-            textDecoration: "underline",
-          },
-          textDecoration: "none",
-        }}
-      >
-        CLEAR ALL
-      </Button>
+      <Button variant="text">CLEAR ALL</Button>
     </Box>
   );
 };

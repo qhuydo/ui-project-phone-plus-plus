@@ -1,4 +1,4 @@
-import { Box, Slider, TextField, Typography } from "@mui/material";
+import { Box, Slider, Stack, TextField, Typography } from "@mui/material";
 import React from "react";
 import formatNumberToVND from "utils/currency-formatter";
 
@@ -9,9 +9,8 @@ const PriceContainer = {
 };
 
 const FromToInputContainer = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
+  alignItems: "space-between",
+  justifyContent: "center",
   width: 1,
 };
 
@@ -28,9 +27,9 @@ const PriceSliderSection = () => {
   return (
     <Box sx={PriceContainer}>
       <Typography variant={"h6"}>Price</Typography>
-      <Box sx={{ width: 1 }}>
+      <Box width={1} alignItems="space-between" display="flex">
         <Slider
-          getAriaLabel={() => "Temperature range"}
+          getAriaLabel={() => "Price range"}
           value={value}
           onChange={handleChange}
           valueLabelDisplay="auto"
@@ -38,32 +37,35 @@ const PriceSliderSection = () => {
           disableSwap
           min={0}
           step={1}
-          max={50000000}
+          max={50_000_000}
         />
       </Box>
-      <Box
+
+      <Stack
         sx={FromToInputContainer}
         component="form"
         noValidate
         autoComplete="off"
+        direction="row"
+        spacing={1}
+        mt={1}
       >
         <TextField
           id="outlined-number"
+          size="small"
           label="From"
           type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
+          fullWidth={false}
         />
+
         <TextField
           id="standard-number"
           label="To"
           type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
+          size="small"
+          fullWidth={false}
         />
-      </Box>
+      </Stack>
     </Box>
   );
 };

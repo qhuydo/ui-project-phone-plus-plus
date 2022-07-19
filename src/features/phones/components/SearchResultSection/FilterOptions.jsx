@@ -2,16 +2,17 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box,
   Checkbox,
+  Divider,
   FormControlLabel,
   FormGroup,
+  Stack,
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React from "react";
 
-//filter options
+// filter options
 const filterOptions = [
   {
     name: "Brand",
@@ -63,51 +64,51 @@ const filterOptions = [
   },
 ];
 
-const FilterOptionsContainer = {
-  display: "flex",
-  flexDirection: "column",
-  width: 1,
-};
 const handleChange = (option) => (event, newExpanded) => {
   option.expand = newExpanded;
 };
 
 const FilterOptions = () => {
   return (
-    <Box sx={FilterOptionsContainer}>
-      {filterOptions.map((option) => {
+    <Stack direction="column" spacing={0.5} width={1}>
+      {filterOptions.map((option, idx) => {
         return (
-          <Accordion
-            key={option.name}
-            expanded={option.expand}
-            sx={{ my: 1 }}
-            onChange={handleChange(option)}
-          >
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
+          <Stack direction="column" spacing={0.5} key={option.name}>
+            <Accordion
+              key={option.name}
+              expanded={option.expand}
+              onChange={handleChange(option)}
+              elevation={0}
             >
-              <Typography variant="h6" fontWeight="bold">
-                {option.name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <FormGroup>
-                {option.items.map((item) => {
-                  return (
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label={item}
-                      key={item}
-                    />
-                  );
-                })}
-              </FormGroup>
-            </AccordionDetails>
-          </Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+              >
+                <Typography variant="h6" fontWeight="bold">
+                  {option.name}
+                </Typography>
+              </AccordionSummary>
+
+              <AccordionDetails>
+                <FormGroup>
+                  {option.items.map((item) => {
+                    return (
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label={item}
+                        key={item}
+                      />
+                    );
+                  })}
+                </FormGroup>
+              </AccordionDetails>
+            </Accordion>
+
+            <Divider sx={{ width: 1 }} key={idx} />
+          </Stack>
         );
       })}
-    </Box>
+    </Stack>
   );
 };
 

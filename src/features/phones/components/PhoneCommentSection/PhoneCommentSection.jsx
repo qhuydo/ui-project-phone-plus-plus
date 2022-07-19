@@ -99,30 +99,33 @@ const PhoneCommentSection = () => {
 
       <Stack direction="column" spacing={1} width={0.8}>
         <CommentFilterGroups />
-        <Stack
-          direction="row"
-          spacing={1}
-          alignItems="center"
-          justifyContent="end"
-        >
-          <Typography>
-            Page No. <b>{currentCommentPage}</b>/{totalCommentPages}.
-          </Typography>
 
-          <IconButton
-            disabled={!canNavigateToPreviousPage}
-            onClick={navigateToPreviousPage}
+        {totalCommentPages > 1 && (
+          <Stack
+            direction="row"
+            spacing={1}
+            alignItems="center"
+            justifyContent="end"
           >
-            <NavigateBeforeIcon />
-          </IconButton>
+            <Typography>
+              Page No. <b>{currentCommentPage}</b>/{totalCommentPages}.
+            </Typography>
 
-          <IconButton
-            disabled={!canNavigateToNextPage}
-            onClick={navigateToNextPage}
-          >
-            <NavigateNextIcon />
-          </IconButton>
-        </Stack>
+            <IconButton
+              disabled={!canNavigateToPreviousPage}
+              onClick={navigateToPreviousPage}
+            >
+              <NavigateBeforeIcon />
+            </IconButton>
+
+            <IconButton
+              disabled={!canNavigateToNextPage}
+              onClick={navigateToNextPage}
+            >
+              <NavigateNextIcon />
+            </IconButton>
+          </Stack>
+        )}
       </Stack>
 
       <Box width={0.8}>
