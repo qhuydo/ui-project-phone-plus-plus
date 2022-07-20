@@ -44,6 +44,21 @@ export const SearchResultContextProvider = ({ children }) => {
     dispatch({ type: "CHANGE_PAGE", payload: page });
   }, []);
 
+  const changeFilterPanelCollapseState = useCallback(
+    (option) => (event, newExpanded) => {
+      if (!newExpanded) {
+        dispatch({ type: "COLLAPSE_FILTER_PANEL", payload: option.name });
+      } else {
+        dispatch({ type: "EXPAND_FILTER_PANEL", payload: option.name });
+      }
+    },
+    []
+  );
+
+  const changeFilterOptionValues = useCallback((filterOptions) => {
+    dispatch({ type: "CHANGE_FILTER_OPTION_VALUE", payload: filterOptions });
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       state,
@@ -52,8 +67,18 @@ export const SearchResultContextProvider = ({ children }) => {
       changePageLimit,
       addSearchResult,
       changePage,
+      changeFilterPanelCollapseState,
+      changeFilterOptionValues,
     }),
-    [state, changeSortMethod, changePageLimit, addSearchResult, changePage]
+    [
+      state,
+      changeSortMethod,
+      changePageLimit,
+      addSearchResult,
+      changePage,
+      changeFilterPanelCollapseState,
+      changeFilterOptionValues,
+    ]
   );
 
   return (

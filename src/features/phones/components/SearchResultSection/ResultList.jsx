@@ -2,7 +2,7 @@ import {
   PhoneCardContextProvider,
   useSearchResultContext,
 } from "features/phones/context";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { PhoneCard } from "features/phones/components/Card";
 import { useMemo } from "react";
 import { paginate } from "features/phones/utils";
@@ -18,12 +18,16 @@ const ResultList = () => {
   }, [allResults, currentPage, pageLimit]);
 
   return (
-    <Grid
-      container
-      sx={{ width: 1, alignItems: "center", justifyContent: "center" }}
-    >
+    <Grid container sx={{ width: 1, alignItems: "center" }}>
       {phones.length === 0 ? (
-        <NotFoundBanner containerWidth="80%" typography="h4" />
+        <Box
+          width={1}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <NotFoundBanner containerWidth="80%" typography="h4" />
+        </Box>
       ) : null}
       {phones.map((phone) => (
         <Grid item xs={6} lg={4} xl={3} key={phone.id} p={0.5}>
