@@ -56,18 +56,9 @@
       "thumbnail": "https://i.imgur.com/ktZ30Qq.jpg"
     }
   ],
-  "screenSize": [
-    6.8
-  ],
-  "ram": [
-    8,
-    12
-  ],
-  "memory": [
-    128,
-    256,
-    512
-  ],
+  "screenSize": [6.8],
+  "ram": [8, 12],
+  "memory": [128, 256, 512],
   "ratingPoints": 5,
   "numberOfRatings": 18,
   "images": [
@@ -95,5 +86,37 @@
         "content": "https://i.imgur.com/nuv6Jeg.jpg"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/irerIoC.png",
+      "by": "Minh Pham",
+      "email": "test-minhpham@example.com",
+      "location": "Da Nang, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "10/03/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Quality Amazing, nice",
+      "comment": "I’m going to start off by saying this phone is very nice looking we got the new burgundy color, the phone has a long lasting battery.\n Upgraded from an Note8 this a big difference from my previous phone not to mention the camera with a very bold quality of images I haven’t yet experience the full features which I will later, hands down the best Samsung device I’ve owned till date im pleased.",
+      "nHelpful": 26,
+      "colour": {
+        "colour": "#46323d",
+        "secondaryColour": "#201f24",
+        "colourName": "Red",
+        "thumbnail": "https://i.imgur.com/A1buTM7.jpg"
+      },
+      "version": {
+        "id": "SM-S908B",
+        "name": "128GB",
+        "originalPrice": 30990000,
+        "displayOriginalPrice": "30.990.000₫",
+        "salePrice": 27990000,
+        "displaySalePrice": "27.990.000₫"
+      },
+      "images": []
+    }
+  ]
 }

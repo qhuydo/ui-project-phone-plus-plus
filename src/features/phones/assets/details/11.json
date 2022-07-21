@@ -48,16 +48,9 @@
       "thumbnail": "https://i.imgur.com/l8NAFQN.jpg"
     }
   ],
-  "screenSize": [
-    6.7
-  ],
-  "ram": [
-    8
-  ],
-  "memory": [
-    128,
-    256
-  ],
+  "screenSize": [6.7],
+  "ram": [8],
+  "memory": [128, 256],
   "ratingPoints": 4,
   "numberOfRatings": 30,
   "images": [
@@ -87,5 +80,37 @@
         "content": "https://i.imgur.com/kFobzks.jpg"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/CKYetAR.jpg",
+      "by": "Phong Truong",
+      "email": "test-phongtruong@example.com",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "18/02/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "We love our flip phones!",
+      "comment": "It was time to get new cell phones - our old Samsung S9's (both me and my wife) are getting pretty old, and the batteries don't last very long anymore. We've had Samsung phones for a while now, so decided to stay with Samsung. I have to admit, getting the flip phone instead of the latest model rectangle was totally emotional - I just think the flip thing is cool! Samsung has done a great job making the hinge area nearly invisible when the phone is open, and from what I read, as long as you're somewhat careful, the flip/hinge will easily last a long time (longer than the battery, no doubt...} Speaking of battery, I have read the flip battery is a compromise and doesn't last as long as an equivalent rectangle phone. This may be true, but I find the battery in this phone lasts plenty long. As long as you're ok with charging it every night, you should be fine. A couple of other notes - Samsung makes it super easy to move all your apps, data, photos, whatever from your old phone to your new phone - their \"switch\" app worked seamlessly. Also, this was a purchase of an \"unlocked\" phone from Amazon. I carefully checked to make sure the 5G and 4G frequency bands covered by this phone were ones my carrier (T-Mobile) uses. Moving the SIM card from my old phone to the new one was all I needed to do to get the new phone to work on my network. The only thing that's missing as far as I can tell is we don't have T-Mobile ring tones anymore. If I cared, I could probably figure out how to download them... Anyway - a few weeks in, and love these phones!",
+      "nHelpful": 8,
+      "colour": {
+        "colour": "#262626",
+        "secondaryColour": "#282828",
+        "colourName": "Black",
+        "thumbnail": "https://i.imgur.com/l8NAFQN.jpg"
+      },
+      "version": {
+        "id": "SM-F711N",
+        "name": "256GB",
+        "originalPrice": 26990000,
+        "displayOriginalPrice": "26.990.000₫",
+        "salePrice": 19990000,
+        "displaySalePrice": "19.990.000₫"
+      },
+      "images": []
+    }
+  ]
 }

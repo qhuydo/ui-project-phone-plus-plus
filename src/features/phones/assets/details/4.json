@@ -75,5 +75,67 @@
         "content": "https://i.imgur.com/mBXsRRH.jpg"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i1.sndcdn.com/avatars-000098677007-iayi3j-t500x500.jpg",
+      "by": "Huy cbd",
+      "email": "test-huycbd@example.com",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "V.I.P 5 member",
+      "displayTimestamp": "16/07/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Excellent deal!",
+      "comment": "It's an excellent phone!!",
+      "nHelpful": 10,
+      "colour": {
+        "colour": "#f9f4f0",
+        "secondaryColour": "#f9f4f0",
+        "colourName": "Starlight",
+        "thumbnail": "https://i.imgur.com/kL44mjP.jpg"
+      },
+      "version": {
+        "id": "A2481",
+        "name": "256GB",
+        "originalPrice": 24990000,
+        "displayOriginalPrice": "24.990.000₫",
+        "salePrice": 19990000,
+        "displaySalePrice": "19.990.000₫"
+      },
+      "images": []
+    },
+    {
+      "id": 1,
+      "avatar": "https://i.imgur.com/8AQyCxP.png",
+      "by": "Jonnhy Henrich",
+      "email": "test-jonnyhenrich@example.com",
+      "location": "New York city, United States",
+      "locationCode": "us",
+      "memberRank": "V.I.P 2 member",
+      "displayTimestamp": "04/06/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Renewed Premium",
+      "comment": "No es la primera vez que compro iPhone Reacondicionado en Amazon, sin embargo es la primera vez que me toca un 10/10, batería al 100%, con Face ID que funciona perfecto, incluso con poca luz y usando mascarilla con lentes, muy rápido y con una belleza de diseño además de ser muy ligero. Ninguna señal visible de daño en la carcasa.\n\n Sin duda lo recomiendo para quienes como yo desean un equipo original, a un menor precio, sin temor de adquirir un producto de lista negra o con fallas como sucede en otras plataformas de mi país.\n\n En otro comentario (xq compré 2) procuraré subir video como evidencia",
+      "nHelpful": 3,
+      "colour": {
+        "colour": "#fbded8",
+        "secondaryColour": "#fbded8",
+        "colourName": "Pink",
+        "thumbnail": "https://i.imgur.com/J7EeX8t.jpg"
+      },
+      "version": {
+        "id": "A2628",
+        "name": "128GB",
+        "originalPrice": 21990000,
+        "displayOriginalPrice": "21.990.000₫",
+        "salePrice": 17990000,
+        "displaySalePrice": "17.990.000₫"
+      },
+      "images": []
+    }
+  ]
 }

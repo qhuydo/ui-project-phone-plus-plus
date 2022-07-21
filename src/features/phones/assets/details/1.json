@@ -50,17 +50,9 @@
       "thumbnail": "https://i.imgur.com/4lX3jei.jpg"
     }
   ],
-  "screenSize": [
-    6.1
-  ],
-  "ram": [
-    6
-  ],
-  "memory": [
-    128,
-    256,
-    512
-  ],
+  "screenSize": [6.1],
+  "ram": [6],
+  "memory": [128, 256, 512],
   "ratingPoints": 5,
   "numberOfRatings": 11,
   "images": [
@@ -95,5 +87,67 @@
         "content": "https://i.imgur.com/YZYaV8E.jpg"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/T9wstvJ.jpg",
+      "by": "Sam Ryder Robinson",
+      "email": "test-samryderrobinson@example.com",
+      "location": "Essex, United States",
+      "locationCode": "gb",
+      "memberRank": "V.I.P 1 member",
+      "displayTimestamp": "16/02/2022 23:00:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Perfect refurbished phone",
+      "comment": "This phone would have been perfect had it been unlocked for my use with ATT. It was in perfect condition and so flawless. I'm sick that I couldn't keep it. Whoever has Verizon will love this particular device. Truly a beautiful phone.",
+      "nHelpful": 88,
+      "colour": {
+        "colour": "#5C5B57",
+        "secondaryColour": "#5C5B57",
+        "colourName": "Graphite",
+        "thumbnail": "https://i.imgur.com/4lX3jei.jpg"
+      },
+      "version": {
+        "id": "A2638_128",
+        "name": "128GB",
+        "originalPrice": 31990000,
+        "displayOriginalPrice": "31.990.000₫",
+        "salePrice": 24990000,
+        "displaySalePrice": "24.990.000₫"
+      },
+      "images": []
+    },
+    {
+      "id": 1,
+      "avatar": "https://i.imgur.com/qRwmPZK.jpg",
+      "by": "Tuan Cuong",
+      "email": "test-tuancuong@example.com",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "V.I.P 4 member",
+      "displayTimestamp": "22/08/2022 23:00:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Great",
+      "comment": "It’s dope it’s perfect it’s came fully unlocked I got to put my SIM card in✊🏿I’m in love with it delivered faster than it said.",
+      "nHelpful": 95,
+      "colour": {
+        "colour": "#505F4E",
+        "secondaryColour": "#505F4E",
+        "colourName": "Alpine green",
+        "thumbnail": "https://i.imgur.com/faq57Ld.jpg"
+      },
+      "version": {
+        "id": "A2638_128",
+        "name": "128GB",
+        "originalPrice": 31990000,
+        "displayOriginalPrice": "31.990.000₫",
+        "salePrice": 24990000,
+        "displaySalePrice": "24.990.000₫"
+      },
+      "images": []
+    }
+  ]
 }

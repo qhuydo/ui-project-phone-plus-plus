@@ -4,13 +4,7 @@
   "category": "sony",
   "categoryName": "Sony",
   "thumbnail": "https://i.imgur.com/ShV7fZk.jpg",
-  "recommendations": [
-    "0",
-    "1",
-    "2",
-    "4",
-    "5"
-  ],
+  "recommendations": ["0", "1", "2", "4", "5"],
   "pushSales": [
     {
       "phoneId": "0",
@@ -61,16 +55,9 @@
       "thumbnail": "https://i.imgur.com/guWwOcG.jpg"
     }
   ],
-  "screenSize": [
-    6.5
-  ],
-  "ram": [
-    12
-  ],
-  "memory": [
-    256,
-    512
-  ],
+  "screenSize": [6.5],
+  "ram": [12],
+  "memory": [256, 512],
   "ratingPoints": 4.9,
   "numberOfRatings": 12,
   "images": [
@@ -96,5 +83,37 @@
         "content": "https://i.imgur.com/3hYFf2E.png"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/8AQyCxP.png",
+      "by": "Jonnhy Henrich",
+      "email": "test-jonnyhenrich@example.com",
+      "location": "New York city, United States",
+      "locationCode": "us",
+      "memberRank": "V.I.P 2 member",
+      "displayTimestamp": "02/07/2022 09:10:00",
+      "points": 4,
+      "isVerifiedPurchase": true,
+      "title": "Great phone even better than s22 ultra",
+      "comment": "Design: The usual Sony Xperia design is nothing new.\n Display: Beautiful 4k display and excellent color reproduction with 120hz but annoyingly it's only FHD if you're not watching videos or viewing photos.\n Battery: The largest battery ever on Xperia device and yes it does last you through the day.\n Camera: Probably the best camera I've used on a phone but the zoom camera it's not S22 ultra.\n Audio: Powerful front facing stereo speakers and there's a headphone jack.\n Software: Stock android 12 with few Sony apps and tweaks.\n Overheating issues: Used to overheat like crazy when shooting videos and regular photos, Sony released an update to fix the overheating about 50% but still overheats nonetheless but not that much now after the update.\n The Question is: should you buy it?\n The answer is: Yes if you want what is mentioned above, And No if you want a powerful zoom camera and can't tolerate with overheating issues.",
+      "nHelpful": 1,
+      "colour": {
+        "colour": "#5C5B57",
+        "secondaryColour": "#5C5B57",
+        "colourName": "Black",
+        "thumbnail": "https://i.imgur.com/ShV7fZk.jpg"
+      },
+      "version": {
+        "id": "XQCT62-B",
+        "name": "256GB",
+        "originalPrice": 22990000,
+        "displayOriginalPrice": "22.990.000₫",
+        "salePrice": 21990000,
+        "displaySalePrice": "21.990.000₫"
+      },
+      "images": []
+    }
+  ]
 }

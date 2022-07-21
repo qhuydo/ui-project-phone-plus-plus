@@ -42,17 +42,9 @@
       "thumbnail": "https://i.imgur.com/Fs6IUal.jpg"
     }
   ],
-  "screenSize": [
-    6.6
-  ],
-  "ram": [
-    4,
-    6
-  ],
-  "memory": [
-    64,
-    128
-  ],
+  "screenSize": [6.6],
+  "ram": [4, 6],
+  "memory": [64, 128],
   "ratingPoints": 3,
   "numberOfRatings": 100,
   "images": [
@@ -72,5 +64,37 @@
         "content": "Take in more, all at once. The Galaxy A23's 6.6-inch TFT V-Cut Display gives you room to see and do more. With FHD+ technology and a 90Hz refresh rate, the content you see every day will look smoother and sharper. With FHD+ technology and a 90Hz refresh rate, the content you see every day will look smoother and sharper. Similar to human eyesight, the 5MP Ultra Wide Camera sees the world with a 123-degree angle of view, adding more perspective to everything you shoot. Stay ahead of the day with a battery that won't slow you down. The 5,000mAh (typical)¹ battery lets you keep doing what you do, for hours on end. The Galaxy A23 combines Octa-core processing power with up to 4GB of RAM for fast and efficient performance for the task at hand. Enjoy 64GB of internal storage and add up to 1TB more with MicroSD card. Simply plug in your earphones to be transported to the middle of your music and movies. With Dolby Atmos, you'll hear sound that's full, loud, and seems to surround you in the scene. Simply plug in your earphones to be transported to the middle of your music and movies."
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/T9wstvJ.jpg",
+      "by": "Sam Ryder Robinson",
+      "email": "test-samryderrobinson@example.com",
+      "location": "Essex, United States",
+      "locationCode": "gb",
+      "memberRank": "V.I.P 1 member",
+      "displayTimestamp": "10/04/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Works good.",
+      "comment": "The wife's phone wouldn't work in the US, so I got this one, as I have one already and it works great. The nice thing is it has dual SIMS, so you can use 2 different carriers, done from cards. It is unlocked. Has great camera for photos as well.",
+      "nHelpful": 3,
+      "colour": {
+        "colour": "#a3c0e2",
+        "secondaryColour": "#181a19",
+        "colourName": "Blue",
+        "thumbnail": "https://i.imgur.com/FnYgDhx.jpg"
+      },
+      "version": {
+        "id": "SM-A235F",
+        "name": "4GB",
+        "originalPrice": 5690000,
+        "displayOriginalPrice": "5.690.000₫",
+        "salePrice": 5690000,
+        "displaySalePrice": "5.690.000₫"
+      },
+      "images": []
+    }
+  ]
 }

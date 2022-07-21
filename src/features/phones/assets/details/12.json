@@ -34,17 +34,9 @@
       "thumbnail": "https://i.imgur.com/sqVO1mw.jpg"
     }
   ],
-  "screenSize": [
-    6.7
-  ],
-  "ram": [
-    6,
-    8
-  ],
-  "memory": [
-    128,
-    256
-  ],
+  "screenSize": [6.7],
+  "ram": [6, 8],
+  "memory": [128, 256],
   "ratingPoints": 4,
   "numberOfRatings": 126,
   "images": [
@@ -70,5 +62,37 @@
         "content": "https://i.imgur.com/XYJLQ9V.jpg"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i1.sndcdn.com/avatars-000098677007-iayi3j-t500x500.jpg",
+      "by": "Huy cbd",
+      "email": "test-huycbd@example.com",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "V.I.P 5 member",
+      "displayTimestamp": "07/04/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Great Phone For The Price!",
+      "comment": "What I look for in a phone maybe different than others look for, so here is my take. I look for a phone with a reasonable price (well below $1000), a decent camera (64 MP main rear), great updates (4 years of Android and Security Updates), and easy to use. This camera fits all of my criteria and it is also 5G. Like all batteries, it can be quickly drained depending on usage but, with the right configuration (meaning eliminating things you don't use, turning off wi-fi, Bluetooth, and mobile data when not in use, and so on), it is easy to get 1 or two days of usage. A charger does not come with the phone, but the proper cable with a USB charger works fine. In order to protect the battery (which like most cannot be easily removed/replaced), the phone stops charging at 85 %. As long as I can get 2 days of usage without charging, I don't mind. I do not watch videos on my phone and use wi-fi for my updates. I am a simple user, mostly talk and text, so this is a great buy for me!",
+      "nHelpful": 102,
+      "colour": {
+        "colour": "#ededed",
+        "secondaryColour": "#050505",
+        "colourName": "White",
+        "thumbnail": "https://i.imgur.com/sqVO1mw.jpg"
+      },
+      "version": {
+        "id": "SM-A736B",
+        "name": "128GB",
+        "originalPrice": 11990000,
+        "displayOriginalPrice": "11.990.000₫",
+        "salePrice": 11990000,
+        "displaySalePrice": "11.990.000₫"
+      },
+      "images": []
+    }
+  ]
 }

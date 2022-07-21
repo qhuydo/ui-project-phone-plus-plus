@@ -36,16 +36,9 @@
       "thumbnail": "https://i.imgur.com/XMcvOvu.jpg"
     }
   ],
-  "screenSize": [
-    5.7
-  ],
-  "ram": [
-    4
-  ],
-  "memory": [
-    128,
-    256
-  ],
+  "screenSize": [5.7],
+  "ram": [4],
+  "memory": [128, 256],
   "ratingPoints": 4.5,
   "numberOfRatings": 11,
   "images": [
@@ -63,5 +56,37 @@
         "content": "Serious power meets serious value with the iPhone SE in Black from SIMPLE Mobile. A lightning-fast A15 Bionic chip and fast 5G(1) connectivity make this the most powerful 4.7-inch(2) iPhone ever. Enjoy up to 15 hours(3) of video playback on a Retina HD display made from the toughest glass available in a smartphone. Go big with stellar battery life and a superstar camera system featuring a 12MP Wide camera, Smart HDR 4, Photographic Styles, Portrait mode, and 4K video up to 60 fps. Share the moment with friends and family in stunning detail on the 7MP FaceTime HD camera with 1080p video recording. This iPhone is built for life-on-the-go with a durable, IP67 water resistant(4) design and a Home button with secure Touch ID. You’ll love the power and the possibilities of iOS 15, which packs new features to do more with iPhone than ever before(5). Pair it with an unlimited talk, text & data plan with coverage on a powerful nationwide 5G network without a contract from SIMPLE Mobile to keep you connected for less. Legal Disclaimers (1) Data plan required. 5G is available in select markets and through select carriers. Speeds vary based on site conditions and carrier. For details on 5G support, contact your carrier and see apple/iphone/cellular. (2) Display size is measured diagonally. (3) Battery life varies by use and configuration. See apple website for more information. (4) iPhone SE (3rd generation) has a rating of IP67 under IEC standard 60529 (maximum depth of 1 meter up to 30 minutes). Splash, water, and dust resistance are not permanent conditions and resistance might decrease as a result of normal wear. Do not attempt to charge a wet iPhone; refer to the user guide for cleaning and drying instructions. Liquid damage not covered under warranty. (5) Some features may not be available for all countries or areas Actual availability, coverage and speed may vary. See details at simple mobile website."
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/FiUogfd.jpg",
+      "by": "Shiba Inu",
+      "email": "test-shibainu@example.com",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "07/11/2021 09:10:00",
+      "points": 4,
+      "isVerifiedPurchase": true,
+      "title": "Love it!",
+      "comment": "I bought it because my iPhone 7 was starting to go out on me. It's the same size and thickness as the 7 so I was able to use my old case on this phone. The battery health is still at 100%, it’s been refurbished but it’s literally brand new. No scratches or cracks. The only thing I can’t figure out is if this thing has facial recognition. The description says it does but I haven’t been able to find it in the settings. Excuse the dirty screen from my fingerprints.",
+      "nHelpful": 117,
+      "colour": {
+        "colour": "#FFFFFF",
+        "secondaryColour": "#FFFFFF",
+        "colourName": "White",
+        "thumbnail": "https://i.imgur.com/LaGfVlI.jpg"
+      },
+      "version": {
+        "id": "A2784",
+        "name": "256GB",
+        "originalPrice": 16990000,
+        "displayOriginalPrice": "16.990.000₫",
+        "salePrice": 14990000,
+        "displaySalePrice": "14.990.000₫"
+      },
+      "images": []
+    }
+  ]
 }
