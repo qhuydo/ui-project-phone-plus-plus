@@ -2,9 +2,12 @@ import { Card, CardHeader, Link } from "@mui/material";
 import PhoneCardContent from "features/phones/components/Card/PhoneCardContent";
 import PhoneCardThumbnail from "features/phones/components/Card/PhoneCardThumbnail";
 import PhoneCardTitle from "features/phones/components/Card/PhoneCardTitle";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { usePhoneCardContext } from "features/phones/context";
+import {
+  useFavouritePhoneMap,
+  usePhoneCardContext,
+} from "features/phones/context";
 import { Router } from "routes";
 
 const cardStyle = (theme) => ({
@@ -36,6 +39,7 @@ const imageThumbnailStyle = {
 function PhoneCard() {
   const [isSelected, setSelected] = useState(false);
   const { phone } = usePhoneCardContext();
+  const [favourites, toggleFavourite] = useFavouritePhoneMap();
 
   const onMouseOver = useCallback(() => {
     setSelected(true);
@@ -44,6 +48,14 @@ function PhoneCard() {
   const onMouseOut = useCallback(() => {
     setSelected(false);
   }, []);
+
+  const isFavourite = useMemo(() => {
+    return favourites[phone.id];
+  }, [favourites, phone.id]);
+
+  const toggleFavouriteCb = useCallback(() => {
+    toggleFavourite(phone.id);
+  }, [phone.id, toggleFavourite]);
 
   return (
     <Card
@@ -63,6 +75,8 @@ function PhoneCard() {
           isSelected={isSelected}
           boxSx={imageBoxStyle}
           imageSx={imageThumbnailStyle}
+          isFavourite={isFavourite}
+          toggleFavourite={toggleFavouriteCb}
         />
         <CardHeader
           sx={{ pb: 0 }}

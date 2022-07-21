@@ -1,8 +1,11 @@
-import { Box, CardMedia, Skeleton } from "@mui/material";
+import { alpha, Box, CardMedia, Skeleton } from "@mui/material";
 import PropTypes from "prop-types";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FALLBACK_IMG, GOLDEN_RATIO } from "utils/constants";
 import { usePhoneCardContext } from "features/phones/context";
+import BorderIconButton from "components/Button/BorderIconButton";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
 const skeletonStyle = {
   width: "100%",
@@ -10,7 +13,13 @@ const skeletonStyle = {
   height: "100%",
 };
 
-const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {
+const PhoneCardThumbnail = ({
+  isSelected,
+  boxSx,
+  imageSx,
+  isFavourite,
+  toggleFavourite,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [lastLoadedImg, setLastLoadedImg] = useState(null);
   const { selectedThumbnail } = usePhoneCardContext();
@@ -38,6 +47,14 @@ const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {
     setLastLoadedImg(selectedThumbnail);
   }, [selectedThumbnail]);
 
+  const onFavouriteButtonClicked = useCallback(
+    (e) => {
+      e.preventDefault();
+      toggleFavourite && toggleFavourite();
+    },
+    [toggleFavourite]
+  );
+
   useEffect(() => {
     if (lastLoadedImg !== selectedThumbnail) {
       setIsLoading(true);
@@ -54,6 +71,25 @@ const PhoneCardThumbnail = ({ isSelected, boxSx, imageSx }) => {
         image={selectedThumbnail ?? FALLBACK_IMG}
         onLoad={imageLoaded}
       />
+
+      <BorderIconButton
+        size="large"
+        isSelected={isFavourite}
+        onClick={onFavouriteButtonClicked}
+        color="error"
+        sx={{
+          position: "absolute",
+          right: 8,
+          top: 8,
+          backgroundColor: alpha(`#FFFFFF`, 0.5),
+        }}
+      >
+        {isFavourite ? (
+          <FavoriteIcon color="error" />
+        ) : (
+          <FavoriteBorderOutlinedIcon />
+        )}
+      </BorderIconButton>
     </Box>
   );
 };
@@ -62,6 +98,8 @@ PhoneCardThumbnail.propTypes = {
   isSelected: PropTypes.bool.isRequired,
   boxSx: PropTypes.any.isRequired,
   imageSx: PropTypes.any,
+  isFavourite: PropTypes.bool,
+  toggleFavourite: PropTypes.func,
 };
 
 export default PhoneCardThumbnail;
