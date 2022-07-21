@@ -42,18 +42,9 @@
       "thumbnail": "https://i.imgur.com/FyRg5sB.jpg"
     }
   ],
-  "screenSize": [
-    6.5
-  ],
-  "ram": [
-    3,
-    4
-  ],
-  "memory": [
-    32,
-    64,
-    128
-  ],
+  "screenSize": [6.5],
+  "ram": [3, 4],
+  "memory": [32, 64, 128],
   "ratingPoints": 4,
   "numberOfRatings": 97,
   "images": [
@@ -71,5 +62,37 @@
         "content": "Expand your view to the fullest: Expand your view with the Galaxy A03 Core's 6.5-inch Infinity-V Display and discover uncharted details. Thanks to HD+ technology, your everyday content will look better: sharp, sharp and clear. Take amazing photos, front and back: Capture clear and beautiful photos of your favorite moments with the Galaxy A03 Core's 8 MP main camera. You can also turn it around and use the 5 MP front camera to put the focus on you. Storage and speed you can count on: The Galaxy A03 Core combines the power of an octa-core processor with up to 2GB of RAM for fast and efficient performance, plus 32GB of internal storage. Battery to enjoy all day: Enjoy the day with a battery that accompanies your rhythm. The 5,000 mAh (typical use) battery lets you keep going for hours on end."
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/0ctKYdi.jpg",
+      "by": "Tuan Bui",
+      "email": "test-tuanbui@example.com",
+      "location": "Da Nang, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "02/04/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Good phone",
+      "comment": "Using in the Caribbean island and I can't complain after a month now of using no issues. Hopefully it keeps up but so far I'm loving it. Good value for your money.",
+      "nHelpful": 19,
+      "colour": {
+        "colour": "#232323",
+        "secondaryColour": "#232323",
+        "colourName": "Black",
+        "thumbnail": "https://i.imgur.com/H4te372.jpg"
+      },
+      "version": {
+        "id": "SM-A035F",
+        "name": "4GB",
+        "originalPrice": 3490000,
+        "displayOriginalPrice": "3.490.000₫",
+        "salePrice": 3490000,
+        "displaySalePrice": "3.490.000₫"
+      },
+      "images": []
+    }
+  ]
 }

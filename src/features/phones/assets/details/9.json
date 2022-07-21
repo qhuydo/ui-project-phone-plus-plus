@@ -42,18 +42,9 @@
       "thumbnail": "https://i.imgur.com/Xy8RjNF.jpg"
     }
   ],
-  "screenSize": [
-    6.5
-  ],
-  "ram": [
-    4,
-    6,
-    8
-  ],
-  "memory": [
-    128,
-    256
-  ],
+  "screenSize": [6.5],
+  "ram": [4, 6, 8],
+  "memory": [128, 256],
   "ratingPoints": 4,
   "numberOfRatings": 525,
   "images": [
@@ -72,5 +63,37 @@
         "content": "On the Next-Generation Mobile Data Network, the Power of 5G Fast Speeds Changes the Way you Experience and Share Content — From Super Smooth Gaming and Streaming to Ultra-fast Sharing and Downloading. Upgrade to the Galaxy A52s 5G and Speed up Your Smartphone Experience. Awesome Screen, Super Smooth Scrolling. Feast your Eyes on Vibrant Details With the FHD+ Super AMOLED Display, Reaching 800 Nits for Clarity Even in Bright Daylight. Eye Comfort Shield Lowers Blue Light, and Super Smooth Keeps the View Smooth, Whether you're Gaming or Scrolling. All on the Expansive 6.5-Inch Infinity-O Display. Ultra-Wide Camera, Ultra-Wide Experiences Similar to Human Eyesight, the 12MP Ultra-Wide Camera Sees the World With a 123-Degree Angle of View, Adding More Perspective to Everything You Shoot."
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/WhMXDj7.png",
+      "by": "Cuong Bui",
+      "email": "test-cuongbui@example.com",
+      "location": "Da Nang, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "21/04/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Amazing value, 5G DOES work with Tmobile",
+      "comment": "The A52s is an amazing value. The processor and RAM upgrade over the base A52 is significant. It's comparable, in some aspects superior, to the new A53 that just released, but for much less money. BTW - mine came with 8GB of RAM despite the listing stating 6GB.\n 5G: This phone only supports one of the frequency bands Tmobile uses for 5G, Band 41 at 2500 mHz. But, this is the good one, which Tmo calls \"ultra capacity 5G\". They also use Band 71, which this phone doesn't support, but the data speeds at that frequency are pretty comparable to 4G anyway.\n If your current phone isn't a 5G phone, you might need a new SIM card from Tmobile (I did), which they'll provide for free.\n Something that is possibly fooling other reviewers is that the phone doesn't show a \"5G\" icon next to the signal bars when it's connected to Band 41. It shows \"4G+\" instead. Why this is the case I don't know, but I confirmed with a radio signal anaylsis app (LTE Discovery) that it's indeed connected to 5G Band 41 when it displays the \"4G+\" icon.",
+      "nHelpful": 18,
+      "colour": {
+        "colour": "#b0cfd1",
+        "secondaryColour": "#14191d",
+        "colourName": "Blue",
+        "thumbnail": "https://i.imgur.com/XLjmcsH.jpg"
+      },
+      "version": {
+        "id": "SM-A528B",
+        "name": "128GB",
+        "originalPrice": 10990000,
+        "displayOriginalPrice": "10.990.000₫",
+        "salePrice": 8490000,
+        "displaySalePrice": "8.490.000₫"
+      },
+      "images": []
+    }
+  ]
 }

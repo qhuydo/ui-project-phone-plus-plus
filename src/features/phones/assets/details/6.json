@@ -42,16 +42,9 @@
       "thumbnail": "https://i.imgur.com/cSUsydH.png"
     }
   ],
-  "screenSize": [
-    7.6
-  ],
-  "ram": [
-    12
-  ],
-  "memory": [
-    256,
-    512
-  ],
+  "screenSize": [7.6],
+  "ram": [12],
+  "memory": [256, 512],
   "ratingPoints": 4.5,
   "numberOfRatings": 27,
   "images": [
@@ -78,5 +71,67 @@
         "content": "https://i.imgur.com/ttDhr8y.jpg"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/gOTwUNg.jpeg",
+      "by": "Ulrikke Branstorp",
+      "email": "test-ulrikkebranstorp@example.com",
+      "location": "Oslo, Norway",
+      "locationCode": "no",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "27/09/2021 09:10:00",
+      "points": 3,
+      "isVerifiedPurchase": true,
+      "title": "My hands are on fire!",
+      "comment": "The phone is good overall, but I like to point out some flaws. The phone is hot! Yeah Im mean when i play games like Pubg and League, the phone runs really hot on my hands. The battery is also on the lower side, 3 hours game play time is all i got . And by the way Amazon marked this phone non returnable which is odd because even the official website of Samsung allow people to try out the phone 21 days. MAKE NO SENSE.",
+      "nHelpful": 87,
+      "colour": {
+        "colour": "#202122",
+        "secondaryColour": "#202122",
+        "colourName": "Black",
+        "thumbnail": "https://i.imgur.com/FnS0OFv.png"
+      },
+      "version": {
+        "id": "SM-F926B",
+        "name": "256GB",
+        "originalPrice": 42990000,
+        "displayOriginalPrice": "42.990.000₫",
+        "salePrice": 32900000,
+        "displaySalePrice": "32.900.000₫"
+      },
+      "images": []
+    },
+    {
+      "id": 1,
+      "avatar": "https://i.imgur.com/EZgnAoz.png",
+      "by": "Thien Van Bui",
+      "email": "test-thien@example.com",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "16/03/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Took a few months to decide",
+      "comment": "I have a Galaxy note 20 ultra and I bought the fold out of curiosity, I thought maybe it's a gimmick, after using it about a month I thought wow this is pretty heavy and a little bulky with the case and the s pen holder so I decided to sell the fold and went back to using the note which I live and still love so I'm very conflicted and the fact is that selling either of these is easy but u take a beating on the money u get back on a sale. If you still reading thanks and if I sound confused it's because I am but that said the fold three is really a technologically Superior phone and that said I'm back to using it over the note 20 and will continue to use it I recommend the phone it's a big investment but I think you'll enjoy it ,thanks.",
+      "nHelpful": 24,
+      "colour": {
+        "colour": "#202122",
+        "secondaryColour": "#202122",
+        "colourName": "Black",
+        "thumbnail": "https://i.imgur.com/FnS0OFv.png"
+      },
+      "version": {
+        "id": "SM-F926B",
+        "name": "256GB",
+        "originalPrice": 42990000,
+        "displayOriginalPrice": "42.990.000₫",
+        "salePrice": 32900000,
+        "displaySalePrice": "32.900.000₫"
+      },
+      "images": []
+    }
+  ]
 }

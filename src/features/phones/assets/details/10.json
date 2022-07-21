@@ -48,16 +48,9 @@
       "thumbnail": "https://i.imgur.com/TS7Yq8l.jpg"
     }
   ],
-  "screenSize": [
-    6.1
-  ],
-  "ram": [
-    8
-  ],
-  "memory": [
-    128,
-    256
-  ],
+  "screenSize": [6.1],
+  "ram": [8],
+  "memory": [128, 256],
   "ratingPoints": 4,
   "numberOfRatings": 345,
   "images": [
@@ -93,5 +86,37 @@
         "content": "https://i.imgur.com/zNZuLT4.jpg"
       }
     ]
-  }
+  },
+  "comments": [
+    {
+      "id": 0,
+      "avatar": "https://i.imgur.com/Eo6AlrJ.jpg",
+      "by": "Long Bui",
+      "email": "test-longbui@example.com",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "Non-vip member",
+      "displayTimestamp": "29/05/2022 09:10:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Compared to a Dying S9, it's Great!",
+      "comment": "It's safe to say that my opinion of the S22 is influenced by just how bad my S9 had become.\n I was hesitant to purchase based on reviews mentioning short battery life, but I just didn't want a bigger phone. And compared to my S9 that was dying after 3 hours of use, the S22 is great. Most days I'm able to only charge once every 24 hours. I'm not a gamer or much of a video watcher and I'm sure that helps. It supports my social media habit just fine, as well as emails and googling around.\n And yes, the fingerprint scanner is a bit annoying. With it's constant \"not recognized\". I have found that it works better with a more patient purposeful press. It does not like a quick \"it's me let me in\" finger drive by.\n Being able to keep a reasonable sized phone, the cost, and coming from a phone in it's deathbed, I'm happy overall and glad I stopped deliberating and finally bought it.",
+      "nHelpful": 4,
+      "colour": {
+        "colour": "#f7f7f7",
+        "secondaryColour": "#000710",
+        "colourName": "White",
+        "thumbnail": "https://i.imgur.com/TS7Yq8l.jpg"
+      },
+      "version": {
+        "id": "SM-S901B/DS",
+        "name": "256GB",
+        "originalPrice": 23490000,
+        "displayOriginalPrice": "23.490.000₫",
+        "salePrice": 20490000,
+        "displaySalePrice": "20.490.000₫"
+      },
+      "images": []
+    }
+  ]
 }
