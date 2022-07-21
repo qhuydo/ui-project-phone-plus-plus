@@ -1,14 +1,13 @@
-import { styled } from "@mui/material";
+import { IconButton, styled } from "@mui/material";
 
-export const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(1, 1.5),
-  height: "100%",
-  width: "100%",
-  right: 0,
-  top: 0,
+export const SearchIconWrapper = styled(IconButton)({
+  right: 8,
+  top: "50%",
+  transform: "translateY(-50%)",
   position: "absolute",
-  pointerEvents: "none",
   display: "flex",
   alignItems: "center",
   justifyContent: "end",
-}));
+  color: "inherit",
+  zIndex: 10,
+});

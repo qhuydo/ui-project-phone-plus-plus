@@ -3,6 +3,8 @@ import { alpha, styled } from "@mui/material";
 export const SearchBarContainer = styled("div")(({ theme }) => ({
   position: "relative",
   display: "flex",
+  justifyContent: "center",
+  flexDirection: "row",
   borderRadius: `${theme.shape.borderRadius + 8}px`,
   backgroundColor:
     theme.palette.mode === "light"

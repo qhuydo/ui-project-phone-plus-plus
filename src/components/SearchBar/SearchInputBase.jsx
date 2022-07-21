@@ -4,12 +4,13 @@ import InputBase from "@mui/material/InputBase";
 export const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   display: "flex",
-  width: "100%",
+  // width: "100%",
+  flex: 1,
   "& .MuiInputBase-input": {
     padding: theme.spacing(1.5, 0, 1.5, 2),
     // vertical padding + font size from searchIcon
     paddingRight: `calc(1em + ${theme.spacing(3)})`,
-    width: "100%",
+    // width: "100%",
     transition: theme.transitions.create("border-color"),
     color: theme.palette.text.primary,
     border:

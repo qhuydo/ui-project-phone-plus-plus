@@ -40,7 +40,7 @@ export const GlobalListProvider = ({ children }) => {
     [favouriteList]
   );
 
-  console.log(favouriteList);
+  // console.log(favouriteList);
 
   const contextValue = useMemo(() => {
     return {

@@ -3,6 +3,8 @@ import { SearchBarContainer } from "components/SearchBar/SearchBarContainer";
 import { SearchIconWrapper } from "components/SearchBar/SearchIconWrapper";
 import SearchIcon from "@mui/icons-material/Search";
 import { StyledInputBase } from "components/SearchBar/SearchInputBase";
+import { Zoom } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 
 const SearchBar = ({
   onKeyPressed,
@@ -10,6 +12,7 @@ const SearchBar = ({
   value,
   onBlurred,
   onFocused,
+  onCleared,
 }) => {
   return (
     <SearchBarContainer>
@@ -24,7 +27,15 @@ const SearchBar = ({
       />
 
       <SearchIconWrapper>
-        <SearchIcon />
+        <Zoom in={value.length === 0}>
+          <SearchIcon onClick={onKeyPressed} />
+        </Zoom>
+      </SearchIconWrapper>
+
+      <SearchIconWrapper>
+        <Zoom in={value.length !== 0}>
+          <ClearIcon onClick={onCleared} />
+        </Zoom>
       </SearchIconWrapper>
     </SearchBarContainer>
   );
@@ -36,6 +47,7 @@ SearchBar.propTypes = {
   value: PropTypes.string,
   onFocused: PropTypes.func,
   onBlurred: PropTypes.func,
+  onCleared: PropTypes.func,
 };
 
 export default SearchBar;

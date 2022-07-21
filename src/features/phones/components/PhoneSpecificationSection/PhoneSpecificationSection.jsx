@@ -106,11 +106,6 @@ const PhoneSpecificationSection = () => {
             width: 1,
             height: 1,
             objectFit: "cover",
-            transition: "transform .3s",
-            transform: "scale(1.0)",
-            "&:hover": {
-              transform: "scale(1.1)",
-            },
           }}
         />
       </Box>

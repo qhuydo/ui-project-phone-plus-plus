@@ -56,6 +56,7 @@ const AppBar = () => {
   const navigateToResultPage = useCallback(() => {
     setShowSearchResults(false);
     navigate(`${Router.PHONE_SEARCH_RESULT}?keyword=${keyword.trim()}`);
+    setKeyword("");
   }, [keyword, navigate]);
 
   const handleKeyPressed = useCallback(
@@ -74,6 +75,11 @@ const AppBar = () => {
   }, [phoneResults.length]);
   const onSearchBarOutOfFocused = useCallback(() => {
     setShowSearchResults(false);
+  }, []);
+
+  const onKeywordCleared = useCallback(() => {
+    setKeyword("");
+    setPhoneResults([]);
   }, []);
 
   const nCartItem = useMemo(
@@ -128,6 +134,7 @@ const AppBar = () => {
                 onKeyPressed={handleKeyPressed}
                 onFocused={onSearchBarFocused}
                 onBlurred={onSearchBarOutOfFocused}
+                onCleared={onKeywordCleared}
               />
 
               <SearchBarMenu
