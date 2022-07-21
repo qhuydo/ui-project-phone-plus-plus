@@ -77,7 +77,7 @@ const PhoneSearchResultBody = () => {
         </Typography>
 
         <Grid container>
-          <Grid item xs={3}>
+          <Grid item xs={3} sx={{ zIndex: 10 }}>
             <FilterColumn />
           </Grid>
 

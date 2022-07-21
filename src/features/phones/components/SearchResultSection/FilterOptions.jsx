@@ -10,9 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import { useSearchResultContext } from "features/phones/context";
-import { useForm, Controller } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 
 // filter options
 const filterOptionsList = [
@@ -82,12 +82,11 @@ const filterOptionsList = [
 
 const FilterOptions = () => {
   const {
-    state: { collapsedFilterPanels, filterOptions },
+    state: { collapsedFilterPanels },
     changeFilterPanelCollapseState,
-    changeFilterOptionValues,
   } = useSearchResultContext();
 
-  const { control, watch } = useForm({ defaultValues: filterOptions });
+  const { control } = useFormContext();
 
   const expansionState = useMemo(() => {
     return filterOptionsList.reduce((map, item) => {
@@ -96,13 +95,6 @@ const FilterOptions = () => {
       return map;
     }, {});
   }, [collapsedFilterPanels]);
-
-  // console.log(filterOptions);
-
-  useEffect(() => {
-    const subscription = watch((value) => changeFilterOptionValues(value));
-    return () => subscription.unsubscribe();
-  }, [changeFilterOptionValues, watch]);
 
   return (
     <Stack direction="column" spacing={0.5} width={1}>

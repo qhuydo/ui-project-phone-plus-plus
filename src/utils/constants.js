@@ -6,3 +6,7 @@ export const LOREM_IPSUM =
 
 export const FALLBACK_IMG =
   "https://images.unsplash.com/photo-1629494893504-d41e26a02631?fit=crop&w=828&h=512";
+
+export const MIN_PRICE = 500_000;
+export const MAX_PRICE = 50_000_000;
+export const PRICE_STEP = 50_000;
