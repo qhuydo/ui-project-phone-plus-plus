@@ -18,7 +18,7 @@ const TotalRatings = ({ ratingCount, totalRating }) => {
       <Stack direction="row" spacing={1} alignItems="center" width={1}>
         <Rating
           size="large"
-          value={avgRating}
+          value={+avgRating}
           precision={0.5}
           sx={{
             mr: 0.5,

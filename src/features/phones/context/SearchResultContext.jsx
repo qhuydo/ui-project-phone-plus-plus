@@ -59,6 +59,10 @@ export const SearchResultContextProvider = ({ children }) => {
     dispatch({ type: "CHANGE_FILTER_OPTION_VALUE", payload: filterOptions });
   }, []);
 
+  const clearAllFilterOptions = useCallback(() => {
+    dispatch({ type: "CLEAR_ALL_OPTIONS" });
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       state,
@@ -69,6 +73,7 @@ export const SearchResultContextProvider = ({ children }) => {
       changePage,
       changeFilterPanelCollapseState,
       changeFilterOptionValues,
+      clearAllFilterOptions,
     }),
     [
       state,
@@ -78,6 +83,7 @@ export const SearchResultContextProvider = ({ children }) => {
       changePage,
       changeFilterPanelCollapseState,
       changeFilterOptionValues,
+      clearAllFilterOptions,
     ]
   );
 

@@ -1,4 +1,48 @@
 import { getTotalPages } from "features/phones/utils";
+import { MAX_PRICE, MIN_PRICE } from "utils/constants";
+
+const defaultFilterOptions = {
+  priceRange: [MIN_PRICE, MAX_PRICE],
+  brand: {
+    apple: false,
+    samsung: false,
+    nokia: false,
+    google: false,
+    sony: false,
+    xiaomi: false,
+  },
+  memory: {
+    below4gb: false,
+    from8gb: false,
+    from16gb: false,
+    from32gb: false,
+    from128gb: false,
+    from256gb: false,
+    from512gbOrAbove: false,
+  },
+  ram: {
+    below1gb: false,
+    from1gbTo2gb: false,
+    from2gbTo4gb: false,
+    from4gbTo6gb: false,
+    from8gbTo12gb: false,
+    from12gbTo16gb: false,
+    above16gb: false,
+  },
+  ratings: {
+    all: false,
+    from5Stars: false,
+    from4Stars: false,
+    from3Stars: false,
+  },
+  screenSize: {
+    below4: false,
+    from4To49: false,
+    from5To59: false,
+    from6To69: false,
+    above7: false,
+  },
+};
 
 export const initialSearchResultState = {
   // sortBy: "RELEVANCE",
@@ -8,47 +52,7 @@ export const initialSearchResultState = {
   allResults: [],
   nPages: 0,
   collapsedFilterPanels: [],
-  filterOptions: {
-    brand: {
-      apple: false,
-      samsung: false,
-      nokia: false,
-      google: false,
-      sony: false,
-      xiaomi: false,
-    },
-    memory: {
-      below4gb: false,
-      from8gb: false,
-      from16gb: false,
-      from32gb: false,
-      from128gb: false,
-      from256gb: false,
-      from512gbOrAbove: false,
-    },
-    ram: {
-      below1gb: false,
-      from1gbTo2gb: false,
-      from2gbTo4gb: false,
-      from4gbTo6gb: false,
-      from8gbTo12gb: false,
-      from12gbTo16gb: false,
-      above16gb: false,
-    },
-    ratings: {
-      all: false,
-      from5Stars: false,
-      from4Stars: false,
-      from3Stars: false,
-    },
-    screenSize: {
-      below4: false,
-      from4To49: false,
-      from5To59: false,
-      from6To69: false,
-      above7: false,
-    },
-  },
+  filterOptions: defaultFilterOptions,
 };
 
 export const phoneSearchResultReducer = (state, action) => {
@@ -98,6 +102,13 @@ export const phoneSearchResultReducer = (state, action) => {
       return {
         ...state,
         filterOptions: action.payload,
+      };
+    }
+    case "CLEAR_ALL_OPTIONS": {
+      return {
+        ...state,
+        filterOptions: defaultFilterOptions,
+        collapsedFilterPanels: [],
       };
     }
     default:
