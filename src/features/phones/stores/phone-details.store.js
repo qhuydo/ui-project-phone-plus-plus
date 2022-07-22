@@ -56,6 +56,7 @@ export const phoneDetailsReducer = (state, action) => {
           currentDisplaySalePrice: 0,
           priceOffPercentage: 0,
           filterCommentBy: {},
+          isLoading: false,
         };
       const firstVersion = action.payload.versions[0];
       const originalPrice = +firstVersion.originalPrice;
@@ -77,6 +78,7 @@ export const phoneDetailsReducer = (state, action) => {
         ratingCount: countRating(action.payload.comments),
         comments: action.payload.comments ?? [],
         totalCommentPages,
+        isLoading: false,
       };
     }
     case "CHANGE_COLOUR": {

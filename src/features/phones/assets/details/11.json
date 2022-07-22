@@ -27,25 +27,29 @@
       "colour": "#ebe3cc",
       "secondaryColour": "#262626",
       "colourName": "Cream",
-      "thumbnail": "https://i.imgur.com/qsoXPZ8.jpg"
+      "thumbnail": "https://i.imgur.com/qsoXPZ8.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#b4b6dc",
       "secondaryColour": "#262626",
       "colourName": "Purple",
-      "thumbnail": "https://i.imgur.com/IkACqCA.jpg"
+      "thumbnail": "https://i.imgur.com/IkACqCA.jpg",
+      "slideIdx": 3
     },
     {
       "colour": "#435154",
       "secondaryColour": "#282828",
       "colourName": "Green",
-      "thumbnail": "https://i.imgur.com/7Js6oOc.jpg"
+      "thumbnail": "https://i.imgur.com/7Js6oOc.jpg",
+      "slideIdx": 2
     },
     {
       "colour": "#262626",
       "secondaryColour": "#282828",
       "colourName": "Black",
-      "thumbnail": "https://i.imgur.com/l8NAFQN.jpg"
+      "thumbnail": "https://i.imgur.com/l8NAFQN.jpg",
+      "slideIdx": 1
     }
   ],
   "screenSize": [6.7],
@@ -54,8 +58,8 @@
   "ratingPoints": 4,
   "numberOfRatings": 30,
   "images": [
-    "https://i.imgur.com/9T1au9x.png",
     "https://i.imgur.com/aOUIsxx.jpg",
+    "https://i.imgur.com/9T1au9x.png",
     "https://i.imgur.com/zxgsPE7.jpg",
     "https://i.imgur.com/kYhDuVO.jpg",
     "https://i.imgur.com/N1Ip8pa.jpg",

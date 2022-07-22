@@ -27,19 +27,22 @@
       "colour": "#f9f4f0",
       "secondaryColour": "#f9f4f0",
       "colourName": "Starlight",
-      "thumbnail": "https://i.imgur.com/kL44mjP.jpg"
+      "thumbnail": "https://i.imgur.com/kL44mjP.jpg",
+      "slideIdx": 2
     },
     {
       "colour": "#fbded8",
       "secondaryColour": "#fbded8",
       "colourName": "Pink",
-      "thumbnail": "https://i.imgur.com/J7EeX8t.jpg"
+      "thumbnail": "https://i.imgur.com/J7EeX8t.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#ad0516",
       "secondaryColour": "#ad0516",
       "colourName": "Red",
-      "thumbnail": "https://i.imgur.com/w9TrCLQ.jpg"
+      "thumbnail": "https://i.imgur.com/w9TrCLQ.jpg",
+      "slideIdx": 1
     }
   ],
   "screenSize": [5.4],

@@ -34,13 +34,15 @@
       "colour": "#27292B",
       "secondaryColour": "#27292B",
       "colourName": "Graphite Black",
-      "thumbnail": "https://i.imgur.com/3vMxpoI.jpg"
+      "thumbnail": "https://i.imgur.com/3vMxpoI.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#FFFFFF",
       "secondaryColour": "#FFFFFF",
       "colourName": "White",
-      "thumbnail": "https://i.imgur.com/jzfGNj4.jpg"
+      "thumbnail": "https://i.imgur.com/jzfGNj4.jpg",
+      "slideIdx": 1
     }
   ],
   "screenSize": [

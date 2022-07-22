@@ -46,13 +46,15 @@
       "colour": "#5C5B57",
       "secondaryColour": "#5C5B57",
       "colourName": "Black",
-      "thumbnail": "https://i.imgur.com/ShV7fZk.jpg"
+      "thumbnail": "https://i.imgur.com/ShV7fZk.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#494154",
       "secondaryColour": "#494154",
       "colourName": "Violet",
-      "thumbnail": "https://i.imgur.com/guWwOcG.jpg"
+      "thumbnail": "https://i.imgur.com/guWwOcG.jpg",
+      "slideIdx": 1
     }
   ],
   "screenSize": [6.5],

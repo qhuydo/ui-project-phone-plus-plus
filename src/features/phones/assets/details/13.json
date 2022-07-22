@@ -27,19 +27,22 @@
       "colour": "#a3c0e2",
       "secondaryColour": "#181a19",
       "colourName": "Blue",
-      "thumbnail": "https://i.imgur.com/FnYgDhx.jpg"
+      "thumbnail": "https://i.imgur.com/FnYgDhx.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#242424",
       "secondaryColour": "#242424",
       "colourName": "Black",
-      "thumbnail": "https://i.imgur.com/gxmmm5V.jpg"
+      "thumbnail": "https://i.imgur.com/gxmmm5V.jpg",
+      "slideIdx": 1
     },
     {
       "colour": "#f1c2b2",
       "secondaryColour": "#0f0d0e",
       "colourName": "Orange",
-      "thumbnail": "https://i.imgur.com/Fs6IUal.jpg"
+      "thumbnail": "https://i.imgur.com/Fs6IUal.jpg",
+      "slideIdx": 2
     }
   ],
   "screenSize": [6.6],
@@ -48,8 +51,8 @@
   "ratingPoints": 3,
   "numberOfRatings": 100,
   "images": [
-    "https://i.imgur.com/t5PYbSY.jpg",
     "https://i.imgur.com/iNqqeSQ.jpg",
+    "https://i.imgur.com/t5PYbSY.jpg",
     "https://i.imgur.com/JqXV9fx.jpg",
     "https://i.imgur.com/Dp2JJgA.jpg"
   ],

@@ -1,6 +1,5 @@
 import { usePhoneDetailsContext } from "features/phones/context";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState } from "react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 import { Box, Button, Stack } from "@mui/material";
 import "./PhoneDetailsImage.css";
@@ -8,15 +7,34 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import CarouselButton from "components/Button/CarouselButton";
+import { useEffect, useState } from "react";
 
 const PREV_BUTTON_ID = "phone-details-thumbnail-prev-button";
 const NEXT_BUTTON_ID = "phone-details-thumbnail-next-button";
 
 const PhoneDetailsImage = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const {
-    state: { phoneDetails },
+    state: { phoneDetails, selectedColour },
   } = usePhoneDetailsContext();
+
+  const [thumbnailSwiper, setThumbnailSwiper] = useState(null);
+  const [mainSwiper, setMainSwiper] = useState(null);
+
+  useEffect(() => {
+    if (
+      mainSwiper &&
+      !mainSwiper.destroyed &&
+      selectedColour?.slideIdx !== undefined
+    ) {
+      mainSwiper.slideTo(selectedColour?.slideIdx);
+
+      const timer = setTimeout(() => {
+        mainSwiper.update();
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [mainSwiper, selectedColour]);
+
   return (
     <Box position="relative" width={1} height="auto">
       <CarouselButton
@@ -34,10 +52,13 @@ const PhoneDetailsImage = () => {
       />
 
       <Swiper
+        watchSlidesProgress
         spaceBetween={10}
-        thumbs={{ swiper: thumbsSwiper }}
+        onSwiper={setMainSwiper}
+        thumbs={{ swiper: thumbnailSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
         navigation={{
+          enabled: true,
           prevEl: `#${PREV_BUTTON_ID}`,
           nextEl: `#${NEXT_BUTTON_ID}`,
           disabledClass: "Mui-disabled",
@@ -52,11 +73,12 @@ const PhoneDetailsImage = () => {
       </Swiper>
 
       <Swiper
-        onSwiper={setThumbsSwiper}
+        onSwiper={setThumbnailSwiper}
+        pagination
         spaceBetween={10}
         slidesPerView={4}
         freeMode={true}
-        watchSlidesProgress={true}
+        watchSlidesProgress
         modules={[FreeMode, Navigation, Thumbs]}
         className="phone-details-thumbnail-swiper"
       >

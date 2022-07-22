@@ -35,19 +35,22 @@
       "colour": "#808080",
       "secondaryColour": "#808080",
       "colourName": "Grey",
-      "thumbnail": "https://i.imgur.com/jLg5Gye.jpg"
+      "thumbnail": "https://i.imgur.com/jLg5Gye.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#505F4E",
       "secondaryColour": "#505F4E",
       "colourName": "Alpine green",
-      "thumbnail": "https://i.imgur.com/faq57Ld.jpg"
+      "thumbnail": "https://i.imgur.com/faq57Ld.jpg",
+      "slideIdx": 1
     },
     {
       "colour": "#5C5B57",
       "secondaryColour": "#5C5B57",
       "colourName": "Graphite",
-      "thumbnail": "https://i.imgur.com/4lX3jei.jpg"
+      "thumbnail": "https://i.imgur.com/4lX3jei.jpg",
+      "slideIdx": 2
     }
   ],
   "screenSize": [6.1],
@@ -56,9 +59,9 @@
   "ratingPoints": 5,
   "numberOfRatings": 11,
   "images": [
+    "https://i.imgur.com/xNNkE0W.jpg",
     "https://i.imgur.com/SZHqEfc.jpg",
-    "https://i.imgur.com/HQWqekK.jpg",
-    "https://i.imgur.com/xNNkE0W.jpg"
+    "https://i.imgur.com/HQWqekK.jpg"
   ],
   "nSold": 24,
   "spec": {

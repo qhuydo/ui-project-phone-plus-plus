@@ -40,6 +40,15 @@ export const GlobalListProvider = ({ children }) => {
     [favouriteList]
   );
 
+  const addToHistoryList = useCallback(
+    (phone) =>
+      setHistoryList([
+        phone,
+        ...historyList.filter((item) => item.id !== phone.id),
+      ]),
+    [historyList]
+  );
+
   // console.log(favouriteList);
 
   const contextValue = useMemo(() => {
@@ -47,8 +56,9 @@ export const GlobalListProvider = ({ children }) => {
       favourites: favouriteList,
       history: historyList,
       toggleFavourite,
+      addToHistoryList,
     };
-  }, [toggleFavourite, favouriteList, historyList]);
+  }, [favouriteList, historyList, toggleFavourite, addToHistoryList]);
 
   return (
     <GlobalPhoneListContext.Provider value={contextValue}>

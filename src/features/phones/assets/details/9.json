@@ -27,19 +27,22 @@
       "colour": "#b0cfd1",
       "secondaryColour": "#14191d",
       "colourName": "Blue",
-      "thumbnail": "https://i.imgur.com/XLjmcsH.jpg"
+      "thumbnail": "https://i.imgur.com/XLjmcsH.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#abb2ce",
       "secondaryColour": "#14191d",
       "colourName": "Purple",
-      "thumbnail": "https://i.imgur.com/D11qbhS.jpg"
+      "thumbnail": "https://i.imgur.com/D11qbhS.jpg",
+      "slideIdx": 1
     },
     {
       "colour": "#e3e5e4",
       "secondaryColour": "#14191d",
       "colourName": "White",
-      "thumbnail": "https://i.imgur.com/Xy8RjNF.jpg"
+      "thumbnail": "https://i.imgur.com/Xy8RjNF.jpg",
+      "slideIdx": 2
     }
   ],
   "screenSize": [6.5],

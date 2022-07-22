@@ -19,7 +19,8 @@
       "colour": "#c5d9d0",
       "secondaryColour": "#030200",
       "colourName": "Green",
-      "thumbnail": "https://i.imgur.com/FVNhgHT.jpg"
+      "thumbnail": "https://i.imgur.com/FVNhgHT.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#40474f",
@@ -31,7 +32,8 @@
       "colour": "#ededed",
       "secondaryColour": "#050505",
       "colourName": "White",
-      "thumbnail": "https://i.imgur.com/sqVO1mw.jpg"
+      "thumbnail": "https://i.imgur.com/sqVO1mw.jpg",
+      "slideIdx": 1
     }
   ],
   "screenSize": [6.7],

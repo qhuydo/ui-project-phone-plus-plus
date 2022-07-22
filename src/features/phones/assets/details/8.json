@@ -27,13 +27,15 @@
       "colour": "#232323",
       "secondaryColour": "#232323",
       "colourName": "Black",
-      "thumbnail": "https://i.imgur.com/H4te372.jpg"
+      "thumbnail": "https://i.imgur.com/H4te372.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#2e3e62",
       "secondaryColour": "#0f0f11",
       "colourName": "Blue",
-      "thumbnail": "https://i.imgur.com/NgomRec.jpg"
+      "thumbnail": "https://i.imgur.com/NgomRec.jpg",
+      "slideIdx": 1
     },
     {
       "colour": "#981118",

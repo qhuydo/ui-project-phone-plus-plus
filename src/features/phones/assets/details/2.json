@@ -27,13 +27,15 @@
       "colour": "#5C5B57",
       "secondaryColour": "#5C5B57",
       "colourName": "Stormy black",
-      "thumbnail": "https://i.imgur.com/FmyNPUq.jpg"
+      "thumbnail": "https://i.imgur.com/FmyNPUq.jpg",
+      "slideIdx": 0
     },
     {
       "colour": "#FFFEF7",
       "secondaryColour": "#FFFEF7",
       "colourName": "Cloudy white",
-      "thumbnail": "https://i.imgur.com/Z7gI8oi.jpg"
+      "thumbnail": "https://i.imgur.com/Z7gI8oi.jpg",
+      "slideIdx": 1
     }
   ],
   "screenSize": [6.71],
