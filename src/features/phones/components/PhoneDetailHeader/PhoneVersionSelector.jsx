@@ -1,25 +1,10 @@
 import PropTypes from "prop-types";
-import { styled, ToggleButton, ToggleButtonGroup } from "@mui/material";
-
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
-  "& .MuiToggleButtonGroup-grouped": {
-    margin: theme.spacing(1),
-    border: 0,
-    "&.Mui-disabled": {
-      border: 0,
-    },
-    "&:not(:first-of-type)": {
-      borderRadius: theme.shape.borderRadius,
-    },
-    "&:first-of-type": {
-      borderRadius: theme.shape.borderRadius,
-    },
-  },
-}));
+import { ToggleButton } from "@mui/material";
+import BorderlessToggleButtonGroup from "components/Button/BorderlessToggleButtonGroup";
 
 const PhoneVersionSelector = ({ value, onChange, versions }) => {
   return (
-    <StyledToggleButtonGroup
+    <BorderlessToggleButtonGroup
       exclusive
       color="primary"
       value={value.id}
@@ -27,6 +12,9 @@ const PhoneVersionSelector = ({ value, onChange, versions }) => {
       sx={(theme) => ({
         border: `1px solid ${theme.palette.divider}`,
         borderRadius: `${theme.shape.borderRadius}px`,
+        "& .MuiToggleButtonGroup-grouped": {
+          margin: theme.spacing(0.5),
+        },
       })}
     >
       {versions.map((item) => (
@@ -34,7 +22,7 @@ const PhoneVersionSelector = ({ value, onChange, versions }) => {
           {item.name}
         </ToggleButton>
       ))}
-    </StyledToggleButtonGroup>
+    </BorderlessToggleButtonGroup>
   );
 };
 

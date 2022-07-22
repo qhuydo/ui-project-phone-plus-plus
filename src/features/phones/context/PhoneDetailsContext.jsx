@@ -12,6 +12,7 @@ import {
   initialPhoneDetailsState,
   phoneDetailsReducer,
 } from "features/phones/stores/phone-details.store";
+import { filterCommentAsync } from "features/phones/utils";
 
 const PhoneDetailsContext = createContext({
   state: initialPhoneDetailsState,
@@ -57,24 +58,26 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     dispatch({ type: "CHANGE_SPEC_OPEN_STATE", payload: isOpen });
   }, []);
 
-  const addCommentFilter = useCallback(
-    (value) => {
-      dispatch({
-        type: "CHANGE_FILTERS",
-        payload: [...state.filterCommentBy, value],
-      });
-    },
-    [state.filterCommentBy]
-  );
+  const changeCommentFilter = useCallback(
+    async (value) => {
+      if (value) {
+        dispatch({
+          type: "CHANGE_COMMENT_FILTER",
+          payload: value,
+        });
 
-  const removeCommentFilter = useCallback(
-    (value) => {
-      dispatch({
-        type: "CHANGE_FILTERS",
-        payload: state.filterCommentBy.filter((item) => item !== value),
-      });
+        const filteredComments = await filterCommentAsync(
+          state.phoneDetails.comments ?? [],
+          value
+        );
+
+        dispatch({
+          type: "UPDATE_COMMENTS",
+          payload: filteredComments,
+        });
+      }
     },
-    [state.filterCommentBy]
+    [state.phoneDetails?.comments]
   );
 
   const changeCommentPage = useCallback((page) => {
@@ -89,8 +92,7 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
       changeVersion,
       changeQuantity,
       changeSpecOpenState,
-      addCommentFilter,
-      removeCommentFilter,
+      changeCommentFilter,
       changeCommentPage,
     };
   }, [
@@ -99,8 +101,7 @@ export const PhoneDetailsContextProvider = ({ phoneId, children }) => {
     changeVersion,
     changeQuantity,
     changeSpecOpenState,
-    addCommentFilter,
-    removeCommentFilter,
+    changeCommentFilter,
     changeCommentPage,
   ]);
 

@@ -23,13 +23,14 @@ export const initialPhoneDetailsState = {
     4: 0,
     5: 0,
   },
-  filterCommentBy: [],
+  filterCommentBy: "most-relevance",
   comments: [],
   recommendedPhones: [],
   currentCommentPage: 1,
   totalCommentPages: 1,
   commentPageLimit: 5,
   avgRating: 0,
+  isLoadingComment: false,
 };
 
 export const phoneDetailsReducer = (state, action) => {
@@ -47,19 +48,7 @@ export const phoneDetailsReducer = (state, action) => {
       };
     }
     case "ADD_PHONE_DETAILS": {
-      if (!action.payload)
-        return {
-          phoneDetails: null,
-          selectedColour: null,
-          selectedVersion: null,
-          colourChanged: false,
-          quantity: 1,
-          currentDisplayOriginalPrice: 0,
-          currentDisplaySalePrice: 0,
-          priceOffPercentage: 0,
-          filterCommentBy: {},
-          isLoading: false,
-        };
+      if (!action.payload) return initialPhoneDetailsState;
       const firstVersion = action.payload.versions[0];
       const originalPrice = +firstVersion.originalPrice;
       const salePrice = +firstVersion.salePrice;
@@ -126,9 +115,24 @@ export const phoneDetailsReducer = (state, action) => {
         isSpecOpen: !!action.payload,
       };
     }
-    case "CHANGE_FILTERS": {
-      // TODO filter comment
-      return { ...state, filterCommentBy: action.payload };
+    case "CHANGE_COMMENT_FILTER": {
+      return {
+        ...state,
+        filterCommentBy: action.payload,
+        isLoadingComment: true,
+      };
+    }
+    case "UPDATE_COMMENTS": {
+      return {
+        ...state,
+        comments: action.payload ?? [],
+        currentCommentPage: 1,
+        totalCommentPages: getTotalPages(
+          action.payload?.length ?? 0,
+          state.commentPageLimit
+        ),
+        isLoadingComment: false,
+      };
     }
     case "ADD_RECOMMENDED_PHONES": {
       return { ...state, recommendedPhones: action.payload ?? [] };
