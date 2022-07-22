@@ -6,7 +6,14 @@ import {
   usePhoneDetailsContext,
 } from "features/phones/context";
 import { Head } from "components/Head/Head";
-import { Collapse, Container, Stack, Typography } from "@mui/material";
+import {
+  Collapse,
+  Container,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { PhoneDetailsFirstSection } from "features/phones/components/PhoneDetailHeader";
 import NotFound from "features/misc/routes/NotFound";
@@ -30,6 +37,9 @@ export const PhoneDetailsBody = () => {
   const {
     state: { phoneDetails, isLoading, recommendedPhones },
   } = usePhoneDetailsContext();
+
+  const theme = useTheme();
+  const smScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const renderPhoneDetailsCb = useCallback(
     () =>
@@ -66,7 +76,7 @@ export const PhoneDetailsBody = () => {
 
         <Collapse in={recommendedPhones.length !== 0}>
           <Stack direction="column" spacing={2} pb={2}>
-            <Typography variant={"h3"} textAlign="center">
+            <Typography variant={smScreen ? "h4" : "h3"} textAlign="center">
               People also buy
             </Typography>
 
@@ -82,7 +92,11 @@ export const PhoneDetailsBody = () => {
 
         <PhoneCommentSection />
 
-        <Typography variant={"h3"} textAlign="center" sx={{ py: 2 }}>
+        <Typography
+          variant={smScreen ? "h4" : "h3"}
+          textAlign="center"
+          sx={{ py: 2 }}
+        >
           Stores you can buy {phoneDetails.name}
         </Typography>
 

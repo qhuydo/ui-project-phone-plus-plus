@@ -1,12 +1,22 @@
-import { Box, Rating, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Rating,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import PropTypes from "prop-types";
 
 const TotalRatings = ({ ratingCount, totalRating, avgRating }) => {
+  const theme = useTheme();
+  const smScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
-    <Stack direction="column" spacing={1} width={0.45}>
+    <Stack direction="column" spacing={1} width={{ xs: 1, md: 0.65, lg: 0.45 }}>
       <Stack direction="row" spacing={1} alignItems="center" width={1}>
         <Rating
-          size="large"
+          size={smScreen ? "small" : "large"}
           value={+avgRating}
           precision={0.5}
           sx={{
@@ -29,9 +39,14 @@ const TotalRatings = ({ ratingCount, totalRating, avgRating }) => {
 
       <Stack direction="column-reverse" width={1}>
         {Object.entries(ratingCount).map(([key, value]) => (
-          <Stack direction="row" key={key} spacing={1} alignItems="center">
+          <Stack
+            direction="row"
+            key={key}
+            spacing={{ xs: 0.5, md: 1 }}
+            alignItems="center"
+          >
             <Rating
-              size="large"
+              size={smScreen ? "small" : "large"}
               value={+key}
               precision={1}
               sx={{

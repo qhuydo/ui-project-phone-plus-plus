@@ -1,10 +1,13 @@
 import {
   Box,
+  Collapse,
   Divider,
   IconButton,
   Pagination,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import TotalRatings from "features/phones/components/PhoneCommentSection/TotalRatings";
 import { usePhoneDetailsContext } from "features/phones/context";
@@ -29,6 +32,9 @@ const PhoneCommentSection = () => {
     },
     changeCommentPage,
   } = usePhoneDetailsContext();
+
+  const theme = useTheme();
+  const smScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const currentComments = useMemo(
     () => paginate(comments, commentPageLimit, currentCommentPage),
@@ -77,11 +83,11 @@ const PhoneCommentSection = () => {
       alignItems="center"
       justifyContent="center"
       // variant="outlined"
-      p={2}
+      p={{ xs: 0, md: 2 }}
       my={2}
       ref={topListRef}
     >
-      <Typography variant="h3" textAlign="center">
+      <Typography variant={smScreen ? "h4" : "h3"} textAlign="center">
         User reviews & ratings
       </Typography>
 
@@ -95,19 +101,20 @@ const PhoneCommentSection = () => {
         avgRating={avgRating}
       />
 
-      <Box width={0.8}>
+      <Box width={{ xs: 1, lg: 0.8 }}>
         <Divider sx={{ my: 1 }} />
       </Box>
 
-      <Stack direction="column" spacing={1} width={0.8}>
+      <Stack direction="column" spacing={1} width={{ xs: 1, md: 0.8 }}>
         <CommentFilterGroups />
 
-        {totalCommentPages > 1 && (
+        <Collapse in={totalCommentPages > 1}>
           <Stack
             direction="row"
             spacing={1}
             alignItems="center"
             justifyContent="end"
+            width={1}
           >
             <Typography>
               Page No. <b>{currentCommentPage}</b>/{totalCommentPages}.
@@ -127,21 +134,23 @@ const PhoneCommentSection = () => {
               <NavigateNextIcon />
             </IconButton>
           </Stack>
-        )}
+        </Collapse>
       </Stack>
 
-      <Box width={0.8}>
-        {currentComments.map((item) => (
-          <Box display="flex" flexDirection="column" key={item.id}>
-            <Divider />
-            <CommentRow comment={item} phone={phoneDetails} />
-          </Box>
-        ))}
+      <Box width={{ xs: 1, lg: 0.8 }}>
+        <Collapse in={currentComments.length > 0}>
+          {currentComments.map((item) => (
+            <Box display="flex" flexDirection="column" key={item.id}>
+              <Divider />
+              <CommentRow comment={item} phone={phoneDetails} />
+            </Box>
+          ))}
+        </Collapse>
       </Box>
 
       {totalCommentPages > 1 && (
         <Box
-          width={0.8}
+          width={{ xs: 1, md: 0.8 }}
           display="flex"
           alignItem="center"
           justifyContent="center"

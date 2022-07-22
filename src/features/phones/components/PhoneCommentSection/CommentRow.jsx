@@ -8,13 +8,25 @@ import {
   Rating,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const CommentRow = ({ comment, phone }) => {
+  const theme = useTheme();
+  const smScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <Grid container py={2} alignItems="start">
-      <Grid item xs={3} justifyContent="center" alignItems="center">
+      <Grid
+        item
+        md={2.5}
+        px={{ xs: 0, md: 1 }}
+        display={{ xs: "none", md: "flex" }}
+        justifyContent="center"
+        alignItems="center"
+      >
         <Stack direction="column" alignItems="center">
           <Avatar
             src={comment.avatar}
@@ -26,7 +38,7 @@ const CommentRow = ({ comment, phone }) => {
               maxWidth: 200,
               aspectRatio: "1",
               objectFit: "cover",
-              border: (theme) => `2px solid ${theme.palette.divider}`,
+              border: `2px solid ${theme.palette.divider}`,
             }}
           />
 
@@ -43,25 +55,79 @@ const CommentRow = ({ comment, phone }) => {
         </Stack>
       </Grid>
 
-      <Grid item xs={9}>
-        <Stack direction="column" spacing={1} justifyContent="center">
-          <Stack direction="row" spacing={1}>
-            <Rating
-              size="large"
-              value={comment.points}
-              precision={0.5}
-              readOnly
+      <Grid item xs={12} md={9.5}>
+        <Stack
+          direction="column"
+          spacing={1}
+          justifyContent="center"
+          px={{ xs: 0, md: 1 }}
+        >
+          <Stack direction="row" spacing={{ xs: 1, md: 0 }} alignItems="center">
+            <Avatar
+              src={comment.avatar}
+              variant="circular"
+              sx={{
+                display: smScreen ? "flex" : "none",
+                justifyContent: "center",
+                width: 1,
+                height: 1,
+                maxWidth: 80,
+                aspectRatio: "1",
+                objectFit: "cover",
+                border: `1px solid ${theme.palette.divider}`,
+              }}
             />
-            <Typography variant="h6">{comment.title}</Typography>
+
+            <Stack
+              direction="column"
+              spacing={0.5}
+              display={{ xs: "flex", md: "none" }}
+            >
+              <Stack
+                direction="row"
+                flexWrap="wrap"
+                spacing={1}
+                alignItems="baseline"
+              >
+                <Typography variant="h6" textAlign="center">
+                  {comment.by}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  textAlign="center"
+                  color="text.secondary"
+                >
+                  {comment.memberRank}
+                </Typography>
+              </Stack>
+
+              <Stack direction="row" spacing={1} flexWrap="wrap">
+                <Rating
+                  size={smScreen ? "small" : "large"}
+                  value={comment.points}
+                  precision={0.5}
+                  readOnly
+                />
+                <Typography
+                  variant={smScreen ? "body1" : "h6"}
+                  fontWeight="bold"
+                >
+                  {comment.title}
+                </Typography>
+              </Stack>
+            </Stack>
           </Stack>
 
-          <Stack direction="row" spacing={2} alignItems="center">
+          <Stack
+            direction="row"
+            spacing={{ xs: 1.5, md: 2 }}
+            justifyContent="baseline"
+            flexWrap="wrap"
+          >
             {comment.isVerifiedPurchase && (
               <Stack direction="row" spacing={0.5} alignItems="center">
                 <CheckCircleIcon color="success" />
-                <Typography
-                  sx={{ color: (theme) => theme.palette.success.main }}
-                >
+                <Typography sx={{ color: theme.palette.success.main }}>
                   Verified Purchased
                 </Typography>
               </Stack>
@@ -76,7 +142,7 @@ const CommentRow = ({ comment, phone }) => {
             )}
           </Stack>
 
-          <Stack direction="row" spacing={1}>
+          <Stack direction="row" flexWrap="wrap" spacing={1}>
             <Typography color="info.main">{phone.name}</Typography>
             {comment.version && (
               <>

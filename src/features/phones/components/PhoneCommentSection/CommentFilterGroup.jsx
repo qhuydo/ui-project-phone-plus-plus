@@ -18,17 +18,30 @@ const CommentFilterGroups = () => {
   );
 
   return (
-    <Stack direction="row" spacing={2} alignItems="center" width={1}>
-      <Typography variant="h5">Filter by</Typography>
+    <Stack
+      direction="row"
+      alignItems="center"
+      width={1}
+      spacing={2}
+      flexWrap="wrap"
+    >
+      <Typography variant="h5" sx={{ whiteSpace: "noWrap" }}>
+        Filter by
+      </Typography>
 
       <BorderlessToggleButtonGroup
         exclusive
         color="primary"
         value={filterCommentBy}
         onChange={onFilterValueChanged}
+        sx={{ flexWrap: "wrap" }}
       >
         {filterOptions.map((item) => (
-          <ToggleButton value={item.key} key={item.key}>
+          <ToggleButton
+            value={item.key}
+            key={item.key}
+            sx={{ whiteSpace: "noWrap", mr: 1 }}
+          >
             {item.value}
           </ToggleButton>
         ))}

@@ -6,6 +6,8 @@ import {
   Paper,
   Stack,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import { usePhoneDetailsContext } from "features/phones/context";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
@@ -19,7 +21,7 @@ function renderContent(contents) {
         switch (item.type) {
           case "text":
             return (
-              <Box key={idx}>
+              <Box key={idx} width={{ xs: 1, md: 0.9 }}>
                 {item.content.split("\n").map((i, key) => {
                   return <Typography key={key}>{i}</Typography>;
                 })}
@@ -30,8 +32,8 @@ function renderContent(contents) {
             return (
               <Box
                 key={idx}
+                width={{ xs: 1, md: 0.8 }}
                 sx={(theme) => ({
-                  width: 0.8,
                   // border: `1px solid ${theme.palette.divider}`,
                   borderRadius: `${theme.shape.borderRadius}px`,
                   overflow: "hidden",
@@ -68,6 +70,9 @@ const PhoneSpecificationSection = () => {
     changeSpecOpenState,
   } = usePhoneDetailsContext();
 
+  const theme = useTheme();
+  const smScreen = useMediaQuery(theme.breakpoints.down("md"));
+
   const changeSpecOpenStateCb = useCallback(
     () => changeSpecOpenState(!isSpecOpen),
     [changeSpecOpenState, isSpecOpen]
@@ -77,13 +82,13 @@ const PhoneSpecificationSection = () => {
     <Stack
       component={Paper}
       direction="column"
-      spacing={1}
+      spacing={{ xs: 0.5, md: 1 }}
       alignItems="center"
       justifyContent="center"
-      variant="outlined"
-      p={2}
+      variant={smScreen ? null : "outlined"}
+      p={{ xs: 0, md: 2 }}
     >
-      <Typography variant="h3" textAlign="center">
+      <Typography variant={smScreen ? "h4" : "h3"} textAlign="center">
         Product specification
       </Typography>
 
@@ -92,12 +97,17 @@ const PhoneSpecificationSection = () => {
       </Box>
 
       <Box
-        sx={(theme) => ({
-          width: 0.5,
+        width={{ xs: 1, md: 0.65 }}
+        sx={{
           border: `1px solid ${theme.palette.divider}`,
           borderRadius: `${theme.shape.borderRadius}px`,
           overflow: "hidden",
-        })}
+          maxHeight: 360,
+          justifyContent: "center",
+          [theme.breakpoints.up("sm")]: {
+            maxHeight: "initial",
+          },
+        }}
       >
         <Box
           component="img"
@@ -110,13 +120,13 @@ const PhoneSpecificationSection = () => {
         />
       </Box>
 
-      <Box sx={{ width: 0.9 }}>
+      <Box width={{ xs: 1, md: 0.9 }}>
         {spec.collapsedText.split("\n").map((i, key) => {
           return <Typography key={key}>{i}</Typography>;
         })}
       </Box>
 
-      <Collapse in={isSpecOpen} sx={{ width: 0.9 }}>
+      <Collapse in={isSpecOpen} width={{ xs: 1, md: 0.9 }}>
         <Stack direction="column" spacing={1} alignItems="center">
           {renderContent(spec.contents)}
           <Typography variant="caption">{spec.captionText}</Typography>
