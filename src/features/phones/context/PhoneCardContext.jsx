@@ -6,6 +6,7 @@ import {
   useState,
 } from "react";
 import PropTypes from "prop-types";
+import { getAvgRatings } from "features/phones/utils";
 
 const PhoneCardContext = createContext({
   phone: null,
@@ -16,6 +17,7 @@ const PhoneCardContext = createContext({
   changeColour: () => {},
   changeVersion: () => {},
   pushSale: null,
+  avgRating: 0,
 });
 
 export const usePhoneCardContext = () => {
@@ -35,6 +37,10 @@ export const PhoneCardContextProvider = ({ phone, pushSale, children }) => {
 
     return ((originalPrice - salePrice) / originalPrice) * 100;
   });
+
+  const avgRating = useMemo(() => {
+    return getAvgRatings(phone.comments);
+  }, [phone.comments]);
 
   const changeColour = useCallback((colour) => {
     if (colour) {
@@ -64,6 +70,7 @@ export const PhoneCardContextProvider = ({ phone, pushSale, children }) => {
       selectedColour,
       selectedThumbnail,
       priceOffPercentage,
+      avgRating,
       changeColour,
       changeVersion,
       pushSale,
@@ -74,6 +81,7 @@ export const PhoneCardContextProvider = ({ phone, pushSale, children }) => {
     selectedColour,
     selectedThumbnail,
     priceOffPercentage,
+    avgRating,
     changeColour,
     changeVersion,
     pushSale,

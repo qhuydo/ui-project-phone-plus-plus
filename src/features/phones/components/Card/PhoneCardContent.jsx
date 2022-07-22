@@ -29,6 +29,7 @@ const PhoneCardContent = ({ sx }) => {
     changeVersion,
     priceOffPercentage,
     pushSale,
+    avgRating,
   } = usePhoneCardContext();
 
   const { addItem } = useCartContext();
@@ -155,18 +156,18 @@ const PhoneCardContent = ({ sx }) => {
           item
           container
           flexDirection="row"
-          alignItems="center"
+          alignItems="end"
           justifyContent="center"
         >
           <Rating
             size="medium"
-            value={phone.ratingPoints}
+            value={+avgRating}
             precision={0.5}
             readOnly
             sx={{ mr: 0.5 }}
           />
           <Typography variant="caption" sx={{ ml: 0.5 }}>
-            {`(${phone.numberOfRatings})`}
+            {`(${phone.comments?.length ?? 0})`}
           </Typography>
         </Grid>
       </Grid>

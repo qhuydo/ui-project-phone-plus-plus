@@ -20,3 +20,11 @@ export function countRating(ratings) {
     5: ratingCount[4],
   };
 }
+
+export function getAvgRatings(comments) {
+  const total = (comments ?? []).reduce((partialSum, item) => {
+    return partialSum + item.points;
+  }, 0);
+  const avgRating = (total / (comments?.length ?? 1)).toFixed(1);
+  return isNaN(avgRating) ? "0" : avgRating;
+}

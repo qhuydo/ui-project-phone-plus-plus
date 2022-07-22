@@ -25,6 +25,7 @@ const PhoneCommentSection = () => {
       commentPageLimit,
       currentCommentPage,
       totalCommentPages,
+      avgRating,
     },
     changeCommentPage,
   } = usePhoneDetailsContext();
@@ -90,7 +91,8 @@ const PhoneCommentSection = () => {
 
       <TotalRatings
         ratingCount={ratingCount}
-        totalRating={phoneDetails.comments ? phoneDetails.comments.length : 0}
+        totalRating={phoneDetails.comments?.length ?? 0}
+        avgRating={avgRating}
       />
 
       <Box width={0.8}>

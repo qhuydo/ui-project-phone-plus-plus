@@ -1,6 +1,7 @@
 import {
   calculatePhoneDetailsPrices,
   countRating,
+  getAvgRatings,
   getTotalPages,
 } from "features/phones/utils";
 
@@ -28,6 +29,7 @@ export const initialPhoneDetailsState = {
   currentCommentPage: 1,
   totalCommentPages: 1,
   commentPageLimit: 5,
+  avgRating: 0,
 };
 
 export const phoneDetailsReducer = (state, action) => {
@@ -79,6 +81,7 @@ export const phoneDetailsReducer = (state, action) => {
         comments: action.payload.comments ?? [],
         totalCommentPages,
         isLoading: false,
+        avgRating: getAvgRatings(action.payload.comments),
       };
     }
     case "CHANGE_COLOUR": {

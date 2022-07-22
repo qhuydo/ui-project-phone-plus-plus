@@ -30,6 +30,7 @@ const PhoneDetailsHeader = () => {
       currentDisplayOriginalPrice,
       currentDisplaySalePrice,
       quantity,
+      avgRating,
     },
     changeColour,
     changeVersion,
@@ -69,14 +70,14 @@ const PhoneDetailsHeader = () => {
       <Stack direction="row" spacing={1} alignItems="center">
         <Rating
           size="large"
-          value={phoneDetails.ratingPoints}
+          value={+avgRating}
           precision={0.5}
           readOnly
           sx={{ mr: 0.5 }}
         />
         <Typography variant="h6" sx={{ ml: 0.5 }}>
-          {`(${phoneDetails.numberOfRatings} ${
-            phoneDetails.numberOfRatings === 1 ? "rating" : "ratings"
+          {`(${phoneDetails.comments?.length ?? 0} ${
+            phoneDetails.comments?.length === 1 ? "rating" : "ratings"
           })`}
         </Typography>
 

@@ -63,8 +63,6 @@
   "screenSize": [6.8],
   "ram": [8, 12],
   "memory": [128, 256, 512],
-  "ratingPoints": 5,
-  "numberOfRatings": 18,
   "images": [
     "https://i.imgur.com/GPi5oE8.jpg",
     "https://i.imgur.com/juULXSP.jpg",
