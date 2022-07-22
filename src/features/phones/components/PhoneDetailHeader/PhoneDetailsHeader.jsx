@@ -64,8 +64,10 @@ const PhoneDetailsHeader = () => {
   }, [addItem, phoneDetails, selectedColour, selectedVersion, quantity]);
 
   return (
-    <Stack direction="column" spacing={1}>
-      <Typography variant="h2">{phoneDetails.name}</Typography>
+    <Stack direction="column" spacing={1} width={1}>
+      <Typography variant="h2" flexWrap>
+        {phoneDetails.name}
+      </Typography>
 
       <Stack direction="row" spacing={1} alignItems="center">
         <Rating
@@ -88,30 +90,45 @@ const PhoneDetailsHeader = () => {
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={3} alignItems="baseline">
+      <Stack
+        direction={{ xs: "column", xl: "row" }}
+        spacing={{ xs: 0.5, xl: 3 }}
+        alignItems="baseline"
+      >
         <Typography variant="h3" fontWeight="bold">
           {currentDisplaySalePrice}
         </Typography>
 
-        <Typography
-          variant="h4"
-          color="text.secondary"
-          sx={{
-            textDecoration: "line-through",
-          }}
+        <Stack
+          direction="row"
+          spacing={{ xs: 0.5, md: 3 }}
+          alignItems="baseline"
         >
-          {currentDisplayOriginalPrice}
-        </Typography>
+          <Typography
+            variant="h4"
+            color="text.secondary"
+            sx={{
+              textDecoration: "line-through",
+            }}
+          >
+            {currentDisplayOriginalPrice}
+          </Typography>
 
-        {priceOffPercentage !== 0 && !isNaN(priceOffPercentage) && (
-          <OutlinedChip
-            label={`Save ${parseInt(priceOffPercentage)}%`}
-            sx={{ mr: 0.5, py: 2 }}
-          />
-        )}
+          {priceOffPercentage !== 0 && !isNaN(priceOffPercentage) && (
+            <OutlinedChip
+              label={`Save ${parseInt(priceOffPercentage)}%`}
+              sx={{ mr: 0.5, py: 2 }}
+            />
+          )}
+        </Stack>
       </Stack>
 
-      <Stack direction="column" display="block" py={0.5} spacing={0.5}>
+      <Stack
+        direction="column"
+        display="block"
+        py={{ xs: 0, md: 0.5 }}
+        spacing={0.5}
+      >
         {phoneDetails.colours.length > 1 && (
           <Typography
             variant="h6"
@@ -145,7 +162,12 @@ const PhoneDetailsHeader = () => {
         </Collapse>
       </Stack>
 
-      <Stack direction="column" display="block" py={0.5} spacing={0.5}>
+      <Stack
+        direction="column"
+        display="block"
+        py={{ xs: 0, md: 0.5 }}
+        spacing={0.5}
+      >
         {phoneDetails.versions.length > 1 && (
           <Typography
             variant="h6"

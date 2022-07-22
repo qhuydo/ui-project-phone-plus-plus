@@ -36,7 +36,7 @@ const PhoneDetailsImage = () => {
   }, [mainSwiper, selectedColour]);
 
   return (
-    <Box position="relative" width={1} height="auto">
+    <Box position="relative" width={1} height="auto" justifyContent="center">
       <CarouselButton
         id={PREV_BUTTON_ID}
         variant="outlined"
@@ -51,47 +51,69 @@ const PhoneDetailsImage = () => {
         fontSize="large"
       />
 
-      <Swiper
-        watchSlidesProgress
-        spaceBetween={10}
-        onSwiper={setMainSwiper}
-        thumbs={{ swiper: thumbnailSwiper }}
-        modules={[FreeMode, Navigation, Thumbs]}
-        navigation={{
-          enabled: true,
-          prevEl: `#${PREV_BUTTON_ID}`,
-          nextEl: `#${NEXT_BUTTON_ID}`,
-          disabledClass: "Mui-disabled",
-        }}
-        className="phone-details-swiper"
-      >
-        {phoneDetails.images.map((item, index) => (
-          <SwiperSlide key={index}>
-            <Box component="img" src={item} className="phone-details-img" />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <Box display="flex" alignItems="center" justifyContent="center">
+        <Box
+          width={{
+            xs: 200,
+            sm: 250,
+            md: 350,
+            lg: "auto",
+          }}
+          maxWidth={500}
+        >
+          <Swiper
+            watchSlidesProgress
+            spaceBetween={10}
+            onSwiper={setMainSwiper}
+            thumbs={{ swiper: thumbnailSwiper }}
+            modules={[FreeMode, Navigation, Thumbs]}
+            navigation={{
+              enabled: true,
+              prevEl: `#${PREV_BUTTON_ID}`,
+              nextEl: `#${NEXT_BUTTON_ID}`,
+              disabledClass: "Mui-disabled",
+            }}
+            className="phone-details-swiper"
+          >
+            {phoneDetails.images.map((item, index) => (
+              <SwiperSlide key={index}>
+                <Box component="img" src={item} className="phone-details-img" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </Box>
+      </Box>
 
-      <Swiper
-        onSwiper={setThumbnailSwiper}
-        pagination
-        spaceBetween={10}
-        slidesPerView={4}
-        freeMode={true}
-        watchSlidesProgress
-        modules={[FreeMode, Navigation, Thumbs]}
-        className="phone-details-thumbnail-swiper"
+      <Box
+        height={{
+          xs: 80,
+          sm: "15%",
+          md: "20%",
+        }}
+        alignItems="center"
       >
-        {phoneDetails.images.map((item, index) => (
-          <SwiperSlide key={index}>
-            <Box
-              component="img"
-              src={item}
-              className="phone-details-thumbnail"
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+        <Swiper
+          centerInsufficientSlides
+          onSwiper={setThumbnailSwiper}
+          pagination
+          spaceBetween={10}
+          slidesPerView={"auto"}
+          freeMode={true}
+          watchSlidesProgress
+          modules={[FreeMode, Navigation, Thumbs]}
+          className="phone-details-thumbnail-swiper"
+        >
+          {phoneDetails.images.map((item, index) => (
+            <SwiperSlide key={index}>
+              <Box
+                component="img"
+                src={item}
+                className="phone-details-thumbnail"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
 
       <Stack direction="row" spacing={1} width={1} pt={2}>
         <Button fullWidth variant="contained">

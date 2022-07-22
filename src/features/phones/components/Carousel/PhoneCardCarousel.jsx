@@ -52,6 +52,10 @@ const PhoneCardCarousel = ({ phones, phonesPerView, renderPhoneCb, id }) => {
         }}
         modules={[Pagination, Navigation, Thumbs]}
         breakpoints={{
+          [0]: {
+            slidesPerView: phonesPerView.xs,
+            spaceBetween: 0,
+          },
           [theme.breakpoints.values["sm"]]: {
             slidesPerView: phonesPerView.sm,
             spaceBetween: 4,
