@@ -10,6 +10,7 @@ const FilterHeaderContainer = {
   justifyContent: "space-between",
   width: 1,
   pt: 1,
+  flexWrap: "wrap",
 };
 
 const iconStyle = () => ({

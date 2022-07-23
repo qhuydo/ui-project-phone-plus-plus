@@ -72,7 +72,6 @@ const filterOptionsList = [
     key: "ratings",
     name: "Rating",
     items: [
-      { key: "all", name: "All" },
       { key: "from5Stars", name: "From 5 Stars" },
       { key: "from4Stars", name: "From 4 Stars" },
       { key: "from3Stars", name: "From 3 Stars" },

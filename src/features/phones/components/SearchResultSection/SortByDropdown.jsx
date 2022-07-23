@@ -3,7 +3,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const SortByDropdown = ({ value, onChange }) => {
   return (
-    <FormControl sx={{ minWidth: 120 }} size="small">
+    <FormControl sx={{ minWidth: 120, mr: 1, pt: 1 }} size="small">
       <InputLabel id="sort-by-select">Sort by</InputLabel>
 
       <Select

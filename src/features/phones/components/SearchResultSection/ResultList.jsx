@@ -23,7 +23,7 @@ const ResultList = () => {
     <Grid container sx={{ width: 1, alignItems: "center" }}>
       {isLoading &&
         [...Array(N_LOADING_ITEMS).keys()].map((key) => (
-          <Grid item xs={6} lg={4} xl={3} key={key} p={0.5}>
+          <Grid item xs={12} sm={6} md={4} xl={3} key={key} p={0.5}>
             <PhoneCardSkeleton />
           </Grid>
         ))}
@@ -39,7 +39,7 @@ const ResultList = () => {
       )}
       {!isLoading &&
         phones.map((phone) => (
-          <Grid item xs={6} lg={4} xl={3} key={phone.id} p={0.5}>
+          <Grid item xs={12} sm={6} md={4} xl={3} key={phone.id} p={0.5}>
             <PhoneCardContextProvider phone={phone}>
               <PhoneCard />
             </PhoneCardContextProvider>

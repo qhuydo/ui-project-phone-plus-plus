@@ -11,6 +11,8 @@ import {
 } from "features/phones/context/SearchResultContext";
 import FilterColumn from "../components/SearchResultSection/FilterColumn";
 import { useDebounce } from "hooks";
+import FilterDialog from "features/phones/components/SearchResultSection/FilterDialog";
+import { useForm, FormProvider } from "react-hook-form";
 
 const PhoneSearchResult = () => {
   return (
@@ -27,6 +29,7 @@ const PhoneSearchResultBody = () => {
     state: { allResults: phones, filterOptions, isLoading, sortBy },
     addSearchResult,
     dispatch,
+    changeFilterOptionValues,
   } = useSearchResultContext();
 
   const debouncedFilterOptions = useDebounce(filterOptions, 100);
@@ -34,6 +37,15 @@ const PhoneSearchResultBody = () => {
   const keyword = useMemo(() => {
     return searchParams.get("keyword") || "";
   }, [searchParams]);
+
+  const form = useForm({
+    defaultValues: useMemo(() => filterOptions, [filterOptions]),
+  });
+
+  useEffect(() => {
+    const subscription = form.watch((value) => changeFilterOptionValues(value));
+    return () => subscription.unsubscribe();
+  }, [changeFilterOptionValues, form]);
 
   useEffect(() => {
     (async () => {
@@ -88,12 +100,32 @@ const PhoneSearchResultBody = () => {
           )}
         </Typography>
 
+        <Box
+          width={1}
+          justifyContent="end"
+          display={{ xs: "flex", lg: "none" }}
+          pb={2.5}
+        >
+          <FormProvider {...form}>
+            <FilterDialog />
+          </FormProvider>
+        </Box>
+
         <Grid container>
-          <Grid item xs={3} sx={{ zIndex: 10 }}>
-            <FilterColumn />
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{ zIndex: 10 }}
+            pr={{ md: 1, lg: 1.25 }}
+            display={{ xs: "none", lg: "flex" }}
+          >
+            <FormProvider {...form}>
+              <FilterColumn />
+            </FormProvider>
           </Grid>
 
-          <Grid item xs={9}>
+          <Grid item xs={12} lg={9} pl={{ md: 1, lg: 1.25 }}>
             <SearchResultSection />
           </Grid>
         </Grid>

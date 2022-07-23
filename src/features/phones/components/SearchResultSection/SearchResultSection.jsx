@@ -50,10 +50,16 @@ const SearchResultSection = () => {
   );
 
   return (
-    <Stack direction="column" spacing={2} p={1} ref={topListRef}>
-      <Stack direction="row" spacing={1} justifyContent="space-between">
+    <Stack direction="column" spacing={2} pb={1} ref={topListRef}>
+      <Stack direction="row" justifyContent="space-between" flexWrap="wrap">
         <SortByDropdown value={sortBy} onChange={changeSortMethod} />
-        <Stack direction="row" spacing={1} alignItems="center">
+        <Stack
+          direction="row"
+          spacing={1}
+          alignItems="center"
+          pt={1}
+          justifyContent="space-between"
+        >
           <PageLimitDropdown value={pageLimit} onChange={changePageLimit} />
           <Typography>
             Page No. <b>{currentPage}</b>/{nPages}.

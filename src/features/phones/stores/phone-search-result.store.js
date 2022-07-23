@@ -30,7 +30,6 @@ const defaultFilterOptions = {
     above16gb: false,
   },
   ratings: {
-    all: false,
     from5Stars: false,
     from4Stars: false,
     from3Stars: false,
