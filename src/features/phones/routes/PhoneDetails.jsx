@@ -23,6 +23,7 @@ import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCaro
 import { SwiperSlide } from "swiper/react";
 import { PhoneCard } from "features/phones/components/Card";
 import { NearbyStoreList } from "features/stores/components";
+import Router from "routes/router";
 
 export const PhoneDetails = () => {
   const { id } = useParams();
@@ -66,7 +67,7 @@ export const PhoneDetailsBody = () => {
           currentPage={`${phoneDetails.name}`}
           links={[
             {
-              to: "/phone",
+              to: Router.getCategoryPage(phoneDetails.category),
               page: phoneDetails.categoryName ?? "Brand",
             },
           ]}

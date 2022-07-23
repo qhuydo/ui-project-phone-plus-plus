@@ -1,7 +1,7 @@
 import { getTotalPages } from "features/phones/utils";
 import { MAX_PRICE, MIN_PRICE } from "utils/constants";
 
-const defaultFilterOptions = {
+export const defaultFilterOptions = {
   priceRange: [MIN_PRICE, MAX_PRICE],
   brand: {
     apple: false,

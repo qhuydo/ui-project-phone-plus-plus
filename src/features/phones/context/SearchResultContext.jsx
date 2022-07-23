@@ -7,6 +7,7 @@ import {
 } from "react";
 import PropTypes from "prop-types";
 import {
+  defaultFilterOptions,
   initialSearchResultState,
   phoneSearchResultReducer,
 } from "features/phones/stores";
@@ -14,17 +15,28 @@ import {
 const SearchResultContext = createContext({
   state: initialSearchResultState,
   dispatch: () => {},
+  showBrandFilterOption: false,
 });
 
 export const useSearchResultContext = () => {
   return useContext(SearchResultContext);
 };
 
-export const SearchResultContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(
-    phoneSearchResultReducer,
-    initialSearchResultState
-  );
+export const SearchResultContextProvider = ({
+  showBrandFilterOption,
+  initialBrand,
+  children,
+}) => {
+  const [state, dispatch] = useReducer(phoneSearchResultReducer, {
+    ...initialSearchResultState,
+    filterOptions: {
+      ...defaultFilterOptions,
+      brand: Object.keys(defaultFilterOptions.brand).reduce((map, key) => {
+        map[key] = key === initialBrand;
+        return map;
+      }, {}),
+    },
+  });
 
   const changeSortMethod = useCallback((e) => {
     // console.log(e.target.value);
@@ -74,6 +86,7 @@ export const SearchResultContextProvider = ({ children }) => {
       changeFilterPanelCollapseState,
       changeFilterOptionValues,
       clearAllFilterOptions,
+      showBrandFilterOption,
     }),
     [
       state,
@@ -84,6 +97,7 @@ export const SearchResultContextProvider = ({ children }) => {
       changeFilterPanelCollapseState,
       changeFilterOptionValues,
       clearAllFilterOptions,
+      showBrandFilterOption,
     ]
   );
 
@@ -94,6 +108,13 @@ export const SearchResultContextProvider = ({ children }) => {
   );
 };
 
+SearchResultContextProvider.defaultProps = {
+  showBrandFilterOption: false,
+  initialBrand: undefined,
+};
+
 SearchResultContextProvider.propTypes = {
   children: PropTypes.element,
+  showBrandFilterOption: PropTypes.bool,
+  initialBrand: PropTypes.string,
 };

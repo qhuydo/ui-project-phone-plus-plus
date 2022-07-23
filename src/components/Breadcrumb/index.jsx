@@ -20,7 +20,13 @@ export const DefaultBreadcrumb = ({ links, currentPage }) => {
         Home
       </Link>
       {links.map((link, idx) => (
-        <Link underline="hover" color="inherit" key={idx} to={link.to}>
+        <Link
+          component={RouterLink}
+          underline="hover"
+          color="inherit"
+          key={idx}
+          to={link.to}
+        >
           {link.page}
         </Link>
       ))}

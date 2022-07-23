@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import { useEffect, useMemo } from "react";
 import { findPhoneAndFilter } from "features/phones/api";
 import { Box, Container, Grid, Typography } from "@mui/material";
@@ -13,10 +13,17 @@ import FilterColumn from "../components/SearchResultSection/FilterColumn";
 import { useDebounce } from "hooks";
 import FilterDialog from "features/phones/components/SearchResultSection/FilterDialog";
 import { useForm, FormProvider } from "react-hook-form";
+import PropTypes from "prop-types";
+import { categories } from "features/phones/assets";
 
-const PhoneSearchResult = () => {
+const PhoneSearchResult = ({ categoryPage }) => {
+  const { brand } = useParams();
+
   return (
-    <SearchResultContextProvider>
+    <SearchResultContextProvider
+      showBrandFilterOption={!categoryPage}
+      initialBrand={brand}
+    >
       <PhoneSearchResultBody />
     </SearchResultContextProvider>
   );
@@ -24,12 +31,14 @@ const PhoneSearchResult = () => {
 
 const PhoneSearchResultBody = () => {
   const [searchParams] = useSearchParams();
+  const { brand } = useParams();
 
   const {
     state: { allResults: phones, filterOptions, isLoading, sortBy },
     addSearchResult,
     dispatch,
     changeFilterOptionValues,
+    showBrandFilterOption,
   } = useSearchResultContext();
 
   const debouncedFilterOptions = useDebounce(filterOptions, 100);
@@ -37,6 +46,12 @@ const PhoneSearchResultBody = () => {
   const keyword = useMemo(() => {
     return searchParams.get("keyword") || "";
   }, [searchParams]);
+
+  const brandName = useMemo(() => {
+    const category = categories.find((item) => item.key === brand);
+
+    return category?.name ?? "category";
+  }, [brand]);
 
   const form = useForm({
     defaultValues: useMemo(() => filterOptions, [filterOptions]),
@@ -50,6 +65,10 @@ const PhoneSearchResultBody = () => {
   useEffect(() => {
     (async () => {
       dispatch({ type: "SET_LOADING" });
+      if (!showBrandFilterOption && !brand) {
+        addSearchResult([]);
+        return;
+      }
       const phones = await findPhoneAndFilter(
         searchParams.get("keyword") || "",
         debouncedFilterOptions,
@@ -57,13 +76,26 @@ const PhoneSearchResultBody = () => {
       );
       addSearchResult(phones);
     })();
-  }, [addSearchResult, debouncedFilterOptions, dispatch, searchParams, sortBy]);
+  }, [
+    addSearchResult,
+    brand,
+    debouncedFilterOptions,
+    dispatch,
+    searchParams,
+    showBrandFilterOption,
+    sortBy,
+  ]);
 
   return (
     <>
       <Head title={`Search results for "${keyword}"`} />
       <Container>
-        <DefaultBreadcrumb currentPage={`Search results for "${keyword}"`} />
+        {showBrandFilterOption && (
+          <DefaultBreadcrumb currentPage={`Search results for "${keyword}"`} />
+        )}
+        {!showBrandFilterOption && (
+          <DefaultBreadcrumb currentPage={brandName} />
+        )}
         <Box
           height={300}
           display="flex"
@@ -81,24 +113,38 @@ const PhoneSearchResultBody = () => {
           </Typography>
         </Box>
 
-        <Typography
-          variant="h4"
-          textAlign="center"
-          sx={{
-            my: 2,
-          }}
-        >
-          Search results for {'"'}
-          <b>{keyword}</b>
-          {'"'}{" "}
-          {!isLoading && (
-            <>
-              {" "}
-              {` - ${phones.length}`}{" "}
-              {`${phones.length === 1 ? "result" : "results"}`} found
-            </>
-          )}
-        </Typography>
+        {showBrandFilterOption && (
+          <Typography
+            variant="h4"
+            textAlign="center"
+            sx={{
+              my: 2,
+            }}
+          >
+            Search results for {'"'}
+            <b>{keyword}</b>
+            {'"'}{" "}
+            {!isLoading && (
+              <>
+                {" "}
+                {` - ${phones.length}`}{" "}
+                {`${phones.length === 1 ? "result" : "results"}`} found
+              </>
+            )}
+          </Typography>
+        )}
+
+        {!showBrandFilterOption && (
+          <Typography
+            variant="h4"
+            textAlign="center"
+            sx={{
+              my: 2,
+            }}
+          >
+            {brandName}
+          </Typography>
+        )}
 
         <Box
           width={1}
@@ -132,6 +178,14 @@ const PhoneSearchResultBody = () => {
       </Container>
     </>
   );
+};
+
+PhoneSearchResult.defaultProps = {
+  categoryPage: false,
+};
+
+PhoneSearchResult.propTypes = {
+  categoryPage: PropTypes.bool,
 };
 
 export default PhoneSearchResult;

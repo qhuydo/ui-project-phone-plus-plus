@@ -83,6 +83,7 @@ const FilterOptions = () => {
   const {
     state: { collapsedFilterPanels },
     changeFilterPanelCollapseState,
+    showBrandFilterOption,
   } = useSearchResultContext();
 
   const { control } = useFormContext();
@@ -97,59 +98,65 @@ const FilterOptions = () => {
 
   return (
     <Stack direction="column" spacing={0.5} width={1}>
-      {filterOptionsList.map((option, idx) => {
-        return (
-          <Stack direction="column" spacing={0.5} key={option.name}>
-            <Accordion
-              key={option.name}
-              expanded={expansionState[option.name]}
-              onChange={changeFilterPanelCollapseState(option)}
-              elevation={0}
-            >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
+      {filterOptionsList
+        .filter(
+          (option) =>
+            showBrandFilterOption ||
+            (!showBrandFilterOption && option.key !== "brand")
+        )
+        .map((option, idx) => {
+          return (
+            <Stack direction="column" spacing={0.5} key={option.name}>
+              <Accordion
+                key={option.name}
+                expanded={expansionState[option.name]}
+                onChange={changeFilterPanelCollapseState(option)}
+                elevation={0}
               >
-                <Typography variant="h6" fontWeight="bold">
-                  {option.name}
-                </Typography>
-              </AccordionSummary>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                >
+                  <Typography variant="h6" fontWeight="bold">
+                    {option.name}
+                  </Typography>
+                </AccordionSummary>
 
-              <AccordionDetails>
-                <FormGroup>
-                  {option.items.map((item) => {
-                    return (
-                      <FormControlLabel
-                        control={
-                          <Controller
-                            control={control}
-                            name={`${option.key}.${item.key}`}
-                            render={({ field: props }) => (
-                              <Checkbox
-                                {...props}
-                                //eslint-disable-next-line react/prop-types
-                                checked={props.value}
-                                onChange={(e) =>
+                <AccordionDetails>
+                  <FormGroup>
+                    {option.items.map((item) => {
+                      return (
+                        <FormControlLabel
+                          control={
+                            <Controller
+                              control={control}
+                              name={`${option.key}.${item.key}`}
+                              render={({ field: props }) => (
+                                <Checkbox
+                                  {...props}
                                   //eslint-disable-next-line react/prop-types
-                                  props.onChange(e.target.checked)
-                                }
-                              />
-                            )}
-                          />
-                        }
-                        label={item.name}
-                        key={item.key}
-                      />
-                    );
-                  })}
-                </FormGroup>
-              </AccordionDetails>
-            </Accordion>
+                                  checked={props.value}
+                                  onChange={(e) =>
+                                    //eslint-disable-next-line react/prop-types
+                                    props.onChange(e.target.checked)
+                                  }
+                                />
+                              )}
+                            />
+                          }
+                          label={item.name}
+                          key={item.key}
+                        />
+                      );
+                    })}
+                  </FormGroup>
+                </AccordionDetails>
+              </Accordion>
 
-            <Divider sx={{ width: 1 }} key={idx} />
-          </Stack>
-        );
-      })}
+              <Divider sx={{ width: 1 }} key={idx} />
+            </Stack>
+          );
+        })}
     </Stack>
   );
 };

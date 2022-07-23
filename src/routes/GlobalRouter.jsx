@@ -17,6 +17,10 @@ const GlobalRouter = () => {
           <Route path={ROUTER.CART} element={<Cart />} />
           <Route path={ROUTER.PHONE_DETAILS} element={<PhoneDetails />} />
           <Route
+            path={ROUTER.PHONE_CATEGORY}
+            element={<PhoneSearchResult categoryPage />}
+          />
+          <Route
             path={ROUTER.PHONE_SEARCH_RESULT}
             element={<PhoneSearchResult />}
           />
