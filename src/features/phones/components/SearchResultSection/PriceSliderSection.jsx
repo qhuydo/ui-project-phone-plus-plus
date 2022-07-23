@@ -6,11 +6,13 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import formatNumberToVND from "utils/currency-formatter";
 import { Controller, useFormContext } from "react-hook-form";
 import { MAX_PRICE, MIN_PRICE, PRICE_STEP } from "utils/constants";
 import NumberFormat from "react-number-format";
+import { useState } from "react";
+import { useDebounce } from "hooks";
 
 const PriceContainer = {
   display: "flex",
@@ -30,27 +32,33 @@ function valueLabelFormat(value) {
 
 /*TODO refactor me*/
 const PriceSliderSection = () => {
-  const { control } = useFormContext();
+  const { control, getValues, setValue /*, watch*/ } = useFormContext();
+
+  const [priceRange, setPriceRange] = useState(getValues("priceRange"));
+  const debouncedPriceRange = useDebounce(priceRange, 100);
+
+  const onSliderChanged = useCallback((e, value) => {
+    setPriceRange(value);
+  }, []);
+
+  useEffect(() => {
+    setValue("priceRange", debouncedPriceRange);
+  }, [debouncedPriceRange, setValue]);
 
   return (
     <Box sx={PriceContainer}>
       <Typography variant={"h6"}>Price</Typography>
       <Box width={1} alignItems="space-between" display="flex">
-        <Controller
-          control={control}
-          name="priceRange"
-          render={({ field: props }) => (
-            <Slider
-              getAriaLabel={() => "Price range"}
-              valueLabelDisplay="auto"
-              valueLabelFormat={valueLabelFormat}
-              disableSwap
-              min={MIN_PRICE}
-              step={PRICE_STEP}
-              max={MAX_PRICE}
-              {...props}
-            />
-          )}
+        <Slider
+          getAriaLabel={() => "Price range"}
+          valueLabelDisplay="auto"
+          valueLabelFormat={valueLabelFormat}
+          disableSwap
+          min={MIN_PRICE}
+          step={PRICE_STEP}
+          max={MAX_PRICE}
+          value={priceRange}
+          onChange={onSliderChanged}
         />
       </Box>
 
@@ -66,9 +74,6 @@ const PriceSliderSection = () => {
           control={control}
           name="priceRange"
           rules={{
-            valueAsNumber: true,
-            min: MIN_PRICE,
-            max: MAX_PRICE,
             validate: (value) => +value[0] <= +value[1],
           }}
           render={({ field: props }) => (
@@ -90,9 +95,13 @@ const PriceSliderSection = () => {
               {...props}
               // eslint-disable-next-line react/prop-types
               value={props.value[0]}
-              onChange={null}
-              // eslint-disable-next-line react/prop-types
-              onValueChange={(v) => props.onChange([+v.value, props.value[1]])}
+              onChange={() => {}}
+              onValueChange={(v) => {
+                // eslint-disable-next-line react/prop-types
+                const priceRange = [+v.value, props.value[1]];
+                setValue("priceRange", priceRange);
+                setPriceRange(priceRange);
+              }}
             />
           )}
         />
@@ -101,9 +110,6 @@ const PriceSliderSection = () => {
           control={control}
           name="priceRange"
           rules={{
-            valueAsNumber: true,
-            min: MIN_PRICE,
-            max: MAX_PRICE,
             validate: (value) => +value[0] <= +value[1],
           }}
           render={({ field: props }) => (
@@ -124,9 +130,13 @@ const PriceSliderSection = () => {
               {...props}
               // eslint-disable-next-line react/prop-types
               value={props.value[1]}
-              onChange={null}
-              // eslint-disable-next-line react/prop-types
-              onValueChange={(v) => props.onChange([props.value[0], +v.value])}
+              onChange={() => {}}
+              onValueChange={(v) => {
+                // eslint-disable-next-line react/prop-types
+                const priceRange = [props.value[0], +v.value];
+                setValue("priceRange", priceRange);
+                setPriceRange(priceRange);
+              }}
             />
           )}
         />

@@ -63,3 +63,9 @@ export const getRecommendedPhones = (fromPhoneId) => {
     resolve(list);
   });
 };
+
+// TODO: complete this function
+export const findPhoneAndFilter = async (keyword, filterOptions, sortBy) => {
+  await new Promise((resolve) => setTimeout(resolve, 900));
+  return await findPhoneByKeyword(keyword);
+};

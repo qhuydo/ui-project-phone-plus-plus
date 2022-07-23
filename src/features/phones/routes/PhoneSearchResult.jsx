@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useMemo } from "react";
-import { findPhoneByKeyword } from "features/phones/api";
+import { findPhoneAndFilter } from "features/phones/api";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { Head } from "components/Head/Head";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
@@ -10,6 +10,7 @@ import {
   useSearchResultContext,
 } from "features/phones/context/SearchResultContext";
 import FilterColumn from "../components/SearchResultSection/FilterColumn";
+import { useDebounce } from "hooks";
 
 const PhoneSearchResult = () => {
   return (
@@ -20,12 +21,15 @@ const PhoneSearchResult = () => {
 };
 
 const PhoneSearchResultBody = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  // const [isLoading, setIsLoading] = useState(false);
+  const [searchParams] = useSearchParams();
+
   const {
-    state: { allResults: phones },
+    state: { allResults: phones, filterOptions, isLoading, sortBy },
     addSearchResult,
+    dispatch,
   } = useSearchResultContext();
+
+  const debouncedFilterOptions = useDebounce(filterOptions, 100);
 
   const keyword = useMemo(() => {
     return searchParams.get("keyword") || "";
@@ -33,13 +37,15 @@ const PhoneSearchResultBody = () => {
 
   useEffect(() => {
     (async () => {
-      const phones = await findPhoneByKeyword(
-        searchParams.get("keyword") || ""
+      dispatch({ type: "SET_LOADING" });
+      const phones = await findPhoneAndFilter(
+        searchParams.get("keyword") || "",
+        debouncedFilterOptions,
+        sortBy
       );
       addSearchResult(phones);
-      // console.log(phones);
     })();
-  }, [addSearchResult, searchParams]);
+  }, [addSearchResult, debouncedFilterOptions, dispatch, searchParams, sortBy]);
 
   return (
     <>
@@ -72,8 +78,14 @@ const PhoneSearchResultBody = () => {
         >
           Search results for {'"'}
           <b>{keyword}</b>
-          {'"'} - {`${phones.length}`}{" "}
-          {`${phones.length === 1 ? "result" : "results"}`} found
+          {'"'}{" "}
+          {!isLoading && (
+            <>
+              {" "}
+              {` - ${phones.length}`}{" "}
+              {`${phones.length === 1 ? "result" : "results"}`} found
+            </>
+          )}
         </Typography>
 
         <Grid container>

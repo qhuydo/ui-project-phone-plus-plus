@@ -13,12 +13,12 @@ const SearchResultSection = () => {
     changeSortMethod,
     changePageLimit,
     changePage,
-    state: { sortBy, pageLimit, currentPage, nPages },
+    state: { sortBy, pageLimit, currentPage, nPages, isLoading },
   } = useSearchResultContext();
 
   const canNavigateToPreviousPage = useMemo(
-    () => currentPage !== 1,
-    [currentPage]
+    () => !isLoading && currentPage !== 1,
+    [currentPage, isLoading]
   );
 
   const navigateToPreviousPage = useCallback(
@@ -27,8 +27,8 @@ const SearchResultSection = () => {
   );
 
   const canNavigateToNextPage = useMemo(
-    () => currentPage !== nPages && currentPage > 1,
-    [currentPage, nPages]
+    () => !isLoading && currentPage !== nPages && currentPage > 0,
+    [currentPage, isLoading, nPages]
   );
 
   const navigateToNextPage = useCallback(

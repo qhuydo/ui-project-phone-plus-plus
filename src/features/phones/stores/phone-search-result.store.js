@@ -45,7 +45,7 @@ const defaultFilterOptions = {
 };
 
 export const initialSearchResultState = {
-  // sortBy: "RELEVANCE",
+  // oneOf(["PRICE_ASC", "PRICE_DESC", "NAME_ASC", "NAME_DESC"])
   sortBy: "NAME_ASC",
   pageLimit: 8,
   currentPage: 1,
@@ -53,6 +53,7 @@ export const initialSearchResultState = {
   nPages: 0,
   collapsedFilterPanels: [],
   filterOptions: defaultFilterOptions,
+  isLoading: false,
 };
 
 export const phoneSearchResultReducer = (state, action) => {
@@ -62,6 +63,7 @@ export const phoneSearchResultReducer = (state, action) => {
         ...state,
         allResults: action.payload,
         nPages: getTotalPages(action.payload.length, state.pageLimit),
+        isLoading: false,
       };
     }
     case "CHANGE_SORT_METHOD": {
@@ -109,6 +111,12 @@ export const phoneSearchResultReducer = (state, action) => {
         ...state,
         filterOptions: defaultFilterOptions,
         collapsedFilterPanels: [],
+      };
+    }
+    case "SET_LOADING": {
+      return {
+        ...state,
+        isLoading: true,
       };
     }
     default:

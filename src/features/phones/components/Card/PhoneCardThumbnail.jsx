@@ -20,7 +20,7 @@ const PhoneCardThumbnail = ({
   isFavourite,
   toggleFavourite,
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [lastLoadedImg, setLastLoadedImg] = useState(null);
   const { selectedThumbnail } = usePhoneCardContext();
 
@@ -56,7 +56,7 @@ const PhoneCardThumbnail = ({
   );
 
   useEffect(() => {
-    if (lastLoadedImg !== selectedThumbnail) {
+    if (lastLoadedImg !== null && lastLoadedImg !== selectedThumbnail) {
       setIsLoading(true);
     }
   }, [lastLoadedImg, selectedThumbnail]);
