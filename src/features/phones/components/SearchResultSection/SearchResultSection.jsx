@@ -27,7 +27,8 @@ const SearchResultSection = () => {
   );
 
   const canNavigateToNextPage = useMemo(
-    () => !isLoading && currentPage !== nPages && currentPage > 0,
+    () =>
+      !isLoading && currentPage !== nPages && currentPage > 0 && nPages !== 0,
     [currentPage, isLoading, nPages]
   );
 

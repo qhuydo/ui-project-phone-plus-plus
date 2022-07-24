@@ -59,6 +59,7 @@ const PriceSliderSection = () => {
           max={MAX_PRICE}
           value={priceRange}
           onChange={onSliderChanged}
+          sx={{ color: "primary.dark" }}
         />
       </Box>
 

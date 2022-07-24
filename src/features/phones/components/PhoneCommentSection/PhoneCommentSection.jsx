@@ -18,6 +18,7 @@ import CommentRow from "features/phones/components/PhoneCommentSection/CommentRo
 import { useCallback, useMemo, useRef } from "react";
 import { paginate } from "features/phones/utils";
 import { APPBAR_LARGE } from "components/AppBar/AppBar";
+import { NoComment } from "features/phones/assets";
 
 const PhoneCommentSection = () => {
   const {
@@ -52,8 +53,11 @@ const PhoneCommentSection = () => {
   );
 
   const canNavigateToNextPage = useMemo(
-    () => currentComments !== totalCommentPages,
-    [currentComments, totalCommentPages]
+    () =>
+      currentCommentPage !== totalCommentPages &&
+      currentCommentPage > 0 &&
+      totalCommentPages !== 0,
+    [currentCommentPage, totalCommentPages]
   );
 
   const navigateToNextPage = useCallback(
@@ -145,6 +149,24 @@ const PhoneCommentSection = () => {
               <CommentRow comment={item} phone={phoneDetails} />
             </Box>
           ))}
+        </Collapse>
+        <Collapse in={currentComments.length === 0}>
+          <Stack
+            display="row"
+            spacing={1}
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Box
+              component="img"
+              src={NoComment}
+              width={{ xs: "100%", sm: 300, md: 500 }}
+            />
+            <Typography variant="h3">No comment yet</Typography>
+            <Typography variant="h5">
+              You can buy this phone to add a new comment
+            </Typography>
+          </Stack>
         </Collapse>
       </Box>
 

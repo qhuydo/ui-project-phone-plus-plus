@@ -1,5 +1,5 @@
 import { ToggleButton } from "@mui/material";
-import BorderlessToggleButtonGroup from "components/Button/BorderlessToggleButtonGroup";
+import { BorderlessToggleButtonGroup } from "components/Button";
 import PropTypes from "prop-types";
 
 const PhonePropertySelector = ({

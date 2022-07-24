@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { FALLBACK_IMG, GOLDEN_RATIO } from "utils/constants";
 import { usePhoneCardContext } from "features/phones/context";
-import BorderIconButton from "components/Button/BorderIconButton";
+import { BorderIconButton } from "components/Button";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
@@ -79,9 +79,10 @@ const PhoneCardThumbnail = ({
         color="error"
         sx={{
           position: "absolute",
-          right: 8,
-          top: 8,
+          right: 12,
+          top: 12,
           backgroundColor: alpha(`#FFFFFF`, 0.5),
+          p: 0.75,
         }}
       >
         {isFavourite ? (

@@ -1,7 +1,7 @@
 import { Stack, ToggleButton, Typography } from "@mui/material";
 import { usePhoneDetailsContext } from "features/phones/context";
 import { useCallback } from "react";
-import BorderlessToggleButtonGroup from "components/Button/BorderlessToggleButtonGroup";
+import { BorderlessToggleButtonGroup } from "components/Button";
 import { filterOptions } from "features/phones/utils";
 
 const CommentFilterGroups = () => {

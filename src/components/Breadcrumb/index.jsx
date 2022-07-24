@@ -9,7 +9,7 @@ export const DefaultBreadcrumb = ({ links, currentPage }) => {
     <Breadcrumbs
       aria-label="breadcrumb"
       separator={<NavigateNextIcon fontSize="small" />}
-      sx={{ mt: 2 }}
+      sx={{ my: 2 }}
     >
       <Link
         component={RouterLink}

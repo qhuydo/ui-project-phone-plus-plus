@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { ToggleButton } from "@mui/material";
-import BorderlessToggleButtonGroup from "components/Button/BorderlessToggleButtonGroup";
+import { BorderlessToggleButtonGroup } from "components/Button";
 
 const PhoneVersionSelector = ({ value, onChange, versions }) => {
   return (

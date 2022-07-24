@@ -9,15 +9,21 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { usePhoneDetailsContext } from "features/phones/context";
+import {
+  useFavouritePhoneMap,
+  usePhoneDetailsContext,
+} from "features/phones/context";
 import OutlinedChip from "components/Chip/OutlinedChip";
 import ColourPairSelector from "features/phones/components/PhoneDetailHeader/ColourPairSelector";
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import PhoneVersionSelector from "features/phones/components/PhoneDetailHeader/PhoneVersionSelector";
 import ItemQuantityInput from "components/Input/ItemQuantityInput";
 import { GOLDEN_RATIO } from "utils/constants";
 import { useCartContext } from "features/cart/context/CartContext";
 import { createCartItem } from "features/cart/utils";
+import { BigButton } from "components/Button";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const PhoneDetailsHeader = () => {
   const {
@@ -37,7 +43,17 @@ const PhoneDetailsHeader = () => {
     changeQuantity,
   } = usePhoneDetailsContext();
 
+  const [favourites, toggleFavourites] = useFavouritePhoneMap();
+
+  const isFavourite = useMemo(() => {
+    return favourites[phoneDetails.id];
+  }, [favourites, phoneDetails.id]);
+
   const { addItem } = useCartContext();
+
+  const onFavouriteButtonClicked = useCallback(() => {
+    toggleFavourites(phoneDetails.id);
+  }, [phoneDetails.id, toggleFavourites]);
 
   const onVersionChanged = useCallback(
     (e, value) => {
@@ -68,6 +84,16 @@ const PhoneDetailsHeader = () => {
       <Typography variant="h2" flexWrap>
         {phoneDetails.name}
       </Typography>
+
+      <Box>
+        <Button
+          color="error"
+          onClick={onFavouriteButtonClicked}
+          startIcon={isFavourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        >
+          {!isFavourite ? "Add to favourite" : "Remove from favourite"}
+        </Button>
+      </Box>
 
       <Stack direction="row" spacing={1} alignItems="center">
         <Rating
@@ -193,16 +219,16 @@ const PhoneDetailsHeader = () => {
       </Box>
 
       <Stack direction="row" spacing={1} width={1} pt={2}>
-        <Button
+        <BigButton
           fullWidth
           variant="contained"
           size="large"
           startIcon={<PaymentOutlinedIcon />}
         >
           Buy now
-        </Button>
+        </BigButton>
 
-        <Button
+        <BigButton
           fullWidth
           size="large"
           variant="outlined"
@@ -210,7 +236,7 @@ const PhoneDetailsHeader = () => {
           onClick={addItemToCart}
         >
           Add to cart
-        </Button>
+        </BigButton>
       </Stack>
     </Stack>
   );
