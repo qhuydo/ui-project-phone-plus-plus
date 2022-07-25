@@ -3,6 +3,7 @@ import {
   Button,
   Divider,
   IconButton,
+  Link,
   Stack,
   Typography,
 } from "@mui/material";
@@ -13,6 +14,8 @@ import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { useCartContext } from "features/cart/context/CartContext";
 import formatNumberToVND from "utils/currency-formatter";
+import { Link as RouterLink } from "react-router-dom";
+import { Router } from "routes";
 
 const CartItem = () => {
   const { cartItem } = useCartItemContext();
@@ -57,7 +60,23 @@ const CartItem = () => {
           alignItems="center"
           spacing={1}
         >
-          <Typography variant="h6">{cartItem.phone.name}</Typography>
+          <Link
+            color="inherit"
+            underline="none"
+            component={RouterLink}
+            to={`${Router.getPhoneDetailsPage(
+              cartItem.phone.id,
+              cartItem.phone.name
+            )}`}
+            sx={{
+              typography: "h6",
+              "&:hover": {
+                color: "primary.dark",
+              },
+            }}
+          >
+            {cartItem.phone.name}
+          </Link>
 
           <Typography variant="h6">
             {formatNumberToVND(cartItem.version.salePrice * cartItem.quantity)}

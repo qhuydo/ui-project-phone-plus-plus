@@ -163,13 +163,13 @@
     {
       "section": "Display",
       "data": {
-        "Size:": "6.1 inches",
-        "Resolution:": "2532 x 1170 pixels, 19.5:9 ratio, 457 PPI",
-        "Technology:": "OLED",
-        "Refresh rate:": "120Hz",
+        "Size": "6.1 inches",
+        "Resolution": "2532 x 1170 pixels, 19.5:9 ratio, 457 PPI",
+        "Technology": "OLED",
+        "Refresh rate": "120Hz",
         "Screen-to-body": "87.24 %",
-        "Peak brightness:": "1200 cd/m2 (nit)",
-        "Features:": "HDR support, Oleophobic coating, Scratch-resistant glass (Ceramic Shield), Ambient light sensor, Proximity sensor"
+        "Peak brightness": "1200 cd/m2 (nit)",
+        "Features": "HDR support, Oleophobic coating, Scratch-resistant glass (Ceramic Shield), Ambient light sensor, Proximity sensor"
       }
     },
     {
@@ -179,79 +179,79 @@
         "Processor": "Hexa-core, 64-bit",
         "GPU": "Yes",
         "RAM": "6GB",
-        "Internal storage:": "128GB, not expandable",
-        "Device type:": "Smartphone",
-        "OS:": "iOS (15.x)"
+        "Internal storage": "128GB, not expandable",
+        "Device type": "Smartphone",
+        "OS": "iOS (15.x)"
       }
     },
     {
       "section": "Battery",
       "data": {
         "Capacity": "3095 mAh",
-        "Type:": "Li - Ion, Not user replaceable",
-        "Charging:": "USB Power Delivery, Qi wireless charging, MagSafe wireless charging",
-        "Max charge speed:": "Wired: 20.0W;  Wireless: 15.0W"
+        "Type": "Li - Ion, Not user replaceable",
+        "Charging": "USB Power Delivery, Qi wireless charging, MagSafe wireless charging",
+        "Max charge speed": "Wired: 20.0W;  Wireless: 15.0W"
       }
     },
     {
       "section": "Camera",
       "data": {
-        "Rear:": "Triple camera",
-        "Main camera:": "12 MP (OIS, PDAF)",
-        "Second camera:": "12 MP (Telephoto, OIS, PDAF)",
-        "Third camera:": "12 MP (Ultra-wide, Autofocus)",
-        "Video recording:": "3840x2160 (4K UHD) (60 fps), 1920x1080 (Full HD) (240 fps), 1280x720 (HD) (30 fps)",
-        "Features:": "OIS, HDR, Time-lapse video, Continuous autofocus, Picture-taking during video recording, Video light",
-        "Front:": "12 MP (Time-of-Flight (ToF), EIS, HDR, Slow-motion videos)"
+        "Rear": "Triple camera",
+        "Main camera": "12 MP (OIS, PDAF)",
+        "Second camera": "12 MP (Telephoto, OIS, PDAF)",
+        "Third camera": "12 MP (Ultra-wide, Autofocus)",
+        "Video recording": "3840x2160 (4K UHD) (60 fps), 1920x1080 (Full HD) (240 fps), 1280x720 (HD) (30 fps)",
+        "Features": "OIS, HDR, Time-lapse video, Continuous autofocus, Picture-taking during video recording, Video light",
+        "Front": "12 MP (Time-of-Flight (ToF), EIS, HDR, Slow-motion videos)"
       }
     },
     {
       "section": "Design",
       "data": {
-        "Dimensions:": "5.78 x 2.81 x 0.30 inches (146.7 x 71.5 x 7.65 mm)",
-        "Weight:": "7.20 oz (204.0 g)",
-        "Materials:": "Back: Glass; Frame: Stainless steel",
-        "Resistance:": "Water, Splash, Dust; IP68",
+        "Dimensions": "5.78 x 2.81 x 0.30 inches (146.7 x 71.5 x 7.65 mm)",
+        "Weight": "7.20 oz (204.0 g)",
+        "Materials": "Back: Glass; Frame: Stainless steel",
+        "Resistance": "Water, Splash, Dust; IP68",
         "Biometrics": "3D Face unlock",
-        "Keys:": "Left: Volume control, Other; Right: Lock/Unlock key",
-        "Colors:": "Graphite, Gold, Silver, Sierra Blue"
+        "Keys": "Left: Volume control, Other; Right: Lock/Unlock key",
+        "Colors": "Graphite, Gold, Silver, Sierra Blue"
       }
     },
     {
       "section": "Cellular",
       "data": {
-        "5G:": "n1, n2, n3, n5, n7, n8, n20, n25, n28, n38, n40, n41, n48, n66, n71, n77, n78, n79",
-        "LTE (FDD):": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 14(700 PS), 17(700 b), 18(800 Lower), 19(800 Upper), 20(800 DD), 21(1500 Upper), 25(1900+), 26(850+), 28(700 APT), 29(700 d), 30(2300 WCS), 32(1500 L-band), 66(AWS-3), 71(600)",
-        "LTE (TDD):": "Bands 34(2000), 38(2600), 39(1900+), 40(2300), 41(2600+), 42(3500), 46, 48(3600)",
-        "UMTS:": "Bands 1(2100), 2(1900), 4(1700/2100), 5(850), 6(800)",
-        "Data Speed:": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s, HSUPA 5.76 Mbit/s, UMTS",
-        "Dual SIM:": "Yes",
-        "SIM type:": "Nano SIM, eSIM",
-        "HD Voice:": "Yes",
-        "VoLTE:": "Yes"
+        "5G": "n1, n2, n3, n5, n7, n8, n20, n25, n28, n38, n40, n41, n48, n66, n71, n77, n78, n79",
+        "LTE (FDD)": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 14(700 PS), 17(700 b), 18(800 Lower), 19(800 Upper), 20(800 DD), 21(1500 Upper), 25(1900+), 26(850+), 28(700 APT), 29(700 d), 30(2300 WCS), 32(1500 L-band), 66(AWS-3), 71(600)",
+        "LTE (TDD)": "Bands 34(2000), 38(2600), 39(1900+), 40(2300), 41(2600+), 42(3500), 46, 48(3600)",
+        "UMTS": "Bands 1(2100), 2(1900), 4(1700/2100), 5(850), 6(800)",
+        "Data Speed": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s, HSUPA 5.76 Mbit/s, UMTS",
+        "Dual SIM": "Yes",
+        "SIM type": "Nano SIM, eSIM",
+        "HD Voice": "Yes",
+        "VoLTE": "Yes"
       }
     },
     {
       "section": "Multimedia",
       "data": {
-        "Headphones:": "No 3.5mm jack",
-        "Speakers:": "Earpiece, Loudspeaker",
-        "Features:": "Dolby Atmos",
-        "Screen mirroring:": "Wireless screen share",
-        "Additional microphone(s):": "for Noise cancellation"
+        "Headphones": "No 3.5mm jack",
+        "Speakers": "Earpiece, Loudspeaker",
+        "Features": "Dolby Atmos",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
       }
     },
     {
       "section": "Connectivity &amp; Features",
       "data": {
-        "Bluetooth:": "5.0",
-        "Wi-Fi:": "802.11 a, b, g, n, ac, ax (Wi-Fi 6), dual-band; MIMO, Wi-Fi Direct, Hotspot",
-        "USB:": "Lightning",
-        "Features:": "Charging, Headphones port",
+        "Bluetooth": "5.0",
+        "Wi-Fi": "802.11 a, b, g, n, ac, ax (Wi-Fi 6), dual-band; MIMO, Wi-Fi Direct, Hotspot",
+        "USB": "Lightning",
+        "Features": "Charging, Headphones port",
         "Location": "GPS, A-GPS, Glonass, Galileo, BeiDou, QZSS, Cell ID, Wi-Fi positioning",
-        "Sensors:": "Accelerometer, Gyroscope, Compass, Barometer, LiDAR scanner",
-        "Other:": "NFC, UMA (Wi-Fi Calling)",
-        "Hearing aid compatible:": "M3, T4"
+        "Sensors": "Accelerometer, Gyroscope, Compass, Barometer, LiDAR scanner",
+        "Other": "NFC, UMA (Wi-Fi Calling)",
+        "Hearing aid compatible": "M3, T4"
       }
     },
     {
@@ -261,23 +261,23 @@
         "Date approved": "Sep 14, 2021",
         "FCC ID value": "BCG-E4000A",
         "Measured SAR": "",
-        "Head:": "0.96 W/kg",
-        "Body:": "1.45 W/kg",
-        "Simultaneous Transmission:": "0.96 W/kg",
-        "Wireless Router:": "0.96 W/kg"
+        "Head": "0.96 W/kg",
+        "Body": "1.45 W/kg",
+        "Simultaneous Transmission": "0.96 W/kg",
+        "Wireless Router": "0.96 W/kg"
       }
     },
     {
       "section": "Buyers information",
       "data": {
-        "Price:": "$ 999",
-        "In The Box:": "USB‑C to Lightning Cable, Documentation"
+        "Price": "$ 999",
+        "In The Box": "USB‑C to Lightning Cable, Documentation"
       }
     },
     {
       "section": "Availability",
       "data": {
-        "Officially announced:": "Sep 14, 2021"
+        "Officially announced": "Sep 14, 2021"
       }
     }
   ]

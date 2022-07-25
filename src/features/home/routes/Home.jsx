@@ -14,7 +14,7 @@ export const Home = () => {
       <Head />
 
       <Container spacing={2}>
-        <PhoneCategoryRow />
+        <PhoneCategoryRow sx={{ mt: 3, mb: 2 }} />
 
         <PhoneBannerCarousel />
 

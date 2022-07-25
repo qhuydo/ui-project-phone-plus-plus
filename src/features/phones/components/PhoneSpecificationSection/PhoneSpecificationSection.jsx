@@ -13,6 +13,7 @@ import { usePhoneDetailsContext } from "features/phones/context";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useCallback } from "react";
+import PhoneSpecificationTables from "features/phones/components/PhoneSpecificationSection/PhoneSpecificationTables";
 
 function renderContent(contents) {
   return (
@@ -130,6 +131,9 @@ const PhoneSpecificationSection = () => {
         <Stack direction="column" spacing={1} alignItems="center">
           {renderContent(description.contents)}
           <Typography variant="caption">{description.captionText}</Typography>
+          <Box width={{ xs: 1 }}>
+            <PhoneSpecificationTables />
+          </Box>
         </Stack>
       </Collapse>
 

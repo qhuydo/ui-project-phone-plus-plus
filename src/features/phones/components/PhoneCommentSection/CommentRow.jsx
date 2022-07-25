@@ -121,6 +121,23 @@ const CommentRow = ({ comment, phone }) => {
           <Stack
             direction="row"
             spacing={{ xs: 1.5, md: 2 }}
+            flexWrap="wrap"
+            display={{ xs: "none", md: "flex" }}
+          >
+            <Rating
+              size={smScreen ? "small" : "large"}
+              value={comment.points}
+              precision={0.5}
+              readOnly
+            />
+            <Typography variant={smScreen ? "body1" : "h6"} fontWeight="bold">
+              {comment.title}
+            </Typography>
+          </Stack>
+
+          <Stack
+            direction="row"
+            spacing={{ xs: 1.5, md: 2 }}
             justifyContent="baseline"
             flexWrap="wrap"
           >
