@@ -36,15 +36,23 @@
       "slideIdx": 1
     }
   ],
-  "screenSize": [6.7],
-  "ram": [6, 8],
-  "memory": [128, 256],
+  "screenSize": [
+    6.7
+  ],
+  "ram": [
+    6,
+    8
+  ],
+  "memory": [
+    128,
+    256
+  ],
   "images": [
     "https://i.imgur.com/h3O3Msk.jpg",
     "https://i.imgur.com/NIJTINc.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/E2GzhE4.jpg",
     "collapsedText": "\"The Samsung Galaxy A73 is Samsung's product  with a 6.7\" screen size and for the first time in an Samsung, it comes with a 120Hz ProMotion display for super smooth scrolling. The list of innovations includes a more capable triple camera setup, with a wide, ultra-wide and zoom cameras, as well as a LiDAR scanner.\n",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Samsung and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -93,6 +101,100 @@
         "displaySalePrice": "11.990.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "6.7 inches",
+        "Resolution": "2400 x 1080 pixels, 20:9 ratio, 393 PPI",
+        "Technology": "Super AMOLED",
+        "Refresh rate": "120Hz",
+        "Screen-to-body": "86.95 %",
+        "Peak brightness": "800 cd/m2 (nit)",
+        "Features": "Scratch-resistant glass (Corning Gorilla Glass 5), Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Qualcomm Snapdragon 778G SM7325 (6 nm)",
+        "Processor": "Octa-core, 1x 2.4GHz Cortex A78 + 3x 2.2GHz Cortex A78 + 4x 1.9GHz Cortex A55, 64-bit",
+        "GPU": "Adreno 642L",
+        "RAM": "6GB",
+        "Internal storage": "128GB",
+        "Storage expansion": "microSDXC up to 1024 GB",
+        "Device type": "Smartphone",
+        "OS": "Android (12), One UI UI"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "5000 mAh",
+        "Type": "Not user replaceable",
+        "Charging": "Fast charging",
+        "Max charge speed": "Wired: 25.0W"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Quad camera",
+        "Main camera": "108 MP (OIS, Autofocus)",
+        "Second camera": "12 MP (Ultra-wide)",
+        "Third camera": "5 MP (Macro)",
+        "Fourth camera": "5 MP (Depth information)",
+        "Video recording": "Yes",
+        "Front": "32 MP"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "6.44 x 3.00 x 0.30 inches (163.7 x 76.1 x 7.6 mm)",
+        "Weight": "6.38 oz (181.0 g)",
+        "Materials": "Back: Plastic",
+        "Resistance": "Yes; IP67",
+        "Biometrics": "In-screen fingerprint",
+        "Keys": "Left: Volume control, Lock/Unlock key"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "5G": "5G Ready",
+        "Data Speed": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s",
+        "SIM type": "Nano SIM"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "No 3.5mm jack",
+        "Speakers": "Earpiece, Multiple speakers",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "5.1",
+        "Wi-Fi": "802.11 a, b, g, n, ac, ax (Wi-Fi 6); Wi-Fi Direct, Hotspot",
+        "USB": "Type-C (reversible)",
+        "Features": "Charging",
+        "Location": "GPS, A-GPS, Glonass, Galileo, BeiDou, Cell ID, Wi-Fi positioning",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Hall (for flip covers)",
+        "Other": "NFC"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Mar 17, 2022"
+      }
     }
   ]
 }

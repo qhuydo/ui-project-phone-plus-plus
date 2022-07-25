@@ -61,7 +61,7 @@
     "https://i.imgur.com/5RREpw6.jpg"
   ],
   "nSold": 15,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/ntgEYyP.jpg",
     "collapsedText": "The Sony Xperia X Smartphone features a 5-inch Full HD display that offers an immersive viewing experience. This smartphone has a 23 MP camera for sharp pictures and clear videos. It runs on Android and is driven by a quad-core processor. For the user's data storage needs, this smartphone offers a 64 GB internal memory capacity. In addition, this graphite black smartphone is powered by a 2700 mAh battery.\n",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Sony and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -259,6 +259,123 @@
         "https://i.imgur.com/YjW0F48.jpg",
         "https://i.imgur.com/doEum0y.jpg"
       ]
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size:": "5.0 inches",
+        "Resolution:": "1920 x 1080 pixels, 441 PPI",
+        "Technology:": "IPS LCD",
+        "Screen-to-body": "69.63 %",
+        "Colors:": "16 777 216",
+        "Touchscreen:": "Capacitive, Multi-touch",
+        "Features:": "Oleophobic coating, Scratch-resistant glass, Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Qualcomm Snapdragon 650 8956",
+        "Processor": "Hexa-core, 1800 MHz, ARM Cortex-A72 and ARM Cortex-A53, 64-bit",
+        "GPU": "Adreno 510",
+        "RAM": "3GB",
+        "Internal storage:": "32GB, available to use: 20 GB",
+        "Storage expansion:": "microSDXC up to 200 GB",
+        "Device type:": "Smartphone",
+        "OS:": "Android (8.0 Oreo, 7.0 Nougat, 6.0 Marshmallow)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "2620 mAh",
+        "Type:": "Li - Ion, Not user replaceable",
+        "Charging:": "Qualcomm Quick Charge 2.0"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear:": "Single camera",
+        "Main camera:": "23 MP (PDAF)",
+        "Video recording:": "1920x1080 (Full HD) (60 fps)",
+        "Features:": "Time-lapse video, Object tracking, EIS, Video calling, Video sharing",
+        "Front:": "13 MP",
+        "Video capture:": "1920x1080 (Full HD)"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions:": "5.63 x 2.72 x 0.30 inches (143 x 69 x 7.7 mm)",
+        "Weight:": "5.36 oz (152.0 g)",
+        "Materials:": "Frame: Metal",
+        "Biometrics": "Fingerprint (touch)",
+        "Keys:": "Right: Volume control, Camera shutter, Lock/Unlock key",
+        "Colors:": "Black, Gold, Pink, White"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "LTE (FDD):": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 17(700 b), 19(800 Upper), 20(800 DD), 26(850+), 28(700 APT)",
+        "LTE (TDD):": "Bands 38(2600), 39(1900+), 40(2300), 41(2600+)",
+        "UMTS:": "Bands 6(800), 5(850), 8(900), 4(1700/2100), 2(1900), 1(2100)",
+        "Data Speed:": "LTE-A Cat 6 (300/50 Mbit/s), HSDPA+ (4G) 42.2 Mbit/s, HSUPA 5.76 Mbit/s, UMTS",
+        "SIM type:": "Nano SIM",
+        "HD Voice:": "Yes",
+        "VoLTE:": "Yes"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones:": "3.5mm jack",
+        "Speakers:": "Earpiece, Multiple speakers",
+        "Features:": "Album art cover, Background playback, Preset equalizer",
+        "Screen mirroring:": "DLNA, Wireless screen share",
+        "Radio:": "FM"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth:": "4.2",
+        "Wi-Fi:": "802.11 a, b, g, n, ac, dual-band; Wi-Fi Direct",
+        "USB:": "microUSB, USB 2.0",
+        "Features:": "Mass storage device, OTG, Charging",
+        "Location": "GPS, A-GPS, Glonass, BeiDou",
+        "Sensors:": "Accelerometer, Gyroscope, Compass, Barometer, Step detector, Step counter",
+        "Other:": "NFC, UMA (Wi-Fi Calling), Tethering, Computer sync, OTA sync"
+      }
+    },
+    {
+      "section": "Phone features",
+      "data": {
+        "Notifications:": "Haptic feedback, Music ringtones (MP3), Polyphonic ringtones, Vibration, Flight mode, Silent mode, Speakerphone",
+        "Other features:": "Voice dialing, Voice commands, Voice recording, TTY/TDD"
+      }
+    },
+    {
+      "section": "Regulatory Approval",
+      "data": {
+        "FCC approval": "",
+        "Date approved": "Oct 09, 2016",
+        "FCC ID value": "PY7-PM0930",
+        "Measured SAR": "",
+        "Head:": "0.97 W/kg",
+        "Body:": "0.91 W/kg",
+        "Simultaneous Transmission:": "1.36 W/kg",
+        "Wireless Router:": "0.97 W/kg"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced:": "Feb 22, 2016"
+      }
     }
   ]
 }

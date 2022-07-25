@@ -42,11 +42,11 @@ export const PhoneDetailsBody = () => {
   const theme = useTheme();
   const smScreen = useMediaQuery(theme.breakpoints.down("md"));
 
-  const renderPhoneDetailsCb = useCallback(
+  const renderRecommendedPhones = useCallback(
     () =>
-      recommendedPhones.map(({ phone, pushSale }) => (
+      recommendedPhones.map(({ phone }) => (
         <SwiperSlide key={phone.id} className="phone-swiper-slide">
-          <PhoneCardContextProvider phone={phone} pushSale={pushSale}>
+          <PhoneCardContextProvider phone={phone}>
             <PhoneCard />
           </PhoneCardContextProvider>
         </SwiperSlide>
@@ -83,7 +83,7 @@ export const PhoneDetailsBody = () => {
 
             <PhoneCardCarousel
               phones={[]}
-              renderPhoneCb={renderPhoneDetailsCb}
+              renderPhoneCb={renderRecommendedPhones}
               id="recommended-phones-carousel"
             />
           </Stack>

@@ -45,16 +45,23 @@
       "slideIdx": 1
     }
   ],
-  "screenSize": [5.4],
-  "ram": [4],
-  "memory": [128, 256],
+  "screenSize": [
+    5.4
+  ],
+  "ram": [
+    4
+  ],
+  "memory": [
+    128,
+    256
+  ],
   "images": [
     "https://i.imgur.com/qzsATv2.jpg",
     "https://i.imgur.com/O0zOphl.jpg",
     "https://i.imgur.com/tBo602I.png"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/1mL6kNi.jpg",
     "collapsedText": "\"The iPhone 13 mini is Apple's smaller product of iPhone 14 with a 5.4\" screen size, it comes with a 120Hz ProMotion display for super smooth scrolling. The list of innovations includes a more capable triple camera setup, with a wide, ultra-wide and zoom cameras, as well as a LiDAR scanner.\n",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Apple and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -137,6 +144,127 @@
         "displaySalePrice": "17.990.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "5.4 inches",
+        "Resolution": "2340 x 1080 pixels, 19.5:9 ratio, 477 PPI",
+        "Technology": "OLED",
+        "Refresh rate": "60Hz",
+        "Screen-to-body": "84.66 %",
+        "Features": "HDR support, Oleophobic coating, Scratch-resistant glass (Ceramic Shield), Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Apple A15 Bionic (5 nm)",
+        "Processor": "Hexa-core, 64-bit",
+        "GPU": "Yes",
+        "RAM": "4GB",
+        "Internal storage": "128GB, not expandable",
+        "Device type": "Smartphone",
+        "OS": "iOS (15.x)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "2406 mAh",
+        "Type": "Li - Ion, Not user replaceable",
+        "Charging": "USB Power Delivery, Qi wireless charging, MagSafe wireless charging",
+        "Max charge speed": "Wired: 20.0W;  Wireless: 15.0W"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Dual camera",
+        "Main camera": "12 MP (PDAF)",
+        "Second camera": "12 MP (Ultra-wide)",
+        "Video recording": "3840x2160 (4K UHD) (60 fps), 1920x1080 (Full HD) (240 fps), 1280x720 (HD) (30 fps)",
+        "Features": "OIS, HDR, Time-lapse video, Continuous autofocus, Picture-taking during video recording, Video light",
+        "Front": "12 MP (Time-of-Flight (ToF), EIS, HDR, Slow-motion videos)",
+        "Video capture": "3840x2160 (4K UHD) (60 fps)"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "5.18 x 2.53 x 0.30 inches (131.5 x 64.2 x 7.65 mm)",
+        "Weight": "4.97 oz (141.0 g)",
+        "Materials": "Back: Glass; Frame: Aluminum",
+        "Resistance": "Water, Splash, Dust; IP68",
+        "Biometrics": "3D Face unlock",
+        "Keys": "Left: Volume control, Other; Right: Lock/Unlock key",
+        "Colors": "Blue, Pink, Midnight, Starlight"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "5G": "n1, n2, n3, n5, n7, n8, n12, n20, n25, n28, n38, n40, n41, n48, n66, n71, n77, n78, n79",
+        "LTE (FDD)": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 14(700 PS), 17(700 b), 18(800 Lower), 19(800 Upper), 20(800 DD), 21(1500 Upper), 25(1900+), 26(850+), 28(700 APT), 29(700 d), 30(2300 WCS), 32(1500 L-band), 66(AWS-3), 71(600)",
+        "LTE (TDD)": "Bands 34(2000), 38(2600), 39(1900+), 40(2300), 41(2600+), 42(3500), 46, 48(3600)",
+        "UMTS": "Bands 1(2100), 2(1900), 4(1700/2100), 5(850), 8(900)",
+        "Data Speed": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s, HSUPA 5.76 Mbit/s, UMTS",
+        "Dual SIM": "Yes",
+        "SIM type": "Nano SIM, eSIM",
+        "HD Voice": "Yes",
+        "VoLTE": "Yes"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "No 3.5mm jack",
+        "Speakers": "Earpiece, Loudspeaker",
+        "Features": "Dolby Atmos",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "5.2",
+        "Wi-Fi": "802.11 a, b, g, n, ac, ax (Wi-Fi 6), dual-band; MIMO, Wi-Fi Direct, Hotspot",
+        "USB": "Lightning",
+        "Features": "Charging, Headphones port",
+        "Location": "GPS, A-GPS, Glonass, Galileo, BeiDou, QZSS, Cell ID, Wi-Fi positioning",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Barometer",
+        "Other": "NFC, UMA (Wi-Fi Calling)",
+        "Hearing aid compatible": "M3, T4"
+      }
+    },
+    {
+      "section": "Regulatory Approval",
+      "data": {
+        "FCC approval": "",
+        "Date approved": "Sep 14, 2021",
+        "FCC ID value": "BCG-E3994A",
+        "Measured SAR": "",
+        "Head": "0.96 W/kg",
+        "Body": "0.96 W/kg",
+        "Simultaneous Transmission": "1.46 W/kg",
+        "Wireless Router": "0.96 W/kg"
+      }
+    },
+    {
+      "section": "Buyers information",
+      "data": {
+        "Price": "$ 699",
+        "In The Box": "USB‑C to Lightning Cable, Documentation"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Sep 14, 2021"
+      }
     }
   ]
 }

@@ -64,7 +64,7 @@ function renderContent(contents) {
 const PhoneSpecificationSection = () => {
   const {
     state: {
-      phoneDetails: { spec },
+      phoneDetails: { description },
       isSpecOpen,
     },
     changeSpecOpenState,
@@ -111,7 +111,7 @@ const PhoneSpecificationSection = () => {
       >
         <Box
           component="img"
-          src={spec.bannerImg}
+          src={description.bannerImg}
           sx={{
             width: 1,
             height: 1,
@@ -121,15 +121,15 @@ const PhoneSpecificationSection = () => {
       </Box>
 
       <Box width={{ xs: 1, md: 0.9 }}>
-        {spec.collapsedText.split("\n").map((i, key) => {
+        {description.collapsedText.split("\n").map((i, key) => {
           return <Typography key={key}>{i}</Typography>;
         })}
       </Box>
 
       <Collapse in={isSpecOpen} width={{ xs: 1, md: 0.9 }}>
         <Stack direction="column" spacing={1} alignItems="center">
-          {renderContent(spec.contents)}
-          <Typography variant="caption">{spec.captionText}</Typography>
+          {renderContent(description.contents)}
+          <Typography variant="caption">{description.captionText}</Typography>
         </Stack>
       </Collapse>
 

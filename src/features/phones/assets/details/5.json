@@ -1,6 +1,6 @@
 {
   "id": "5",
-  "name": "iPhone SE (2021)",
+  "name": "iPhone SE (2020)",
   "category": "apple",
   "categoryName": "Apple",
   "thumbnail": "https://i.imgur.com/LaGfVlI.jpg",
@@ -38,15 +38,22 @@
       "slideIdx": 1
     }
   ],
-  "screenSize": [5.7],
-  "ram": [4],
-  "memory": [128, 256],
+  "screenSize": [
+    5.7
+  ],
+  "ram": [
+    4
+  ],
+  "memory": [
+    128,
+    256
+  ],
   "images": [
     "https://i.imgur.com/JwOLsEP.jpg",
     "https://i.imgur.com/GrUA2qC.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/GrUA2qC.jpg",
     "collapsedText": "\"The iPhone SE (2021) is the newest Apple's product of iPhone SE with a 5.7\" screen size, it comes with a 120Hz ProMotion display for super smooth scrolling. The list of innovations includes a more capable triple camera setup, with a wide, ultra-wide and zoom cameras, as well as a LiDAR scanner.\n",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Apple and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -87,6 +94,110 @@
         "displaySalePrice": "14.990.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "4.7 inches",
+        "Resolution": "1334 x 750 pixels, 16:9 ratio, 326 PPI",
+        "Technology": "IPS LCD",
+        "Screen-to-body": "65.34 %",
+        "Peak brightness": "625 cd/m2 (nit)",
+        "Features": "Oleophobic coating, Scratch-resistant glass, Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Apple A13 Bionic APL1W85 (7 nm)",
+        "Processor": "Hexa-core, 2650 MHz, Lightning and Thunder, 64-bit",
+        "GPU": "Apple-designed 4 core",
+        "RAM": "3GB LPDDR4",
+        "Internal storage": "64GB, not expandable",
+        "Device type": "Smartphone",
+        "OS": "iOS (15.x, 14.x, 13.x)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "1821 mAh",
+        "Type": "Li - Ion, Not user replaceable",
+        "Battery life test results": "<a href=\"https://www.phonearena.com/news/PhoneArena-Battery-Test-Results_id124954\" target=\"_blank\" title=\"https://www.phonearena.com/news/PhoneArena-Battery-Test-Results_id124954\">link</a>",
+        "Charging": "USB Power Delivery, Qi wireless charging"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Single camera",
+        "Main camera": "12 MP (Sapphire crystal lens cover, OIS, PDAF, CMOS image sensor, BSI sensor)",
+        "Video recording": "3840x2160 (4K UHD) (60 fps), 1920x1080 (Full HD) (240 fps)",
+        "Features": "OIS, Time-lapse video, Continuous autofocus",
+        "Front": "7 MP (EIS, HDR)",
+        "Video capture": "1920x1080 (Full HD)"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "5.45 x 2.65 x 0.29 inches (138.4 x 67.3 x 7.3 mm)",
+        "Weight": "5.22 oz (148.0 g)",
+        "Materials": "Back: Glass; Frame: Aluminum",
+        "Resistance": "Water, Dust; IP67",
+        "Biometrics": "Fingerprint (touch)",
+        "Keys": "Left: Volume control, Other; Right: Lock/Unlock key",
+        "Colors": "Black, White, Red"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "LTE (FDD)": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 14(700 PS), 17(700 b), 18(800 Lower), 19(800 Upper), 20(800 DD), 25(1900+), 26(850+), 29(700 d), 30(2300 WCS), 66(AWS-3), 71(600)",
+        "LTE (TDD)": "Bands 34(2000), 38(2600), 39(1900+), 40(2300), 41(2600+), 42(3500), 46, 48(3600)",
+        "UMTS": "Bands 1(2100), 2(1900), 4(1700/2100), 5(850), 8(900)",
+        "Data Speed": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s, HSUPA 5.76 Mbit/s",
+        "SIM type": "Nano SIM",
+        "HD Voice": "Yes",
+        "VoLTE": "Yes"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "No 3.5mm jack",
+        "Speakers": "Earpiece, Multiple speakers",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "5.0",
+        "Wi-Fi": "802.11 a, b, g, n, ac, ax, dual-band; MIMO, Hotspot",
+        "USB": "Lightning",
+        "Features": "Charging, Headphones port",
+        "Location": "GPS, A-GPS, Glonass, Galileo, Cell ID, Wi-Fi positioning",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Barometer",
+        "Other": "NFC, UMA (Wi-Fi Calling)",
+        "Hearing aid compatible": "T4"
+      }
+    },
+    {
+      "section": "Buyers information",
+      "data": {
+        "Price": "$ 399",
+        "In The Box": "EarPods with Lightning Connector, Lightning to USB Cable, USB Power Adapter, Documentation"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Apr 15, 2020"
+      }
     }
   ]
 }

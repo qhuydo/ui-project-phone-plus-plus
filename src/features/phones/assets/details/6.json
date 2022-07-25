@@ -45,16 +45,23 @@
       "slideIdx": 1
     }
   ],
-  "screenSize": [7.6],
-  "ram": [12],
-  "memory": [256, 512],
+  "screenSize": [
+    7.6
+  ],
+  "ram": [
+    12
+  ],
+  "memory": [
+    256,
+    512
+  ],
   "images": [
     "https://i.imgur.com/0inr355.jpg",
     "https://i.imgur.com/p8QaVKC.jpg",
     "https://i.imgur.com/D9H05fE.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/GzTicDi.jpg",
     "collapsedText": "About this item\n• EXPANSIVE SCREEN: See more and do more with the ultimate folding mobile phone screen that puts a super slim tablet right in your pocket\n• NEARLY INVISIBLE CAMERA: Take in an incredible uninterrupted view with a true edge-to-edge viewing experience thanks to our first-ever Under Display Camera\n• 120HZ AMOLED 2X SCREEN: Everything looks brilliant on this big, beautiful, clear display, offering a mesmerizing and dynamic viewing experience\n• MULTIPLE WINDOWS GET MORE DONE: Start working smarter not harder with three multi-windows that allow you to schedule, edit, and build presentations in a snap — or take notes with the S Pen\n• HYPER FAST SPEED: Live life in the fast lane with built-in 5G connectivity and hyper-fast processing power\n• TWO SCREENS, MANY WAYS TO FLEX THEM: Do more of what you love at the same time with Galaxy Flex Mode; Fold it at any angle and hold it any way you like — or go hands free and not hold it at all\n• CHARGED AT THE SPEED OF LIFE: Stay in charge, not beholden to your charger; With 25W Super Fast Charging, you can spend less time charging and more time taking care of business",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Samsung and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -132,6 +139,118 @@
         "displaySalePrice": "32.900.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "7.6 inches",
+        "Resolution": "2208 x 1768 pixels, 22.5:18 ratio, 372 PPI",
+        "Technology": "Super AMOLED",
+        "Refresh rate": "120Hz",
+        "Screen-to-body": "88.57 %",
+        "Features": "Folding inside the device, Ambient light sensor, Proximity sensor",
+        "Front cover display": "6.2 inches, 2268 x 832 pixels, Super AMOLED, 120Hz refresh rate, Scratch-resistant glass (Corning Gorilla Glass Victus)"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Qualcomm Snapdragon 888 SM8350 (5 nm)",
+        "Processor": "Octa-core, 1x 2.84GHz Kryo 680 + 3x 2.42GHz Kryo 680 + 4x 1.80GHz Kryo 680, 64-bit",
+        "GPU": "Adreno 660",
+        "RAM": "12GB",
+        "Internal storage": "256GB, not expandable",
+        "Device type": "Smartphone",
+        "OS": "Android (11)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "4400 mAh",
+        "Type": "Not user replaceable",
+        "Charging": "Fast charging, Qi wireless charging, Reverse wireless charging",
+        "Max charge speed": "Wired: 25.0W;  Wireless: 11.0W"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Triple camera",
+        "Main camera": "12 MP (OIS, PDAF)",
+        "Second camera": "12 MP (Telephoto, OIS, PDAF)",
+        "Third camera": "12 MP (Ultra-wide, OIS)",
+        "Video recording": "Yes",
+        "Front": "4 MP (Under-screen)",
+        "Folded": "10 MP"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "6.23 x 5.04 x 0.25 inches (158.2 x 128.1 x 6.4 mm)",
+        "Folded": "(158.2 x 67.1 x 14.4 mm)",
+        "Weight": "9.56 oz (271.0 g)",
+        "Materials": "Back: Glass; Frame: Aluminum",
+        "Resistance": "Yes; IPX8",
+        "Biometrics": "Fingerprint (touch)",
+        "Keys": "Right: Volume control, Lock/Unlock key",
+        "Colors": "Phantom Black, Phantom Green, Phantom Silver"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "5G": "n2, n5, n25, n41, n66, n71, n260, SA, NSA, Sub-6, mmWave",
+        "LTE (FDD)": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 14(700 PS), 18(800 Lower), 19(800 Upper), 20(800 DD), 25(1900+), 26(850+), 28(700 APT), 30(2300 WCS), 66(AWS-3), 71(600)",
+        "LTE (TDD)": "Bands 38(2600), 39(1900+), 40(2300), 41(2600+), 46, 48(3600)",
+        "UMTS": "Bands 1(2100), 2(1900), 5(850), 8(900), 9(1700)",
+        "Data Speed": "LTE-A Pro Cat 20 (2000/150 Mbit/s), HSDPA+ (4G) 42.2 Mbit/s",
+        "SIM type": "Nano SIM"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "No 3.5mm jack",
+        "Speakers": "Earpiece, Multiple speakers",
+        "Features": "Dolby Atmos, aptX, aptX-HD",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "5.2",
+        "Wi-Fi": "802.11 a, b, g, n, ac, ax (Wi-Fi 6); Wi-Fi Direct, Hotspot",
+        "USB": "Type-C (reversible), USB 3.2",
+        "Features": "Charging, OTG",
+        "Location": "GPS, A-GPS, Glonass, Galileo, Cell ID, Wi-Fi positioning",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Barometer",
+        "Other": "NFC"
+      }
+    },
+    {
+      "section": "Regulatory Approval",
+      "data": {
+        "FCC approval": "",
+        "Date approved": "Jun 23, 2021",
+        "FCC ID value": "A3LSMF926U",
+        "Measured SAR": "",
+        "Head": "0.73 W/kg",
+        "Body": "0.86 W/kg",
+        "Simultaneous Transmission": "1.22 W/kg",
+        "Wireless Router": "0.79 W/kg"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Aug 11, 2021"
+      }
     }
   ]
 }

@@ -52,9 +52,16 @@
       "slideIdx": 1
     }
   ],
-  "screenSize": [6.7],
-  "ram": [8],
-  "memory": [128, 256],
+  "screenSize": [
+    6.7
+  ],
+  "ram": [
+    8
+  ],
+  "memory": [
+    128,
+    256
+  ],
   "images": [
     "https://i.imgur.com/aOUIsxx.jpg",
     "https://i.imgur.com/9T1au9x.png",
@@ -64,7 +71,7 @@
     "https://i.imgur.com/nEvqsVh.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/E2GzhE4.jpg",
     "collapsedText": "About this item\n • Flex Your Best Angle: With Flex Mode, Just Unfold Your Mobile Phone’S Screen To Your Best Angle For Hands-Free Pics And Video Calls; Choose What You Want To Capture, Set It Down, Stand Back And Shoot Your Best Shot\n • A Camera That Goes Steady: Thanks To Samsung Galaxy Z Flip3’S Super Steady Feature, You Can Just Set It Down And Strike A Pose For Picture Perfect Selfies\n • Ultra Compact, Ultra Cool: Show Off Your Style Game Without The Tradeoffs; With A Compact Design That Unfolds, You Don’T Have To Compromise Screen Size For Your Favorite Outfit \n • Array Of Colors: Whether You’Re Into Sophisticated Neutrals Or Vibrant Tones, You’Ll Turn Heads With Every Take; Complete Your Look With Statement-Making Color Choices Of Phantom Black, Lavender, Green, Or Cream",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Samsung and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -113,6 +120,115 @@
         "displaySalePrice": "19.990.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "6.7 inches",
+        "Resolution": "2636 x 1080 pixels, 22:9 ratio, 425 PPI",
+        "Technology": "Dynamic AMOLED",
+        "Refresh rate": "120Hz",
+        "Screen-to-body": "84.79 %",
+        "Features": "Folding inside the device, HDR support, Ambient light sensor, Proximity sensor",
+        "Front cover display": "1.9 inches, 260 x 512 pixels, AMOLED"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Qualcomm Snapdragon 888 SM8350 (5 nm)",
+        "Processor": "Octa-core, 1x 2.84GHz Kryo 680 + 3x 2.42GHz Kryo 680 + 4x 1.80GHz Kryo 680, 64-bit",
+        "GPU": "Adreno 660",
+        "RAM": "8GB LPDDR5",
+        "Internal storage": "128GB (UFS 3.1), not expandable",
+        "Device type": "Smartphone",
+        "OS": "Android (11)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "3300 mAh",
+        "Charging": "Fast charging, Qi wireless charging, Reverse charging",
+        "Max charge speed": "Wired: 15.0W;  Wireless: 10.0W"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Dual camera",
+        "Main camera": "12 MP (OIS, Autofocus)",
+        "Second camera": "12 MP (Ultra-wide)",
+        "Video recording": "Yes",
+        "Front": "10 MP"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "6.54 x 2.84 x 0.27 inches (166 x 72.2 x 6.9 mm)",
+        "Folded": "(72.2 x 86.4 x 15.9 mm)",
+        "Weight": "6.46 oz (183.0 g)",
+        "Materials": "Back: Glass; Frame: Aluminum",
+        "Resistance": "Yes; IPX8",
+        "Biometrics": "Fingerprint (touch)",
+        "Keys": "Right: Volume control, Lock/Unlock key",
+        "Colors": "Phantom Black, Cream, Lavender"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "5G": "n2, n5, n25, n41, n66, n71, n260, n261, SA, NSA, Sub-6, mmWave",
+        "LTE (FDD)": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 14(700 PS), 18(800 Lower), 19(800 Upper), 20(800 DD), 25(1900+), 26(850+), 28(700 APT), 30(2300 WCS), 66(AWS-3), 71(600)",
+        "LTE (TDD)": "Bands 38(2600), 39(1900+), 40(2300), 41(2600+), 46, 48(3600)",
+        "UMTS": "Bands 1(2100), 2(1900), 4(1700/2100), 5(850), 8(900)",
+        "Data Speed": "LTE-A Pro Cat 20 (2000/150 Mbit/s), HSDPA+ (4G) 42.2 Mbit/s",
+        "SIM type": "Nano SIM"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "No 3.5mm jack",
+        "Speakers": "Earpiece, Multiple speakers",
+        "Features": "aptX, aptX-HD",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "5.1",
+        "Wi-Fi": "802.11 a, b, g, n, ac; Wi-Fi Direct, Hotspot",
+        "USB": "Type-C (reversible), USB 3.1",
+        "Features": "Charging, OTG",
+        "Location": "GPS, A-GPS, Glonass, Galileo, BeiDou",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Hall (for flip covers), Barometer",
+        "Other": "NFC"
+      }
+    },
+    {
+      "section": "Regulatory Approval",
+      "data": {
+        "FCC approval": "",
+        "Date approved": "Jun 23, 2021",
+        "FCC ID value": "A3LSMF711U",
+        "Measured SAR": "",
+        "Head": "1.05 W/kg",
+        "Body": "1.08 W/kg",
+        "Simultaneous Transmission": "1.59 W/kg",
+        "Wireless Router": "1.21 W/kg"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Aug 11, 2021"
+      }
     }
   ]
 }

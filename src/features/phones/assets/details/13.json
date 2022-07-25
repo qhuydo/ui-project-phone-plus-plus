@@ -1,6 +1,6 @@
 {
   "id": "13",
-  "name": "Samsung Galaxy A23",
+  "name": "Samsung Galaxy A32",
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/FnYgDhx.jpg",
@@ -45,9 +45,17 @@
       "slideIdx": 2
     }
   ],
-  "screenSize": [6.6],
-  "ram": [4, 6],
-  "memory": [64, 128],
+  "screenSize": [
+    6.6
+  ],
+  "ram": [
+    4,
+    6
+  ],
+  "memory": [
+    64,
+    128
+  ],
   "images": [
     "https://i.imgur.com/iNqqeSQ.jpg",
     "https://i.imgur.com/t5PYbSY.jpg",
@@ -55,7 +63,7 @@
     "https://i.imgur.com/Dp2JJgA.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/E2GzhE4.jpg",
     "collapsedText": "About this item\n • Display: 6.6 inches, 104.9 cm2 (~83.0% screen-to-body ratio) | 1080 x 2408 pixels, 20:9 ratio | Corning Gorilla Glass 6\n • Cameras: 50 MP, f/1.8, (wide), PDAF | 5 MP, f/2.2, (ultrawide), 1/5\", 1.12µm | 2 MP, f/2.4, (macro) | 2 MP, f/2.4, (depth) | 8 MP, f/2.2, (wide)\n • Battery: Li-Po 5000 mAh, non-removable | Fast charging 25W\n • Memory: 64GB ROM + 4GB RAM\n • Factory Unlocked Cell Phones are compatible with most GSM carriers. This phone is not compatible with CDMA carriers like Verizon, Sprint, or Boost.",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Samsung and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -96,6 +104,105 @@
         "displaySalePrice": "5.690.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "6.6 inches",
+        "Resolution": "2400 x 1080 pixels, 20:9 ratio, 399 PPI",
+        "Technology": "IPS LCD",
+        "Refresh rate": "90Hz",
+        "Screen-to-body": "82.30 %",
+        "Features": "Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "MediaTek Dimensity 700 MT6833V (7 nm)",
+        "Processor": "Octa-core, 2x 2.2GHz Cortex-A76 + 6x 2.0GHz Cortex-A55, 64-bit",
+        "GPU": "Mali-G57 MC2",
+        "RAM": "4GB",
+        "Internal storage": "64GB",
+        "Storage expansion": "microSDXC up to 1024 GB",
+        "Device type": "Smartphone",
+        "OS": "Android (11)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "5000 mAh",
+        "Type": "Li - Polymer, Not user replaceable",
+        "Charging": "Fast charging",
+        "Max charge speed": "Wired: 15.0W"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Triple camera",
+        "Main camera": "48 MP (Autofocus)",
+        "Second camera": "5 MP (Ultra-wide)",
+        "Third camera": "2 MP (Depth information)",
+        "Video recording": "1920x1080 (Full HD) (30 fps)",
+        "Front": "8 MP"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "6.58 x 3.01 x 0.35 inches (167.2 x 76.4 x 9.0 mm)",
+        "Weight": "7.16 oz (203.0 g)",
+        "Materials": "Back: Plastic; Frame: Plastic",
+        "Biometrics": "Fingerprint (touch)",
+        "Keys": "Right: Volume control, Lock/Unlock key",
+        "Colors": "Gray, White, Mint, Violet"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "5G": "SA, NSA",
+        "UMTS": "Bands 1(2100), 2(1900), 5(850), 8(900), 9(1700)",
+        "Data Speed": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s",
+        "Dual SIM": "Yes",
+        "SIM type": "Nano SIM"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Speakers": "Earpiece, Loudspeaker",
+        "Features": "Dolby Atmos",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "Yes",
+        "Wi-Fi": "802.11 a, b, g, n, ac; Wi-Fi Direct, Hotspot",
+        "USB": "Type-C (reversible)",
+        "Features": "Charging",
+        "Location": "GPS, A-GPS, Glonass, Galileo, Cell ID, Wi-Fi positioning",
+        "Sensors": "Accelerometer, Gyroscope"
+      }
+    },
+    {
+      "section": "Buyers information",
+      "data": {
+        "Price": "€ 229"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Jun 03, 2021"
+      }
     }
   ]
 }

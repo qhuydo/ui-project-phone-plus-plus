@@ -45,16 +45,25 @@
       "slideIdx": 2
     }
   ],
-  "screenSize": [6.5],
-  "ram": [4, 6, 8],
-  "memory": [128, 256],
+  "screenSize": [
+    6.5
+  ],
+  "ram": [
+    4,
+    6,
+    8
+  ],
+  "memory": [
+    128,
+    256
+  ],
   "images": [
     "https://i.imgur.com/ZfFHJYt.jpg",
     "https://i.imgur.com/i6JskDz.jpg",
     "https://i.imgur.com/AdxP8s4.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/GzTicDi.jpg",
     "collapsedText": "About this item\n • NOTE: International Version. No Warranty. This device will work with GSM service providers like AT&T, T-Mobile, MetroPCS, and most other GSM service providers. It will not work with CDMA service providers like Verizon, US Cellular, Sprint, or any other CDMA service providers. Please check device compatibility with your cell phone provider before you place your order.\n • Storage: 128GB 6GB RAM\n • Display: 6.5 inches, 102.0 cm2 (~84.9% screen-to-body ratio)\n • Platform: Android 11, One UI 3.1 Qualcomm SM7325 Snapdragon 778G 5G (6 nm)\n • Camera: 64MP Main Camera with OIS for crisp, clear photos throughout the day\n • Battery: Li-Po 4500 mAh, non-removable",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Samsung and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -95,6 +104,101 @@
         "displaySalePrice": "8.490.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "6.5 inches",
+        "Resolution": "2400 x 1080 pixels, 20:9 ratio, 405 PPI",
+        "Technology": "Super AMOLED",
+        "Refresh rate": "120Hz",
+        "Screen-to-body": "84.79 %",
+        "Features": "Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Qualcomm Snapdragon 778G SM7325 (6 nm)",
+        "Processor": "Octa-core, 2400 MHz, Kryo 670, 64-bit",
+        "GPU": "Adreno 642L",
+        "RAM": "6GB LPDDR4",
+        "Internal storage": "128GB",
+        "Storage expansion": "microSDXC up to 1024 GB",
+        "Device type": "Smartphone",
+        "OS": "Android (11), Samsung One UI"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "4500 mAh",
+        "Type": "Not user replaceable",
+        "Charging": "Qualcomm Quick Charge 2.0",
+        "Max charge speed": "Wired: 25.0W"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Quad camera",
+        "Main camera": "64 MP (OIS, Autofocus)",
+        "Second camera": "12 MP (Ultra-wide)",
+        "Third camera": "5 MP (Macro)",
+        "Fourth camera": "5 MP (Depth information)",
+        "Video recording": "3840x2160 (4K UHD) (30 fps), 1920x1080 (Full HD) (60 fps)",
+        "Features": "Continuous autofocus, Picture-taking during video recording",
+        "Front": "32 MP",
+        "Video capture": "3840x2160 (4K UHD) (30 fps)"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "6.30 x 2.96 x 0.33 inches (159.9 x 75.1 x 8.4 mm)",
+        "Weight": "6.67 oz (189.0 g)",
+        "Materials": "Back: Plastic",
+        "Resistance": "Water, Dust; IP67",
+        "Biometrics": "2D Face unlock, In-screen fingerprint",
+        "Keys": "Right: Volume control, Lock/Unlock key",
+        "Colors": "Awesome Mint, Awesome Violet, Awesome White, Awesome Black"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "5G": "n1, n3, n5, n7, n8, n28, n40, n41, n66, n78",
+        "LTE (FDD)": "Bands 1(2100), 3(1800), 7(2600), 32(1500 L-band)",
+        "LTE (TDD)": "Bands 38(2600), 41(2600+)",
+        "Data Speed": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s, HSUPA 5.76 Mbit/s, UMTS",
+        "Dual SIM": "Shared with microSD",
+        "SIM type": "Nano SIM"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "3.5mm jack",
+        "Speakers": "Earpiece, Loudspeaker",
+        "Features": "Dolby Atmos",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "5.0",
+        "Wi-Fi": "802.11 a, b, g, n, ac, dual-band; Wi-Fi Direct, Hotspot",
+        "USB": "Type-C (reversible), USB 2.0",
+        "Features": "Charging, Headphones port, OTG",
+        "Location": "GPS, A-GPS, Glonass, Galileo, BeiDou, Cell ID, Wi-Fi positioning",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Hall (for flip covers)",
+        "Other": "NFC",
+        "Hearing aid compatible": "M3, T3"
+      }
     }
   ]
 }

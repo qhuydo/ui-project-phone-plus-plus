@@ -44,15 +44,24 @@
       "thumbnail": "https://i.imgur.com/FyRg5sB.jpg"
     }
   ],
-  "screenSize": [6.5],
-  "ram": [3, 4],
-  "memory": [32, 64, 128],
+  "screenSize": [
+    6.5
+  ],
+  "ram": [
+    3,
+    4
+  ],
+  "memory": [
+    32,
+    64,
+    128
+  ],
   "images": [
     "https://i.imgur.com/BpPFWId.jpg",
     "https://i.imgur.com/d1f2wsv.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/GzTicDi.jpg",
     "collapsedText": "About this item\n • 6.5\" 720 x 1600 (HD+) PLS TFT LCD Infinity-V Display, 5000mAh Battery, 3.5mm jack\n • 32GB ROM, 2GB RAM, Unisoc SC9863A (28nm), Octa-core, IMG8322 GPU, Android 11 (Go edition)\n • Rear Camera: 8MP, f/2.0, Digital zoom up to 4x, Front Camera: 5MP, f/2.2, Bluetooth 4.2, MicroUSB 2.0\n • 2G GSM: 850/900/1800/1900, 3G: 850/900/1700(AWS)/1900/2100, 4G LTE: B1(2100), B2(1900), B3(1800), B4(AWS), B5(850), B7(2600), B8(900), B12(700), B17(700), B28(700), B38(2600), B40(2300), B41(2500), B66(AWS-3) - Dual SIM\n • International Model - No Warranty in US. Compatible with Most GSM Carriers like T-Mobile, AT&T, MetroPCS, etc. Will NOT work with CDMA Carriers Such as Verizon, Cricket, Boost",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Samsung and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -93,6 +102,112 @@
         "displaySalePrice": "3.490.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "4.7 inches",
+        "Resolution": "1280 x 720 pixels, 312 PPI",
+        "Technology": "Super AMOLED",
+        "Screen-to-body": "67.85 %",
+        "Features": "Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Samsung Exynos 7 Octa 7870 (14 nm)",
+        "Processor": "Octa-core, 1600 MHz, ARM Cortex-A53, 64-bit",
+        "GPU": "Mali-T830 MP2",
+        "RAM": "2GB LPDDR3",
+        "Internal storage": "16GB, available to use: 9.7 GB",
+        "Storage expansion": "microSDXC up to 256 GB",
+        "Device type": "Smartphone",
+        "OS": "Android (7.0 Nougat, 6.0 Marshmallow)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "2350 mAh",
+        "Type": "Not user replaceable"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Single camera",
+        "Main camera": "13 MP (Autofocus, CMOS image sensor)",
+        "Video recording": "1920x1080 (Full HD) (30 fps)",
+        "Features": "Video calling, Video sharing",
+        "Front": "8 MP"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "5.33 x 2.61 x 0.31 inches (135.4 x 66.2 x 7.9 mm)",
+        "Weight": "4.87 oz (138.0 g)",
+        "Materials": "Back: Glass; Frame: Aluminum",
+        "Resistance": "Water, Dust; IP68",
+        "Biometrics": "Fingerprint (touch)",
+        "Features": "Touch sensitive control keys",
+        "Keys": "Left: Volume control; Right: Lock/Unlock key",
+        "Colors": "Black sky, Gold sand, Peach cloud, Blue mist"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "LTE (FDD)": "Bands 1(2100), 2(1900), 3(1800), 5(850), 7(2600), 8(900), 20(800 DD)",
+        "LTE (TDD)": "Bands 40(2300)",
+        "UMTS": "Bands 5(850), 8(900), 2(1900), 1(2100)",
+        "Data Speed": "LTE-A Cat 6 (300/50 Mbit/s), HSPA",
+        "SIM type": "Nano SIM"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "3.5mm jack",
+        "Speakers": "Earpiece, Loudspeaker",
+        "Features": "Album art cover, Background playback",
+        "Screen mirroring": "Wireless screen share",
+        "Radio": "FM"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "4.2",
+        "Wi-Fi": "802.11 a, b, g, n, ac, dual-band; Wi-Fi Direct, Hotspot",
+        "USB": "Type-C (reversible)",
+        "Features": "Charging, Mass storage device",
+        "Location": "GPS, A-GPS, Glonass",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Hall (for flip covers), Barometer",
+        "Other": "NFC, ANT+, UMA (Wi-Fi Calling), Tethering, Computer sync, OTA sync"
+      }
+    },
+    {
+      "section": "Regulatory Approval",
+      "data": {
+        "FCC approval": "",
+        "Date approved": "Dec 21, 2016",
+        "FCC ID value": "A3LSMA320F",
+        "Measured SAR": "",
+        "Head": "0.45 W/kg",
+        "Body": "0.74 W/kg",
+        "Simultaneous Transmission": "1.56 W/kg",
+        "Wireless Router": "0.94 W/kg"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Jan 02, 2017"
+      }
     }
   ]
 }

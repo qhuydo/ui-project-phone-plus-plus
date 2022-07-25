@@ -60,9 +60,18 @@
       "slideIdx": 3
     }
   ],
-  "screenSize": [6.8],
-  "ram": [8, 12],
-  "memory": [128, 256, 512],
+  "screenSize": [
+    6.8
+  ],
+  "ram": [
+    8,
+    12
+  ],
+  "memory": [
+    128,
+    256,
+    512
+  ],
   "images": [
     "https://i.imgur.com/GPi5oE8.jpg",
     "https://i.imgur.com/juULXSP.jpg",
@@ -70,7 +79,7 @@
     "https://i.imgur.com/MmvJZDb.jpg"
   ],
   "nSold": 24,
-  "spec": {
+  "description": {
     "bannerImg": "https://i.imgur.com/WJvkmwy.png",
     "collapsedText": "About this item\n • 8K SUPER STEADY VIDEO: Shoot videos that rival how epic your life is with stunning 8K recording, the highest recording resolution available on a smartphone; Video captured is effortlessly smooth, thanks to Auto Focus Video Stabilization on Galaxy S22 Ultra\n • NIGHTOGRAPHY plus PORTAIT MODE: Capture the night with crystal clear, bright pics and videos, no matter the lighting with Night Mode; Portrait Mode auto-detects and adjusts to what you want front and center, making all your photos worthy of a frame\n • 108MP PHOTO RESOLUTION plus BRIGHT DISPLAY: Capture premium detail with 108MP resolution— the highest available on a cell phone; Your favorite content will look even more epic on our brightest display ever with Vision Booster\n • ADAPTIVE COLOR CONTRAST: Streaming on the go, working from your patio or binge-watching late into the night. The Galaxy S22 Ultra adaptive screen automatically optimizes color and brightness, outdoors and indoors\n • LONG LASTING BATTERY plus FAST CHARGING: Power every scroll, click, tap and stream all day long and then some with an intelligent, long-lasting battery; Dive back into action at a moment’s notice with 45W Super-Fast Charging\n • EMBEDDED S PEN: New phone, new S Pen; Now you can unleash your creativity on Galaxy S22 Ultra with an embedded S Pen; Edit photos and videos with pinpoint accuracy, and do it all with that pen-to-paper feel\n • PREMIUM DESIGN & CRAFTMANSHIP: With a classy, eye-catching glass-metal-glass design, we’re setting a standard for smart phones; With our strongest aluminum frame and the latest Gorilla Glass, this phone is lightweight and durable to help endure scratches and dings",
     "captionText": "*Please note that all functions, features, specs and any other product information provided on any Samsung and subsidiary platform, including but not limited to, benefits, design, pricing, components, performance, availability and capabilities describing the product are subject to change and changed by the company when deemed necessary without any notice or obligation.",
@@ -119,6 +128,111 @@
         "displaySalePrice": "27.990.000₫"
       },
       "images": []
+    }
+  ],
+  "specs": [
+    {
+      "section": "Display",
+      "data": {
+        "Size": "6.8 inches",
+        "Resolution": "3088 x 1440 pixels, 19.3:9 ratio, 501 PPI",
+        "Technology": "Dynamic AMOLED",
+        "Refresh rate": "120Hz",
+        "Screen-to-body": "89.72 %",
+        "Peak brightness": "1750 cd/m2 (nit)",
+        "Features": "HDR support, Scratch-resistant glass (Corning Gorilla Glass Victus+), Ambient light sensor, Proximity sensor"
+      }
+    },
+    {
+      "section": "Hardware",
+      "data": {
+        "System chip": "Qualcomm Snapdragon 8 Gen 1 SM8450 (4 nm)",
+        "Processor": "Octa-core, 1x 3.00GHz Cortex-X2 + 3x 2.50GHz Cortex-A710 + 4x 1.80GHz Cortex-A510",
+        "GPU": "Adreno 730",
+        "RAM": "8GB LPDDR5",
+        "Internal storage": "128GB (UFS 3.1), not expandable",
+        "Device type": "Smartphone",
+        "OS": "Android (12)"
+      }
+    },
+    {
+      "section": "Battery",
+      "data": {
+        "Capacity": "5000 mAh",
+        "Type": "Not user replaceable",
+        "Charging": "Fast charging, Qi wireless charging, Reverse wireless charging",
+        "Max charge speed": "Wired: 45.0W;  Wireless: 15.0W"
+      }
+    },
+    {
+      "section": "Camera",
+      "data": {
+        "Rear": "Quad camera",
+        "Main camera": "108 MP (OIS, PDAF)",
+        "Second camera": "10 MP (Telephoto)",
+        "Third camera": "10 MP (Telephoto)",
+        "Fourth camera": "12 MP (Ultra-wide)",
+        "Video recording": "7680x4320 (8K UHD) (24 fps), 3840x2160 (4K UHD) (60 fps), 1920x1080 (Full HD) (240 fps), 1280x720 (HD) (960 fps)",
+        "Front": "40 MP (PDAF)",
+        "Video capture": "3840x2160 (4K UHD) (60 fps)"
+      }
+    },
+    {
+      "section": "Design",
+      "data": {
+        "Dimensions": "6.43 x 3.07 x 0.35 inches (163.3 x 77.9 x 8.9 mm)",
+        "Weight": "8.08 oz (229.0 g)",
+        "Materials": "Back: Glass (Corning Gorilla Glass Victus); Frame: Aluminum",
+        "Resistance": "Water, Dust; IP68",
+        "Biometrics": "2D Face unlock, Ultrasonic in-screen fingerprint",
+        "Keys": "Left: Volume control, Lock/Unlock key",
+        "Colors": "Phantom Black, White, Burgundy, Green"
+      }
+    },
+    {
+      "section": "Cellular",
+      "data": {
+        "5G": "n1, n2, n3, n5, n7, n8, n12, n20, n25, n28, n38, n40, n41, n66, n71, n75, n77, n78, SA, NSA, Sub-6, mmWave",
+        "LTE (FDD)": "Bands 1(2100), 2(1900), 3(1800), 4(AWS-1), 5(850), 7(2600), 8(900), 12(700 a), 13(700 c), 17(700 b), 18(800 Lower), 19(800 Upper), 20(800 DD), 25(1900+), 26(850+), 28(700 APT), 32(1500 L-band), 66(AWS-3), 71(600)",
+        "LTE (TDD)": "Bands 38(2600), 39(1900+), 40(2300), 41(2600+)",
+        "UMTS": "Bands 1(2100), 2(1900), 4(1700/2100), 5(850), 8(900)",
+        "Data Speed": "LTE-A, HSDPA+ (4G) 42.2 Mbit/s",
+        "SIM type": "Dual Nano SIM + eSIM"
+      }
+    },
+    {
+      "section": "Multimedia",
+      "data": {
+        "Headphones": "No 3.5mm jack",
+        "Speakers": "Earpiece, Multiple speakers",
+        "Screen mirroring": "Wireless screen share",
+        "Additional microphone(s)": "for Noise cancellation"
+      }
+    },
+    {
+      "section": "Connectivity &amp; Features",
+      "data": {
+        "Bluetooth": "5.2",
+        "Wi-Fi": "802.11 a, b, g, n, ac, ax (Wi-Fi 6); Wi-Fi Direct, Hotspot",
+        "USB": "Type-C (reversible), USB 3.2",
+        "Features": "Charging, OTG",
+        "Location": "GPS, A-GPS, Glonass, Galileo, BeiDou, Cell ID, Wi-Fi positioning",
+        "Sensors": "Accelerometer, Gyroscope, Compass, Barometer",
+        "Other": "NFC"
+      }
+    },
+    {
+      "section": "Buyers information",
+      "data": {
+        "Price": "$ 1200",
+        "In The Box": "UBS-C cable, User manual, SIM eject tool"
+      }
+    },
+    {
+      "section": "Availability",
+      "data": {
+        "Officially announced": "Feb 09, 2022"
+      }
     }
   ]
 }
