@@ -5,7 +5,7 @@ import { PhoneDetails, PhoneSearchResult } from "features/phones";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ROUTER from "./router";
 import ScrollToTop from "components/Layout/ScrollToTop";
-import { PhoneComparison } from "features/compare";
+import { PhoneComparison } from "features/comparison";
 
 const GlobalRouter = () => {
   return (

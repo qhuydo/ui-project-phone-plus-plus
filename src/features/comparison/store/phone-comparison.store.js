@@ -1,14 +1,10 @@
-const VIEW_MODES = [
-  "VIEW_ALL",
-  "HIGHLIGHT_DIFFERENCES",
-  "SHOW_ONLY_DIFFERENCES",
-];
+import { COMPARISON_MODE, VIEW_MODES } from "features/comparison/utils";
 
 export const initialPhoneComparisonState = {
   // oneOf(["VIEW_ALL", "HIGHLIGHT_DIFFERENCES", "SHOW_ONLY_DIFFERENCES"])
-  viewMode: "VIEW_ALL",
+  viewMode: VIEW_MODES[0],
   // oneOf(["SPEC", "SIZE"])
-  currentMode: "SPEC",
+  comparisonMode: COMPARISON_MODE[0],
   phoneDetails: [],
   // {[section]: {[key]: boolean}}}
   displayedFields: {},
@@ -47,6 +43,25 @@ export const phoneComparisonReducer = (state, action) => {
       return {
         ...state,
         viewMode: action.payload,
+      };
+    }
+    case "CHANGE_COMPARISON_MODE": {
+      if (
+        !action.payload ||
+        !COMPARISON_MODE.find((mode) => action.payload === mode)
+      ) {
+        return state;
+      }
+
+      return {
+        ...state,
+        comparisonMode: action.payload,
+      };
+    }
+    case "CHANGE_DISPLAYED_FIELDS": {
+      return {
+        ...state,
+        displayedFields: action.payload ?? state.displayedFields,
       };
     }
     default:

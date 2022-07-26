@@ -1,6 +1,6 @@
 const PRIMARY = {
   main: "#B4E6FF",
-  50: "#E4F2FB",
+  50: "rgba(180,230,255,0.08)",
 };
 
 const SECONDARY = {

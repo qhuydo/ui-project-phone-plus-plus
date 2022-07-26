@@ -1,5 +1,6 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -8,13 +9,13 @@ import {
 import {
   initialPhoneComparisonState,
   phoneComparisonReducer,
-} from "features/compare/store";
+} from "features/comparison/store";
 import PropTypes from "prop-types";
 import { getPhoneById } from "features/phones/api";
 import {
   getDisplayedDataFromPhoneDetails,
   getDisplayedFieldsFromPhoneDetails,
-} from "features/compare/utils";
+} from "features/comparison/utils";
 
 const PhoneComparisonContext = createContext({
   state: initialPhoneComparisonState,
@@ -47,11 +48,11 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
         phoneDetails,
         displayedFields
       );
-      console.log({
-        phoneDetails,
-        displayedFields,
-        displayedData,
-      });
+      // console.log({
+      //   phoneDetails,
+      //   displayedFields,
+      //   displayedData,
+      // });
 
       dispatch({
         type: "ADD_COMPARISON_DATA",
@@ -64,12 +65,32 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
     })();
   }, [ids]);
 
+  const changeDisplayedField = useCallback(
+    (sectionName, fieldName, fieldValue) => {
+      if (!sectionName || !fieldName) return;
+      try {
+        const displayedFields = { ...state.displayedFields };
+        displayedFields[sectionName][fieldName] = fieldValue;
+        dispatch({ type: "CHANGE_DISPLAYED_FIELDS", payload: displayedFields });
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [state?.displayedFields]
+  );
+
+  const changeComparisonMode = useCallback((e, mode) => {
+    dispatch({ type: "CHANGE_COMPARISON_MODE", payload: mode });
+  }, []);
+
   const contextValue = useMemo(
     () => ({
       state,
       dispatch,
+      changeComparisonMode,
+      changeDisplayedField,
     }),
-    [state]
+    [changeComparisonMode, changeDisplayedField, state]
   );
 
   return (
