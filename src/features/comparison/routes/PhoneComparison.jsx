@@ -1,7 +1,13 @@
 import React, { useMemo } from "react";
 import { Head } from "components/Head/Head";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
-import { Container, Typography, useMediaQuery, useTheme } from "@mui/material";
+import {
+  Box,
+  Container,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { PhoneComparisonContextProvider } from "features/comparison/context";
 import { useSearchParams } from "react-router-dom";
 import { ControlSection } from "features/comparison/components";
@@ -50,6 +56,8 @@ const PhoneComparisonBody = () => {
         </Typography>
 
         <ControlSection />
+
+        <Box width={1} minHeight={600} />
       </Container>
     </>
   );

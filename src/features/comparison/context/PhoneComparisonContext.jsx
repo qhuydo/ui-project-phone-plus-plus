@@ -16,6 +16,8 @@ import {
   getDisplayedDataFromPhoneDetails,
   getDisplayedFieldsFromPhoneDetails,
 } from "features/comparison/utils";
+import { shuffle } from "lodash-es";
+import { allPhones } from "features/phones/assets";
 
 const PhoneComparisonContext = createContext({
   state: initialPhoneComparisonState,
@@ -48,6 +50,8 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
         phoneDetails,
         displayedFields
       );
+
+      const recommendations = shuffle(allPhones).slice(0, 4);
       // console.log({
       //   phoneDetails,
       //   displayedFields,
@@ -60,6 +64,7 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
           phoneDetails,
           displayedFields,
           displayedData,
+          recommendations,
         },
       });
     })();

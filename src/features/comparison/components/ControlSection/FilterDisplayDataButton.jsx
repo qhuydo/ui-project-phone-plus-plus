@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Divider,
   FormControlLabel,
   List,
   ListItem,
@@ -153,6 +154,12 @@ const FilterDisplayDataButton = () => {
               </li>
             ))}
           </List>
+
+          <Divider />
+          <Stack direction="row" spacing={1} justifyContent="end">
+            <Button>Clear</Button>
+            <Button variant="contained">Apply</Button>
+          </Stack>
         </Stack>
       </Menu>
     </>

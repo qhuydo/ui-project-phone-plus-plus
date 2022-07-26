@@ -1,8 +1,8 @@
-import { Box, Stack, Typography } from "@mui/material";
-import { SearchBar } from "components/SearchBar";
+import { Stack, Typography } from "@mui/material";
 import FilterDisplayDataButton from "features/comparison/components/ControlSection/FilterDisplayDataButton";
 import ComparisonModeButton from "features/comparison/components/ControlSection/ComparisonModeButton";
 import { usePhoneComparisonContext } from "features/comparison/context";
+import ComparisonSearchBar from "features/comparison/components/ControlSection/ComparisonSearchBar";
 
 const ControlSection = () => {
   const {
@@ -19,13 +19,7 @@ const ControlSection = () => {
       py={2}
     >
       <Stack direction="row" spacing={1} alignItems="center" flexGrow={1}>
-        <Box width={0.74} display="flex">
-          <SearchBar
-            value={""}
-            placeholder={"Search for phone to compare..."}
-            sx={{ m: 0 }}
-          />
-        </Box>
+        <ComparisonSearchBar />
 
         <FilterDisplayDataButton />
       </Stack>

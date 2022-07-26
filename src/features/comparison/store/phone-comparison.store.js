@@ -30,6 +30,8 @@ export const phoneComparisonReducer = (state, action) => {
         displayedData: action.payload?.displayedData || state.displayedData,
         phoneDetails: action.payload?.phoneDetails || state.phoneDetails,
         isLoading: false,
+        recommendations:
+          action.payload?.recommendations || state.recommendations,
       };
     }
     case "CHANGE_VIEW_MODE": {

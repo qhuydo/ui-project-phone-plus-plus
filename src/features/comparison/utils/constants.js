@@ -11,3 +11,5 @@ export const VIEW_MODE_TEXTS = [
   "Highlight differences",
   "Show only differences",
 ];
+
+export const MAX_ITEMS_PER_COMPARISON = 3;
