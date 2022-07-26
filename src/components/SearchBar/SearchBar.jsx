@@ -13,11 +13,13 @@ const SearchBar = ({
   onBlurred,
   onFocused,
   onCleared,
+  placeholder,
+  sx,
 }) => {
   return (
-    <SearchBarContainer>
+    <SearchBarContainer sx={sx}>
       <StyledInputBase
-        placeholder="Search for something…"
+        placeholder={placeholder || "Search for something…"}
         inputProps={{ "aria-label": "search" }}
         onKeyPress={onKeyPressed}
         value={value}
@@ -48,6 +50,8 @@ SearchBar.propTypes = {
   onFocused: PropTypes.func,
   onBlurred: PropTypes.func,
   onCleared: PropTypes.func,
+  placeholder: PropTypes.string,
+  sx: PropTypes.any,
 };
 
 export default SearchBar;
