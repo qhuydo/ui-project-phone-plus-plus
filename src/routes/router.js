@@ -14,6 +14,16 @@ const router = {
   getCategoryPage(brand) {
     return `/phone/category/${brand}`;
   },
+  getPhoneComparePage(ids) {
+    const link = "/phone/compare";
+    if (!ids) {
+      return link;
+    }
+    return ids.reduce(
+      (query, id, idx) => `${query}${idx === 0 ? "?" : "&"}id${idx + 1}=${id}`,
+      link
+    );
+  },
 };
 
 export default router;

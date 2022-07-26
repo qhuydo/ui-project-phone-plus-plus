@@ -90,7 +90,7 @@ const PhoneSpecificationSection = () => {
       p={{ xs: 0, md: 2 }}
     >
       <Typography variant={smScreen ? "h4" : "h3"} textAlign="center">
-        Product specification
+        Product specifications
       </Typography>
 
       <Box width={1}>

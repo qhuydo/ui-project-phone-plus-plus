@@ -1,7 +1,7 @@
 import { usePhoneDetailsContext } from "features/phones/context";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Navigation, Thumbs } from "swiper";
-import { Box, Stack } from "@mui/material";
+import { Box, Link, Stack } from "@mui/material";
 import "./PhoneDetailsImage.css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -9,6 +9,8 @@ import "swiper/css/thumbs";
 import CarouselButton from "components/Button/CarouselButton";
 import { useEffect, useState } from "react";
 import { BigButton } from "components/Button";
+import { Link as RouterLink } from "react-router-dom";
+import { Router } from "routes";
 
 const PREV_BUTTON_ID = "phone-details-thumbnail-prev-button";
 const NEXT_BUTTON_ID = "phone-details-thumbnail-next-button";
@@ -121,9 +123,17 @@ const PhoneDetailsImage = () => {
           View 3D model
         </BigButton>
 
-        <BigButton fullWidth variant="outlined">
-          Compare phone
-        </BigButton>
+        <Link
+          component={RouterLink}
+          underline="none"
+          color="inherit"
+          to={Router.getPhoneComparePage([phoneDetails.id])}
+          sx={{ width: 1 }}
+        >
+          <BigButton fullWidth variant="outlined">
+            Compare phone
+          </BigButton>
+        </Link>
       </Stack>
     </Box>
   );

@@ -18,6 +18,8 @@ import { useCartContext } from "features/cart/context/CartContext";
 import { useCallback, useMemo } from "react";
 import { createCartItem } from "features/cart/utils";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { useNavigate } from "react-router-dom";
+import { Router } from "routes";
 
 const PhoneCardContent = ({ sx }) => {
   const theme = useTheme();
@@ -34,12 +36,22 @@ const PhoneCardContent = ({ sx }) => {
 
   const { addItem } = useCartContext();
 
+  const navigate = useNavigate();
+
   const onCartItemAdded = useCallback(
     (e) => {
       e.preventDefault();
       return addItem(createCartItem(phone, selectedColour, selectedVersion));
     },
     [addItem, phone, selectedColour, selectedVersion]
+  );
+
+  const onCompareButtonClicked = useCallback(
+    (e) => {
+      e.preventDefault();
+      navigate(Router.getPhoneComparePage([phone.id]));
+    },
+    [navigate, phone?.id]
   );
 
   const percentOff = useMemo(
@@ -194,12 +206,14 @@ const PhoneCardContent = ({ sx }) => {
         <Button
           variant="text"
           sx={{
+            width: 1,
             mt: 1,
             "&:hover": {
               textDecoration: "underline",
             },
             textDecoration: "none",
           }}
+          onClick={onCompareButtonClicked}
         >
           Compare
         </Button>

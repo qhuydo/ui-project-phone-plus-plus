@@ -7,7 +7,9 @@ const SpecsTableCell = styled(TableCell)(({ theme }) => ({
     color: theme.palette.text.primary,
   },
   [`&.${tableCellClasses.body}`]: {
-    typography: "body1",
+    fontSize: "1rem",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
     borderRight: `1px solid ${theme.palette.divider}`,
   },
 }));
