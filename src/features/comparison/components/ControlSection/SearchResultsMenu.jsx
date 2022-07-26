@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import {
   Box,
   Button,
@@ -14,9 +14,6 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import { usePhoneComparisonContext } from "features/comparison/context";
 import { GOLDEN_RATIO } from "utils/constants";
-import { useNavigate } from "react-router-dom";
-import { MAX_ITEMS_PER_COMPARISON } from "features/comparison/utils";
-import { Router } from "routes";
 
 const N_ITEMS = 8;
 
@@ -27,6 +24,7 @@ const searchBarMenuStyle = {
   width: 1,
   p: 1,
   position: "absolute",
+  zIndex: 50,
   "&:before": {
     content: '""',
     display: "block",
@@ -38,39 +36,19 @@ const searchBarMenuStyle = {
     height: 10,
     bgcolor: "background.paper",
     transform: "translateY(-50%) rotate(45deg)",
-    zIndex: 0,
   },
   background: "background.paper",
 };
 
 const SearchResultsMenu = ({ searchResults, shouldShowSearchMenu }) => {
   const {
-    state: { recommendations, phoneDetails },
+    state: { recommendations },
+    addPhone,
   } = usePhoneComparisonContext();
-
-  const navigate = useNavigate();
 
   const result = useMemo(
     () => searchResults.slice(0, N_ITEMS),
     [searchResults]
-  );
-
-  const addPhone = useCallback(
-    (id) => {
-      let phonesIds;
-      if (phoneDetails.length >= MAX_ITEMS_PER_COMPARISON) {
-        phonesIds = [
-          ...phoneDetails
-            .slice(0, MAX_ITEMS_PER_COMPARISON - 1)
-            .map((phone) => phone.id),
-          id,
-        ];
-      } else {
-        phonesIds = [...phoneDetails.map((phone) => phone.id), id];
-      }
-      navigate(Router.getPhoneComparePage(phonesIds));
-    },
-    [navigate, phoneDetails]
   );
 
   return (

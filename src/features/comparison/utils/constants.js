@@ -12,4 +12,8 @@ export const VIEW_MODE_TEXTS = [
   "Show only differences",
 ];
 
+export const TABLE_HEADER_MAX_WIDTH = 200;
+
+export const MAX_RECOMMENDATIONS_PER_COLUMN = 3;
+
 export const MAX_ITEMS_PER_COMPARISON = 3;

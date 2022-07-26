@@ -15,9 +15,12 @@ import { getPhoneById } from "features/phones/api";
 import {
   getDisplayedDataFromPhoneDetails,
   getDisplayedFieldsFromPhoneDetails,
+  MAX_ITEMS_PER_COMPARISON,
 } from "features/comparison/utils";
 import { shuffle } from "lodash-es";
 import { allPhones } from "features/phones/assets";
+import { Router } from "routes";
+import { useNavigate } from "react-router-dom";
 
 const PhoneComparisonContext = createContext({
   state: initialPhoneComparisonState,
@@ -33,6 +36,8 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
     phoneComparisonReducer,
     initialPhoneComparisonState
   );
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -88,14 +93,44 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
     dispatch({ type: "CHANGE_COMPARISON_MODE", payload: mode });
   }, []);
 
+  const changeViewMode = useCallback((e, value) => {
+    dispatch({ type: "CHANGE_VIEW_MODE", payload: value });
+  }, []);
+
+  const addPhone = useCallback(
+    (id) => {
+      let phonesIds;
+      if (state.phoneDetails.length >= MAX_ITEMS_PER_COMPARISON) {
+        phonesIds = [
+          ...state.phoneDetails
+            .slice(0, MAX_ITEMS_PER_COMPARISON - 1)
+            .map((phone) => phone.id),
+          id,
+        ];
+      } else {
+        phonesIds = [...state.phoneDetails.map((phone) => phone.id), id];
+      }
+      navigate(Router.getPhoneComparePage(phonesIds));
+    },
+    [navigate, state.phoneDetails]
+  );
+
   const contextValue = useMemo(
     () => ({
       state,
       dispatch,
       changeComparisonMode,
       changeDisplayedField,
+      changeViewMode,
+      addPhone,
     }),
-    [changeComparisonMode, changeDisplayedField, state]
+    [
+      addPhone,
+      changeComparisonMode,
+      changeDisplayedField,
+      changeViewMode,
+      state,
+    ]
   );
 
   return (
