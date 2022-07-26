@@ -34,7 +34,7 @@ export const PhoneDetails = () => {
   );
 };
 
-export const PhoneDetailsBody = () => {
+const PhoneDetailsBody = () => {
   const {
     state: { phoneDetails, isLoading, recommendedPhones },
   } = usePhoneDetailsContext();
