@@ -28,30 +28,41 @@ export async function getDisplayedDataFromPhoneDetails(
   phoneDetails,
   displayedFields
 ) {
-  if (!phoneDetails || !phoneDetails?.length) return [];
-  if (!displayedFields) return [];
+  if (!phoneDetails || !phoneDetails?.length) return {};
+  if (!displayedFields) return {};
 
-  return phoneDetails.map((phone) => {
+  const displayedSpecs = Object.entries(displayedFields).reduce(
+    (map, [sectionName, sectionSpec]) => {
+      map[sectionName] = Object.keys(sectionSpec).reduce(
+        (sectionMap, specName) => {
+          sectionMap[specName] = [];
+          return sectionMap;
+        },
+        {}
+      );
+      return map;
+    },
+    {}
+  );
+
+  // console.log(displayedSpecs);
+
+  for (const phone of phoneDetails) {
     const sections = phone.specs.reduce((map, spec) => {
       map[spec.section] = spec.data;
       return map;
     }, {});
 
-    // console.log(sections);
-
-    const displayedSpecs = [];
     for (const [sectionName, sectionSpec] of Object.entries(displayedFields)) {
-      const specSection = {
-        spec: sectionName,
-        data: Object.entries(sectionSpec).reduce((map, [specName, visible]) => {
-          if (!visible) return map;
+      for (const [specName, visible] of Object.entries(sectionSpec)) {
+        if (!visible) continue;
 
-          map[specName] = sections[sectionName]?.[specName] ?? "";
-          return map;
-        }, {}),
-      };
-      displayedSpecs.push(specSection);
+        displayedSpecs[sectionName]?.[specName]?.push(
+          sections[sectionName]?.[specName] ?? ""
+        );
+      }
     }
-    return displayedSpecs;
-  });
+  }
+  // console.log(displayedSpecs);
+  return displayedSpecs;
 }
