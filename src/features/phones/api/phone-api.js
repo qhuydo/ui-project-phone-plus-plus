@@ -356,15 +356,50 @@ export const findPhoneByPriceRange = (phoneList, priceRange) => {
   return result;
 };
 
-// TODO: complete this function
+function compareName(phone1, phone2) {
+  if (phone1.name.toLowerCase() < phone2.name.toLowerCase()) {
+    return -1;
+  }
+  if (phone1.name.toLowerCase() > phone2.name.toLowerCase()) {
+    return 1;
+  }
+  return 0;
+}
+
+function comparePrice(phone1, phone2) {
+  //get phone1's lowest price
+  var lowestPrice1 = phone1.versions[0].salePrice;
+  phone1.versions.forEach((ver) => {
+    if (ver.salePrice < lowestPrice1) {
+      lowestPrice1 = ver.salePrice;
+    }
+  });
+
+  //get phone2's lowest price
+  var lowestPrice2 = phone2.versions[0].salePrice;
+  phone2.versions.forEach((ver) => {
+    if (ver.salePrice < lowestPrice2) {
+      lowestPrice2 = ver.salePrice;
+    }
+  });
+  if (lowestPrice1 > lowestPrice2) {
+    return -1;
+  }
+  if (lowestPrice1 < lowestPrice2) {
+    return 1;
+  }
+  return 0;
+}
+
 export const findPhoneAndFilter = async (keyword, filterOptions, sortBy) => {
+  console.log(sortBy);
+
   await new Promise((resolve) => setTimeout(resolve, 900));
 
+  //search
   let result = await findPhoneByKeyword(keyword);
 
   //filter
-  let resultByFilter = result;
-
   const brandFilterOptions = Object.entries(filterOptions.brand)
     .filter(([key, value]) => value)
     .map(([key, value]) => key);
@@ -382,35 +417,34 @@ export const findPhoneAndFilter = async (keyword, filterOptions, sortBy) => {
     .map(([key, value]) => key);
 
   if (brandFilterOptions.length > 0) {
-    resultByFilter = findPhoneByFilterBrand(resultByFilter, brandFilterOptions);
+    result = findPhoneByFilterBrand(result, brandFilterOptions);
   }
   if (memoryFilterOptions.length > 0) {
-    resultByFilter = findPhoneByFilterMemory(
-      resultByFilter,
-      memoryFilterOptions
-    );
+    result = findPhoneByFilterMemory(result, memoryFilterOptions);
   }
   if (ramFilterOptions.length > 0) {
-    resultByFilter = findPhoneByFilterRam(resultByFilter, ramFilterOptions);
+    result = findPhoneByFilterRam(result, ramFilterOptions);
   }
   if (ratingsFilterOptions.length > 0) {
-    resultByFilter = findPhoneByFilterRatings(
-      resultByFilter,
-      ratingsFilterOptions
-    );
+    result = findPhoneByFilterRatings(result, ratingsFilterOptions);
   }
   if (screenSizeFilterOptions.length > 0) {
-    resultByFilter = findPhoneByFilterScreenSize(
-      resultByFilter,
-      screenSizeFilterOptions
-    );
+    result = findPhoneByFilterScreenSize(result, screenSizeFilterOptions);
   }
-  resultByFilter = findPhoneByPriceRange(
-    resultByFilter,
-    filterOptions.priceRange
-  );
+  result = findPhoneByPriceRange(result, filterOptions.priceRange);
 
-  result = resultByFilter;
+  //sort
+  if (sortBy === "NAME_ASC") {
+    result.sort(compareName);
+  } else if (sortBy === "NAME_DESC") {
+    result.sort(compareName);
+    result = result.reverse();
+  } else if (sortBy === "PRICE_DESC") {
+    result.sort(comparePrice);
+  } else if (sortBy === "PRICE_ASC") {
+    result.sort(comparePrice);
+    result = result.reverse();
+  }
 
   return result;
 };
