@@ -1,5 +1,6 @@
 import { Box, Stack } from "@mui/material";
 import ComparisonItemHeader from "features/comparison/components/ComparisonSection/ComparisonItemHeader";
+import ComparisonTableGroup from "features/comparison/components/ComparisonSection/ComparisonTableGroup";
 import { ViewModeList } from "features/comparison/components/ControlSection";
 import { SearchResultPlaceholder } from "features/comparison/components/SearchResultPlaceholder";
 import { usePhoneComparisonContext } from "features/comparison/context";
@@ -39,31 +40,52 @@ const ComparisonSection = () => {
 
   return (
     <Stack direction="row" spacing={1}>
-      <Box width={TABLE_HEADER_MAX_WIDTH} mr={1}>
-        <ViewModeList />
-      </Box>
-      {phoneDetails.length !== 0 && (
-        <Stack direction="row" flexGrow={1} spacing={1} justifyContent="center">
-          {phoneDetails.map((phone) => (
-            <ComparisonItemHeader
-              phone={phone}
-              key={`phone-${phone.id}`}
-              width={`${100 / phoneDetails.length}%`}
-            />
-          ))}
+      <Stack
+        directon="column"
+        width={`calc(${phoneDetails.length} * (100% - ${TABLE_HEADER_MAX_WIDTH}px) / ${MAX_ITEMS_PER_COMPARISON} + ${TABLE_HEADER_MAX_WIDTH}px)`}
+        spacing={1}
+      >
+        <Stack direction="row" width={1}>
+          <Box width={TABLE_HEADER_MAX_WIDTH} mr={1}>
+            <ViewModeList />
+          </Box>
+
+          {phoneDetails.length !== 0 && (
+            <Stack
+              direction="row"
+              spacing={1}
+              justifyContent="center"
+              flexGrow={1}
+            >
+              {phoneDetails.map((phone) => (
+                <ComparisonItemHeader
+                  phone={phone}
+                  key={`phone-${phone.id}`}
+                  width={`${100 / phoneDetails.length}%`}
+                />
+              ))}
+            </Stack>
+          )}
         </Stack>
-      )}
+
+        <ComparisonTableGroup />
+      </Stack>
       {nRecommendations !== 0 && (
-        <Stack direction="row" spacing={2} justifyContent="center">
+        <Stack
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+          width={`calc(${nRecommendations} * (100% - ${TABLE_HEADER_MAX_WIDTH}px) / ${MAX_ITEMS_PER_COMPARISON})`}
+        >
           {recommendations.slice(0, nRecommendations).map((phones, idx) => (
             <SearchResultPlaceholder
               recommendations={phones}
               key={`placeholder-${idx}`}
-              width={`${100 / nRecommendations}%`}
+              width={1}
             />
           ))}
         </Stack>
-      )}{" "}
+      )}
     </Stack>
   );
 };

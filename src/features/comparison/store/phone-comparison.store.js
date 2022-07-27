@@ -8,8 +8,7 @@ export const initialPhoneComparisonState = {
   phoneDetails: [],
   // {[section]: {[key]: boolean}}}
   displayedFields: {},
-  // [{section: string, data: {[key]: string}}]
-  displayedData: [],
+  displayedData: {},
   recommendations: [],
   isLoading: false,
 };
