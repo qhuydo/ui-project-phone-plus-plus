@@ -17,56 +17,42 @@ const categoryArr = [
   {
     id: "gift-n-awards",
     name: "Gifts & Awards",
-    Icon: GiftCardIcon,
-    FilledIcon: GiftCardIcon,
+    image: "https://i.imgur.com/a4nZ6eg.png",
   },
   {
     id: "id-3d-interaction",
     name: "3D Interaction",
-    Icon: PhoneIcon,
-    FilledIcon: PhoneFilledIcon,
+    image: "https://i.imgur.com/IzgZvHd.png",
   },
   {
     id: "repair-appointment",
     name: "Repair Appointment",
-    Icon: BuildIcon,
-    FilledIcon: BuildFilledIcon,
+    image: "https://i.imgur.com/W86eJOf.png",
   },
   {
     id: "id-247-support",
     name: "24/7 Support",
-    Icon: SupportAgentIcon,
-    FilledIcon: SupportAgentIcon,
+    image: "https://i.imgur.com/7rDmHtu.png",
   },
   {
     id: "phone-comparison",
     name: "Phone Comparison",
-    Icon: HandshakeIcon,
-    FilledIcon: HandshakeFilledIcon,
+    image: "https://i.imgur.com/9rVwAwR.png",
   },
   {
     id: "return-support",
     name: "Return Support",
-    Icon: LocalPhoneIcon,
-    FilledIcon: LocalPhoneFilledIcon,
+    image: "https://i.imgur.com/Ceug5i0.png",
   },
 ];
 
 const boxStyle = (theme) => ({
   display: "grid",
-  gridTemplateColumns: "repeat(3, 1fr)",
+  gridTemplateColumns: "1fr 1fr 1fr",
   gridAutoColumns: "1fr",
-  gap: 1,
-  mx: 0,
-  [theme.breakpoints.up("lg")]: {
-    gridTemplateColumns: "repeat(6, 1fr)",
-    gap: 1,
-    mx: 6,
-  },
-  [theme.breakpoints.only("md")]: {
-    gap: 1.75,
-    mx: 4,
-  },
+  mx: 4,
+  rowGap: 3,
+  columnGap: 8,
 });
 
 function ServiceList() {
@@ -74,12 +60,7 @@ function ServiceList() {
     <Box my={2} sx={boxStyle}>
       {categoryArr.map((item) => {
         return (
-          <ServiceCard
-            iconImage={item.Icon}
-            filledIconImage={item.FilledIcon}
-            name={item.name}
-            key={item.name}
-          />
+          <ServiceCard image={item.image} name={item.name} key={item.name} />
         );
       })}
     </Box>

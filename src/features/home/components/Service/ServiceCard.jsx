@@ -1,13 +1,22 @@
-import { Box, Card, Link, Stack, SvgIcon } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardMedia,
+  Link,
+  Stack,
+  SvgIcon,
+  Typography,
+} from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { GOLDEN_RATIO } from "utils/constants";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 const cardStyle = (theme) => ({
   alignItems: "center",
   aspectRatio: `${GOLDEN_RATIO}`,
   borderWidth: `2px`,
+  background: "#eeeeee",
   // color: "secondary.main",
   display: "flex",
   justifyContent: "center",
@@ -50,29 +59,11 @@ const cardStyle = (theme) => ({
     ),
   },
 });
-
-const iconStyle = (theme) => ({
-  width: "40px",
-  height: "40px",
-  [theme.breakpoints.up("sm")]: {
-    width: "52px",
-    height: "52px",
-  },
-  [theme.breakpoints.only("md")]: {
-    width: "88px",
-    height: "88px",
-  },
-  [theme.breakpoints.up("lg")]: {
-    width: "80px",
-    height: "80px",
-  },
-});
-
-function ServiceCard({
-  iconImage: IconImage,
-  filledIconImage: FilledIconImage,
-  name: serviceName,
-}) {
+const boxSx = {
+  overflow: "hidden",
+  cursor: "pointer",
+};
+function ServiceCard({ image: linkImage, name: serviceName }) {
   const [isSelected, setSelected] = useState(false);
 
   const onMouseOver = useCallback(() => {
@@ -82,6 +73,14 @@ function ServiceCard({
   const onMouseOut = useCallback(() => {
     setSelected(false);
   }, []);
+  const cardMediaStyle = useMemo(() => {
+    return {
+      aspectRatio: 1,
+      transition: `transform .3s`,
+      transform: `scale(${isSelected ? 1.1 : 1.0})`,
+      my: 2,
+    };
+  }, [isSelected]);
 
   return (
     <Card
@@ -94,11 +93,6 @@ function ServiceCard({
       <Link
         color="inherit"
         underline="none"
-        fontWeight="inherit"
-        fontSize="inherit"
-        fontStyle="inherit"
-        lineHeight="inherit"
-        letterSpacing="inherit"
         component={RouterLink}
         to={`/phones/`}
         style={{ textDecoration: "inherit" }}
@@ -109,13 +103,16 @@ function ServiceCard({
           sx={{ py: { xs: 2, sm: 0 } }}
           alignItems="center"
         >
-          <SvgIcon
-            component={isSelected ? FilledIconImage : IconImage}
-            sx={iconStyle}
-            className="svg-gradient-wrapper"
-            inheritViewBox
-          />
-          <Box>{serviceName}</Box>
+          <Box sx={boxSx} position="relative">
+            <CardMedia component="img" sx={cardMediaStyle} image={linkImage} />
+          </Box>
+          <Typography variant="h5" color="primary">
+            {serviceName}
+          </Typography>
+          <Typography variant="body2" sx={{ my: 1, px: 8 }} color="secondary">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry
+          </Typography>
         </Stack>
       </Link>
     </Card>
@@ -123,8 +120,7 @@ function ServiceCard({
 }
 
 ServiceCard.propTypes = {
-  iconImage: PropTypes.elementType,
-  filledIconImage: PropTypes.elementType,
+  image: PropTypes.string,
   name: PropTypes.string,
 };
 
