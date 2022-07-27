@@ -35,7 +35,7 @@ export async function getDisplayedDataFromPhoneDetails(
     (map, [sectionName, sectionSpec]) => {
       map[sectionName] = Object.keys(sectionSpec).reduce(
         (sectionMap, specName) => {
-          sectionMap[specName] = [];
+          sectionMap[specName] = { data: [], hasDifferences: false };
           return sectionMap;
         },
         {}
@@ -57,12 +57,20 @@ export async function getDisplayedDataFromPhoneDetails(
       for (const [specName, visible] of Object.entries(sectionSpec)) {
         if (!visible) continue;
 
-        displayedSpecs[sectionName]?.[specName]?.push(
-          sections[sectionName]?.[specName] ?? ""
-        );
+        if (displayedSpecs[sectionName]?.[specName]) {
+          const specData = displayedSpecs[sectionName][specName].data;
+          const spec = sections[sectionName]?.[specName] ?? "";
+          const hasDifferences =
+            specData?.length !== 0 &&
+            specData?.indexOf(spec) === -1;
+
+          specData?.push(spec);
+          displayedSpecs[sectionName][specName].hasDifferences = hasDifferences;
+        }
       }
     }
   }
+  console.log(displayedSpecs);
   // console.log(displayedSpecs);
   return displayedSpecs;
 }

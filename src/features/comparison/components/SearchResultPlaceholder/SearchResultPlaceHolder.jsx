@@ -124,7 +124,11 @@ SearchResultPlaceholder.defaultProps = {
 
 SearchResultPlaceholder.propTypes = {
   recommendations: PropTypes.array,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.number,
+  ]),
 };
 
 export default SearchResultPlaceholder;

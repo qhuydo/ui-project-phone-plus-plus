@@ -4,7 +4,7 @@ import { usePhoneComparisonContext } from "features/comparison/context";
 
 const ComparisonTableGroup = () => {
   const {
-    state: { displayedData },
+    state: { displayedData, viewMode },
   } = usePhoneComparisonContext();
   // console.log(displayedData);
 
@@ -14,6 +14,7 @@ const ComparisonTableGroup = () => {
         <ComparisonTable
           sectionName={sectionName}
           tableData={tableData}
+          viewMode={viewMode}
           key={idx}
         />
       ))}

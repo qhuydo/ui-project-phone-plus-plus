@@ -11,11 +11,61 @@ import {
   TableContainer,
 } from "@mui/material";
 import { SpecsTableRow, SpecsTableCell } from "components/Table";
-import { TABLE_HEADER_WIDTH } from "features/comparison/utils";
+import { TABLE_HEADER_WIDTH, VIEW_MODES } from "features/comparison/utils";
 import PropTypes from "prop-types";
 import React, { useState, useCallback, useMemo } from "react";
 
-const ComparisonTable = ({ sectionName, tableData }) => {
+function renderRowData(tableData, viewMode) {
+  return (
+    <>
+      {Object.entries(tableData).map(([key, columnData]) => {
+        const columns = columnData.data;
+        return viewMode === "SHOW_ONLY_DIFFERENCES" &&
+          !columnData.hasDifferences ? (
+          <></>
+        ) : (
+          <SpecsTableRow key={key}>
+            <SpecsTableCell
+              sx={{
+                minWidth: TABLE_HEADER_WIDTH,
+                width: TABLE_HEADER_WIDTH,
+                maxWidth: TABLE_HEADER_WIDTH,
+              }}
+            >
+              <b>{key}</b>
+            </SpecsTableCell>
+            {renderColumnData(columns, columnData.hasDifferences, viewMode)}
+          </SpecsTableRow>
+        );
+      })}
+    </>
+  );
+}
+
+function renderColumnData(columns, hasDifferences, viewMode) {
+  return (
+    <>
+      {columns.map((column, idx) => (
+        <SpecsTableCell
+          sx={{
+            verticalAlign: "top",
+            width: `${100 / columns.length}%`,
+            maxWidth: `${100 / columns.length}%`,
+          }}
+          key={idx}
+        >
+          {hasDifferences && viewMode === "HIGHLIGHT_DIFFERENCES" ? (
+            <b>{column}</b>
+          ) : (
+            column
+          )}
+        </SpecsTableCell>
+      ))}
+    </>
+  );
+}
+
+const ComparisonTable = ({ sectionName, tableData, viewMode }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleChange = useCallback((event, isExpanded) => {
@@ -51,35 +101,7 @@ const ComparisonTable = ({ sectionName, tableData }) => {
         <AccordionDetails>
           <TableContainer component={Paper} variant="outlined">
             <Table>
-              <TableBody>
-                {Object.entries(tableData).map(([key, columns]) => {
-                  return (
-                    <SpecsTableRow key={key}>
-                      <SpecsTableCell
-                        sx={{
-                          minWidth: TABLE_HEADER_WIDTH,
-                          width: TABLE_HEADER_WIDTH,
-                          maxWidth: TABLE_HEADER_WIDTH,
-                        }}
-                      >
-                        <b>{key}</b>
-                      </SpecsTableCell>
-                      {columns.map((column, idx) => (
-                        <SpecsTableCell
-                          sx={{
-                            verticalAlign: "top",
-                            width: `${100 / columns.length}%`,
-                            maxWidth: `${100 / columns.length}%`,
-                          }}
-                          key={idx}
-                        >
-                          {column}
-                        </SpecsTableCell>
-                      ))}
-                    </SpecsTableRow>
-                  );
-                })}
-              </TableBody>
+              <TableBody>{renderRowData(tableData, viewMode)}</TableBody>
             </Table>
           </TableContainer>
         </AccordionDetails>
@@ -92,7 +114,11 @@ const ComparisonTable = ({ sectionName, tableData }) => {
 
 ComparisonTable.propTypes = {
   sectionName: PropTypes.string,
-  tableData: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)),
+  tableData: PropTypes.shape({
+    data: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.string)),
+    hasDifferences: PropTypes.bool,
+  }),
+  viewMode: PropTypes.oneOf(VIEW_MODES),
 };
 
 export default ComparisonTable;
