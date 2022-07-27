@@ -4,15 +4,16 @@ import AddIcon from "@mui/icons-material/Add";
 import PropTypes from "prop-types";
 import { usePhoneComparisonContext } from "features/comparison/context";
 
-const SearchResultPlaceholder = ({ recommendations }) => {
+const SearchResultPlaceholder = ({ recommendations, width }) => {
   const { addPhone } = usePhoneComparisonContext();
 
   return (
     <Stack
       direction="column"
       spacing={2}
-      px={2}
+      px={1}
       pb={2}
+      width={width}
       sx={{
         border: "2px dashed rgba(0, 0, 0, 0.12)",
         borderRadius: "8px",
@@ -31,6 +32,7 @@ const SearchResultPlaceholder = ({ recommendations }) => {
             aspectRatio: `${GOLDEN_RATIO}`,
             width: 161.8,
             bgcolor: "action.focus",
+            borderRadius: "8px",
           }}
         />
 
@@ -49,62 +51,62 @@ const SearchResultPlaceholder = ({ recommendations }) => {
           Add a phone
         </Button>
       </Stack>
-      <Divider sx={{ height: 1 }} />
-      <Typography variant="h6">Recommendations</Typography>
+      <Divider flexItem />
 
-      {recommendations.map((phone, idx) => (
-        <>
-          <Stack
-            direction="column"
-            alignItems="center"
-            spacing={1}
-            key={idx * 2}
-          >
-            <Box
-              component="img"
-              src={phone.thumbnail}
-              sx={{
-                aspectRatio: `${GOLDEN_RATIO}`,
-                width: 161.8,
-                objectFit: "cover",
-                border: "1px solid",
-                borderRadius: "8px",
-                borderColor: "divider",
-              }}
-            />
+      <Typography variant="h6" px={1}>
+        Recommendations
+      </Typography>
 
+      {recommendations.map((phone) => (
+        <Stack
+          direction="column"
+          alignItems="center"
+          spacing={1}
+          key={`recommendations-${phone.id}`}
+        >
+          <Box
+            component="img"
+            src={phone.thumbnail}
+            sx={{
+              aspectRatio: `${GOLDEN_RATIO}`,
+              width: 161.8,
+              objectFit: "cover",
+              border: "1px solid",
+              borderRadius: "8px",
+              borderColor: "divider",
+            }}
+          />
+
+          <Typography variant="body2" fontWeight="bold">
+            {phone.name}
+          </Typography>
+          <Stack direction="row" spacing={1}>
             <Typography variant="body2" fontWeight="bold">
-              {phone.name}
+              {phone.versions[0].displaySalePrice}
             </Typography>
-            <Stack direction="row" spacing={1}>
-              <Typography variant="body2" fontWeight="bold">
-                {phone.versions[0].displaySalePrice}
-              </Typography>
 
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{
-                  textDecoration: "line-through",
-                }}
-                fontWeight="bold"
-              >
-                {phone.versions[0].displayOriginalPrice}
-              </Typography>
-            </Stack>
-
-            <Button
-              variant="outlined"
-              startIcon={<AddIcon />}
-              sx={{ borderColor: "divider", width: 1 }}
-              onClick={() => addPhone(phone.id)}
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                textDecoration: "line-through",
+              }}
+              fontWeight="bold"
             >
-              Compare
-            </Button>
+              {phone.versions[0].displayOriginalPrice}
+            </Typography>
           </Stack>
 
-          <Divider key={idx * 2 + 1} flexItem />
-        </>
+          <Button
+            variant="outlined"
+            startIcon={<AddIcon />}
+            sx={{ borderColor: "divider", width: 1 }}
+            onClick={() => addPhone(phone.id)}
+          >
+            Compare
+          </Button>
+          <Divider key={`divider-${phone.id}`} sx={{ py: 1 }} flexItem />
+        </Stack>
       ))}
     </Stack>
   );
@@ -116,6 +118,7 @@ SearchResultPlaceholder.defaultProps = {
 
 SearchResultPlaceholder.propTypes = {
   recommendations: PropTypes.array,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 export default SearchResultPlaceholder;

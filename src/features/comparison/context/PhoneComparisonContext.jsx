@@ -1,4 +1,17 @@
 import {
+  initialPhoneComparisonState,
+  phoneComparisonReducer,
+} from "features/comparison/store";
+import {
+  getDisplayedDataFromPhoneDetails,
+  getDisplayedFieldsFromPhoneDetails,
+  MAX_ITEMS_PER_COMPARISON,
+} from "features/comparison/utils";
+import { getPhoneById } from "features/phones/api";
+import { allPhones } from "features/phones/assets";
+import { shuffle } from "lodash-es";
+import PropTypes from "prop-types";
+import {
   createContext,
   useCallback,
   useContext,
@@ -6,21 +19,8 @@ import {
   useMemo,
   useReducer,
 } from "react";
-import {
-  initialPhoneComparisonState,
-  phoneComparisonReducer,
-} from "features/comparison/store";
-import PropTypes from "prop-types";
-import { getPhoneById } from "features/phones/api";
-import {
-  getDisplayedDataFromPhoneDetails,
-  getDisplayedFieldsFromPhoneDetails,
-  MAX_ITEMS_PER_COMPARISON,
-} from "features/comparison/utils";
-import { shuffle } from "lodash-es";
-import { allPhones } from "features/phones/assets";
-import { Router } from "routes";
 import { useNavigate } from "react-router-dom";
+import { Router } from "routes";
 
 const PhoneComparisonContext = createContext({
   state: initialPhoneComparisonState,
@@ -99,18 +99,28 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
 
   const addPhone = useCallback(
     (id) => {
-      let phonesIds;
+      let phoneIds;
       if (state.phoneDetails.length >= MAX_ITEMS_PER_COMPARISON) {
-        phonesIds = [
+        phoneIds = [
           ...state.phoneDetails
             .slice(0, MAX_ITEMS_PER_COMPARISON - 1)
             .map((phone) => phone.id),
           id,
         ];
       } else {
-        phonesIds = [...state.phoneDetails.map((phone) => phone.id), id];
+        phoneIds = [...state.phoneDetails.map((phone) => phone.id), id];
       }
-      navigate(Router.getPhoneComparePage(phonesIds));
+      navigate(Router.getPhoneComparePage(phoneIds));
+    },
+    [navigate, state.phoneDetails]
+  );
+
+  const removePhone = useCallback(
+    (id) => {
+      const phoneIds = state.phoneDetails
+        .filter((phone) => phone.id !== id)
+        .map((phone) => phone.id);
+      navigate(Router.getPhoneComparePage(phoneIds));
     },
     [navigate, state.phoneDetails]
   );
@@ -123,12 +133,14 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
       changeDisplayedField,
       changeViewMode,
       addPhone,
+      removePhone,
     }),
     [
       addPhone,
       changeComparisonMode,
       changeDisplayedField,
       changeViewMode,
+      removePhone,
       state,
     ]
   );

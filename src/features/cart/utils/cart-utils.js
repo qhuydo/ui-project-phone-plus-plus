@@ -31,10 +31,19 @@ export function createCartItem(
   selectedVersion,
   quantity
 ) {
+  let colour = selectedColour;
+  if (!selectedColour) {
+    colour = phone.colours[0];
+  }
+  let version = selectedVersion;
+  if (!selectedVersion) {
+    version = phone.versions[0];
+  }
+
   return {
     phone: phone,
-    colour: selectedColour,
-    version: selectedVersion,
+    colour: colour,
+    version: version,
     quantity: quantity > 1 ? quantity : 1,
   };
 }

@@ -15,12 +15,18 @@ import {
 } from "features/comparison/utils";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { usePhoneComparisonContext } from "features/comparison/context";
+import { useMemo } from "react";
 
 const ViewModeList = () => {
   const {
-    state: { viewMode },
+    state: { viewMode, phoneDetails },
     changeViewMode,
   } = usePhoneComparisonContext();
+
+  const isDisabled = useMemo(
+    () => phoneDetails.length === 0,
+    [phoneDetails.length]
+  );
 
   return (
     <Stack
@@ -51,6 +57,7 @@ const ViewModeList = () => {
               <FormControlLabel
                 key={item}
                 value={item}
+                disabled={isDisabled}
                 control={<Radio />}
                 label={
                   <Typography variant="body2" color="inherit">

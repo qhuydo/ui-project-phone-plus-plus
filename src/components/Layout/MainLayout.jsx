@@ -3,7 +3,6 @@ import { AppBar } from "components/AppBar";
 import StyledToolbar from "components/AppBar/StyledToolbar";
 import { Footer } from "components/Footer";
 import PropTypes from "prop-types";
-import React from "react";
 import { Outlet } from "react-router-dom";
 
 const MainLayout = ({ children }) => {
