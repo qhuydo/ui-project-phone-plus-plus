@@ -13,6 +13,7 @@ export const VIEW_MODE_TEXTS = [
 ];
 
 export const TABLE_HEADER_MAX_WIDTH = 208;
+export const TABLE_HEADER_WIDTH = TABLE_HEADER_MAX_WIDTH - 8;
 
 export const MAX_RECOMMENDATIONS_PER_COLUMN = 3;
 

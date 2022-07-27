@@ -39,7 +39,12 @@ const SearchResultPlaceholder = ({ recommendations, width }) => {
         <Typography variant="body2" fontWeight="bold" color="inherit">
           Add a phone to compare
         </Typography>
-        <Typography variant="body2" fontSize="11px" color="inherit">
+        <Typography
+          variant="body2"
+          fontSize="11px"
+          color="inherit"
+          minHeight={22}
+        >
           Click “ADD A PHONE” button or find a phone from the search bar
         </Typography>
 
@@ -80,7 +85,8 @@ const SearchResultPlaceholder = ({ recommendations, width }) => {
           <Typography variant="body2" fontWeight="bold">
             {phone.name}
           </Typography>
-          <Stack direction="row" spacing={1}>
+
+          <Stack direction="row" spacing={1} alignItems="center">
             <Typography variant="body2" fontWeight="bold">
               {phone.versions[0].displaySalePrice}
             </Typography>
@@ -118,7 +124,11 @@ SearchResultPlaceholder.defaultProps = {
 
 SearchResultPlaceholder.propTypes = {
   recommendations: PropTypes.array,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+    PropTypes.number,
+  ]),
 };
 
 export default SearchResultPlaceholder;

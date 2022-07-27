@@ -7,6 +7,7 @@ import {
   Link,
   Stack,
   Typography,
+  Divider,
 } from "@mui/material";
 import { useCartContext } from "features/cart/context/CartContext";
 import { createCartItem } from "features/cart/utils";
@@ -82,7 +83,7 @@ const ComparisonItemHeader = ({ phone, width }) => {
         </Typography>
       </Link>
 
-      <Stack direction="row" spacing={1}>
+      <Stack direction="row" spacing={1} minHeight={22}>
         <Typography variant="body2" fontWeight="bold">
           {phone.versions[0].displaySalePrice}
         </Typography>
@@ -114,7 +115,7 @@ const ComparisonItemHeader = ({ phone, width }) => {
           sx={{
             mt: 1,
             "&.MuiButton-outlinedPrimary": {
-              border: "2px solid",
+              border: "1px solid",
               borderColor: "divider",
             },
           }}
@@ -124,6 +125,7 @@ const ComparisonItemHeader = ({ phone, width }) => {
           Add to cart
         </Button>
       </Stack>
+      <Divider flexItem sx={{ pt: 2 }} />
     </Stack>
   );
 };

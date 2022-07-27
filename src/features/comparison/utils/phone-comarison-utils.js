@@ -28,30 +28,49 @@ export async function getDisplayedDataFromPhoneDetails(
   phoneDetails,
   displayedFields
 ) {
-  if (!phoneDetails || !phoneDetails?.length) return [];
-  if (!displayedFields) return [];
+  if (!phoneDetails || !phoneDetails?.length) return {};
+  if (!displayedFields) return {};
 
-  return phoneDetails.map((phone) => {
+  const displayedSpecs = Object.entries(displayedFields).reduce(
+    (map, [sectionName, sectionSpec]) => {
+      map[sectionName] = Object.keys(sectionSpec).reduce(
+        (sectionMap, specName) => {
+          sectionMap[specName] = { data: [], hasDifferences: false };
+          return sectionMap;
+        },
+        {}
+      );
+      return map;
+    },
+    {}
+  );
+
+  // console.log(displayedSpecs);
+
+  for (const phone of phoneDetails) {
     const sections = phone.specs.reduce((map, spec) => {
       map[spec.section] = spec.data;
       return map;
     }, {});
 
-    // console.log(sections);
-
-    const displayedSpecs = [];
     for (const [sectionName, sectionSpec] of Object.entries(displayedFields)) {
-      const specSection = {
-        spec: sectionName,
-        data: Object.entries(sectionSpec).reduce((map, [specName, visible]) => {
-          if (!visible) return map;
+      for (const [specName, visible] of Object.entries(sectionSpec)) {
+        if (!visible) continue;
 
-          map[specName] = sections[sectionName]?.[specName] ?? "";
-          return map;
-        }, {}),
-      };
-      displayedSpecs.push(specSection);
+        if (displayedSpecs[sectionName]?.[specName]) {
+          const specData = displayedSpecs[sectionName][specName].data;
+          const spec = sections[sectionName]?.[specName] ?? "";
+          const hasDifferences =
+            specData?.length !== 0 &&
+            specData?.indexOf(spec) === -1;
+
+          specData?.push(spec);
+          displayedSpecs[sectionName][specName].hasDifferences = hasDifferences;
+        }
+      }
     }
-    return displayedSpecs;
-  });
+  }
+  console.log(displayedSpecs);
+  // console.log(displayedSpecs);
+  return displayedSpecs;
 }

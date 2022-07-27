@@ -35,7 +35,7 @@ const PhoneComparisonBody = () => {
     <>
       <Head title={"Compare phones"} />
 
-      <Container>
+      <Container sx={{ mb: 3 }}>
         <DefaultBreadcrumb currentPage={`Compare`} />
 
         <Typography
