@@ -3,6 +3,7 @@ import { Cart } from "features/cart";
 import { Home } from "features/home";
 import { Payment } from "features/payment";
 import { PhoneDetails, PhoneSearchResult } from "features/phones";
+import { Refund } from "features/refund";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ROUTER from "./router";
 import ScrollToTop from "components/Layout/ScrollToTop";
@@ -27,6 +28,7 @@ const GlobalRouter = () => {
           />
           <Route path={ROUTER.PHONE_DETAILS} element={<PhoneDetails />} />
           <Route path={ROUTER.PAYMENT} element={<Payment />} />
+          <Route path={ROUTER.REFUND} element={<Refund />} />
           <Route path={"*"} element={<Navigate to={"."} />} />
         </Route>
       </Routes>
