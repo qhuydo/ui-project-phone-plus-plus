@@ -10,6 +10,8 @@ import {
 import PropTypes from "prop-types";
 import { useCartContext } from "features/cart/context/CartContext";
 import { useMemo } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { Router } from "routes";
 import formatNumberToVND from "utils/currency-formatter";
 import {
   calculateEstimatePrice,
@@ -84,12 +86,17 @@ const CheckoutSection = ({ cardSx }) => {
             <Typography>-0₫</Typography>
           </Stack>
 
-          <Button
-            sx={{ mt: 2, width: 0.9, alignSelf: "center" }}
-            variant="contained"
+          <Link
+            component={RouterLink}
+            underline="none"
+            color="inherit"
+            to={Router.PAYMENT}
+            sx={{ alignSelf: "center", width: 0.9 }}
           >
-            Checkout
-          </Button>
+            <Button sx={{ mt: 2, width: 1 }} variant="contained">
+              Checkout
+            </Button>
+          </Link>
         </CardContent>
       </Card>
 

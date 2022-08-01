@@ -127,6 +127,73 @@
         "displaySalePrice": "21.990.000₫"
       },
       "images": []
+    },
+    {
+      "id": 1,
+      "by": "Tuan Cuong",
+      "avatar": "https://i.imgur.com/qRwmPZK.jpg",
+      "location": "Ho Chi Minh, Vietnam",
+      "locationCode": "vn",
+      "memberRank": "V.I.P 4 member",
+      "displayTimestamp": "15/07/2022 23:00:00",
+      "points": 4,
+      "isVerifiedPurchase": true,
+      "title": "Shipping very fast",
+      "comment": "Big screen. Runs Smooth. 32gb of space. Great deal honestly. I'm happy with the purchase.\nWhat I like about my new android phone is the battery life is excellent and doesn’t drain out fast.",
+      "nHelpful": 4,
+      "colour": {
+        "colour": "#494154",
+        "secondaryColour": "#494154",
+        "colourName": "Violet",
+        "thumbnail": "https://i.imgur.com/guWwOcG.jpg",
+        "slideIdx": 1
+      },
+      "version": {
+        "id": "XQCT54",
+        "name": "512GB",
+        "originalPrice": 32990000,
+        "displayOriginalPrice": "32.990.000₫",
+        "salePrice": 30990000,
+        "displaySalePrice": "30.990.000₫"
+      },
+      "images": [
+        "https://i.imgur.com/ZYtC54q.jpg",
+        "https://i.imgur.com/uy1yIwC.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "by": "Sam Ryder Robinson",
+      "avatar": "https://i.imgur.com/T9wstvJ.jpg",
+      "location": "Essex, United Kingdom",
+      "locationCode": "gb",
+      "memberRank": "V.I.P 1 member",
+      "displayTimestamp": "07/07/2022 23:00:00",
+      "points": 5,
+      "isVerifiedPurchase": true,
+      "title": "Excellent phone",
+      "comment": "I needed an upgrade to the Android system and functionality of my old phone so searched on Amazon for a tracfone because I had a balance of gift cards here. I had a little difficulty with set up and needed to contact tracfone for an update to the texting feature that did not happen automatically. I have not added the fingerpirnt or facial recognition features yet. Otherwise it seems to be working well.",
+      "nHelpful": 8,
+      "colour": {
+        "colour": "#494154",
+        "secondaryColour": "#494154",
+        "colourName": "Violet",
+        "thumbnail": "https://i.imgur.com/guWwOcG.jpg",
+        "slideIdx": 1
+      },
+      "version": {
+        "id": "XQCT54",
+        "name": "512GB",
+        "originalPrice": 32990000,
+        "displayOriginalPrice": "32.990.000₫",
+        "salePrice": 30990000,
+        "displaySalePrice": "30.990.000₫"
+      },
+      "images": [
+        "https://i.imgur.com/juTtz0U.jpg",
+        "https://i.imgur.com/0kLQqSl.jpg",
+        "https://i.imgur.com/zv8Lybg.jpg"
+      ]
     }
   ],
   "specs": [

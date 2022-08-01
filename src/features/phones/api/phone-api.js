@@ -1,10 +1,9 @@
 import allPhoneDetails from "features/phones/assets/details";
-import { value } from "lodash-es";
 import { getAvgRatings } from "../utils";
-let filterFlag = false;
+
 export const findPhoneByKeyword = (keyword) => {
   return new Promise((resolve) => {
-    const trimmedKeyword = keyword.trim();
+    const trimmedKeyword = keyword.trim().toLowerCase();
     resolve(
       allPhoneDetails.filter((phone) =>
         phone.name.toLowerCase().includes(trimmedKeyword)

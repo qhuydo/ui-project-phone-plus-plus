@@ -7,6 +7,7 @@ const router = {
   PHONE_SEARCH_RESULT: "/phone/search",
   PHONE_CATEGORY: "/phone/category/:brand",
   PHONE_DETAILS: "/phone/:id",
+  REFUND: "/refund",
   REGISTER: "/register",
   getPhoneDetailsPage(id, name) {
     return `/phone/${id}?q=${name}`;
