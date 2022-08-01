@@ -5,6 +5,7 @@ import {
   PaypalLogo,
   VisaLogo,
 } from "features/cart/assets/logo";
+import PropTypes from "prop-types";
 
 const PAYMENT_TYPES = [
   {
@@ -25,7 +26,7 @@ const PAYMENT_TYPES = [
   },
 ];
 
-const SupportPaymentTypes = () => {
+const SupportPaymentTypes = ({ showDivider }) => {
   return (
     <Stack direction="column" spacing={1} px={2} width={1}>
       <Typography variant="h6">Support payment methods</Typography>
@@ -49,9 +50,13 @@ const SupportPaymentTypes = () => {
           </Stack>
         ))}
       </Stack>
-      <Divider sx={{ pt: 1 }} />
+      {showDivider && <Divider sx={{ pt: 1 }} />}
     </Stack>
   );
+};
+
+SupportPaymentTypes.propTypes = {
+  showDivider: PropTypes.bool,
 };
 
 export default SupportPaymentTypes;

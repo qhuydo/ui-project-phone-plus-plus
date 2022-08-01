@@ -1,9 +1,25 @@
-import { Container, Typography } from "@mui/material";
+import {
+  Container,
+  Typography,
+  Box,
+  Stepper,
+  Step,
+  StepLabel,
+} from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
-import Placeholder from "components/Placeholder/Placeholder";
+import { useAuth } from "features/auth";
+import { PaymentStep0 } from "features/payment/components";
+import { usePaymentContext } from "features/payment/context";
+import { STEPS } from "features/payment/utils";
 
 const Payment = () => {
+  const {
+    state: { currentStep, allowDisplayingLoginRequestPage },
+  } = usePaymentContext();
+
+  const { isAuth } = useAuth();
+
   return (
     <>
       <Head title={"Checkout"} />
@@ -15,7 +31,19 @@ const Payment = () => {
           Checkout
         </Typography>
 
-        <Placeholder />
+        {currentStep === 0 && allowDisplayingLoginRequestPage && !isAuth ? (
+          <PaymentStep0 />
+        ) : (
+          <Box width={1} mt={1}>
+            <Stepper activeStep={currentStep} alternativeLabel>
+              {STEPS.map((label) => (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+          </Box>
+        )}
       </Container>
     </>
   );

@@ -1,8 +1,8 @@
 import { Stack } from "@mui/material";
 import CartItemList from "features/cart/components/CartInfoSection/CartItemList";
-import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
 import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 import { useCartContext } from "features/cart/context/CartContext";
+import { SupportPaymentTypes } from "features/payment/components";
 import PeopleAlsoBuySection from "./PeopleAlsoBuySection";
 import SpecialOfferSection from "./SpecialOfferSection";
 

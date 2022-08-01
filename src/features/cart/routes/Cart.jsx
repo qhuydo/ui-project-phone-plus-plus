@@ -7,18 +7,18 @@ import {
   Typography,
 } from "@mui/material";
 import { APPBAR_LARGE } from "components/AppBar/AppBar";
-import { Head } from "components/Head/Head";
-import { CheckoutSection } from "features/cart/components";
-import { useScroll } from "hooks";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
+import { Head } from "components/Head/Head";
+import { CartIcon } from "features/cart/assets";
+import { CheckoutSection } from "features/cart/components";
 import CartInfoSection from "features/cart/components/CartInfoSection/CartInfoSection";
 import CartItemList from "features/cart/components/CartInfoSection/CartItemList";
-import SupportPaymentTypes from "features/cart/components/CartInfoSection/SupportPaymentTypes";
 import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 import { useCartContext } from "features/cart/context/CartContext";
-import SpecialOfferSection from "../components/CartInfoSection/SpecialOfferSection";
+import { SupportPaymentTypes } from "features/payment/components";
+import { useScroll } from "hooks";
 import PeopleAlsoBuySection from "../components/CartInfoSection/PeopleAlsoBuySection";
-import { CartIcon } from "features/cart/assets";
+import SpecialOfferSection from "../components/CartInfoSection/SpecialOfferSection";
 
 const iconStyle = (theme) => ({
   width: "20%",

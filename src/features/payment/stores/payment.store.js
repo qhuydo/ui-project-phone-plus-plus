@@ -1,15 +1,21 @@
 export const initialPaymentState = {
-  cartItems: {},
+  cartItems: [],
   currentStep: 0,
+  allowDisplayingLoginRequestPage: true,
 };
 
 export const paymentReducer = (state, action) => {
   switch (action.type) {
     case "INITIALISE": {
       return {
+        ...initialPaymentState,
+        cartItems: action.payload?.cartItems ?? {},
+      };
+    }
+    case "DISPLAY_LOGIN_REQUEST_PAGE": {
+      return {
         ...state,
-        cartItems: action.payload?.cartItems ?? state.cartItems,
-        currentStep: 0,
+        allowDisplayingLoginRequestPage: action.payload,
       };
     }
   }
