@@ -9,7 +9,9 @@ const Step1InfoSection = () => {
   const {
     state: { cartItems },
   } = usePaymentContext();
+
   const { isAuth } = useAuth();
+
   return (
     <Stack spacing={2} direction="column">
       {!isAuth && (

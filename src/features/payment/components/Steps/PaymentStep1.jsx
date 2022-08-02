@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { PaymentCheckoutSection } from "features/payment/components";
 import {
   PaymentContainerGrid,
@@ -17,6 +18,7 @@ const PaymentStep1 = () => {
 
   const form = useForm({
     defaultValues: useMemo(() => contactDetails, [contactDetails]),
+    mode: "onTouched",
   });
 
   useEffect(() => {
@@ -34,7 +36,20 @@ const PaymentStep1 = () => {
         </InfoGrid>
 
         <CheckoutSectionGrid>
-          <PaymentCheckoutSection cartItems={cartItems} />
+          <PaymentCheckoutSection
+            cartItems={cartItems}
+            showDeliveryFee
+            addDeliveryFee={contactDetails.deliveryMethod !== "standard"}
+            buttonGroup={
+              <Button
+                sx={{ mt: 2, alignSelf: "center", width: 0.9 }}
+                variant="contained"
+                disabled={!form.formState.isValid}
+              >
+                Next
+              </Button>
+            }
+          />
         </CheckoutSectionGrid>
       </PaymentContainerGrid>
     </FormProvider>

@@ -9,14 +9,14 @@ import {
   Box,
 } from "@mui/material";
 import { countries } from "features/payment/assets";
-import { useState, useCallback } from "react";
+import { useFormContext, Controller } from "react-hook-form";
+import { EMAIL_REGEX, NUMBER_REGEX } from "utils/regex";
 
 const CustomerDetailsFormSection = () => {
-  const [countryCode, setCountryCode] = useState("VN");
-
-  const handleChange = useCallback((event) => {
-    setCountryCode(event.target.value);
-  }, []);
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext();
 
   return (
     <Stack direction="column" spacing={1}>
@@ -28,48 +28,106 @@ const CustomerDetailsFormSection = () => {
       </Stack>
 
       <Stack direction="column" spacing={2}>
-        <TextField
-          variant="outlined"
-          required
-          label="Full name"
-          placeholder="John Doe"
-          helperText="Your full name, including any middle name"
+        <Controller
+          control={control}
+          name="customerDetails.fullName"
+          rules={{
+            required: "Please enter your fullname",
+          }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              error={!!errors["customerDetails"]?.["fullName"]}
+              required
+              variant="outlined"
+              label="Full name"
+              placeholder="John Doe"
+              helperText={
+                errors["customerDetails"]?.["fullName"]?.message ||
+                "Your full name, including any middle name"
+              }
+            />
+          )}
         />
 
         <Stack direction="row" spacing={2}>
           <FormControl>
             <InputLabel id="phone-country-code-label">Country code</InputLabel>
-            <Select
-              labelId="phone-country-code-label"
-              id="phone-country-code-select"
-              value={countryCode}
-              label="Country code"
-              onChange={handleChange}
-            >
-              {countries.map((c) => (
-                <MenuItem value={c.isoCode} key={c.isoCode}>
-                  <Stack direction="row" alignItems="center" spacing={0.5}>
-                    <Box component="img" maxHeight={20} src={c.thumbnail} />
-                    <Typography> {c.dialCode}</Typography>
-                  </Stack>
-                </MenuItem>
-              ))}
-            </Select>
+            <Controller
+              control={control}
+              name="customerDetails.phoneIsoCode"
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  labelId="phone-country-code-label"
+                  id="phone-country-code-select"
+                  label="Country code"
+                >
+                  {countries.map((c) => (
+                    <MenuItem value={c.isoCode} key={c.isoCode}>
+                      <Stack direction="row" alignItems="center" spacing={0.5}>
+                        <Box component="img" maxHeight={20} src={c.thumbnail} />
+                        <Typography> {c.dialCode}</Typography>
+                      </Stack>
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
+            />
           </FormControl>
 
-          <TextField
-            variant="outlined"
-            required
-            label="Phone number"
-            placeholder="000-000-000"
+          <Controller
+            control={control}
+            name="customerDetails.phoneNumber"
+            rules={{
+              required: "Please enter your phone number",
+              pattern: {
+                value: NUMBER_REGEX,
+                message: "Please enter a valid phone number",
+              },
+            }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                variant="outlined"
+                required
+                label="Phone number"
+                placeholder="000-000-000"
+                error={!!errors["customerDetails"]?.["phoneNumber"]}
+                helperText={
+                  errors["customerDetails"]?.["phoneNumber"]?.message ||
+                  "Your phone number, without country code"
+                }
+              />
+            )}
           />
 
-          <TextField
-            sx={{ flexGrow: 1 }}
-            variant="outlined"
-            required
-            label="Email address"
-            placeholder="email@example.com"
+          <Controller
+            control={control}
+            name="customerDetails.email"
+            rules={{
+              required: "Please enter your email address",
+              pattern: {
+                value: EMAIL_REGEX,
+                message: "Please enter a valid email address",
+              },
+            }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                required
+                sx={{ flexGrow: 1 }}
+                variant="outlined"
+                type="email"
+                label="Email address"
+                placeholder="email@example.com"
+                error={!!errors["customerDetails"]?.["email"]}
+                helperText={
+                  errors["customerDetails"]?.["email"]?.message ||
+                  "Your email address"
+                }
+              />
+            )}
           />
         </Stack>
       </Stack>

@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { provinces } from "features/payment/assets";
 import { usePaymentContext } from "features/payment/context";
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 
 // TODO refactor this file
@@ -20,29 +20,56 @@ const DeliveryDetailsFormSection = () => {
   const {
     state: {
       contactDetails: {
-        billingDetails: { sameAsDeliveryAddress },
+        billingDetails: { provinceId, districtId, sameAsDeliveryAddress },
       },
     },
   } = usePaymentContext();
-  const { control } = useFormContext();
-  const [provinceId, setProvinceId] = useState("");
-  const [districtId, setDistrictId] = useState("");
-  const [communeId, setCommuneId] = useState("");
 
-  const handleProvinceChange = useCallback((event) => {
-    setProvinceId(event.target.value);
-    setDistrictId("");
-    setCommuneId("");
-  }, []);
+  const {
+    control,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
+  const handleProvinceChange = useCallback(
+    (event) => {
+      setValue("billingDetails.provinceId", event.target.value);
+      setValue("billingDetails.districtId", "");
+      setValue("billingDetails.communeId", "");
+    },
+    [setValue]
+  );
 
-  const handleDistrictChange = useCallback((event) => {
-    setDistrictId(event.target.value);
-    setCommuneId("");
-  }, []);
+  const handleDistrictChange = useCallback(
+    (event) => {
+      setValue("billingDetails.districtId", event.target.value);
+      setValue("billingDetails.communeId", "");
+    },
+    [setValue]
+  );
 
-  const handleCommuneChange = useCallback((event) => {
-    setCommuneId(event.target.value);
-  }, []);
+  const handleCommuneChange = useCallback(
+    (event) => {
+      setValue("billingDetails.communeId", event.target.value);
+    },
+    [setValue]
+  );
+
+  const handleSelectionChange = useCallback(
+    (e) => {
+      setValue("billingDetails.sameAsDeliveryAddress", e.target.checked, {
+        shouldValidate: true,
+      });
+      // setValue("billingDetails.provinceId", "");
+      // setValue("billingDetails.districtId", "");
+      // setValue("", "");
+      // clearErrors([
+      //   "billingDetails.provinceId",
+      //   "billingDetails.districtId",
+      //   "billingDetails.communeId",
+      // ]);
+    },
+    [setValue]
+  );
 
   return (
     <Stack direction="column" spacing={1}>
@@ -71,8 +98,7 @@ const DeliveryDetailsFormSection = () => {
                   {...props}
                   //eslint-disable-next-line react/prop-types
                   checked={props.value}
-                  //eslint-disable-next-line react/prop-types
-                  onChange={(e) => props.onChange(e.target.checked)}
+                  onChange={(e) => handleSelectionChange(e)}
                 />
               )}
             />
@@ -84,68 +110,150 @@ const DeliveryDetailsFormSection = () => {
         <Stack direction="column" spacing={2}>
           <FormControl required fullWidth>
             <InputLabel id="province-id-label">City/Province</InputLabel>
-            <Select
-              labelId="province-id-label"
-              id="province-id-select"
-              value={provinceId}
-              label="City/Province"
-              onChange={handleProvinceChange}
-            >
-              {Object.values(provinces).map((c) => (
-                <MenuItem value={c.idProvince} key={c.idProvince}>
-                  <Typography> {c.name}</Typography>
-                </MenuItem>
-              ))}
-            </Select>
+            <Controller
+              control={control}
+              name="billingDetails.provinceId"
+              rules={{
+                validate: {
+                  requiredProvinceValue: (v) =>
+                    sameAsDeliveryAddress ||
+                    (!sameAsDeliveryAddress && v !== null && v !== undefined) ||
+                    "Please choose a province",
+                },
+              }}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  labelId="province-id-label"
+                  id="province-id-select"
+                  label="City/Province"
+                  onChange={handleProvinceChange}
+                  error={!!errors["billingDetails"]?.["provinceId"]}
+                >
+                  {Object.values(provinces).map((c) => (
+                    <MenuItem value={c.idProvince} key={c.idProvince}>
+                      <Typography> {c.name}</Typography>
+                    </MenuItem>
+                  ))}
+                </Select>
+              )}
+            />
+            {errors["billingDetails"]?.["provinceId"] && (
+              <Typography variant="caption" color="error" m="3px 14px">
+                {errors["billingDetails"]?.["provinceId"]?.message}
+              </Typography>
+            )}
           </FormControl>
 
           <Stack direction="row" spacing={2} width={1}>
             <FormControl required sx={{ width: 0.5 }}>
               <InputLabel id="district-id-label">District/Town</InputLabel>
-              <Select
-                labelId="district-id-label"
-                id="district-id-select"
-                value={districtId}
-                label="District/Town"
-                onChange={handleDistrictChange}
-              >
-                {provinces[provinceId]
-                  ? Object.values(provinces[provinceId].districts).map((d) => (
-                      <MenuItem value={d.idDistrict} key={d.idDistrict}>
-                        <Typography> {d.name}</Typography>
-                      </MenuItem>
-                    ))
-                  : ""}
-              </Select>
+              <Controller
+                control={control}
+                name="billingDetails.districtId"
+                rules={{
+                  validate: {
+                    requiredDistrictValue: (v) =>
+                      sameAsDeliveryAddress ||
+                      (!sameAsDeliveryAddress &&
+                        v !== null &&
+                        v !== undefined) ||
+                      "Please choose a district",
+                  },
+                }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    labelId="district-id-label"
+                    id="district-id-select"
+                    label="District/Town"
+                    onChange={handleDistrictChange}
+                    error={!!errors["billingDetails"]?.["districtId"]}
+                  >
+                    {provinces[provinceId]
+                      ? Object.values(provinces[provinceId]?.districts).map(
+                          (d) => (
+                            <MenuItem value={d.idDistrict} key={d.idDistrict}>
+                              <Typography> {d.name}</Typography>
+                            </MenuItem>
+                          )
+                        )
+                      : ""}
+                  </Select>
+                )}
+              />
+              {errors["billingDetails"]?.["districtId"] && (
+                <Typography variant="caption" color="error" m="3px 14px">
+                  {errors["billingDetails"]?.["districtId"]?.message}
+                </Typography>
+              )}
             </FormControl>
 
             <FormControl required sx={{ width: 0.5 }}>
               <InputLabel id="commune-id-label">Ward/Commune</InputLabel>
-              <Select
-                labelId="commune-id-label"
-                id="commune-id-select"
-                value={communeId}
-                label="Ward/Commune"
-                onChange={handleCommuneChange}
-              >
-                {provinces[provinceId]?.districts[districtId]
-                  ? Object.values(
-                      provinces[provinceId].districts[districtId].communes
-                    ).map((c) => (
-                      <MenuItem value={c.idCommune} key={c.idCommune}>
-                        <Typography> {c.name}</Typography>
-                      </MenuItem>
-                    ))
-                  : ""}
-              </Select>
+              <Controller
+                control={control}
+                name="billingDetails.communeId"
+                rules={{
+                  validate: {
+                    requiredCommuneValue: (v) =>
+                      sameAsDeliveryAddress ||
+                      (!sameAsDeliveryAddress &&
+                        v !== null &&
+                        v !== undefined) ||
+                      "Please choose a commune",
+                  },
+                }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    labelId="commune-id-label"
+                    id="commune-id-select"
+                    label="Ward/Commune"
+                    onChange={handleCommuneChange}
+                    error={!!errors["billingDetails"]?.["communeId"]}
+                  >
+                    {provinces[provinceId]?.districts[districtId]
+                      ? Object.values(
+                          provinces[provinceId].districts[districtId].communes
+                        ).map((c) => (
+                          <MenuItem value={c.idCommune} key={c.idCommune}>
+                            <Typography> {c.name}</Typography>
+                          </MenuItem>
+                        ))
+                      : ""}
+                  </Select>
+                )}
+              />
+              {errors["billingDetails"]?.["communeId"] && (
+                <Typography variant="caption" color="error" m="3px 14px">
+                  {errors["billingDetails"]?.["communeId"]?.message}
+                </Typography>
+              )}
             </FormControl>
           </Stack>
 
-          <TextField variant="outlined" required label="Street" />
-          <TextField
-            variant="outlined"
-            label="Customer notes (optional)"
-            multiline
+          <Controller
+            control={control}
+            name="billingDetails.street"
+            rules={{
+              validate: {
+                requiredStreetValue: (v) =>
+                  sameAsDeliveryAddress ||
+                  (!sameAsDeliveryAddress && v !== null && v !== undefined) ||
+                  "This field is required",
+              },
+            }}
+            render={({ field }) => (
+              <TextField
+                {...field}
+                variant="outlined"
+                required
+                label="Street"
+                error={!!errors["billingDetails"]?.["street"]}
+                helperText={errors["billingDetails"]?.["street"]?.message}
+              />
+            )}
           />
         </Stack>
       )}

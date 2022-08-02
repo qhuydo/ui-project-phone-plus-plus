@@ -11,6 +11,7 @@ const Step1Form = () => {
         <Typography variant="h5" fontWeight="bold">
           Contact information & Delivery address
         </Typography>
+
         <CustomerDetailsFormSection />
         <DeliveryDetailsFormSection />
         <BillingDetailsFormSection />

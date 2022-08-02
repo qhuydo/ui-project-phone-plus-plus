@@ -8,26 +8,48 @@ import {
   TextField,
 } from "@mui/material";
 import { provinces } from "features/payment/assets";
-import { useState, useCallback } from "react";
+import { usePaymentContext } from "features/payment/context";
+import { useCallback } from "react";
+import { useFormContext, Controller } from "react-hook-form";
 
 // TODO: refactor this file
 const DeliveryDetailsFormSection = () => {
-  const [provinceId, setProvinceId] = useState("");
-  const [districtId, setDistrictId] = useState("");
-  const [communeId, setCommuneId] = useState("");
+  const {
+    state: {
+      contactDetails: {
+        deliveryDetails: { provinceId, districtId },
+      },
+    },
+  } = usePaymentContext();
 
-  const handleProvinceChange = useCallback((event) => {
-    setProvinceId(event.target.value);
-    setDistrictId("");
-    setCommuneId("");
-  }, []);
-  const handleDistrictChange = useCallback((event) => {
-    setDistrictId(event.target.value);
-    setCommuneId("");
-  }, []);
-  const handleCommuneChange = useCallback((event) => {
-    setCommuneId(event.target.value);
-  }, []);
+  const {
+    control,
+    setValue,
+    formState: { errors },
+  } = useFormContext();
+  const handleProvinceChange = useCallback(
+    (event) => {
+      setValue("deliveryDetails.provinceId", event.target.value);
+      setValue("deliveryDetails.districtId", "");
+      setValue("deliveryDetails.communeId", "");
+    },
+    [setValue]
+  );
+
+  const handleDistrictChange = useCallback(
+    (event) => {
+      setValue("deliveryDetails.districtId", event.target.value);
+      setValue("deliveryDetails.communeId", "");
+    },
+    [setValue]
+  );
+
+  const handleCommuneChange = useCallback(
+    (event) => {
+      setValue("deliveryDetails.communeId", event.target.value);
+    },
+    [setValue]
+  );
 
   return (
     <Stack direction="column" spacing={1}>
@@ -41,68 +63,135 @@ const DeliveryDetailsFormSection = () => {
       <Stack direction="column" spacing={2}>
         <FormControl required fullWidth>
           <InputLabel id="province-id-label">City/Province</InputLabel>
-          <Select
-            labelId="province-id-label"
-            id="province-id-select"
-            value={provinceId}
-            label="City/Province"
-            onChange={handleProvinceChange}
-          >
-            {Object.values(provinces).map((c) => (
-              <MenuItem value={c.idProvince} key={c.idProvince}>
-                <Typography> {c.name}</Typography>
-              </MenuItem>
-            ))}
-          </Select>
+          <Controller
+            control={control}
+            name="deliveryDetails.provinceId"
+            rules={{
+              required: "Please choose a province",
+            }}
+            render={({ field }) => (
+              <Select
+                {...field}
+                labelId="province-id-label"
+                id="province-id-select"
+                label="City/Province"
+                onChange={handleProvinceChange}
+                error={!!errors["deliveryDetails"]?.["provinceId"]}
+              >
+                {Object.values(provinces).map((c) => (
+                  <MenuItem value={c.idProvince} key={c.idProvince}>
+                    <Typography> {c.name}</Typography>
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
+          {errors["deliveryDetails"]?.["provinceId"] && (
+            <Typography variant="caption" color="error" m="3px 14px">
+              {errors["deliveryDetails"]?.["provinceId"]?.message}
+            </Typography>
+          )}
         </FormControl>
 
         <Stack direction="row" spacing={2} width={1}>
           <FormControl required sx={{ width: 0.5 }}>
             <InputLabel id="district-id-label">District/Town</InputLabel>
-            <Select
-              labelId="district-id-label"
-              id="district-id-select"
-              value={districtId}
-              label="District/Town"
-              onChange={handleDistrictChange}
-            >
-              {provinces[provinceId]
-                ? Object.values(provinces[provinceId].districts).map((d) => (
-                    <MenuItem value={d.idDistrict} key={d.idDistrict}>
-                      <Typography> {d.name}</Typography>
-                    </MenuItem>
-                  ))
-                : ""}
-            </Select>
+            <Controller
+              control={control}
+              name="deliveryDetails.districtId"
+              rules={{
+                required: "Please choose a district",
+              }}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  labelId="district-id-label"
+                  id="district-id-select"
+                  label="District/Town"
+                  onChange={handleDistrictChange}
+                  error={!!errors["deliveryDetails"]?.["districtId"]}
+                >
+                  {provinces[provinceId]
+                    ? Object.values(provinces[provinceId]?.districts).map(
+                        (d) => (
+                          <MenuItem value={d.idDistrict} key={d.idDistrict}>
+                            <Typography> {d.name}</Typography>
+                          </MenuItem>
+                        )
+                      )
+                    : ""}
+                </Select>
+              )}
+            />
+            {errors["deliveryDetails"]?.["districtId"] && (
+              <Typography variant="caption" color="error" m="3px 14px">
+                {errors["deliveryDetails"]?.["districtId"]?.message}
+              </Typography>
+            )}
           </FormControl>
 
           <FormControl required sx={{ width: 0.5 }}>
             <InputLabel id="commune-id-label">Ward/Commune</InputLabel>
-            <Select
-              labelId="commune-id-label"
-              id="commune-id-select"
-              value={communeId}
-              label="Ward/Commune"
-              onChange={handleCommuneChange}
-            >
-              {provinces[provinceId]?.districts[districtId]
-                ? Object.values(
-                    provinces[provinceId].districts[districtId].communes
-                  ).map((c) => (
-                    <MenuItem value={c.idCommune} key={c.idCommune}>
-                      <Typography> {c.name}</Typography>
-                    </MenuItem>
-                  ))
-                : ""}
-            </Select>
+            <Controller
+              control={control}
+              name="deliveryDetails.communeId"
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  labelId="commune-id-label"
+                  id="commune-id-select"
+                  label="Ward/Commune"
+                  onChange={handleCommuneChange}
+                  error={!!errors["deliveryDetails"]?.["communeId"]}
+                >
+                  {provinces[provinceId]?.districts[districtId]
+                    ? Object.values(
+                        provinces[provinceId].districts[districtId].communes
+                      ).map((c) => (
+                        <MenuItem value={c.idCommune} key={c.idCommune}>
+                          <Typography> {c.name}</Typography>
+                        </MenuItem>
+                      ))
+                    : ""}
+                </Select>
+              )}
+            />
+            {errors["deliveryDetails"]?.["communeId"] && (
+              <Typography variant="caption" color="error" m="3px 14px">
+                {errors["deliveryDetails"]?.["communeId"]?.message}
+              </Typography>
+            )}
           </FormControl>
         </Stack>
 
-        <TextField variant="outlined" required label="Street" />
-        <TextField
-          variant="outlined"
-          label="Customer notes (optional)"
-          multiline
+        <Controller
+          control={control}
+          name="deliveryDetails.street"
+          rules={{
+            required: "This field is required",
+          }}
+          render={({ field }) => (
+            <TextField
+              {...field}
+              variant="outlined"
+              required
+              label="Street"
+              error={!!errors["deliveryDetails"]?.["street"]}
+              helperText={errors["deliveryDetails"]?.["street"]?.message}
+            />
+          )}
+        />
+        <Controller
+          control={control}
+          name="deliveryDetails.customerNotes"
+          render={({ field }) => (
+            <TextField
+              {...field}
+              variant="outlined"
+              label="Customer notes (optional)"
+              multiline
+            />
+          )}
         />
       </Stack>
     </Stack>

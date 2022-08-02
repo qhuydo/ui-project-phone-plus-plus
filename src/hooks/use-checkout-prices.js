@@ -6,10 +6,14 @@ import {
 import { useMemo } from "react";
 import formatNumberToVND from "utils/currency-formatter";
 
-export const useCheckoutPrices = (cartItems) => {
+const DELIVERY_FEE = 50_000;
+
+export const useCheckoutPrices = (cartItems, addDeliveryFee) => {
+  const deliveryFee = addDeliveryFee ? DELIVERY_FEE : 0;
+
   const estimatePrice = useMemo(() => {
-    return formatNumberToVND(calculateEstimatePrice(cartItems));
-  }, [cartItems]);
+    return formatNumberToVND(calculateEstimatePrice(cartItems) + deliveryFee);
+  }, [cartItems, deliveryFee]);
 
   const subTotalPrice = useMemo(() => {
     return formatNumberToVND(calculateSubtotalPrice(cartItems));
@@ -19,5 +23,10 @@ export const useCheckoutPrices = (cartItems) => {
     return formatNumberToVND(calculateSavingPrice(cartItems));
   }, [cartItems]);
 
-  return [estimatePrice, subTotalPrice, savingPrice];
+  return [
+    estimatePrice,
+    subTotalPrice,
+    savingPrice,
+    formatNumberToVND(deliveryFee),
+  ];
 };

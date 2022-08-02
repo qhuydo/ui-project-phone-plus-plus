@@ -10,9 +10,15 @@ import { cartItemType } from "features/payment/types";
 import { useCheckoutPrices } from "hooks";
 import PropTypes from "prop-types";
 
-const PaymentCheckoutSection = ({ cardSx, cartItems, buttonGroup }) => {
-  const [estimatePrice, subTotalPrice, savingPrice] =
-    useCheckoutPrices(cartItems);
+const PaymentCheckoutSection = ({
+  cardSx,
+  cartItems,
+  buttonGroup,
+  addDeliveryFee,
+  showDeliveryFee,
+}) => {
+  const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
+    useCheckoutPrices(cartItems, addDeliveryFee);
 
   return (
     <Stack direction="column" spacing={1}>
@@ -43,6 +49,18 @@ const PaymentCheckoutSection = ({ cardSx, cartItems, buttonGroup }) => {
             <Typography variant="subtitle1">Subtotal</Typography>
             <Typography>{subTotalPrice}</Typography>
           </Stack>
+
+          {showDeliveryFee && (
+            <Stack
+              pt={1}
+              direction="row"
+              justifyContent="space-between"
+              alignItems="baseline"
+            >
+              <Typography variant="subtitle1">Delivery fee</Typography>
+              <Typography>{deliveryFee}</Typography>
+            </Stack>
+          )}
 
           <Stack
             pt={0.5}
@@ -77,10 +95,17 @@ const PaymentCheckoutSection = ({ cardSx, cartItems, buttonGroup }) => {
   );
 };
 
+PaymentCheckoutSection.defaultValues = {
+  addDeliveryFee: false,
+  showDeliveryFee: false,
+};
+
 PaymentCheckoutSection.propTypes = {
   cardSx: PropTypes.any,
   cartItems: PropTypes.arrayOf(cartItemType),
   buttonGroup: PropTypes.element,
+  addDeliveryFee: PropTypes.bool,
+  showDeliveryFee: PropTypes.bool,
 };
 
 export default PaymentCheckoutSection;
