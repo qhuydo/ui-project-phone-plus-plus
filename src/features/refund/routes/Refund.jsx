@@ -2,7 +2,12 @@ import { Container, Typography } from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
 import Placeholder from "components/Placeholder/Placeholder";
-import { FormExchangeAndRefund } from "features/refund/components/Step1";
+import {
+  RefundExchangeStep0,
+  RefundExchangeStep1,
+  RefundExchangeStep2,
+  RefundExchangeStep3,
+} from "features/refund/components/Steps";
 
 const Refund = () => {
   return (
@@ -15,9 +20,10 @@ const Refund = () => {
         <Typography variant={"h3"} textAlign="center" my={1}>
           Refunds And Exchanges
         </Typography>
-        
+
         <Placeholder />
-        <FormExchangeAndRefund />
+        <RefundExchangeStep1></RefundExchangeStep1>
+        <RefundExchangeStep3></RefundExchangeStep3>
       </Container>
     </>
   );

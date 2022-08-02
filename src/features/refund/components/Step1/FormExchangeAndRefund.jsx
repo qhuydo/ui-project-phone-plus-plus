@@ -145,7 +145,7 @@ const FormExchangeAndRefund = () => {
           marginTop={4}
         >
           <Button startIcon={<NavigateBeforeIcon />} variant="outlined">
-            Go back
+            Go Back
           </Button>
           <Button variant="contained">Submit Form</Button>
         </Stack>
