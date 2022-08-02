@@ -10,6 +10,7 @@ import {
 import { provinces } from "features/payment/assets";
 import { useState, useCallback } from "react";
 
+// TODO: refactor this file
 const DeliveryDetailsFormSection = () => {
   const [provinceId, setProvinceId] = useState("");
   const [districtId, setDistrictId] = useState("");
@@ -46,13 +47,6 @@ const DeliveryDetailsFormSection = () => {
             value={provinceId}
             label="City/Province"
             onChange={handleProvinceChange}
-            // renderValue={(selected) => {
-            //   if (selected.length === 0) {
-            //     return <em>Select a province</em>;
-            //   }
-            //   console.log(selected);
-            //   return `${selected}`.join(", ");
-            // }}
           >
             {Object.values(provinces).map((c) => (
               <MenuItem value={c.idProvince} key={c.idProvince}>
@@ -71,12 +65,6 @@ const DeliveryDetailsFormSection = () => {
               value={districtId}
               label="District/Town"
               onChange={handleDistrictChange}
-              // renderValue={(selected) => {
-              //   if (selected.length === 0) {
-              //     return <em>Select a district</em>;
-              //   }
-              //   return selected.join(", ");
-              // }}
             >
               {provinces[provinceId]
                 ? Object.values(provinces[provinceId].districts).map((d) => (
@@ -96,12 +84,6 @@ const DeliveryDetailsFormSection = () => {
               value={communeId}
               label="Ward/Commune"
               onChange={handleCommuneChange}
-              // renderValue={(selected) => {
-              //   if (selected.length === 0) {
-              //     return <em>Select a commune</em>;
-              //   }
-              //   return selected.join(", ");
-              // }}
             >
               {provinces[provinceId]?.districts[districtId]
                 ? Object.values(

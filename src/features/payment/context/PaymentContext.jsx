@@ -1,6 +1,12 @@
 import { initialPaymentState, paymentReducer } from "features/payment/stores";
 import PropTypes from "prop-types";
-import { createContext, useContext, useReducer, useMemo } from "react";
+import {
+  createContext,
+  useContext,
+  useReducer,
+  useMemo,
+  useCallback,
+} from "react";
 
 const paymentContextInitialState = {
   state: initialPaymentState,
@@ -16,12 +22,17 @@ export const usePaymentContext = () => {
 export const PaymentContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(paymentReducer, initialPaymentState);
 
+  const changeContactDetailsValue = useCallback((value) => {
+    dispatch({ type: "CHANGE_CONTACT_DETAILS_VALUE", payload: value });
+  }, []);
+
   const contextValue = useMemo(() => {
     return {
       state,
       dispatch,
+      changeContactDetailsValue,
     };
-  }, [state]);
+  }, [changeContactDetailsValue, state]);
 
   return (
     <PaymentContext.Provider value={contextValue}>

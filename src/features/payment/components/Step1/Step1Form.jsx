@@ -1,6 +1,8 @@
 import { FormGroup, Stack, Typography } from "@mui/material";
+import BillingDetailsFormSection from "features/payment/components/Step1/BillingDetailsFormSection";
 import CustomerDetailsFormSection from "features/payment/components/Step1/CustomerDetailsFormSection";
 import DeliveryDetailsFormSection from "features/payment/components/Step1/DeliveryDetailsFormSection";
+import DeliveryMethodSection from "features/payment/components/Step1/DeliveryMethodSection";
 
 const Step1Form = () => {
   return (
@@ -11,6 +13,8 @@ const Step1Form = () => {
         </Typography>
         <CustomerDetailsFormSection />
         <DeliveryDetailsFormSection />
+        <BillingDetailsFormSection />
+        <DeliveryMethodSection />
       </Stack>
     </FormGroup>
   );
