@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "type": "Exchange Policy"
+    },
+    {
+        "id": 2,
+        "type": "Refund Policy"
+    },
+    {
+        "id": 3,
+        "type": "Other Policies"
+    }
+]
