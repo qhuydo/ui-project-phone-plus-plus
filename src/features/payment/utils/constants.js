@@ -1,3 +1,9 @@
+import {
+  VisaLogo,
+  MastercardLogo,
+  PaypalLogo,
+  DollarBanknote,
+} from "features/cart/assets";
 import moment from "moment";
 
 export const TOTAL_PAYMENT_STEPS = 3;
@@ -22,3 +28,28 @@ export const DELIVERY_METHOD_HELPER_TEXTS2 = [
   "Delivery fee: free of charge",
   "Delivery fee: 50.000đ",
 ];
+
+export const PAYMENT_TYPES = {
+  visa: {
+    name: "Visa",
+    src: VisaLogo,
+  },
+  masterCard: {
+    name: "Mastercard",
+    src: MastercardLogo,
+  },
+  paypal: {
+    name: "Paypal",
+    src: PaypalLogo,
+  },
+  cod: {
+    name: "Cash on delivery",
+    src: DollarBanknote,
+  },
+};
+
+export const PAYMENT_METHODS = {
+  cod: "cod",
+  creditOrDebitCard: "creditOrDebitCard",
+  paypal: "paypal",
+};

@@ -1,37 +1,13 @@
 import { Box, Divider, Stack, Typography } from "@mui/material";
-import {
-  DollarBanknote,
-  MastercardLogo,
-  PaypalLogo,
-  VisaLogo,
-} from "features/cart/assets/logo";
+import { PAYMENT_TYPES } from "features/payment/utils";
 import PropTypes from "prop-types";
-
-const PAYMENT_TYPES = [
-  {
-    name: "Visa",
-    src: VisaLogo,
-  },
-  {
-    name: "Mastercard",
-    src: MastercardLogo,
-  },
-  {
-    name: "Paypal",
-    src: PaypalLogo,
-  },
-  {
-    name: "Cash on delivery",
-    src: DollarBanknote,
-  },
-];
 
 const SupportPaymentTypes = ({ showDivider }) => {
   return (
     <Stack direction="column" spacing={1} px={2} width={1}>
       <Typography variant="h6">Support payment methods</Typography>
       <Stack direction="row" spacing={1} overflow="auto">
-        {PAYMENT_TYPES.map((item, index) => (
+        {Object.values(PAYMENT_TYPES).map((item, index) => (
           <Stack
             direction="row"
             key={index}

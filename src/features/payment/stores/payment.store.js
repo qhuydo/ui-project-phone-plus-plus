@@ -74,5 +74,17 @@ export const paymentReducer = (state, action) => {
         currentStep: action.payload ?? state.currentStep,
       };
     }
+    case "CHOOSE_PAYMENT_METHOD": {
+      return {
+        ...state,
+        paymentMethod: {
+          ...state.paymentMethod,
+          currentSection:
+            action.payload ??
+            state.paymentMethod?.currentSection ??
+            "creditOrDebitCard",
+        },
+      };
+    }
   }
 };

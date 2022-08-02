@@ -26,13 +26,18 @@ export const PaymentContextProvider = ({ children }) => {
     dispatch({ type: "CHANGE_CONTACT_DETAILS_VALUE", payload: value });
   }, []);
 
+  const changePaymentMethodValue = useCallback((value) => {
+    dispatch({ type: "CHANGE_PAYMENT_METHOD_VALUE", payload: value });
+  }, []);
+
   const contextValue = useMemo(() => {
     return {
       state,
       dispatch,
       changeContactDetailsValue,
+      changePaymentMethodValue,
     };
-  }, [changeContactDetailsValue, state]);
+  }, [changeContactDetailsValue, changePaymentMethodValue, state]);
 
   return (
     <PaymentContext.Provider value={contextValue}>

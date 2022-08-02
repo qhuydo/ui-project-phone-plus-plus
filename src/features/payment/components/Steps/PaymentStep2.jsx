@@ -13,7 +13,7 @@ import { useForm, FormProvider } from "react-hook-form";
 const PaymentStep2 = () => {
   const {
     state: { cartItems, paymentMethod, contactDetails },
-    changeContactDetailsValue,
+    changePaymentMethodValue,
     dispatch,
   } = usePaymentContext();
 
@@ -23,11 +23,9 @@ const PaymentStep2 = () => {
   });
 
   useEffect(() => {
-    const subscription = form.watch((value) =>
-      changeContactDetailsValue(value)
-    );
+    const subscription = form.watch((value) => changePaymentMethodValue(value));
     return () => subscription.unsubscribe();
-  }, [changeContactDetailsValue, form]);
+  }, [changePaymentMethodValue, form]);
 
   const onBackButtonClicked = useCallback(async () => {
     dispatch({ type: "SET_CURRENT_STEP", payload: 0 });
