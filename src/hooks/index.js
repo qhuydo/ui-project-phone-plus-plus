@@ -1,3 +1,4 @@
+export * from "./use-accordion";
 export * from "./use-checkout-prices";
 export * from "./use-darkmode";
 export { default as useDebounce } from "./use-debounce";

@@ -8,17 +8,14 @@ import {
   Paper,
 } from "@mui/material";
 import { cartItemType } from "features/payment/types";
+import { useAccordion } from "hooks";
 import PropTypes from "prop-types";
-import React, { useCallback, useState } from "react";
+import React from "react";
 import { GOLDEN_RATIO } from "utils/constants";
 import formatNumberToVND from "utils/currency-formatter";
 
 const CartAccordion = ({ cartItems }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleChange = useCallback((event, isExpanded) => {
-    setIsOpen(isExpanded);
-  }, []);
+  const { isOpen, handleChange } = useAccordion();
 
   return (
     <Accordion expanded={isOpen} onChange={handleChange} elevation={0}>
@@ -34,7 +31,7 @@ const CartAccordion = ({ cartItems }) => {
           borderBottom: (theme) => `1px solid ${theme.palette.divider}`,
         }}
       >
-        <Typography variant="h6" fontWeight="bold" color="inherit">
+        <Typography variant="h5" fontWeight="bold" color="inherit">
           My cart
         </Typography>
       </AccordionSummary>

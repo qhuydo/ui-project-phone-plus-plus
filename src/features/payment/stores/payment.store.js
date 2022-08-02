@@ -26,6 +26,20 @@ export const initialPaymentState = {
     // "standard, "fast"
     deliveryMethod: "standard",
   },
+  paymentMethod: {
+    // cod, creditOrDebitCard, paypal
+    currentSection: "creditOrDebitCard",
+    cod: false,
+    creditOrDebitCard: {
+      nameOnCard: "",
+      cardNumber: "",
+      mmyy: "",
+      ccvCvv: "",
+    },
+    paypal: false,
+    termsAndConditionsChecked: false,
+    discountPromoSubscriptionChecked: false,
+  },
 };
 
 export const paymentReducer = (state, action) => {
@@ -46,6 +60,18 @@ export const paymentReducer = (state, action) => {
       return {
         ...state,
         contactDetails: action.payload ?? state.contactDetails,
+      };
+    }
+    case "CHANGE_PAYMENT_METHOD_VALUE": {
+      return {
+        ...state,
+        paymentMethod: action.payload ?? state.paymentMethod,
+      };
+    }
+    case "SET_CURRENT_STEP": {
+      return {
+        ...state,
+        currentStep: action.payload ?? state.currentStep,
       };
     }
   }

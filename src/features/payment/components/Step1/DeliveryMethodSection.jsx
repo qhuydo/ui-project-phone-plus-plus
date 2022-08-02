@@ -34,7 +34,7 @@ const DeliveryMethodSection = () => {
                   label={
                     <Stack direction="column" spacing={0.5} alignItems="start">
                       <Typography variant="body1" color="inherit">
-                        {DELIVERY_METHOD_TEXTS[idx]}
+                        {DELIVERY_METHOD_TEXTS[item]}
                       </Typography>
 
                       <Typography
