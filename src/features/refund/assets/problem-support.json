@@ -1,0 +1,42 @@
+[
+    {
+        "id":1,
+        "reason": "Product is broken/scratched"
+    },
+    {
+        "id":2,
+        "reason": "The delivered product does not match the model and type that the customer ordered"
+    },
+    {
+        "id":3,
+        "reason": "Product with technical defects and manufacturer defects"
+    },
+    {
+        "id":4,
+        "reason": "Product is damaged due to PHONE++'s shipping process"
+    },
+    {
+        "id":5,
+        "reason": "Product is not as described in the order"
+    },
+    {
+        "id":6,
+        "reason":"Delivered product misses accessories"
+    },
+    {
+        "id":7,
+        "reason":"Missing papers/manual/warranty"
+    },
+    {
+        "id":8,
+        "reason":"Not satisfied with the quality of product"
+    },
+    {
+        "id":9,
+        "reason":"Product is faulty or doesn't work properly"
+    },
+    {
+        "id":10,
+        "reason":"Other reasons"
+    }
+]
