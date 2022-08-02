@@ -6,6 +6,7 @@ import {
   Divider,
   Link,
 } from "@mui/material";
+import { cartItemType } from "features/payment/types";
 import { useCheckoutPrices } from "hooks";
 import PropTypes from "prop-types";
 
@@ -78,14 +79,7 @@ const PaymentCheckoutSection = ({ cardSx, cartItems, buttonGroup }) => {
 
 PaymentCheckoutSection.propTypes = {
   cardSx: PropTypes.any,
-  cartItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      colour: PropTypes.object,
-      phone: PropTypes.object,
-      quantity: PropTypes.number,
-      version: PropTypes.object,
-    })
-  ),
+  cartItems: PropTypes.arrayOf(cartItemType),
   buttonGroup: PropTypes.element,
 };
 

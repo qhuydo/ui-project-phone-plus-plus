@@ -1,5 +1,4 @@
 import { Stack, Typography, Button, Divider } from "@mui/material";
-import { useAuth } from "features/auth";
 import {
   PaymentCheckoutSection,
   SupportPaymentTypes,
@@ -18,12 +17,9 @@ const PaymentStep0 = () => {
     dispatch,
   } = usePaymentContext();
 
-  const { signIn } = useAuth();
-
   const onSkipButtonClicked = useCallback(() => {
-    signIn();
     dispatch({ type: "DISPLAY_LOGIN_REQUEST_PAGE", payload: false });
-  }, [dispatch, signIn]);
+  }, [dispatch]);
 
   return (
     <PaymentContainerGrid>

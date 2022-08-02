@@ -9,7 +9,12 @@ import {
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
 import { useAuth } from "features/auth";
-import { PaymentStep0 } from "features/payment/components";
+import {
+  PaymentStep0,
+  PaymentStep1,
+  PaymentStep2,
+  PaymentStep3,
+} from "features/payment/components";
 import { usePaymentContext } from "features/payment/context";
 import { STEPS } from "features/payment/utils";
 
@@ -34,15 +39,22 @@ const Payment = () => {
         {currentStep === 0 && allowDisplayingLoginRequestPage && !isAuth ? (
           <PaymentStep0 />
         ) : (
-          <Box width={1} mt={1}>
-            <Stepper activeStep={currentStep} alternativeLabel>
-              {STEPS.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
-          </Box>
+          <>
+            <Box width={1} mt={1}>
+              <Stepper activeStep={currentStep} alternativeLabel>
+                {STEPS.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>{label}</StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            </Box>
+            <Box width={1} mt={1}>
+              {currentStep === 0 && <PaymentStep1 />}
+              {currentStep === 1 && <PaymentStep2 />}
+              {currentStep === 2 && <PaymentStep3 />}
+            </Box>
+          </>
         )}
       </Container>
     </>

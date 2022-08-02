@@ -1,4 +1,6 @@
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import {
   Box,
@@ -9,21 +11,19 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { BigButton } from "components/Button";
+import OutlinedChip from "components/Chip/OutlinedChip";
+import ItemQuantityInput from "components/Input/ItemQuantityInput";
+import { useCartContext } from "features/cart/context/CartContext";
+import { createCartItem } from "features/cart/utils";
+import ColourPairSelector from "features/phones/components/PhoneDetailHeader/ColourPairSelector";
+import PhoneVersionSelector from "features/phones/components/PhoneDetailHeader/PhoneVersionSelector";
 import {
   useFavouritePhoneMap,
   usePhoneDetailsContext,
 } from "features/phones/context";
-import OutlinedChip from "components/Chip/OutlinedChip";
-import ColourPairSelector from "features/phones/components/PhoneDetailHeader/ColourPairSelector";
 import { useCallback, useMemo } from "react";
-import PhoneVersionSelector from "features/phones/components/PhoneDetailHeader/PhoneVersionSelector";
-import ItemQuantityInput from "components/Input/ItemQuantityInput";
 import { GOLDEN_RATIO } from "utils/constants";
-import { useCartContext } from "features/cart/context/CartContext";
-import { createCartItem } from "features/cart/utils";
-import { BigButton } from "components/Button";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const PhoneDetailsHeader = () => {
   const {
@@ -174,7 +174,7 @@ const PhoneDetailsHeader = () => {
             src={selectedColour.thumbnail}
             sx={(theme) => ({
               height: 80,
-              aspectRatio: `${GOLDEN_RATIO}px`,
+              aspectRatio: `${GOLDEN_RATIO}`,
               border: `1px solid ${theme.palette.divider}`,
               borderRadius: `${theme.shape.borderRadius}px`,
               [theme.breakpoints.up("md")]: {

@@ -9,7 +9,7 @@ export const PaymentContainerGrid = ({ children, ...props }) => (
 );
 
 PaymentContainerGrid.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 export const InfoGrid = ({ children, ...props }) => (
@@ -19,7 +19,7 @@ export const InfoGrid = ({ children, ...props }) => (
 );
 
 InfoGrid.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
 
 export const CheckoutSectionGrid = ({ children, ...props }) => (
@@ -39,5 +39,5 @@ export const CheckoutSectionGrid = ({ children, ...props }) => (
 );
 
 CheckoutSectionGrid.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
