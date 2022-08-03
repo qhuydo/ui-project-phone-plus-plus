@@ -1,16 +1,8 @@
-import {
-  Box,
-  Card,
-  CardMedia,
-  Link,
-  Stack,
-  SvgIcon,
-  Typography,
-} from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Box, Card, CardMedia, Link, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
-import { GOLDEN_RATIO } from "utils/constants";
 import { useCallback, useMemo, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { GOLDEN_RATIO } from "utils/constants";
 
 const cardStyle = (theme) => ({
   alignItems: "center",

@@ -61,8 +61,7 @@ export async function getDisplayedDataFromPhoneDetails(
           const specData = displayedSpecs[sectionName][specName].data;
           const spec = sections[sectionName]?.[specName] ?? "";
           const hasDifferences =
-            specData?.length !== 0 &&
-            specData?.indexOf(spec) === -1;
+            specData?.length !== 0 && specData?.indexOf(spec) === -1;
 
           specData?.push(spec);
           displayedSpecs[sectionName][specName].hasDifferences = hasDifferences;

@@ -34,7 +34,7 @@ export const initialPaymentState = {
       nameOnCard: "",
       cardNumber: "",
       mmyy: "",
-      ccvCvv: "",
+      cvcCvv: "",
     },
     paypal: false,
     termsAndConditionsChecked: false,

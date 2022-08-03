@@ -62,12 +62,29 @@ const CustomerDetailsFormSection = () => {
                   labelId="phone-country-code-label"
                   id="phone-country-code-select"
                   label="Country code"
+                  renderValue={(value) => (
+                    <Stack direction="row" alignItems="center" spacing={0.5}>
+                      <Box
+                        component="img"
+                        maxHeight={20}
+                        src={countries[value]?.thumbnail}
+                      />
+                      <Typography> {countries[value]?.dialCode}</Typography>
+                    </Stack>
+                  )}
                 >
-                  {countries.map((c) => (
+                  {Object.values(countries).map((c) => (
                     <MenuItem value={c.isoCode} key={c.isoCode}>
                       <Stack direction="row" alignItems="center" spacing={0.5}>
-                        <Box component="img" maxHeight={20} src={c.thumbnail} />
+                        <Box
+                          component="img"
+                          loading="lazy"
+                          maxHeight={20}
+                          src={c.thumbnail}
+                          alt={c.isoCode}
+                        />
                         <Typography> {c.dialCode}</Typography>
+                        <Typography> {c.name}</Typography>
                       </Stack>
                     </MenuItem>
                   ))}

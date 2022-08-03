@@ -47,7 +47,6 @@ const PaymentStep2 = () => {
               <Button
                 sx={{ mt: 2, alignSelf: "center", width: 0.9 }}
                 variant="outlined"
-                disabled={!form.formState.isValid}
                 onClick={onBackButtonClicked}
               >
                 Back

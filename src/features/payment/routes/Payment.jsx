@@ -17,6 +17,7 @@ import {
 } from "features/payment/components";
 import { usePaymentContext } from "features/payment/context";
 import { STEPS } from "features/payment/utils";
+import { useEffect } from "react";
 
 const Payment = () => {
   const {
@@ -24,6 +25,10 @@ const Payment = () => {
   } = usePaymentContext();
 
   const { isAuth } = useAuth();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]);
 
   return (
     <>

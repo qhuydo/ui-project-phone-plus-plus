@@ -1,4 +1,5 @@
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import HelpIcon from "@mui/icons-material/Help";
 import {
   Paper,
   Accordion,
@@ -9,12 +10,21 @@ import {
   AccordionDetails,
   Button,
   TextField,
+  InputAdornment,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
+
 import TermAgreementSection from "features/payment/components/Step2/TermAgreementSection";
 import { usePaymentContext } from "features/payment/context";
-import { PAYMENT_METHODS, PAYMENT_TYPES } from "features/payment/utils";
-import { useCallback, useMemo } from "react";
-import { useFormContext } from "react-hook-form";
+import {
+  PAYMENT_METHODS,
+  PAYMENT_TYPES,
+  cardExpiry,
+} from "features/payment/utils";
+import { useCallback, useMemo, useEffect } from "react";
+import { useFormContext, Controller } from "react-hook-form";
+import NumberFormat from "react-number-format";
 
 const CreditCardFormAccordion = () => {
   const {
@@ -24,24 +34,31 @@ const CreditCardFormAccordion = () => {
   } = usePaymentContext();
 
   const {
-    clearErrors,
-    formState: { isValid },
+    formState: { isValid, errors },
     setValue,
+    trigger,
+    control,
+    clearErrors,
   } = useFormContext();
 
-  const handleChange = useCallback(
+  const openCarouselCb = useCallback(
     (event, isExpanded) => {
       if (isExpanded) {
         setValue("currentSection", PAYMENT_METHODS.creditOrDebitCard);
-        clearErrors();
       }
     },
-    [clearErrors, setValue]
+    [setValue]
   );
 
   const isOpen = useMemo(() => {
     return currentSection === PAYMENT_METHODS.creditOrDebitCard;
   }, [currentSection]);
+
+  useEffect(() => {
+    trigger(["creditOrDebitCard"]).then(() => {
+      clearErrors("creditOrDebitCard");
+    });
+  }, [clearErrors, isOpen, trigger]);
 
   return (
     <Paper
@@ -49,7 +66,7 @@ const CreditCardFormAccordion = () => {
       elevation={0}
       sx={{ borderColor: isOpen ? "primary.main" : null }}
     >
-      <Accordion elevation={0} expanded={isOpen} onChange={handleChange}>
+      <Accordion elevation={0} expanded={isOpen} onChange={openCarouselCb}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -93,40 +110,123 @@ const CreditCardFormAccordion = () => {
           <Stack display="column" spacing={1} px={2}>
             <Stack display="column" spacing={2} py={0.5}>
               <TextField variant="outlined" label="Name on card" required />
+
               <Stack direction="row" spacing={1} width={1}>
-                <TextField
-                  variant="outlined"
-                  label="Card number"
-                  required
-                  sx={{ flex: 1 }}
+                <Controller
+                  name="creditOrDebitCard.cardNumber"
+                  control={control}
+                  rules={{
+                    validate: {
+                      required: (v) =>
+                        !isOpen ||
+                        v.length !== 0 ||
+                        "Please enter your card number",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <NumberFormat
+                      {...field}
+                      id="card-number-input"
+                      customInput={TextField}
+                      variant="outlined"
+                      displayType="input"
+                      format="#### #### #### ####"
+                      mask="_"
+                      label="Card number"
+                      sx={{ flex: 1 }}
+                      error={!!errors["creditOrDebitCard"]?.["cardNumber"]}
+                      helperText={
+                        errors["creditOrDebitCard"]?.["cardNumber"]?.message ??
+                        ""
+                      }
+                    />
+                  )}
                 />
 
-                <TextField
-                  variant="outlined"
-                  label="MM/YY"
-                  required
-                  sx={{ flex: 0.5 }}
+                <Controller
+                  name="creditOrDebitCard.mmyy"
+                  control={control}
+                  rules={{
+                    validate: {
+                      required: (v) =>
+                        !isOpen ||
+                        v.length !== 0 ||
+                        "Please enter your card expiry date",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <NumberFormat
+                      {...field}
+                      id="card-expiry-input"
+                      customInput={TextField}
+                      variant="outlined"
+                      displayType="input"
+                      format={cardExpiry}
+                      placeholder="MM/YY"
+                      label="MM/YY"
+                      sx={{ flex: 0.5 }}
+                      error={!!errors["creditOrDebitCard"]?.["mmyy"]}
+                      helperText={
+                        errors["creditOrDebitCard"]?.["mmyy"]?.message || ""
+                      }
+                    />
+                  )}
                 />
 
-                <TextField
-                  variant="outlined"
-                  label="CCV/CVV"
-                  required
-                  sx={{ flex: 0.5 }}
+                <Controller
+                  name="creditOrDebitCard.cvcCvv"
+                  control={control}
+                  rules={{
+                    validate: {
+                      required: (v) =>
+                        !isOpen ||
+                        v.length !== 0 ||
+                        "Please enter your card security code",
+                    },
+                  }}
+                  render={({ field }) => (
+                    <NumberFormat
+                      {...field}
+                      id="card-cvc-cvv-input"
+                      customInput={TextField}
+                      variant="outlined"
+                      displayType="input"
+                      format="###"
+                      placeholder="CVC/CVV"
+                      label="CVC/CVV"
+                      sx={{ flex: 0.5 }}
+                      error={!!errors["creditOrDebitCard"]?.["cvcCvv"]}
+                      helperText={
+                        errors["creditOrDebitCard"]?.["cvcCvv"]?.message || ""
+                      }
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <Tooltip title="Your security code is a 3-digit number on the back of your card">
+                              <IconButton edge="end">
+                                <HelpIcon />
+                              </IconButton>
+                            </Tooltip>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                  )}
                 />
               </Stack>
             </Stack>
-            <TermAgreementSection />
-            <Box display="flex" width={1} justifyContent="center">
-              <Button
-                variant="contained"
-                sx={{ minWidth: 300 }}
-                disabled={!isValid}
-              >
-                Review & Submit
-              </Button>
-            </Box>
           </Stack>
+
+          <TermAgreementSection />
+          <Box display="flex" width={1} justifyContent="center">
+            <Button
+              variant="contained"
+              sx={{ minWidth: 300 }}
+              disabled={!isValid}
+            >
+              Review & Submit
+            </Button>
+          </Box>
         </AccordionDetails>
       </Accordion>
     </Paper>

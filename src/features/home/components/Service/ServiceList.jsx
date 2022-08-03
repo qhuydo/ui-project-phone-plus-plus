@@ -1,17 +1,5 @@
 import { Box } from "@mui/material";
 import ServiceCard from "features/home/components/Service/ServiceCard";
-import {
-  BuildFilledIcon,
-  BuildIcon,
-  GiftCardIcon,
-  HandshakeFilledIcon,
-  HandshakeIcon,
-  LocalPhoneFilledIcon,
-  LocalPhoneIcon,
-  PhoneFilledIcon,
-  PhoneIcon,
-  SupportAgentIcon,
-} from "features/home/assets/icons";
 
 const categoryArr = [
   {
@@ -46,14 +34,14 @@ const categoryArr = [
   },
 ];
 
-const boxStyle = (theme) => ({
+const boxStyle = {
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr",
   gridAutoColumns: "1fr",
   mx: 4,
   rowGap: 3,
   columnGap: 8,
-});
+};
 
 function ServiceList() {
   return (
