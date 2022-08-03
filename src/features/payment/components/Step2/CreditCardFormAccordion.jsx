@@ -22,11 +22,12 @@ import {
   PAYMENT_TYPES,
   cardExpiry,
 } from "features/payment/utils";
+import PropTypes from "prop-types";
 import { useCallback, useMemo, useEffect } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import NumberFormat from "react-number-format";
 
-const CreditCardFormAccordion = () => {
+const CreditCardFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
       paymentMethod: { currentSection },
@@ -223,6 +224,7 @@ const CreditCardFormAccordion = () => {
               variant="contained"
               sx={{ minWidth: 300 }}
               disabled={!isValid}
+              onClick={onSubmitted}
             >
               Review & Submit
             </Button>
@@ -231,6 +233,10 @@ const CreditCardFormAccordion = () => {
       </Accordion>
     </Paper>
   );
+};
+
+CreditCardFormAccordion.propTypes = {
+  onSubmitted: PropTypes.func,
 };
 
 export default CreditCardFormAccordion;

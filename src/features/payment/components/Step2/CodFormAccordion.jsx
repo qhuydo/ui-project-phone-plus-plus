@@ -12,10 +12,11 @@ import {
 import TermAgreementSection from "features/payment/components/Step2/TermAgreementSection";
 import { usePaymentContext } from "features/payment/context";
 import { PAYMENT_TYPES, PAYMENT_METHODS } from "features/payment/utils";
+import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
 import { useFormContext } from "react-hook-form";
 
-const CodFormAccordion = () => {
+const CodFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
       paymentMethod: { currentSection },
@@ -88,6 +89,7 @@ const CodFormAccordion = () => {
                 variant="contained"
                 sx={{ minWidth: 300 }}
                 disabled={!isValid}
+                onClick={onSubmitted}
               >
                 Review & Submit
               </Button>
@@ -97,6 +99,10 @@ const CodFormAccordion = () => {
       </Accordion>
     </Paper>
   );
+};
+
+CodFormAccordion.propTypes = {
+  onSubmitted: PropTypes.func,
 };
 
 export default CodFormAccordion;

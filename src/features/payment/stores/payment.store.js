@@ -40,6 +40,7 @@ export const initialPaymentState = {
     termsAndConditionsChecked: false,
     discountPromoSubscriptionChecked: false,
   },
+  showConfirmationDialog: false,
 };
 
 export const paymentReducer = (state, action) => {
@@ -84,6 +85,12 @@ export const paymentReducer = (state, action) => {
             state.paymentMethod?.currentSection ??
             "creditOrDebitCard",
         },
+      };
+    }
+    case "CHANGE_CONFIRMATION_DIALOG_VISIBILITY": {
+      return {
+        ...state,
+        showConfirmationDialog: action?.payload ?? state.showConfirmationDialog,
       };
     }
   }
