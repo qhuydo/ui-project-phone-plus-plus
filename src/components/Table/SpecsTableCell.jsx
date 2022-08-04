@@ -3,8 +3,11 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
 const SpecsTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.background.paper,
     color: theme.palette.text.primary,
+    typography: "h6",
+    fontWeight: "bold",
+    borderRight: `1px solid ${theme.palette.divider}`,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: "1rem",

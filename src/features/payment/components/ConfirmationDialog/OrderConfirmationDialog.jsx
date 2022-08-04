@@ -28,7 +28,7 @@ const OrderConfirmationDialog = () => {
   }, [dispatch, onClosed, state]);
 
   const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
-    useCheckoutPrices(cartItems, true);
+    useCheckoutPrices(cartItems, state.contactDetails.deliveryMethod);
 
   return (
     <Dialog

@@ -1,6 +1,7 @@
 import { Stack, Typography, Divider, Box, LinearProgress } from "@mui/material";
 import { TextRow } from "features/payment/components/Info/DeliveryInfo";
 import { DeliveryInfo } from "features/payment/components/Info/index";
+import ProductBill from "features/payment/components/Info/ProductBill";
 import { orderType } from "features/payment/types";
 import { PAYMENT_METHODS, PAYMENT_METHOD_TEXTS } from "features/payment/utils";
 import moment from "moment";
@@ -51,6 +52,8 @@ const OrderInfo = ({ order, ...others }) => {
         </Stack>
         <QRCode value="https://youtu.be/dQw4w9WgXcQ" size={200} />
       </Stack>
+
+      <ProductBill order={order} />
     </Stack>
   ) : (
     <Box width={1}>

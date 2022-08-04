@@ -8,8 +8,11 @@ import formatNumberToVND from "utils/currency-formatter";
 
 const DELIVERY_FEE = 50_000;
 
-export const useCheckoutPrices = (cartItems, addDeliveryFee) => {
-  const deliveryFee = addDeliveryFee ? DELIVERY_FEE : 0;
+export const useCheckoutPrices = (cartItems, deliveryMethod) => {
+  const deliveryFee = useMemo(
+    () => (deliveryMethod === "fast" ? DELIVERY_FEE : 0),
+    [deliveryMethod]
+  );
 
   const estimatePrice = useMemo(() => {
     return formatNumberToVND(calculateEstimatePrice(cartItems) + deliveryFee);
