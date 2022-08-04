@@ -12,13 +12,14 @@ import {
 import TermAgreementSection from "features/payment/components/Step2/TermAgreementSection";
 import { usePaymentContext } from "features/payment/context";
 import { PAYMENT_TYPES, PAYMENT_METHODS } from "features/payment/utils";
+import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
 import { useFormContext } from "react-hook-form";
 
-const CodFormAccordion = () => {
+const CodFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
-      paymentMethod: { currentSection },
+      paymentMethod: { method },
     },
   } = usePaymentContext();
 
@@ -31,7 +32,7 @@ const CodFormAccordion = () => {
   const handleChange = useCallback(
     (event, isExpanded) => {
       if (isExpanded) {
-        setValue("currentSection", PAYMENT_METHODS.cod);
+        setValue("method", PAYMENT_METHODS.cod);
         clearErrors();
       }
     },
@@ -39,8 +40,8 @@ const CodFormAccordion = () => {
   );
 
   const isOpen = useMemo(() => {
-    return currentSection === PAYMENT_METHODS.cod;
-  }, [currentSection]);
+    return method === PAYMENT_METHODS.cod;
+  }, [method]);
 
   return (
     <Paper
@@ -88,6 +89,7 @@ const CodFormAccordion = () => {
                 variant="contained"
                 sx={{ minWidth: 300 }}
                 disabled={!isValid}
+                onClick={onSubmitted}
               >
                 Review & Submit
               </Button>
@@ -97,6 +99,10 @@ const CodFormAccordion = () => {
       </Accordion>
     </Paper>
   );
+};
+
+CodFormAccordion.propTypes = {
+  onSubmitted: PropTypes.func,
 };
 
 export default CodFormAccordion;

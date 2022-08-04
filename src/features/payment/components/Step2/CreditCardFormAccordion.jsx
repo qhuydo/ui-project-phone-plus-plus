@@ -22,14 +22,15 @@ import {
   PAYMENT_TYPES,
   cardExpiry,
 } from "features/payment/utils";
+import PropTypes from "prop-types";
 import { useCallback, useMemo, useEffect } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 import NumberFormat from "react-number-format";
 
-const CreditCardFormAccordion = () => {
+const CreditCardFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
-      paymentMethod: { currentSection },
+      paymentMethod: { method },
     },
   } = usePaymentContext();
 
@@ -44,15 +45,15 @@ const CreditCardFormAccordion = () => {
   const openCarouselCb = useCallback(
     (event, isExpanded) => {
       if (isExpanded) {
-        setValue("currentSection", PAYMENT_METHODS.creditOrDebitCard);
+        setValue("method", PAYMENT_METHODS.creditOrDebitCard);
       }
     },
     [setValue]
   );
 
   const isOpen = useMemo(() => {
-    return currentSection === PAYMENT_METHODS.creditOrDebitCard;
-  }, [currentSection]);
+    return method === PAYMENT_METHODS.creditOrDebitCard;
+  }, [method]);
 
   useEffect(() => {
     trigger(["creditOrDebitCard"]).then(() => {
@@ -223,6 +224,7 @@ const CreditCardFormAccordion = () => {
               variant="contained"
               sx={{ minWidth: 300 }}
               disabled={!isValid}
+              onClick={onSubmitted}
             >
               Review & Submit
             </Button>
@@ -231,6 +233,10 @@ const CreditCardFormAccordion = () => {
       </Accordion>
     </Paper>
   );
+};
+
+CreditCardFormAccordion.propTypes = {
+  onSubmitted: PropTypes.func,
 };
 
 export default CreditCardFormAccordion;

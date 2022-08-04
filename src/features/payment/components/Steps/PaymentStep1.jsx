@@ -51,7 +51,7 @@ const PaymentStep1 = () => {
           <PaymentCheckoutSection
             cartItems={cartItems}
             showDeliveryFee
-            addDeliveryFee={contactDetails.deliveryMethod !== "standard"}
+            deliveryMethod={contactDetails.deliveryMethod}
             buttonGroup={
               <Button
                 sx={{ mt: 2, alignSelf: "center", width: 0.9 }}

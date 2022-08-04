@@ -14,11 +14,11 @@ const PaymentCheckoutSection = ({
   cardSx,
   cartItems,
   buttonGroup,
-  addDeliveryFee,
+  deliveryMethod,
   showDeliveryFee,
 }) => {
   const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
-    useCheckoutPrices(cartItems, addDeliveryFee);
+    useCheckoutPrices(cartItems, deliveryMethod);
 
   return (
     <Stack direction="column" spacing={1}>
@@ -96,7 +96,6 @@ const PaymentCheckoutSection = ({
 };
 
 PaymentCheckoutSection.defaultValues = {
-  addDeliveryFee: false,
   showDeliveryFee: false,
 };
 
@@ -104,7 +103,7 @@ PaymentCheckoutSection.propTypes = {
   cardSx: PropTypes.any,
   cartItems: PropTypes.arrayOf(cartItemType),
   buttonGroup: PropTypes.element,
-  addDeliveryFee: PropTypes.bool,
+  deliveryMethod: PropTypes.string,
   showDeliveryFee: PropTypes.bool,
 };
 

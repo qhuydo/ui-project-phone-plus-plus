@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import { PaymentCheckoutSection } from "features/payment/components";
+import { OrderConfirmationDialog } from "features/payment/components/ConfirmationDialog";
 import {
   PaymentContainerGrid,
   InfoGrid,
@@ -42,7 +43,7 @@ const PaymentStep2 = () => {
           <PaymentCheckoutSection
             cartItems={cartItems}
             showDeliveryFee
-            addDeliveryFee={contactDetails.deliveryMethod !== "standard"}
+            deliveryMethod={contactDetails.deliveryMethod}
             buttonGroup={
               <Button
                 sx={{ mt: 2, alignSelf: "center", width: 0.9 }}
@@ -55,6 +56,7 @@ const PaymentStep2 = () => {
           />
         </CheckoutSectionGrid>
       </PaymentContainerGrid>
+      <OrderConfirmationDialog />
     </FormProvider>
   );
 };

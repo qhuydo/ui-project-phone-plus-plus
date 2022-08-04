@@ -6,19 +6,20 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@mui/material";
+import { useCallback } from "react";
 import { useFormContext, Controller } from "react-hook-form";
 
 const TermAgreementSection = () => {
-  // const {
-  //   state: {
-  //     paymentMethod: {
-  //       termsAndConditionsChecked,
-  //       discountPromoSubscriptionChecked,
-  //     },
-  //   },
-  // } = usePaymentContext();
+  const { control, setValue } = useFormContext();
 
-  const { control } = useFormContext();
+  const onTermsAndConditionsChecked = useCallback(
+    async (e) => {
+      setValue("termsAndConditionsChecked", e.target.checked, {
+        shouldValidate: true,
+      });
+    },
+    [setValue]
+  );
 
   return (
     <Stack width={1} direction="column">
@@ -45,10 +46,13 @@ const TermAgreementSection = () => {
           control={
             <Controller
               name="discountPromoSubscriptionChecked"
+              defaultValue={false}
               control={control}
               render={({ field: props }) => (
                 <Checkbox
                   {...props}
+                  // eslint-disable-next-line react/prop-types
+                  value={props.value}
                   //eslint-disable-next-line react/prop-types
                   checked={props.value}
                   //eslint-disable-next-line react/prop-types
@@ -58,7 +62,8 @@ const TermAgreementSection = () => {
             />
           }
         />
-      </ListItem>{" "}
+      </ListItem>
+
       <ListItem
         dense
         sx={{
@@ -80,6 +85,7 @@ const TermAgreementSection = () => {
           control={
             <Controller
               name="termsAndConditionsChecked"
+              defaultValue={false}
               control={control}
               rules={{
                 required:
@@ -88,10 +94,11 @@ const TermAgreementSection = () => {
               render={({ field: props }) => (
                 <Checkbox
                   {...props}
+                  // eslint-disable-next-line react/prop-types
+                  value={props.value}
                   //eslint-disable-next-line react/prop-types
                   checked={props.value}
-                  //eslint-disable-next-line react/prop-types
-                  onChange={(e) => props.onChange(e.target.checked)}
+                  onChange={onTermsAndConditionsChecked}
                 />
               )}
             />

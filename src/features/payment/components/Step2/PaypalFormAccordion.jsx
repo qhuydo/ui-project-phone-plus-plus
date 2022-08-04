@@ -13,13 +13,14 @@ import { PaypalIcon } from "features/payment/assets";
 import TermAgreementSection from "features/payment/components/Step2/TermAgreementSection";
 import { usePaymentContext } from "features/payment/context";
 import { PAYMENT_METHODS, PAYMENT_TYPES } from "features/payment/utils";
+import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
 import { useFormContext } from "react-hook-form";
 
-const PaypalFormAccordion = () => {
+const PaypalFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
-      paymentMethod: { currentSection },
+      paymentMethod: { method },
     },
   } = usePaymentContext();
 
@@ -32,7 +33,7 @@ const PaypalFormAccordion = () => {
   const handleChange = useCallback(
     (event, isExpanded) => {
       if (isExpanded) {
-        setValue("currentSection", PAYMENT_METHODS.paypal);
+        setValue("method", PAYMENT_METHODS.paypal);
         clearErrors();
       }
     },
@@ -40,8 +41,8 @@ const PaypalFormAccordion = () => {
   );
 
   const isOpen = useMemo(() => {
-    return currentSection === PAYMENT_METHODS.paypal;
-  }, [currentSection]);
+    return method === PAYMENT_METHODS.paypal;
+  }, [method]);
 
   return (
     <Paper
@@ -89,6 +90,7 @@ const PaypalFormAccordion = () => {
                 variant="contained"
                 sx={{ minWidth: 300, bgcolor: "#0070BA" }}
                 disabled={!isValid}
+                onClick={onSubmitted}
               >
                 <Box component="img" src={PaypalIcon} height={22} />
               </Button>
@@ -98,6 +100,10 @@ const PaypalFormAccordion = () => {
       </Accordion>
     </Paper>
   );
+};
+
+PaypalFormAccordion.propTypes = {
+  onSubmitted: PropTypes.func,
 };
 
 export default PaypalFormAccordion;

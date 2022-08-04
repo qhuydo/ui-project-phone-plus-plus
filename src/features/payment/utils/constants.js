@@ -4,7 +4,7 @@ import {
   PaypalLogo,
   DollarBanknote,
 } from "features/cart/assets";
-import moment from "moment";
+import { getEstimatedDeliveryDate } from "features/payment/utils/order-utils";
 
 export const TOTAL_PAYMENT_STEPS = 3;
 
@@ -17,12 +17,8 @@ export const DELIVERY_METHOD_TEXTS = {
   fast: "Fast delivery",
 };
 export const DELIVERY_METHOD_HELPER_TEXTS1 = [
-  `Estimated delivery date: ${moment()
-    .add(4, "day")
-    .format(DELIVERY_DATE_FORMAT)}`,
-  `Estimated delivery date: ${moment()
-    .add(4, "day")
-    .format(DELIVERY_DATE_FORMAT)}`,
+  `Estimated delivery date: ${getEstimatedDeliveryDate(DELIVERY_METHODS[0])}`,
+  `Estimated delivery date: ${getEstimatedDeliveryDate(DELIVERY_METHODS[1])}`,
 ];
 export const DELIVERY_METHOD_HELPER_TEXTS2 = [
   "Delivery fee: free of charge",
@@ -53,3 +49,11 @@ export const PAYMENT_METHODS = {
   creditOrDebitCard: "creditOrDebitCard",
   paypal: "paypal",
 };
+
+export const PAYMENT_METHOD_TEXTS = {
+  cod: "Cash on delivery (COD)",
+  creditOrDebitCard: "Credit card or Debit card",
+  paypal: "Paypal",
+};
+
+export const ORDERS_KEY = "orders";
