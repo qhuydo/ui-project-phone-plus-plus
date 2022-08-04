@@ -1,15 +1,16 @@
 import EditIcon from "@mui/icons-material/Edit";
 import { Stack, Typography, Box, Button } from "@mui/material";
 import { countries } from "features/payment/assets";
-import { usePaymentContext } from "features/payment/context";
+import { contactDetailsType } from "features/payment/types";
 import {
   getAddressFromDeliveryDetails,
   DELIVERY_METHOD_TEXTS,
+  getEstimatedDeliveryDate,
 } from "features/payment/utils";
 import PropTypes from "prop-types";
-import { useCallback } from "react";
+import { useMemo } from "react";
 
-const TextRow = ({ width, title, content }) => (
+export const TextRow = ({ width, title, content }) => (
   <Stack width={width ?? 1} spacing={0} direction="column">
     <Typography variant="h6">{title}</Typography>
     <Typography>{content}</Typography>
@@ -22,17 +23,30 @@ TextRow.propTypes = {
   content: PropTypes.string,
 };
 
-const DeliveryInfo = ({ showEditButton, ...others }) => {
-  const {
-    state: { contactDetails },
-    dispatch,
-  } = usePaymentContext();
+const DeliveryInfo = ({
+  contactDetails,
+  showEditButton,
+  onEditButtonClicked,
+  timestamp,
+  ...others
+}) => {
   const { customerDetails, deliveryDetails, billingDetails, deliveryMethod } =
     contactDetails;
 
-  const onEditPageButtonClicked = useCallback(async () => {
-    dispatch({ type: "SET_CURRENT_STEP", payload: 0 });
-  }, [dispatch]);
+  const deliveryDetailsAddress = useMemo(
+    () => getAddressFromDeliveryDetails(deliveryDetails),
+    [deliveryDetails]
+  );
+
+  const billingDetailsAddress = useMemo(
+    () => getAddressFromDeliveryDetails(billingDetails),
+    [billingDetails]
+  );
+
+  const estimatedDeliveryDate = useMemo(
+    () => getEstimatedDeliveryDate(deliveryMethod, timestamp),
+    [deliveryMethod, timestamp]
+  );
 
   return (
     <Stack direction="column" spacing={1} p={1} {...others}>
@@ -47,25 +61,29 @@ const DeliveryInfo = ({ showEditButton, ...others }) => {
         />
         <TextRow width={0.5} title={"Email"} content={customerDetails.email} />
       </Stack>
-      <TextRow
-        title={"Delivery Address"}
-        content={getAddressFromDeliveryDetails(deliveryDetails)}
-      />
+
+      <TextRow title={"Delivery Address"} content={deliveryDetailsAddress} />
+
       {billingDetails.sameAsDeliveryAddress ? (
         <Typography color="text.secondary" fontStyle="italic">
           Billing address is the same as delivery address
         </Typography>
       ) : (
-        <TextRow
-          title={"Billing address"}
-          content={getAddressFromDeliveryDetails(billingDetails)}
-        />
+        <TextRow title={"Billing address"} content={billingDetailsAddress} />
       )}
 
-      <TextRow
-        title={"Delivery method"}
-        content={DELIVERY_METHOD_TEXTS[deliveryMethod]}
-      />
+      <Stack direction="row">
+        <TextRow
+          width={0.5}
+          title={"Delivery method"}
+          content={DELIVERY_METHOD_TEXTS[deliveryMethod]}
+        />
+        <TextRow
+          width={0.5}
+          title={"Estimated delivery date"}
+          content={estimatedDeliveryDate}
+        />
+      </Stack>
 
       {showEditButton && (
         <Box
@@ -77,7 +95,7 @@ const DeliveryInfo = ({ showEditButton, ...others }) => {
           <Button
             variant="outlined"
             startIcon={<EditIcon />}
-            onClick={onEditPageButtonClicked}
+            onClick={onEditButtonClicked}
             sx={{ minWidth: 200 }}
           >
             Edit
@@ -89,7 +107,10 @@ const DeliveryInfo = ({ showEditButton, ...others }) => {
 };
 
 DeliveryInfo.propTypes = {
+  contactDetails: contactDetailsType.isRequired,
   showEditButton: PropTypes.bool,
+  onEditButtonClicked: PropTypes.func,
+  timestamp: PropTypes.number,
 };
 
 export default DeliveryInfo;

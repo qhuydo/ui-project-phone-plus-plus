@@ -41,7 +41,12 @@ const OrderConfirmationDialog = () => {
       <DialogContent dividers>
         <Stack direction="column" spacing={1}>
           <Typography>Please confirm your information below</Typography>
-          <DeliveryInfo showEditButton={false} p={0} />
+          <DeliveryInfo
+            showEditButton={false}
+            contactDetails={state.contactDetails}
+            p={0}
+          />
+
           <CartItemList cartItems={cartItems} />
           <Stack direction="column">
             <Stack

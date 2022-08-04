@@ -7,7 +7,7 @@ export function getAddressFromDeliveryDetails(deliveryDetails) {
     deliveryDetails.street ?? "",
     provinces[provinceId]?.districts[districtId]?.communes[communeId]?.name ??
       "",
-    provinces[provinceId]?.districts[districtId].name ?? "",
-    provinces[provinceId].name ?? "",
+    provinces[provinceId]?.districts[districtId]?.name ?? "",
+    provinces[provinceId]?.name ?? "",
   ].join(", ");
 }
