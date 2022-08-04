@@ -31,7 +31,7 @@ const DeliveryInfoAccordion = () => {
       </AccordionSummary>
 
       <AccordionDetails>
-        <DeliveryInfo />
+        <DeliveryInfo showEditButton />
       </AccordionDetails>
     </Accordion>
   );

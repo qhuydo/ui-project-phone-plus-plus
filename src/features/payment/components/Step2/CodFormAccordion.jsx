@@ -19,7 +19,7 @@ import { useFormContext } from "react-hook-form";
 const CodFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
-      paymentMethod: { currentSection },
+      paymentMethod: { method },
     },
   } = usePaymentContext();
 
@@ -32,7 +32,7 @@ const CodFormAccordion = ({ onSubmitted }) => {
   const handleChange = useCallback(
     (event, isExpanded) => {
       if (isExpanded) {
-        setValue("currentSection", PAYMENT_METHODS.cod);
+        setValue("method", PAYMENT_METHODS.cod);
         clearErrors();
       }
     },
@@ -40,8 +40,8 @@ const CodFormAccordion = ({ onSubmitted }) => {
   );
 
   const isOpen = useMemo(() => {
-    return currentSection === PAYMENT_METHODS.cod;
-  }, [currentSection]);
+    return method === PAYMENT_METHODS.cod;
+  }, [method]);
 
   return (
     <Paper

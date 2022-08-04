@@ -20,7 +20,7 @@ import { useFormContext } from "react-hook-form";
 const PaypalFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
-      paymentMethod: { currentSection },
+      paymentMethod: { method },
     },
   } = usePaymentContext();
 
@@ -33,7 +33,7 @@ const PaypalFormAccordion = ({ onSubmitted }) => {
   const handleChange = useCallback(
     (event, isExpanded) => {
       if (isExpanded) {
-        setValue("currentSection", PAYMENT_METHODS.paypal);
+        setValue("method", PAYMENT_METHODS.paypal);
         clearErrors();
       }
     },
@@ -41,8 +41,8 @@ const PaypalFormAccordion = ({ onSubmitted }) => {
   );
 
   const isOpen = useMemo(() => {
-    return currentSection === PAYMENT_METHODS.paypal;
-  }, [currentSection]);
+    return method === PAYMENT_METHODS.paypal;
+  }, [method]);
 
   return (
     <Paper

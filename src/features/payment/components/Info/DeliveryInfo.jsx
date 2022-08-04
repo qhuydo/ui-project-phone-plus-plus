@@ -22,7 +22,7 @@ TextRow.propTypes = {
   content: PropTypes.string,
 };
 
-const DeliveryInfo = ({ showEditButton }) => {
+const DeliveryInfo = ({ showEditButton, ...others }) => {
   const {
     state: { contactDetails },
     dispatch,
@@ -35,7 +35,7 @@ const DeliveryInfo = ({ showEditButton }) => {
   }, [dispatch]);
 
   return (
-    <Stack direction="column" spacing={1} p={1}>
+    <Stack direction="column" spacing={1} p={1} {...others}>
       <TextRow title={"Full name"} content={customerDetails.fullName} />
       <Stack direction="row">
         <TextRow

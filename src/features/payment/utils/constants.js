@@ -53,3 +53,5 @@ export const PAYMENT_METHODS = {
   creditOrDebitCard: "creditOrDebitCard",
   paypal: "paypal",
 };
+
+export const ORDERS_KEY = "orders";

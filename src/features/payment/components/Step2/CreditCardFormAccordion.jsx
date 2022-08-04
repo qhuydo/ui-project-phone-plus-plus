@@ -30,7 +30,7 @@ import NumberFormat from "react-number-format";
 const CreditCardFormAccordion = ({ onSubmitted }) => {
   const {
     state: {
-      paymentMethod: { currentSection },
+      paymentMethod: { method },
     },
   } = usePaymentContext();
 
@@ -45,15 +45,15 @@ const CreditCardFormAccordion = ({ onSubmitted }) => {
   const openCarouselCb = useCallback(
     (event, isExpanded) => {
       if (isExpanded) {
-        setValue("currentSection", PAYMENT_METHODS.creditOrDebitCard);
+        setValue("method", PAYMENT_METHODS.creditOrDebitCard);
       }
     },
     [setValue]
   );
 
   const isOpen = useMemo(() => {
-    return currentSection === PAYMENT_METHODS.creditOrDebitCard;
-  }, [currentSection]);
+    return method === PAYMENT_METHODS.creditOrDebitCard;
+  }, [method]);
 
   useEffect(() => {
     trigger(["creditOrDebitCard"]).then(() => {

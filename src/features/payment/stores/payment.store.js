@@ -1,3 +1,5 @@
+import { PAYMENT_METHODS } from "features/payment/utils";
+
 export const initialPaymentState = {
   cartItems: [],
   currentStep: 0,
@@ -28,19 +30,18 @@ export const initialPaymentState = {
   },
   paymentMethod: {
     // cod, creditOrDebitCard, paypal
-    currentSection: "creditOrDebitCard",
-    cod: false,
+    method: PAYMENT_METHODS.creditOrDebitCard,
     creditOrDebitCard: {
       nameOnCard: "",
       cardNumber: "",
       mmyy: "",
       cvcCvv: "",
     },
-    paypal: false,
     termsAndConditionsChecked: false,
     discountPromoSubscriptionChecked: false,
   },
   showConfirmationDialog: false,
+  submittedOrder: null,
 };
 
 export const paymentReducer = (state, action) => {
@@ -80,9 +81,9 @@ export const paymentReducer = (state, action) => {
         ...state,
         paymentMethod: {
           ...state.paymentMethod,
-          currentSection:
+          method:
             action.payload ??
-            state.paymentMethod?.currentSection ??
+            state.paymentMethod?.method ??
             "creditOrDebitCard",
         },
       };
@@ -91,6 +92,12 @@ export const paymentReducer = (state, action) => {
       return {
         ...state,
         showConfirmationDialog: action?.payload ?? state.showConfirmationDialog,
+      };
+    }
+    case "ADD_SUBMITTED_ORDER": {
+      return {
+        ...state,
+        submittedOrder: action?.payload ?? state.submittedOrder,
       };
     }
   }
