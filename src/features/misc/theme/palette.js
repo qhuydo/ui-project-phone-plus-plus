@@ -1,11 +1,11 @@
-const PRIMARY = {
+export const PRIMARY = {
   light: "#7EC6FF",
   main: "#4496E0",
   dark: "#0069AE",
   50: "#E4F2FB",
 };
 
-const SECONDARY = {
+export const SECONDARY = {
   light: "#52539c",
   main: "#202B6D",
   dark: "#000141",

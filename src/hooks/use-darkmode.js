@@ -11,9 +11,7 @@ const COLOR_SCHEME_QUERY = "(prefers-color-scheme: dark)";
  * @see https://usehooks-ts.com/react-hook/use-dark-mode
  */
 export function useDarkMode() {
-  // temporarily disable system dark mode
-  // const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
-  const isDarkOS = false;
+  const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY);
 
   const [isDarkMode, setDarkMode] = useLocalStorage(
     "dark-mode-enabled",

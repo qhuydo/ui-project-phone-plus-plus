@@ -34,14 +34,22 @@ const categoryArr = [
   },
 ];
 
-const boxStyle = {
+const boxStyle = (theme) => ({
   display: "grid",
-  gridTemplateColumns: "1fr 1fr 1fr",
+  gridTemplateColumns: "repeat(2, 1fr)",
   gridAutoColumns: "1fr",
   mx: 4,
-  rowGap: 3,
-  columnGap: 8,
-};
+  rowGap: 1,
+  columnGap: 1,
+  [theme.breakpoints.only("sm")]: {
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: 2,
+  },
+  [theme.breakpoints.up("lg")]: {
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: 3,
+  },
+});
 
 function ServiceList() {
   return (
