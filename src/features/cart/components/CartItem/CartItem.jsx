@@ -10,7 +10,7 @@ import {
 import { FALLBACK_IMG, GOLDEN_RATIO } from "utils/constants";
 import { useCartItemContext } from "features/cart/context";
 import ItemQuantityInput from "components/Input/ItemQuantityInput";
-import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { useCartContext } from "features/cart/context/CartContext";
 import formatNumberToVND from "utils/currency-formatter";
@@ -115,7 +115,7 @@ const CartItem = () => {
           />
 
           <IconButton onClick={() => removeItem(cartItem)}>
-            <DeleteOutlinedIcon />
+            <DeleteIcon color="error" />
           </IconButton>
         </Stack>
 

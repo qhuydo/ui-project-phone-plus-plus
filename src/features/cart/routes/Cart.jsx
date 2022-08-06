@@ -17,6 +17,7 @@ import VoucherSection from "features/cart/components/CartInfoSection/VoucherSect
 import { useCartContext } from "features/cart/context/CartContext";
 import { SupportPaymentTypes } from "features/payment/components";
 import { useScroll } from "hooks";
+import EmptyCartBanner from "../components/CartInfoSection/EmptyCartBanner";
 import PeopleAlsoBuySection from "../components/CartInfoSection/PeopleAlsoBuySection";
 import SpecialOfferSection from "../components/CartInfoSection/SpecialOfferSection";
 
@@ -56,19 +57,7 @@ export const Cart = () => {
               pb={2}
               alignItems="center"
             >
-              <SvgIcon
-                component={CartIcon}
-                sx={iconStyle}
-                className="svg-gradient-wrapper"
-                inheritViewBox
-              />
-              <Typography
-                variant="h4"
-                textAlign="center"
-                color="secondary.main"
-              >
-                Your cart is empty
-              </Typography>
+              <EmptyCartBanner />
             </Stack>
 
             <Divider sx={{ width: 1 }} />
