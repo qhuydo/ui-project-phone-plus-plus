@@ -9,7 +9,6 @@ import { CartItemList } from "features/payment/components/Info";
 import { cartItemType } from "features/payment/types";
 import { useAccordion } from "hooks";
 import PropTypes from "prop-types";
-import React from "react";
 
 const CartAccordion = ({ cartItems }) => {
   const { isOpen, handleChange } = useAccordion();

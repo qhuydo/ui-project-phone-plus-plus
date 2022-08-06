@@ -13,7 +13,7 @@ import {
 import { SpecsTableRow, SpecsTableCell } from "components/Table";
 import { TABLE_HEADER_WIDTH, VIEW_MODES } from "features/comparison/utils";
 import PropTypes from "prop-types";
-import React, { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo } from "react";
 
 function renderRowData(tableData, viewMode) {
   return (

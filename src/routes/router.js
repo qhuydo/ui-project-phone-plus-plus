@@ -2,6 +2,7 @@ const router = {
   HOME: "/",
   CART: "/cart",
   LOGIN: "/login",
+  ORDERS: "order",
   PAYMENT: "/payment",
   PHONE_COMPARISON: "/phone/compare",
   PHONE_SEARCH_RESULT: "/phone/search",
@@ -9,6 +10,10 @@ const router = {
   PHONE_DETAILS: "/phone/:id",
   REFUND: "/refund",
   REGISTER: "/register",
+  TRACK_MY_ORDER: "/order/track",
+  getOrderTrackingPage(id) {
+    return `/order/track?id=${id}`;
+  },
   getPhoneDetailsPage(id, name) {
     return `/phone/${id}?q=${name}`;
   },

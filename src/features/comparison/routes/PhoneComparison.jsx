@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Head } from "components/Head/Head";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Container, Typography, useMediaQuery, useTheme } from "@mui/material";
