@@ -1,4 +1,4 @@
-import moment from "moment";
+import * as dayjs from "dayjs";
 import _ from "lodash-es";
 
 export const filterOptions = [
@@ -77,10 +77,10 @@ export function filterCommentAsync(comments, criterion) {
     switch (criterion) {
       case "newest": {
         result = result.sort((a, b) => {
-          const momentA = moment(a.displayTimestamp, "DD/MM/YYYY HH:mm:ss");
-          const momentB = moment(b.displayTimestamp, "DD/MM/YYYY HH:mm:ss");
-          if (momentA > momentB) return -1;
-          else if (momentA < momentB) return 1;
+          const dayA = dayjs(a.displayTimestamp, "DD/MM/YYYY HH:mm:ss");
+          const dayB = dayjs(b.displayTimestamp, "DD/MM/YYYY HH:mm:ss");
+          if (dayA > dayB) return -1;
+          else if (dayA < dayB) return 1;
           else return 0;
         });
         break;
