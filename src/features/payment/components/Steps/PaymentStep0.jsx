@@ -7,7 +7,7 @@ import {
   PaymentContainerGrid,
   InfoGrid,
   CheckoutSectionGrid,
-} from "features/payment/components/PaymentGrids";
+} from "features/payment/components/Container";
 import { usePaymentContext } from "features/payment/context";
 import { useCallback } from "react";
 

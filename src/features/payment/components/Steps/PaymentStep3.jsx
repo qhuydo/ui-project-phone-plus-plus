@@ -1,6 +1,6 @@
 import { Stack, Box, Typography, Button, Link } from "@mui/material";
 import { PaymentSucceedImg } from "features/payment/assets";
-import { OrderInfo } from "features/payment/components/Info";
+import { OrderInfo } from "features/order/components/OrderInfo";
 import { usePaymentContext } from "features/payment/context";
 import { Link as RouterLink } from "react-router-dom";
 import { Router } from "routes";

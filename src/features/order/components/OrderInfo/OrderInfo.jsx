@@ -1,9 +1,9 @@
 import { Stack, Typography, Divider, Box, LinearProgress } from "@mui/material";
 import dayjs from "dayjs";
 import { TextRow } from "features/payment/components/Info/DeliveryInfo";
-import { DeliveryInfo } from "features/payment/components/Info/index";
+import { DeliveryInfo } from "features/payment/components/Info";
 import ProductBill from "features/payment/components/Info/ProductBill";
-import { orderType } from "features/payment/types";
+import { orderType } from "features/order/types";
 import { PAYMENT_METHODS, PAYMENT_METHOD_TEXTS } from "features/payment/utils";
 import { useMemo } from "react";
 import QRCode from "react-qr-code";

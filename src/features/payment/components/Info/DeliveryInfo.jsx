@@ -1,7 +1,7 @@
 import EditIcon from "@mui/icons-material/Edit";
 import { Stack, Typography, Box, Button } from "@mui/material";
 import { countries } from "features/payment/assets";
-import { contactDetailsType } from "features/payment/types";
+import { contactDetailsType } from "features/order/types";
 import {
   getAddressFromDeliveryDetails,
   DELIVERY_METHOD_TEXTS,

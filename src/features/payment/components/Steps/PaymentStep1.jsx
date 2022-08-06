@@ -4,7 +4,7 @@ import {
   PaymentContainerGrid,
   InfoGrid,
   CheckoutSectionGrid,
-} from "features/payment/components/PaymentGrids";
+} from "features/payment/components/Container";
 import { Step1InfoSection } from "features/payment/components/Step1";
 import { usePaymentContext } from "features/payment/context";
 import { useMemo, useEffect, useCallback } from "react";
