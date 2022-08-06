@@ -1,12 +1,14 @@
-import { Container, Typography, Stack, Divider } from "@mui/material";
-import dayjs from "dayjs";
-import { useMemo } from "react";
+import { Container, Typography, Stack } from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
+import dayjs from "dayjs";
+import { OrderAccordion } from "features/order/components/Accordion";
+import { ShipmentStatus } from "features/order/components/ShipmentStatus";
 import {
   OrderTrackingContextProvider,
   useOrderTrackingContext,
 } from "features/order/context";
+import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 import Router from "routes/router";
 
@@ -49,22 +51,21 @@ const TrackMyOrderBody = () => {
           ]}
         />
 
-        <Typography variant={"h3"} textAlign="center" my={1}>
+        <Typography variant={"h3"} textAlign="center" mt={1} mb={2}>
           Track my order
         </Typography>
 
         {order && (
-          <>
-            <Stack direction="column" spacing={1}>
-              <Stack direction="row" spacing={1} alignItems="baseline" px={2}>
-                <Typography variant="h5" flexWrap="wrap">
-                  Order No. <b>#{order.id}</b>
-                </Typography>
-                <Typography color="text.secondary">({date})</Typography>
-              </Stack>
-              {/*<Divider flexItem />*/}{" "}
+          <Stack direction="column" spacing={2}>
+            <Stack direction="row" spacing={1} alignItems="baseline" px={2}>
+              <Typography variant="h5" flexWrap="wrap">
+                Order No. <b>#{order.id}</b>
+              </Typography>
+              <Typography color="text.secondary">({date})</Typography>
             </Stack>
-          </>
+            <OrderAccordion order={order} />
+            <ShipmentStatus />
+          </Stack>
         )}
       </Container>
     </>

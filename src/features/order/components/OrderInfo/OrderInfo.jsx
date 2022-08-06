@@ -1,14 +1,15 @@
 import { Stack, Typography, Divider, Box, LinearProgress } from "@mui/material";
 import dayjs from "dayjs";
-import { TextRow } from "features/payment/components/Info/DeliveryInfo";
-import { DeliveryInfo } from "features/payment/components/Info";
-import ProductBill from "features/payment/components/Info/ProductBill";
+import ProductBill from "features/order/components/OrderInfo/ProductBill";
 import { orderType } from "features/order/types";
+import { DeliveryInfo } from "features/payment/components/Info";
+import { TextRow } from "features/payment/components/Info/DeliveryInfo";
 import { PAYMENT_METHODS, PAYMENT_METHOD_TEXTS } from "features/payment/utils";
+import PropTypes from "prop-types";
 import { useMemo } from "react";
 import QRCode from "react-qr-code";
 
-const OrderInfo = ({ order, ...others }) => {
+const OrderInfo = ({ order, hideTitle, ...others }) => {
   const date = useMemo(
     () => dayjs(order?.timeStamp ?? undefined).format("LLLL"),
     [order?.timeStamp]
@@ -31,14 +32,18 @@ const OrderInfo = ({ order, ...others }) => {
 
   return order ? (
     <Stack direction="column" spacing={1} p={1} {...others}>
-      <Stack direction="row" spacing={1} alignItems="baseline">
-        <Typography variant="h5" flexWrap="wrap">
-          Order No. <b>#{order.id}</b>
-        </Typography>
-        <Typography color="text.secondary">({date})</Typography>
-      </Stack>
+      {!hideTitle && (
+        <>
+          <Stack direction="row" spacing={1} alignItems="baseline">
+            <Typography variant="h5" flexWrap="wrap">
+              Order No. <b>#{order.id}</b>
+            </Typography>
+            <Typography color="text.secondary">({date})</Typography>
+          </Stack>
 
-      <Divider flexItem />
+          <Divider flexItem />
+        </>
+      )}
 
       <Stack direction="row">
         <Stack direction="column" spacing={1} flexGrow={1}>
@@ -64,6 +69,7 @@ const OrderInfo = ({ order, ...others }) => {
 
 OrderInfo.propTypes = {
   order: orderType,
+  hideTitle: PropTypes.bool,
 };
 
 export default OrderInfo;
