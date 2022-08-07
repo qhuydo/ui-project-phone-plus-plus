@@ -17,7 +17,10 @@ import {
   BorderlessTableRow,
 } from "components/Table";
 import dayjs from "dayjs";
+import * as localizedFormat from "dayjs/plugin/localizedFormat";
 import { STORES } from "features/stores/assets";
+
+dayjs.extend(localizedFormat);
 
 const shipmentStatus = [
   {

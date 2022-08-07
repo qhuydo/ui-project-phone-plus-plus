@@ -1,3 +1,4 @@
+import { ORDER_TRACKING_STEPS } from "features/order/utils";
 import { PAYMENT_METHODS, DELIVERY_METHODS } from "features/payment/utils";
 import PropTypes from "prop-types";
 
@@ -39,4 +40,14 @@ export const orderType = PropTypes.shape({
       cvcCvv: PropTypes.string,
     }),
   }),
+  status: PropTypes.arrayOf(
+    PropTypes.shape({
+      status: PropTypes.oneOf(["loading", "pending", "done"]),
+      statusLabel: PropTypes.oneOf(ORDER_TRACKING_STEPS),
+      date: PropTypes.string,
+      fromStore: PropTypes.string,
+      location: PropTypes.string,
+      activity: PropTypes.string,
+    })
+  ),
 });

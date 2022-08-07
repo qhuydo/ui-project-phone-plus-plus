@@ -1,11 +1,11 @@
 import EditIcon from "@mui/icons-material/Edit";
 import { Stack, Typography, Box, Button } from "@mui/material";
+import { getEstimatedDeliveryDate } from "features/order/utils";
 import { countries } from "features/payment/assets";
 import { contactDetailsType } from "features/order/types";
 import {
   getAddressFromDeliveryDetails,
   DELIVERY_METHOD_TEXTS,
-  getEstimatedDeliveryDate,
 } from "features/payment/utils";
 import PropTypes from "prop-types";
 import { useMemo } from "react";

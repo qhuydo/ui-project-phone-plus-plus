@@ -4,7 +4,7 @@ import {
   PaypalLogo,
   DollarBanknote,
 } from "features/cart/assets";
-import { getEstimatedDeliveryDate } from "features/payment/utils/order-utils";
+import { getEstimatedDeliveryDate } from "features/order/utils";
 
 export const TOTAL_PAYMENT_STEPS = 3;
 

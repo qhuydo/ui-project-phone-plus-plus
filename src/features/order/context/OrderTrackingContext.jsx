@@ -30,8 +30,10 @@ export const OrderTrackingContextProvider = ({ id, children }) => {
   );
 
   useEffect(() => {
-    const order = findOrderById(id);
-    dispatch({ type: "ADD_ORDER_DATA", payload: order });
+    (async () => {
+      const order = await findOrderById(id);
+      dispatch({ type: "ADD_ORDER_DATA", payload: order });
+    })();
   }, [id]);
 
   const contextValue = useMemo(
