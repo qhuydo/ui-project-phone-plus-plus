@@ -1,4 +1,5 @@
 import * as dayjs from "dayjs";
+import { ORDER_TRACKING_STEPS } from "features/order/utils/constants";
 import { DELIVERY_DATE_FORMAT } from "features/payment/utils/constants";
 
 export function getEstimatedDeliveryDate(type, date) {
@@ -55,4 +56,51 @@ export function getInitialOrderStatus(dateCreated) {
       activity: "",
     },
   ];
+}
+
+export function getCurrentStatus(order) {
+  if (order && order.status) {
+    for (const status of order.status) {
+      if (status.status === "loading" || status.status === "done") {
+        return status;
+      }
+    }
+  }
+  return null;
+}
+
+export function isOrderCancellable(orderStatus) {
+  return (
+    orderStatus &&
+    orderStatus.status === "done" &&
+    orderStatus.statusLabel === ORDER_TRACKING_STEPS.created
+  );
+}
+
+export function isOrderRefundable(orderStatus) {
+  return (
+    orderStatus &&
+    orderStatus.status === "done" &&
+    orderStatus.statusLabel === ORDER_TRACKING_STEPS.delivery
+  );
+}
+
+export function shouldDisplayDeliveryTime(orderStatus) {
+  return (
+    orderStatus && orderStatus.statusLabel === ORDER_TRACKING_STEPS.delivery
+  );
+}
+
+export function lastDoneStep(order) {
+  if (order && order.status) {
+    for (const status of order.status) {
+      if (status.status === "done") {
+        const idx = Object.values(ORDER_TRACKING_STEPS).findIndex(
+          (s) => s === status.statusLabel
+        );
+        return idx !== -1 ? idx : 0;
+      }
+    }
+  }
+  return 0;
 }

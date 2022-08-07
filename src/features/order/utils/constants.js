@@ -1,7 +1,7 @@
-export const ORDER_TRACKING_STEPS = [
-  "Order created",
-  "Order packed",
-  "In transit",
-  "Out for delivery",
-  "Delivery",
-];
+export const ORDER_TRACKING_STEPS = {
+  created: "Order created",
+  packed: "Order packed",
+  inTransit: "In transit",
+  outForDelivery: "Out for delivery",
+  delivery: "Delivery",
+};

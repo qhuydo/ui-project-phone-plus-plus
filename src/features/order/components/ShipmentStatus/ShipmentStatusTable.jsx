@@ -16,57 +16,14 @@ import {
   BorderlessTableCell,
   BorderlessTableRow,
 } from "components/Table";
-import dayjs from "dayjs";
-import * as localizedFormat from "dayjs/plugin/localizedFormat";
+import { useOrderTrackingContext } from "features/order/context";
 import { STORES } from "features/stores/assets";
 
-dayjs.extend(localizedFormat);
-
-const shipmentStatus = [
-  {
-    status: "pending",
-    statusLabel: "Delivery",
-    date: null,
-    fromStore: null,
-    location: null,
-    activity: null,
-  },
-  {
-    status: "pending",
-    statusLabel: "In transit",
-    date: null,
-    fromStore: null,
-    location: null,
-    activity: null,
-  },
-  {
-    status: "pending",
-    statusLabel: "Out for delivery",
-    date: null,
-    fromStore: null,
-    location: null,
-    activity: null,
-  },
-  {
-    status: "loading",
-    statusLabel: "Order packed",
-    date: dayjs("2022/08/07 12:12:00", "yyyy/MM/dd hh:mm:ss").format("LLLL"),
-    fromStore: "0",
-    location: "",
-    activity: "Start packing your order",
-  },
-  {
-    // loading, pending, done
-    status: "done",
-    statusLabel: "Order created",
-    date: dayjs("2022/08/07 10:12:00", "yyyy/MM/dd hh:mm:ss").format("LLLL"),
-    fromStore: null,
-    location: "",
-    activity: "",
-  },
-];
-
 const ShipmentStatusTable = () => {
+  const {
+    state: { order },
+  } = useOrderTrackingContext();
+
   return (
     <TableContainer component={Paper} variant="outlined">
       <Table sx={{ width: "100%" }}>
@@ -108,7 +65,7 @@ const ShipmentStatusTable = () => {
         <TableBody
         // sx={{ display: "flex", flexDirection: "column-reverse", width: 1 }}
         >
-          {shipmentStatus.map((status, idx) => (
+          {order.status.map((status, idx) => (
             <BorderlessTableRow key={idx} sx={{ width: 1 }}>
               <BorderlessTableCell>
                 <Stack direction="row" spacing={1} alignItems="center">

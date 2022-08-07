@@ -43,7 +43,7 @@ export const orderType = PropTypes.shape({
   status: PropTypes.arrayOf(
     PropTypes.shape({
       status: PropTypes.oneOf(["loading", "pending", "done"]),
-      statusLabel: PropTypes.oneOf(ORDER_TRACKING_STEPS),
+      statusLabel: PropTypes.oneOf(Object.values(ORDER_TRACKING_STEPS)),
       date: PropTypes.string,
       fromStore: PropTypes.string,
       location: PropTypes.string,
