@@ -21,9 +21,9 @@ const OrderConfirmationDialog = () => {
 
   const handleOk = useCallback(async () => {
     onClosed();
+    dispatch({ type: "SET_CURRENT_STEP", payload: 2 });
     // TODO handle error state
     const order = await submitOrder(state);
-    dispatch({ type: "SET_CURRENT_STEP", payload: 2 });
     dispatch({ type: "ADD_SUBMITTED_ORDER", payload: order });
   }, [dispatch, onClosed, state]);
 

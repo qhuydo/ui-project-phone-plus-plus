@@ -5,3 +5,5 @@ export const ORDER_TRACKING_STEPS = {
   outForDelivery: "Out for delivery",
   delivery: "Delivery",
 };
+
+export const ORDER_TRACKING_DATE_FORMAT = "LLLL";

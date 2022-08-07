@@ -1,5 +1,13 @@
 import * as dayjs from "dayjs";
-import { ORDER_TRACKING_STEPS } from "features/order/utils/constants";
+import {
+  ORDER_TRACKING_STEPS,
+  ORDER_TRACKING_DATE_FORMAT,
+} from "features/order/utils/constants";
+import { provinces } from "features/payment/assets";
+import {
+  getAddress,
+  getAddressFromDeliveryDetails,
+} from "features/payment/utils";
 import { DELIVERY_DATE_FORMAT } from "features/payment/utils/constants";
 
 export function getEstimatedDeliveryDate(type, date) {
@@ -25,7 +33,7 @@ export function getInitialOrderStatus(dateCreated) {
     },
     {
       status: "pending",
-      statusLabel: "In transit",
+      statusLabel: "Out for delivery",
       date: null,
       fromStore: null,
       location: null,
@@ -33,7 +41,7 @@ export function getInitialOrderStatus(dateCreated) {
     },
     {
       status: "pending",
-      statusLabel: "Out for delivery",
+      statusLabel: "In transit",
       date: null,
       fromStore: null,
       location: null,
@@ -50,10 +58,10 @@ export function getInitialOrderStatus(dateCreated) {
     {
       status: "done",
       statusLabel: "Order created",
-      date: dayjs(dateCreated).format("LLLL"),
+      date: [dayjs(dateCreated).format(ORDER_TRACKING_DATE_FORMAT)],
       fromStore: null,
-      location: "",
-      activity: "",
+      location: null,
+      activity: null,
     },
   ];
 }
@@ -91,7 +99,7 @@ export function shouldDisplayDeliveryTime(orderStatus) {
   );
 }
 
-export function lastDoneStep(order) {
+export function getLastDoneStep(order) {
   if (order && order.status) {
     for (const status of order.status) {
       if (status.status === "done") {

@@ -4,7 +4,7 @@ import {
   isOrderRefundable,
   getEstimatedDeliveryDate,
   shouldDisplayDeliveryTime as shouldDisplayDeliveryTimeFn,
-  lastDoneStep,
+  getLastDoneStep,
 } from "features/order/utils";
 import { useMemo } from "react";
 
@@ -35,7 +35,7 @@ export function useOrderStatus(order) {
     [order]
   );
 
-  const activeStep = useMemo(() => lastDoneStep(order), [order]);
+  const activeStep = useMemo(() => getLastDoneStep(order), [order]);
 
   return {
     currentStatus,

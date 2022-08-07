@@ -27,8 +27,14 @@ const PaymentStep3 = () => {
           <Button variant="outlined">Continue shopping</Button>
         </Link>
 
-        {/*TODO add order tracking flow*/}
-        <Button variant="contained">Track my order</Button>
+        <Link
+          component={RouterLink}
+          underline="none"
+          color="inherit"
+          to={Router.getOrderTrackingPage(submittedOrder.id)}
+        >
+          <Button variant="contained">Track my order</Button>
+        </Link>
       </Stack>
     </Stack>
   );
