@@ -27,7 +27,11 @@ const ShipmentStatusOverview = () => {
         ))}
       </Stepper>
 
-      <Stack direction="row" width={1} pt={1} alignItems="center">
+      <Typography sx={{ pt: 1 }}>
+        Out for delivery today. Delivered by Duy Van (tel: 0912233125)
+      </Typography>
+
+      <Stack direction="row" width={1} alignItems="center">
         <Stack direction="column" flexGrow={1}>
           <Typography variant="h6">Cancel the order</Typography>
           <Typography>
