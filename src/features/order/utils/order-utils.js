@@ -130,7 +130,7 @@ export async function getOrderStatusAfter2Days(order) {
   if (!order) return null;
 
   const dateCreated = dayjs(order.timestamp);
-  const fromStore = STORES[random(Object.keys(STORES))].id;
+  const fromStore = STORES[random(Object.keys(STORES))];
   const facility1 = getAddress(fromStore.idProvince, fromStore.idDistrict);
 
   const provinceId2 = order.contactDetails?.deliveryDetails.provinceId;
@@ -181,7 +181,7 @@ export async function getOrderStatusAfter2Days(order) {
       status: ORDER_STEP_STATUS.done,
       statusLabel: ORDER_TRACKING_STEPS.packed,
       dates: [dateCreated.add(1, "h").format(ORDER_TRACKING_DATE_FORMAT)],
-      fromStores: [fromStore],
+      fromStores: [fromStore.id],
       locations: [null],
       activities: ["Order packed, ready to be sent to our delivery partner"],
     },
@@ -241,10 +241,10 @@ export async function getOrderStatusAfter4Days(order) {
       dates: [
         dateCreated.add(3.25, "d").format(ORDER_TRACKING_DATE_FORMAT),
         dateCreated.add(2.5, "d").format(ORDER_TRACKING_DATE_FORMAT),
-        ...statusAfter2Days[2].date,
+        ...statusAfter2Days[2].dates,
       ],
       fromStores: [null, null, ...statusAfter2Days[2].fromStores],
-      locations: [facility3, facility3, ...statusAfter2Days[2].location],
+      locations: [facility3, facility3, ...statusAfter2Days[2].locations],
       activities: [
         "Departed from Facility",
         "Arrived at Facility",

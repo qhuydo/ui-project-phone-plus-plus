@@ -1,6 +1,8 @@
 import { Container, Typography, Stack } from "@mui/material";
+import { SearchAutoComplete } from "components/Autocomplete";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
+import { SearchResultsNotFound } from "components/Info";
 import dayjs from "dayjs";
 import { OrderAccordion } from "features/order/components/Accordion";
 import { ShipmentStatus } from "features/order/components/ShipmentStatus";
@@ -8,7 +10,7 @@ import {
   OrderTrackingContextProvider,
   useOrderTrackingContext,
 } from "features/order/context";
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import Router from "routes/router";
 
@@ -27,13 +29,25 @@ const TrackMyOrder = () => {
 };
 
 const TrackMyOrderBody = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const {
-    state: { order },
+    state: { order, orderIds, searchId },
   } = useOrderTrackingContext();
 
   const date = useMemo(
     () => dayjs(order?.timeStamp ?? undefined).format("LLLL"),
     [order?.timeStamp]
+  );
+
+  const onSearchValueChanged = useCallback(
+    (e, newValue) => {
+      if (newValue) {
+        searchParams.set("id", newValue);
+        setSearchParams(searchParams);
+      }
+    },
+    [searchParams, setSearchParams]
   );
 
   return (
@@ -54,6 +68,16 @@ const TrackMyOrderBody = () => {
         <Typography variant={"h3"} textAlign="center" mt={1} mb={2}>
           Track my order
         </Typography>
+
+        <SearchAutoComplete
+          sx={{ my: 2 }}
+          freeSolo
+          value={searchId}
+          onChange={onSearchValueChanged}
+          options={orderIds}
+        />
+
+        {!order && searchId && <SearchResultsNotFound />}
 
         {order && (
           <Stack direction="column" spacing={2}>

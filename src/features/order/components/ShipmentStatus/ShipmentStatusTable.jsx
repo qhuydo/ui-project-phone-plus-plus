@@ -33,8 +33,8 @@ const ShipmentStatusTable = () => {
           <SpecsTableRow>
             <BorderlessTableCell
               sx={{
-                width: 400,
-                maxWidth: 400,
+                width: 300,
+                maxWidth: 300,
               }}
             >
               <Typography variant="h6">Status</Typography>
@@ -42,8 +42,8 @@ const ShipmentStatusTable = () => {
 
             <BorderlessTableCell
               sx={{
-                width: 300,
-                maxWidth: 300,
+                width: 400,
+                maxWidth: 400,
               }}
             >
               <Typography variant="h6">Date</Typography>
@@ -68,7 +68,7 @@ const ShipmentStatusTable = () => {
           {order.status.reduce((row, status, rowIdx) => {
             return [
               ...row,
-              ...(status.dates ?? ["123"]).map((_, idx) => (
+              ...(status.dates ?? [""]).map((_, idx) => (
                 <BorderlessTableRow key={`${rowIdx}-${idx}`} sx={{ width: 1 }}>
                   <BorderlessTableCell sx={{ verticalAlign: "top" }}>
                     {idx === 0 && (
