@@ -1,4 +1,4 @@
-import { findOrderById } from "features/order/api";
+import { findOrderById, refreshOrderStatus } from "features/order/api";
 import {
   initialOrderTrackingState,
   orderTrackingReducer,
@@ -10,6 +10,7 @@ import {
   useMemo,
   useReducer,
   useEffect,
+  useCallback,
 } from "react";
 
 const initialOrderTrackingContextState = {
@@ -36,12 +37,18 @@ export const OrderTrackingContextProvider = ({ id, children }) => {
     })();
   }, [id]);
 
+  const refreshOrder = useCallback(async () => {
+    const order = await refreshOrderStatus(state.order);
+    dispatch({ type: "ADD_ORDER_DATA", payload: order });
+  }, [state?.order]);
+
   const contextValue = useMemo(
     () => ({
       state,
       dispatch,
+      refreshOrder,
     }),
-    [state]
+    [refreshOrder, state]
   );
 
   return (

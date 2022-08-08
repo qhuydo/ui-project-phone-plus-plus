@@ -1,4 +1,4 @@
-import { ORDER_TRACKING_STEPS } from "features/order/utils";
+import { ORDER_TRACKING_STEPS, ORDER_STEP_STATUS } from "features/order/utils";
 import { PAYMENT_METHODS, DELIVERY_METHODS } from "features/payment/utils";
 import PropTypes from "prop-types";
 
@@ -42,7 +42,7 @@ export const orderType = PropTypes.shape({
   }),
   status: PropTypes.arrayOf(
     PropTypes.shape({
-      status: PropTypes.oneOf(["loading", "pending", "done"]),
+      status: PropTypes.oneOf(Object.values(ORDER_STEP_STATUS)),
       statusLabel: PropTypes.oneOf(Object.values(ORDER_TRACKING_STEPS)),
       date: PropTypes.arrayOf(PropTypes.string),
       fromStore: PropTypes.arrayOf(PropTypes.string),
@@ -50,4 +50,5 @@ export const orderType = PropTypes.shape({
       activity: PropTypes.arrayOf(PropTypes.string),
     })
   ),
+  finishDelivery: PropTypes.bool,
 });

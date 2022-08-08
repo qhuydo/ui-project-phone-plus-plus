@@ -6,4 +6,10 @@ export const ORDER_TRACKING_STEPS = {
   delivery: "Delivery",
 };
 
+export const ORDER_STEP_STATUS = {
+  pending: "pending",
+  loading: "loading",
+  done: "done",
+};
+
 export const ORDER_TRACKING_DATE_FORMAT = "LLLL";

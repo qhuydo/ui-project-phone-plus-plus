@@ -11,3 +11,14 @@ export function getAddressFromDeliveryDetails(deliveryDetails) {
     provinces[provinceId]?.name ?? "",
   ].join(", ");
 }
+
+export function getAddress(provinceId, districtId, communeId) {
+  return [
+    provinces[provinceId]?.districts[districtId]?.communes[communeId]?.name ??
+      undefined,
+    provinces[provinceId]?.districts[districtId]?.name ?? undefined,
+    provinces[provinceId]?.name ?? undefined,
+  ]
+    .filter((element) => !!element)
+    .join(", ");
+}
