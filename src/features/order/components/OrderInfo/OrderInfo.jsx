@@ -49,7 +49,7 @@ const OrderInfo = ({ order, hideTitle, ...others }) => {
         <Stack direction="column" spacing={1} flexGrow={1}>
           <DeliveryInfo
             contactDetails={order.contactDetails}
-            timestamp={order.timestamp}
+            timestamp={order.timeStamp}
           />
           <Stack direction="row" alignItems="baseline" px={1}>
             <TextRow title={"Payment method"} content={paymentMethod} />

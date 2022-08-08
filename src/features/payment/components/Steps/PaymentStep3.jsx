@@ -27,14 +27,16 @@ const PaymentStep3 = () => {
           <Button variant="outlined">Continue shopping</Button>
         </Link>
 
-        <Link
-          component={RouterLink}
-          underline="none"
-          color="inherit"
-          to={Router.getOrderTrackingPage(submittedOrder.id)}
-        >
-          <Button variant="contained">Track my order</Button>
-        </Link>
+        {submittedOrder && (
+          <Link
+            component={RouterLink}
+            underline="none"
+            color="inherit"
+            to={Router.getOrderTrackingPage(submittedOrder?.id)}
+          >
+            <Button variant="contained">Track my order</Button>
+          </Link>
+        )}
       </Stack>
     </Stack>
   );

@@ -12,16 +12,19 @@ import {
 import { useOrderTrackingContext } from "features/order/context";
 import { useOrderStatus } from "features/order/hooks";
 import { ORDER_TRACKING_STEPS } from "features/order/utils";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 
 const ShipmentStatusOverview = () => {
   const {
     state: { order },
+    refreshOrder,
   } = useOrderTrackingContext();
 
   const {
+    currentStatus,
     isRefundable,
     isCancellable,
-    currentStatus,
     estimatedDeliveryDate,
     shouldDisplayDeliveryTime,
     activeStep,
@@ -29,10 +32,31 @@ const ShipmentStatusOverview = () => {
 
   return order ? (
     <Stack direction="column" spacing={2} px={1}>
-      <Typography variant="h5">
-        Current status: <b>{currentStatus?.statusLabel}</b>
-      </Typography>
-      <Divider flexItem sx={{ pt: 1 }} />
+      <Stack direction="column" spacing={2}>
+        <Stack direction="row" width={1} justifyContent="space-between">
+          <Stack direction="row" spacing={1} alignItems="center">
+            <Typography variant="h5">
+              Current status:{" "}
+              <b>
+                {order.finishDelivery
+                  ? "Delivered"
+                  : currentStatus?.statusLabel}
+              </b>
+            </Typography>
+            {order.finishDelivery && <CheckCircleIcon color="success" />}
+          </Stack>
+
+          <Button
+            variant="outlined"
+            startIcon={<RefreshIcon />}
+            onClick={refreshOrder}
+          >
+            Refresh
+          </Button>
+        </Stack>
+
+        <Divider flexItem sx={{ pt: 1 }} />
+      </Stack>
 
       <Stepper activeStep={activeStep} alternativeLabel sx={{ pt: 3 }}>
         {Object.values(ORDER_TRACKING_STEPS).map((label) => (
@@ -43,7 +67,7 @@ const ShipmentStatusOverview = () => {
       </Stepper>
 
       {currentStatus.activity && (
-        <Typography sx={{ pt: 1 }}>{currentStatus.activity}</Typography>
+        <Typography sx={{ pt: 1 }}>{currentStatus.activity[0]}</Typography>
       )}
 
       {isCancellable && (
@@ -64,13 +88,7 @@ const ShipmentStatusOverview = () => {
       )}
 
       {isRefundable && (
-        <Stack
-          direction="row"
-          width={1}
-          pt={1}
-          alignItems="center"
-          display="none"
-        >
+        <Stack direction="row" width={1} pt={1} alignItems="center">
           <Stack direction="column" flexGrow={1}>
             <Typography variant="h6">Refund</Typography>
             <Typography>

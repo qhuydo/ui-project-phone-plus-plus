@@ -78,6 +78,7 @@ export async function refreshOrderStatus(order) {
         savedOrders[orderIdx] = orderWithNewStatus;
         window?.localStorage.setItem(ORDERS_KEY, JSON.stringify(savedOrders));
       }
+      return orderWithNewStatus;
     }
 
     return order;

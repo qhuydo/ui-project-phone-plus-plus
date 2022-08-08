@@ -17,7 +17,10 @@ import {
   BorderlessTableRow,
 } from "components/Table";
 import { useOrderTrackingContext } from "features/order/context";
+import { ORDER_STEP_STATUS } from "features/order/utils";
+import { STORES } from "features/stores/assets";
 
+// TODO refactor this file
 const ShipmentStatusTable = () => {
   const {
     state: { order },
@@ -61,57 +64,61 @@ const ShipmentStatusTable = () => {
           </SpecsTableRow>
         </TableHead>
 
-        <TableBody
-        // sx={{ display: "flex", flexDirection: "column-reverse", width: 1 }}
-        >
-          {order.status.map((status, idx) => (
-            <BorderlessTableRow key={idx} sx={{ width: 1 }}>
-              <BorderlessTableCell sx={{ verticalAlign: "top" }}>
-                <Stack direction="row" spacing={1} alignItems="center">
-                  {status.status === "pending" && (
-                    <CircleIcon color="disabled" />
-                  )}
-                  {status.status === "loading" && (
-                    <PendingIcon color="primary" />
-                  )}
-                  {status.status === "done" && (
-                    <CheckCircleIcon color="primary" />
-                  )}
+        <TableBody>
+          {order.status.reduce((row, status, rowIdx) => {
+            return [
+              ...row,
+              ...(status.date ?? ["123"]).map((_, idx) => (
+                <BorderlessTableRow key={`${rowIdx}-${idx}`} sx={{ width: 1 }}>
+                  <BorderlessTableCell sx={{ verticalAlign: "top" }}>
+                    {idx === 0 && (
+                      <Stack direction="row" spacing={1} alignItems="center">
+                        {status.status === ORDER_STEP_STATUS.pending && (
+                          <CircleIcon color="disabled" />
+                        )}
+                        {status.status === ORDER_STEP_STATUS.loading && (
+                          <PendingIcon color="primary" />
+                        )}
+                        {status.status === ORDER_STEP_STATUS.done && (
+                          <CheckCircleIcon color="primary" />
+                        )}
 
-                  <Typography>{status.statusLabel}</Typography>
-                </Stack>
-              </BorderlessTableCell>
+                        <Typography>{status.statusLabel}</Typography>
+                      </Stack>
+                    )}
+                  </BorderlessTableCell>
 
-              <BorderlessTableCell sx={{ verticalAlign: "top" }}>
-                {status.date?.map((date, idx) => (
-                  <Typography key={idx}>{date ?? "-"}</Typography>
-                ))}
-              </BorderlessTableCell>
+                  <BorderlessTableCell sx={{ verticalAlign: "top" }}>
+                    {status.date && (
+                      <Typography>{status.date[idx] ?? "-"}</Typography>
+                    )}
+                  </BorderlessTableCell>
 
-              <BorderlessTableCell sx={{ verticalAlign: "top" }}>
-                {status.fromStore &&
-                  status.fromStore.map((store, idx) => (
-                    <Typography key={idx}>
-                      {store ? (
-                        <>
-                          <Link>{store.name}</Link>
-                          {", "}
-                          {store.shortAddress[idx]}
-                        </>
-                      ) : (
-                        status.location[idx]
-                      )}
-                    </Typography>
-                  ))}
-              </BorderlessTableCell>
+                  <BorderlessTableCell sx={{ verticalAlign: "top" }}>
+                    {status.fromStore && (
+                      <Typography>
+                        {status.fromStore[idx] ? (
+                          <>
+                            <Link>{STORES[status.fromStore[idx]].name}</Link>
+                            {", "}
+                            {STORES[status.fromStore[idx]].shortAddress}
+                          </>
+                        ) : (
+                          status.location[idx]
+                        )}
+                      </Typography>
+                    )}
+                  </BorderlessTableCell>
 
-              <BorderlessTableCell sx={{ verticalAlign: "top" }}>
-                {status.activity?.map((activity, idx) => (
-                  <Typography key={idx}>{activity}</Typography>
-                ))}
-              </BorderlessTableCell>
-            </BorderlessTableRow>
-          ))}
+                  <BorderlessTableCell sx={{ verticalAlign: "top" }}>
+                    {status.activity && (
+                      <Typography key={idx}>{status.activity[idx]}</Typography>
+                    )}
+                  </BorderlessTableCell>
+                </BorderlessTableRow>
+              )),
+            ];
+          }, [])}
         </TableBody>
       </Table>
     </TableContainer>
