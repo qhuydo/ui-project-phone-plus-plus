@@ -1,3 +1,10 @@
+import { getPhoneById, getRecommendedPhones } from "features/phones/api";
+import {
+  initialPhoneDetailsState,
+  phoneDetailsReducer,
+} from "features/phones/stores/phone-details.store";
+import { filterCommentAsync } from "features/phones/utils";
+import PropTypes from "prop-types";
 import {
   createContext,
   useCallback,
@@ -6,13 +13,6 @@ import {
   useMemo,
   useReducer,
 } from "react";
-import PropTypes from "prop-types";
-import { getPhoneById, getRecommendedPhones } from "features/phones/api";
-import {
-  initialPhoneDetailsState,
-  phoneDetailsReducer,
-} from "features/phones/stores/phone-details.store";
-import { filterCommentAsync } from "features/phones/utils";
 
 const PhoneDetailsContext = createContext({
   state: initialPhoneDetailsState,

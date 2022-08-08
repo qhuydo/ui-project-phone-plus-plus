@@ -45,6 +45,16 @@ export const PaymentContextProvider = ({ children }) => {
     }
   }, [removeAll, state]);
 
+  const buyNow = useCallback((cartItem) => {
+    dispatch({
+      type: "INITIALISE",
+      payload: {
+        cartItems: [cartItem],
+        cartItemSource: CART_ITEM_SOURCE.fromBuyNow,
+      },
+    });
+  }, []);
+
   const contextValue = useMemo(() => {
     return {
       state,
@@ -52,8 +62,10 @@ export const PaymentContextProvider = ({ children }) => {
       changeContactDetailsValue,
       changePaymentMethodValue,
       submitOrderCb,
+      buyNow,
     };
   }, [
+    buyNow,
     changeContactDetailsValue,
     changePaymentMethodValue,
     state,

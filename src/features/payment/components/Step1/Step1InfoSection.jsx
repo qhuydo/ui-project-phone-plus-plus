@@ -39,7 +39,7 @@ const Step1InfoSection = () => {
         </Stack>
       )}
 
-      <CartAccordion cartItems={cartItems} />
+      <CartAccordion cartItems={cartItems} openWhenFirstShow />
       <Step1Form />
       <SupportPaymentTypes />
     </Stack>

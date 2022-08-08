@@ -1,4 +1,4 @@
-import { Container, Typography, Stack } from "@mui/material";
+import { Container, Typography, Stack, Box } from "@mui/material";
 import { SearchAutoComplete } from "components/Autocomplete";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
@@ -69,13 +69,17 @@ const TrackMyOrderBody = () => {
           Track my order
         </Typography>
 
-        <SearchAutoComplete
-          sx={{ my: 2 }}
-          freeSolo
-          value={searchId}
-          onChange={onSearchValueChanged}
-          options={orderIds}
-        />
+        <Box width={1} px={2}>
+          <SearchAutoComplete
+            sx={{ my: 2 }}
+            freeSolo
+            value={searchId}
+            onChange={onSearchValueChanged}
+            options={orderIds}
+            label="Order ID"
+            placeholder="Please enter your Order ID"
+          />
+        </Box>
 
         {!order && searchId && <SearchResultsNotFound />}
 

@@ -1,3 +1,5 @@
+import { cartReducer, initialCartState } from "features/cart/stores";
+import PropTypes from "prop-types";
 import {
   createContext,
   useCallback,
@@ -5,8 +7,6 @@ import {
   useMemo,
   useReducer,
 } from "react";
-import PropTypes from "prop-types";
-import { cartReducer, initialCartState } from "features/cart/stores";
 
 const cartContextInitialState = {
   state: initialCartState,

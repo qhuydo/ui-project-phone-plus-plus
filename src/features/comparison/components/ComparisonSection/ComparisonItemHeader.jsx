@@ -1,4 +1,5 @@
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import {
   Box,
@@ -12,17 +13,18 @@ import {
 import { useCartContext } from "features/cart/context/CartContext";
 import { createCartItem } from "features/cart/utils";
 import { usePhoneComparisonContext } from "features/comparison/context";
+import { usePaymentContext } from "features/payment/context";
 import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Router } from "routes";
 import { GOLDEN_RATIO } from "utils/constants";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
 const ComparisonItemHeader = ({ phone, width }) => {
   const { addItem } = useCartContext();
-
+  const { buyNow } = usePaymentContext();
   const { removePhone } = usePhoneComparisonContext();
+  const navigate = useNavigate();
 
   const linkToPhoneDetails = useMemo(() => {
     return Router.getPhoneDetailsPage(phone.id, phone.name);
@@ -34,6 +36,15 @@ const ComparisonItemHeader = ({ phone, width }) => {
       return addItem(createCartItem(phone));
     },
     [addItem, phone]
+  );
+
+  const onBuyNowButtonClicked = useCallback(
+    (e) => {
+      e.preventDefault();
+      buyNow(createCartItem(phone));
+      navigate(Router.PAYMENT);
+    },
+    [buyNow, navigate, phone]
   );
 
   const onItemRemoved = useCallback(() => {
@@ -105,6 +116,7 @@ const ComparisonItemHeader = ({ phone, width }) => {
           variant="contained"
           startIcon={<PaymentOutlinedIcon />}
           fullWidth
+          onClick={onBuyNowButtonClicked}
         >
           Buy now
         </Button>
