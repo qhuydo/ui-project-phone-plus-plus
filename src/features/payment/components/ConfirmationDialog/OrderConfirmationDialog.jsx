@@ -3,7 +3,6 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { submitOrder } from "features/payment/api";
 import { DeliveryInfo, CartItemList } from "features/payment/components/Info";
 import { usePaymentContext } from "features/payment/context";
 import { useCheckoutPrices } from "hooks";
@@ -11,7 +10,7 @@ import PropTypes from "prop-types";
 import { useCallback } from "react";
 
 const OrderConfirmationDialog = () => {
-  const { state, dispatch } = usePaymentContext();
+  const { state, dispatch, submitOrderCb } = usePaymentContext();
 
   const { showConfirmationDialog, cartItems } = state;
 
@@ -21,11 +20,8 @@ const OrderConfirmationDialog = () => {
 
   const handleOk = useCallback(async () => {
     onClosed();
-    dispatch({ type: "SET_CURRENT_STEP", payload: 2 });
-    // TODO handle error state
-    const order = await submitOrder(state);
-    dispatch({ type: "ADD_SUBMITTED_ORDER", payload: order });
-  }, [dispatch, onClosed, state]);
+    await submitOrderCb();
+  }, [onClosed, submitOrderCb]);
 
   const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
     useCheckoutPrices(cartItems, state.contactDetails.deliveryMethod);

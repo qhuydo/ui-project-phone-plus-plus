@@ -1,4 +1,4 @@
-import { PAYMENT_METHODS } from "features/payment/utils";
+import { PAYMENT_METHODS, CART_ITEM_SOURCE } from "features/payment/utils";
 
 export const initialPaymentState = {
   cartItems: [],
@@ -42,6 +42,7 @@ export const initialPaymentState = {
   },
   showConfirmationDialog: false,
   submittedOrder: null,
+  cartItemSource: CART_ITEM_SOURCE.fromCart,
 };
 
 export const paymentReducer = (state, action) => {
@@ -49,7 +50,8 @@ export const paymentReducer = (state, action) => {
     case "INITIALISE": {
       return {
         ...initialPaymentState,
-        cartItems: action.payload?.cartItems ?? {},
+        cartItems: action.payload?.cartItems ?? [],
+        cartItemSource: action.payload?.cartItemSource || state.cartItemSource,
       };
     }
     case "DISPLAY_LOGIN_REQUEST_PAGE": {

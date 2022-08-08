@@ -1,10 +1,10 @@
+import * as dayjs from "dayjs";
 import {
   VisaLogo,
   MastercardLogo,
   PaypalLogo,
   DollarBanknote,
 } from "features/cart/assets";
-import { getEstimatedDeliveryDate } from "features/order/utils";
 
 export const TOTAL_PAYMENT_STEPS = 3;
 
@@ -16,6 +16,18 @@ export const DELIVERY_METHOD_TEXTS = {
   standard: "Standard delivery",
   fast: "Fast delivery",
 };
+
+function getEstimatedDeliveryDate(type, date) {
+  if (type === "standard") {
+    return dayjs(date ?? new Date())
+      .add(4, "day")
+      .format(DELIVERY_DATE_FORMAT);
+  }
+  return dayjs(date ?? new Date())
+    .add(2, "day")
+    .format(DELIVERY_DATE_FORMAT);
+}
+
 export const DELIVERY_METHOD_HELPER_TEXTS1 = [
   `Estimated delivery date: ${getEstimatedDeliveryDate(DELIVERY_METHODS[0])}`,
   `Estimated delivery date: ${getEstimatedDeliveryDate(DELIVERY_METHODS[1])}`,
@@ -57,3 +69,8 @@ export const PAYMENT_METHOD_TEXTS = {
 };
 
 export const ORDERS_KEY = "orders";
+
+export const CART_ITEM_SOURCE = {
+  fromCart: "cart",
+  fromBuyNow: "buyNow",
+};
