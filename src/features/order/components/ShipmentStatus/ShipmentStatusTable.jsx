@@ -68,7 +68,7 @@ const ShipmentStatusTable = () => {
           {order.status.reduce((row, status, rowIdx) => {
             return [
               ...row,
-              ...(status.date ?? ["123"]).map((_, idx) => (
+              ...(status.dates ?? ["123"]).map((_, idx) => (
                 <BorderlessTableRow key={`${rowIdx}-${idx}`} sx={{ width: 1 }}>
                   <BorderlessTableCell sx={{ verticalAlign: "top" }}>
                     {idx === 0 && (
@@ -89,30 +89,32 @@ const ShipmentStatusTable = () => {
                   </BorderlessTableCell>
 
                   <BorderlessTableCell sx={{ verticalAlign: "top" }}>
-                    {status.date && (
-                      <Typography>{status.date[idx] ?? "-"}</Typography>
+                    {status.dates && (
+                      <Typography>{status.dates[idx] ?? "-"}</Typography>
                     )}
                   </BorderlessTableCell>
 
                   <BorderlessTableCell sx={{ verticalAlign: "top" }}>
-                    {status.fromStore && (
+                    {status.fromStores && (
                       <Typography>
-                        {status.fromStore[idx] ? (
+                        {status.fromStores[idx] ? (
                           <>
-                            <Link>{STORES[status.fromStore[idx]].name}</Link>
+                            <Link>{STORES[status.fromStores[idx]].name}</Link>
                             {", "}
-                            {STORES[status.fromStore[idx]].shortAddress}
+                            {STORES[status.fromStores[idx]].shortAddress}
                           </>
                         ) : (
-                          status.location[idx]
+                          status.locations[idx]
                         )}
                       </Typography>
                     )}
                   </BorderlessTableCell>
 
                   <BorderlessTableCell sx={{ verticalAlign: "top" }}>
-                    {status.activity && (
-                      <Typography key={idx}>{status.activity[idx]}</Typography>
+                    {status.activities && (
+                      <Typography key={idx}>
+                        {status.activities[idx]}
+                      </Typography>
                     )}
                   </BorderlessTableCell>
                 </BorderlessTableRow>

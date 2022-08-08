@@ -44,10 +44,10 @@ export const orderType = PropTypes.shape({
     PropTypes.shape({
       status: PropTypes.oneOf(Object.values(ORDER_STEP_STATUS)),
       statusLabel: PropTypes.oneOf(Object.values(ORDER_TRACKING_STEPS)),
-      date: PropTypes.arrayOf(PropTypes.string),
-      fromStore: PropTypes.arrayOf(PropTypes.string),
-      location: PropTypes.arrayOf(PropTypes.string),
-      activity: PropTypes.arrayOf(PropTypes.string),
+      dates: PropTypes.arrayOf(PropTypes.string),
+      fromStores: PropTypes.arrayOf(PropTypes.string),
+      locations: PropTypes.arrayOf(PropTypes.string),
+      activities: PropTypes.arrayOf(PropTypes.string),
     })
   ),
   finishDelivery: PropTypes.bool,
