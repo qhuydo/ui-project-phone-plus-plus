@@ -37,7 +37,7 @@ const PaymentStep1 = () => {
   useEffect(() => {
     if (user && !autoFill) {
       const contactDetails2 = getContactDetailsFromUser(user, contactDetails);
-      console.log(contactDetails2);
+      // console.log(contactDetails2);
       dispatch({
         type: "CHANGE_CONTACT_DETAILS_VALUE",
         payload: contactDetails2,

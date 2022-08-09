@@ -1,0 +1,1 @@
+export { ReactComponent as ErrorIconSvg } from "./error.svg";

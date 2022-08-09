@@ -44,10 +44,11 @@ export const initialPaymentState = {
   submittedOrder: null,
   cartItemSource: CART_ITEM_SOURCE.fromCart,
   autoFill: false,
+  submitFailed: false,
 };
 
 export const paymentReducer = (state, action) => {
-  switch (action.type) {
+  switch (action?.type) {
     case "INITIALISE": {
       return {
         ...initialPaymentState,
@@ -101,6 +102,7 @@ export const paymentReducer = (state, action) => {
       return {
         ...state,
         submittedOrder: action?.payload ?? state.submittedOrder,
+        submitFailed: false,
       };
     }
     case "AUTO_FILL": {
@@ -142,6 +144,12 @@ export const paymentReducer = (state, action) => {
       return {
         ...state,
         autoFill: true,
+      };
+    }
+    case "SET_SUBMIT_FAILED": {
+      return {
+        ...state,
+        submitFailed: action?.payload ?? state.submitFailed,
       };
     }
   }

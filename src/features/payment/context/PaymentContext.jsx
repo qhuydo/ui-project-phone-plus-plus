@@ -36,12 +36,27 @@ export const PaymentContextProvider = ({ children }) => {
 
   const submitOrderCb = useCallback(async () => {
     dispatch({ type: "SET_CURRENT_STEP", payload: 2 });
-    // TODO handle error state
-    const order = await submitOrder(state);
-    dispatch({ type: "ADD_SUBMITTED_ORDER", payload: order });
+    dispatch({ type: "SET_SUBMIT_FAILED", payload: false });
+    try {
+      if (
+        !state.submitFailed &&
+        state.paymentMethod?.discountPromoSubscriptionChecked
+      ) {
+        await new Promise((resolve) => {
+          setTimeout(resolve, 3000);
+        });
+        // noinspection ExceptionCaughtLocallyJS
+        throw new Error("test - order submit failed");
+      }
+      const order = await submitOrder(state);
+      dispatch({ type: "ADD_SUBMITTED_ORDER", payload: order });
 
-    if (state.cartItemSource === CART_ITEM_SOURCE.fromCart) {
-      removeAll();
+      if (state.cartItemSource === CART_ITEM_SOURCE.fromCart) {
+        removeAll();
+      }
+    } catch (e) {
+      console.log(e);
+      dispatch({ type: "SET_SUBMIT_FAILED", payload: true });
     }
   }, [removeAll, state]);
 
