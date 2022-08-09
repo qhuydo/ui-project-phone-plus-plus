@@ -28,7 +28,7 @@ const FormExchangeAndRefund = () => {
     setPolicyId(event.target.value);
   }, []);
   return (
-    <Stack direction="column" spacing={3} sx={{ width: 800, pb: 3 }}>
+    <Stack direction="column" spacing={2} sx={{ width: 800, pb: 3 }}>
       <TextField
         variant="outlined"
         required
@@ -114,26 +114,21 @@ const FormExchangeAndRefund = () => {
           label="Receive 24/7 Support"
         />
       </FormGroup>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "left",
-        }}
-      >
-        <FormGroup sx={{ width: 1000 }}>
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="By checking the boxes, you acknowledge that you have read and agree to the Refund And Exchanges Policy"
-          />
-        </FormGroup>
-        {/* <Link
-            href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7"
-            target={"_blank"}
-          >
-            Refund And Exchanges Policy
-          </Link> */}
-      </Box>
+
+      <FormGroup>
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label={
+            <div>
+              <span>I have read and accept the </span>
+              <Link to={"https://mui.com/material-ui/react-link/"}>
+                Refund And Exchanges Policy
+              </Link>
+            </div>
+          }
+        />
+      </FormGroup>
+
       <h4>Attach Files</h4>
       <DropzoneAreaExample></DropzoneAreaExample>
       <Stack
