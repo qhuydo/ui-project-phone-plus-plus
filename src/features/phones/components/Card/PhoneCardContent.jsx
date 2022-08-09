@@ -1,4 +1,5 @@
 import AddShoppingCartOutlinedIcon from "@mui/icons-material/AddShoppingCartOutlined";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
 import {
   Box,
@@ -10,14 +11,14 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+import { useCartContext } from "features/cart/context/CartContext";
+import { createCartItem } from "features/cart/utils";
+import { usePaymentContext } from "features/payment/context";
 import ColourSelector from "features/phones/components/Card/ColourSelector";
 import PhonePropertySelector from "features/phones/components/Card/PhonePropertySelector";
-import PropTypes from "prop-types";
 import { usePhoneCardContext } from "features/phones/context";
-import { useCartContext } from "features/cart/context/CartContext";
+import PropTypes from "prop-types";
 import { useCallback, useMemo } from "react";
-import { createCartItem } from "features/cart/utils";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useNavigate } from "react-router-dom";
 import { Router } from "routes";
 
@@ -35,6 +36,7 @@ const PhoneCardContent = ({ sx }) => {
   } = usePhoneCardContext();
 
   const { addItem } = useCartContext();
+  const { buyNow } = usePaymentContext();
 
   const navigate = useNavigate();
 
@@ -44,6 +46,16 @@ const PhoneCardContent = ({ sx }) => {
       return addItem(createCartItem(phone, selectedColour, selectedVersion));
     },
     [addItem, phone, selectedColour, selectedVersion]
+  );
+
+  const onBuyNowButtonClicked = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      buyNow(createCartItem(phone, selectedColour, selectedVersion));
+      navigate(Router.PAYMENT);
+    },
+    [buyNow, navigate, phone, selectedColour, selectedVersion]
   );
 
   const onCompareButtonClicked = useCallback(
@@ -185,7 +197,11 @@ const PhoneCardContent = ({ sx }) => {
       </Grid>
 
       <Grid item container flexDirection="column" rowSpacing={1} mt={1.25}>
-        <Button variant="contained" startIcon={<PaymentOutlinedIcon />}>
+        <Button
+          variant="contained"
+          startIcon={<PaymentOutlinedIcon />}
+          onClick={onBuyNowButtonClicked}
+        >
           Buy now
         </Button>
 

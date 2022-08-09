@@ -97,6 +97,17 @@ export const cartReducer = (state, action) => {
       }
       return newState;
     }
+    case "REMOVE_ALL": {
+      const newState = {
+        ...state,
+        cartItems: [],
+        voucher: null,
+      };
+      if (action.cb) {
+        action.cb(newState.cartItems);
+      }
+      return newState;
+    }
     default:
       return state;
   }

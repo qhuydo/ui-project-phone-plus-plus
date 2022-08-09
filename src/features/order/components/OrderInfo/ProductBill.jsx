@@ -9,8 +9,8 @@ import {
   Box,
 } from "@mui/material";
 import { SpecsTableRow, SpecsTableCell } from "components/Table";
+import { orderType } from "features/order/types";
 import CartItem from "features/payment/components/Info/CartItem";
-import { orderType } from "features/payment/types";
 import { useCheckoutPrices } from "hooks";
 import formatNumberToVND from "utils/currency-formatter";
 

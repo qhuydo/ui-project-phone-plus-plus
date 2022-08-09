@@ -9,10 +9,9 @@ import { CartItemList } from "features/payment/components/Info";
 import { cartItemType } from "features/payment/types";
 import { useAccordion } from "hooks";
 import PropTypes from "prop-types";
-import React from "react";
 
-const CartAccordion = ({ cartItems }) => {
-  const { isOpen, handleChange } = useAccordion();
+const CartAccordion = ({ cartItems, openWhenFirstShow }) => {
+  const { isOpen, handleChange } = useAccordion(!!openWhenFirstShow);
 
   return (
     <Accordion expanded={isOpen} onChange={handleChange} elevation={0}>
@@ -42,6 +41,7 @@ const CartAccordion = ({ cartItems }) => {
 
 CartAccordion.propTypes = {
   cartItems: PropTypes.arrayOf(cartItemType),
+  openWhenFirstShow: PropTypes.bool,
 };
 
 export default CartAccordion;

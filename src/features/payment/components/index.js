@@ -1,3 +1,3 @@
 export * from "./Steps";
-export { default as PaymentCheckoutSection } from "./PaymentCheckoutSection";
+export * from "./CheckoutSection";
 export { SupportPaymentTypes } from "./Info";

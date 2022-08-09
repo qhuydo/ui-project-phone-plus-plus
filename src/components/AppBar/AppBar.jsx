@@ -11,7 +11,7 @@ import AppBarLogo from "components/AppBar/AppBarLogo";
 import HideOnScroll from "components/AppBar/HideOnScroll";
 import StyledAppBar from "components/AppBar/StyledAppBar";
 import StyledToolbar from "components/AppBar/StyledToolbar";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import router from "routes/router";
 import { SearchBar } from "components/SearchBar";

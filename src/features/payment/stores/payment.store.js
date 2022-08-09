@@ -1,4 +1,4 @@
-import { PAYMENT_METHODS } from "features/payment/utils";
+import { PAYMENT_METHODS, CART_ITEM_SOURCE } from "features/payment/utils";
 
 export const initialPaymentState = {
   cartItems: [],
@@ -42,14 +42,18 @@ export const initialPaymentState = {
   },
   showConfirmationDialog: false,
   submittedOrder: null,
+  cartItemSource: CART_ITEM_SOURCE.fromCart,
+  autoFill: false,
+  submitFailed: false,
 };
 
 export const paymentReducer = (state, action) => {
-  switch (action.type) {
+  switch (action?.type) {
     case "INITIALISE": {
       return {
         ...initialPaymentState,
-        cartItems: action.payload?.cartItems ?? {},
+        cartItems: action.payload?.cartItems ?? [],
+        cartItemSource: action.payload?.cartItemSource || state.cartItemSource,
       };
     }
     case "DISPLAY_LOGIN_REQUEST_PAGE": {
@@ -98,6 +102,54 @@ export const paymentReducer = (state, action) => {
       return {
         ...state,
         submittedOrder: action?.payload ?? state.submittedOrder,
+        submitFailed: false,
+      };
+    }
+    case "AUTO_FILL": {
+      const user = action.payload;
+      if (!user) return state;
+
+      const { customerDetails, deliveryDetails, billingDetails } =
+        state.contactDetails;
+
+      return {
+        ...state,
+        autoFill: true,
+        contactDetails: {
+          ...state.contactDetails,
+          customerDetails: {
+            fullName: user.name || customerDetails.fullName,
+            phoneIsoCode: user.phoneIsoCode || customerDetails.phoneIsoCode,
+            phoneNumber: user.phoneNumber || customerDetails.phoneNumber,
+            email: user.email || customerDetails.email,
+          },
+          deliveryDetails: {
+            ...deliveryDetails,
+            provinceId: user.provinceId || deliveryDetails.provinceId,
+            districtId: user.districtId || deliveryDetails.districtId,
+            communeId: user.communeId || deliveryDetails.communeId,
+            street: user.street || deliveryDetails.street,
+          },
+          billingDetails: {
+            ...state.billingDetails,
+            provinceId: user.provinceId || billingDetails.provinceId,
+            districtId: user.districtId || billingDetails.districtId,
+            communeId: user.communeId || billingDetails.communeId,
+            street: user.street || billingDetails.street,
+          },
+        },
+      };
+    }
+    case "SET_AUTO_FILL_FLAG": {
+      return {
+        ...state,
+        autoFill: true,
+      };
+    }
+    case "SET_SUBMIT_FAILED": {
+      return {
+        ...state,
+        submitFailed: action?.payload ?? state.submitFailed,
       };
     }
   }

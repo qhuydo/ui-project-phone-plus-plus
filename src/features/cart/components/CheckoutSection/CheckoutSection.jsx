@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { useCartContext } from "features/cart/context/CartContext";
 import { PaymentCheckoutSection } from "features/payment/components";
 import { usePaymentContext } from "features/payment/context";
+import { CART_ITEM_SOURCE } from "features/payment/utils";
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +21,7 @@ const CheckoutSection = ({ cardSx }) => {
       type: "INITIALISE",
       payload: {
         cartItems,
+        cartItemSource: CART_ITEM_SOURCE.fromCart,
       },
     });
     navigate(Router.PAYMENT);

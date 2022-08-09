@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
-const SpecsTableCell = styled(TableCell)(({ theme }) => ({
+export const SpecsTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.background.paper,
     color: theme.palette.text.primary,
@@ -17,4 +17,18 @@ const SpecsTableCell = styled(TableCell)(({ theme }) => ({
   },
 }));
 
-export default SpecsTableCell;
+export const BorderlessTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.text.primary,
+    typography: "h6",
+    fontWeight: "bold",
+    borderRight: "none",
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: "1rem",
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    borderRight: "none",
+  },
+}));

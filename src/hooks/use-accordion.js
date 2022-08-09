@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 
-export const useAccordion = () => {
-  const [isOpen, setIsOpen] = useState(false);
+export const useAccordion = (initialState = false) => {
+  const [isOpen, setIsOpen] = useState(initialState);
 
   const handleChange = useCallback((event, isExpanded) => {
     setIsOpen(isExpanded);

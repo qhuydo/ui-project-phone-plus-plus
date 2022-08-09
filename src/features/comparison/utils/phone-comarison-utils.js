@@ -69,7 +69,6 @@ export async function getDisplayedDataFromPhoneDetails(
       }
     }
   }
-  console.log(displayedSpecs);
   // console.log(displayedSpecs);
   return displayedSpecs;
 }

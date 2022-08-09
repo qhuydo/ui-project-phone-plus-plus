@@ -1,3 +1,5 @@
+import { cartReducer, initialCartState } from "features/cart/stores";
+import PropTypes from "prop-types";
 import {
   createContext,
   useCallback,
@@ -5,8 +7,6 @@ import {
   useMemo,
   useReducer,
 } from "react";
-import PropTypes from "prop-types";
-import { cartReducer, initialCartState } from "features/cart/stores";
 
 const cartContextInitialState = {
   state: initialCartState,
@@ -78,6 +78,10 @@ export const CartContextProvider = ({ children }) => {
     [setCartItems]
   );
 
+  const removeAll = useCallback(() => {
+    dispatch({ type: "REMOVE_ALL", cb: setCartItems });
+  }, [setCartItems]);
+
   const contextValue = useMemo(
     () => ({
       state,
@@ -86,8 +90,16 @@ export const CartContextProvider = ({ children }) => {
       decreaseItemQuantity,
       addItem,
       removeItem,
+      removeAll,
     }),
-    [addItem, decreaseItemQuantity, increaseItemQuantity, removeItem, state]
+    [
+      addItem,
+      decreaseItemQuantity,
+      increaseItemQuantity,
+      removeAll,
+      removeItem,
+      state,
+    ]
   );
 
   return (

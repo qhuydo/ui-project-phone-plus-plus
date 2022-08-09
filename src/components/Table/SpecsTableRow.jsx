@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import TableRow from "@mui/material/TableRow";
 
-const SpecsTableRow = styled(TableRow)(({ theme }) => ({
+export const SpecsTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
     // backgroundColor: theme.palette.action.hover,
     backgroundColor: theme.palette.background.paper,
@@ -15,4 +15,15 @@ const SpecsTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-export default SpecsTableRow;
+export const BorderlessTableRow = styled(TableRow)(({ theme }) => ({
+  "&:nth-of-type(odd)": {
+    // backgroundColor: theme.palette.action.hover,
+    backgroundColor: theme.palette.background.paper,
+  },
+  "&:hover": {
+    backgroundColor: theme.palette.action.hover,
+  },
+  "td, th": {
+    border: "none",
+  },
+}));

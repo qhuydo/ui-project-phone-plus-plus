@@ -16,6 +16,7 @@ import OutlinedChip from "components/Chip/OutlinedChip";
 import ItemQuantityInput from "components/Input/ItemQuantityInput";
 import { useCartContext } from "features/cart/context/CartContext";
 import { createCartItem } from "features/cart/utils";
+import { usePaymentContext } from "features/payment/context";
 import ColourPairSelector from "features/phones/components/PhoneDetailHeader/ColourPairSelector";
 import PhoneVersionSelector from "features/phones/components/PhoneDetailHeader/PhoneVersionSelector";
 import {
@@ -23,6 +24,8 @@ import {
   usePhoneDetailsContext,
 } from "features/phones/context";
 import { useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import Router from "routes/router";
 import { GOLDEN_RATIO } from "utils/constants";
 
 const PhoneDetailsHeader = () => {
@@ -43,6 +46,8 @@ const PhoneDetailsHeader = () => {
     changeQuantity,
   } = usePhoneDetailsContext();
 
+  const navigate = useNavigate();
+
   const [favourites, toggleFavourites] = useFavouritePhoneMap();
 
   const isFavourite = useMemo(() => {
@@ -50,6 +55,7 @@ const PhoneDetailsHeader = () => {
   }, [favourites, phoneDetails.id]);
 
   const { addItem } = useCartContext();
+  const { buyNow } = usePaymentContext();
 
   const onFavouriteButtonClicked = useCallback(() => {
     toggleFavourites(phoneDetails.id);
@@ -78,6 +84,20 @@ const PhoneDetailsHeader = () => {
       createCartItem(phoneDetails, selectedColour, selectedVersion, quantity)
     );
   }, [addItem, phoneDetails, selectedColour, selectedVersion, quantity]);
+
+  const buyNowItem = useCallback(() => {
+    buyNow(
+      createCartItem(phoneDetails, selectedColour, selectedVersion, quantity)
+    );
+    navigate(Router.PAYMENT);
+  }, [
+    buyNow,
+    navigate,
+    phoneDetails,
+    quantity,
+    selectedColour,
+    selectedVersion,
+  ]);
 
   return (
     <Stack direction="column" spacing={1} width={1}>
@@ -224,6 +244,7 @@ const PhoneDetailsHeader = () => {
           variant="contained"
           size="large"
           startIcon={<PaymentOutlinedIcon />}
+          onClick={buyNowItem}
         >
           Buy now
         </BigButton>

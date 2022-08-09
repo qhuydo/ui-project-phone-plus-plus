@@ -1,0 +1,29 @@
+{
+  "0": {
+    "id": "0",
+    "name": "PHONE++ hearthome",
+    "address": "Lien Chieu District, Danang",
+    "shortAddress": "Danang",
+    "idProvince": "48",
+    "idDistrict": "490",
+    "idCommune": "20194"
+  },
+  "1": {
+    "id": "1",
+    "name": "PHONE++ veilstone",
+    "address": "District 5, Ho Chi Minh",
+    "shortAddress": "Ho Chi Minh",
+    "idProvince": "79",
+    "idDistrict": "774",
+    "idCommune": "27301"
+  },
+  "2": {
+    "id": "2",
+    "name": "PHONE++ Canalave",
+    "address": "Ha Dong District, Hanoi",
+    "shortAddress": "Hanoi",
+    "idProvince": "01",
+    "idDistrict": "250",
+    "idCommune": "10117"
+  }
+}

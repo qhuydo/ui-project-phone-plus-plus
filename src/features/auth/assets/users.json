@@ -7,7 +7,13 @@
     "location": "Ho Chi Minh, Vietnam",
     "locationCode": "vn",
     "memberRank": "V.I.P 5 member",
-    "password": "10points"
+    "password": "10points",
+    "provinceId": "79",
+    "districtId": "784",
+    "communeId":"27574",
+    "street": "41 Thoi Tu street",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "91233134"
   },
   {
     "id": "1af2a3d34-f199-4433-a1c0-0b736085585e",
@@ -17,7 +23,13 @@
     "location": "New York city, United States",
     "locationCode": "us",
     "memberRank": "V.I.P 2 member",
-    "password": "new-york"
+    "password": "new-york",
+    "provinceId": "49",
+    "districtId": "503",
+    "communeId":"20398",
+    "street": "9 Tran Hung Dao",
+    "phoneIsoCode": "US",
+    "phoneNumber": "2931242"
   },
   {
     "id": "aa7e21df-d1fd-4717-a28e-4d64be317e2f",
@@ -27,7 +39,13 @@
     "location": "Essex, United Kingdom",
     "locationCode": "gb",
     "memberRank": "V.I.P 1 member",
-    "password": "mario-cart"
+    "password": "mario-cart",
+    "provinceId": "49",
+    "districtId": "503",
+    "communeId":"20413",
+    "street": "15 Tran Hung Dao",
+    "phoneIsoCode": "GB",
+    "phoneNumber": "59238414"
   },
   {
     "id": "319156c7-ad9a-4a52-87e5-2015b8da3575",
@@ -37,7 +55,13 @@
     "location": "Ho Chi Minh, Vietnam",
     "locationCode": "vn",
     "memberRank": "V.I.P 4 member",
-    "password": "menhera-is-my-waifu"
+    "password": "menhera-is-my-waifu",
+    "provinceId": "79",
+    "districtId": "777",
+    "communeId":"27436",
+    "street": "212 Le Van Viet",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "91231421"
   },
   {
     "id": "6789cdf4-17be-43ce-8025-7ea9bb7c0abe",
@@ -47,7 +71,13 @@
     "location": "Ho Chi Minh, Vietnam",
     "locationCode": "vn",
     "memberRank": "Non-vip member",
-    "password": "shibainu"
+    "password": "shibainu",
+    "provinceId": "79",
+    "districtId": "778",
+    "communeId":"27493",
+    "street": "215 Huynh Tan Phat",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "91231421"
   },
   {
     "id": "55ef780d-e20f-4570-9454-0a3867ab4672",
@@ -57,7 +87,13 @@
     "location": "Oslo, Norway",
     "locationCode": "no",
     "memberRank": "Non-vip member",
-    "password": "ulrikke"
+    "password": "ulrikke",
+    "provinceId": "56",
+    "districtId": "568",
+    "communeId":"22336",
+    "street": "52 Nguyen Van Cu",
+    "phoneIsoCode": "NO",
+    "phoneNumber": "1029341"
   },
   {
     "id": "e934f8e8-3abb-40ae-88e3-4a0c913c6220",
@@ -67,7 +103,13 @@
     "location": "Ho Chi Minh, Vietnam",
     "locationCode": "vn",
     "memberRank": "Non-vip member",
-    "password": "844363006"
+    "password": "844363006",
+    "provinceId": "80",
+    "districtId": "794",
+    "communeId":"27685",
+    "street": "42 Huynh Tan Phat",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "84436719"
   },
   {
     "id": "32584458-1b96-47ae-bf1b-512cd144fd67",
@@ -77,7 +119,13 @@
     "location": "Da Nang, Vietnam",
     "locationCode": "vn",
     "memberRank": "Non-vip member",
-    "password": "minhpham"
+    "password": "minhpham",
+    "provinceId": "01",
+    "districtId": "250",
+    "communeId":"08974",
+    "street": "34 Le Duan",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "91242313"
   },
   {
     "id": "a6793240-76d8-4b06-bec4-336c6637a2c8",
@@ -87,7 +135,13 @@
     "location": "Da Nang, Vietnam",
     "locationCode": "vn",
     "memberRank": "Non-vip member",
-    "password": "tuanbui"
+    "password": "tuanbui",
+    "provinceId": "79",
+    "districtId": "777",
+    "communeId":"27436",
+    "street": "212 Le Van Viet",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "91231421"
   },
   {
     "id": "3b7fcfa1-dfe5-4428-8cdf-ad1316264b78",
@@ -97,7 +151,13 @@
     "location": "Da Nang, Vietnam",
     "locationCode": "vn",
     "memberRank": "Non-vip member",
-    "password": "cuongbui"
+    "password": "cuongbui",
+    "provinceId": "79",
+    "districtId": "777",
+    "communeId":"27436",
+    "street": "212 Le Van Viet",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "91231421"
   },
   {
     "id": "3b7fcfa1-dfe5-4428-8cdf-ad1316264b78",
@@ -107,7 +167,13 @@
     "location": "Ho Chi Minh, Vietnam",
     "locationCode": "vn",
     "memberRank": "Non-vip member",
-    "password": "longbui"
+    "password": "longbui",
+    "provinceId": "82",
+    "districtId": "819",
+    "communeId":"28360",
+    "street": "21 Nguyen Huu Canh",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "95926085"
   },
   {
     "id": "2e17d4af-1086-47f3-b6b5-140aec074d4d",
@@ -117,6 +183,12 @@
     "location": "Ho Chi Minh, Vietnam",
     "locationCode": "vn",
     "memberRank": "Non-vip member",
-    "password": "phongtruong"
+    "password": "phongtruong",
+    "provinceId": "79",
+    "districtId": "769",
+    "communeId":"26800",
+    "street": "21/B Linh Trung",
+    "phoneIsoCode": "VN",
+    "phoneNumber": "95892384"
   }
 ]
