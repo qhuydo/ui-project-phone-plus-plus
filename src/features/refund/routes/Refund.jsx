@@ -1,4 +1,11 @@
-import { Box, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
 import Placeholder from "components/Placeholder/Placeholder";
@@ -8,8 +15,11 @@ import {
   RefundExchangeStep2,
   RefundExchangeStep3,
 } from "features/refund/components/Steps";
+import React from "react";
+const steps = ["Fill the form", "Processing", "Finished"];
 
 const Refund = () => {
+  const [activeStep, setActiveStep] = React.useState(0);
   return (
     <>
       <Head title={"Refund/Exchange"} />
@@ -27,11 +37,20 @@ const Refund = () => {
           Refunds And Exchanges
         </Typography>
 
+        <Stepper activeStep={activeStep} alternativeLabel>
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
           minHeight="100vh"
+          sx={{ my: 6 }}
         >
           <RefundExchangeStep1></RefundExchangeStep1>
         </Box>
