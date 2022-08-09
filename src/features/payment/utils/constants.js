@@ -1,10 +1,13 @@
 import * as dayjs from "dayjs";
+import * as localizedFormat from "dayjs/plugin/localizedFormat";
 import {
   VisaLogo,
   MastercardLogo,
   PaypalLogo,
   DollarBanknote,
 } from "features/cart/assets";
+
+dayjs.extend(localizedFormat);
 
 export const TOTAL_PAYMENT_STEPS = 3;
 

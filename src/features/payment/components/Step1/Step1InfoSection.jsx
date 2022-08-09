@@ -10,7 +10,7 @@ const Step1InfoSection = () => {
     state: { cartItems },
   } = usePaymentContext();
 
-  const { isAuth } = useAuth();
+  const { isAuth, signIn } = useAuth();
 
   return (
     <Stack spacing={2} direction="column">
@@ -35,7 +35,9 @@ const Step1InfoSection = () => {
             </Typography>
           </Stack>
 
-          <Button variant="outlined">Login</Button>
+          <Button variant="outlined" onClick={signIn}>
+            Login
+          </Button>
         </Stack>
       )}
 

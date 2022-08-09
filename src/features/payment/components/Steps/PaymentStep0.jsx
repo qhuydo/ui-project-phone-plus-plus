@@ -1,4 +1,5 @@
 import { Stack, Typography, Button, Divider } from "@mui/material";
+import { useAuth } from "features/auth";
 import {
   PaymentCheckoutSection,
   SupportPaymentTypes,
@@ -16,6 +17,13 @@ const PaymentStep0 = () => {
     state: { cartItems },
     dispatch,
   } = usePaymentContext();
+
+  const { signIn } = useAuth();
+
+  const onSigninButtonClicked = useCallback(() => {
+    dispatch({ type: "DISPLAY_LOGIN_REQUEST_PAGE", payload: false });
+    signIn();
+  }, [dispatch, signIn]);
 
   const onSkipButtonClicked = useCallback(() => {
     dispatch({ type: "DISPLAY_LOGIN_REQUEST_PAGE", payload: false });
@@ -38,12 +46,9 @@ const PaymentStep0 = () => {
             spacing={2}
             alignItems="center"
             justifyContent="center"
-            // sx={{
-            //   borderBottom: (theme) => `2px solid ${theme.palette.divider}`,
-            // }}
           >
             <Typography>
-              Already have a Phone++ account and want to login here?
+              Already have a Phone++ account and want to sign in here?
             </Typography>
             <Stack
               width={1}
@@ -51,9 +56,11 @@ const PaymentStep0 = () => {
               spacing={1}
               justifyContent="center"
             >
-              <Button variant="contained">Login</Button>
+              <Button variant="contained" onClick={onSigninButtonClicked}>
+                Sign in
+              </Button>
               <Button variant="outlined" onClick={onSkipButtonClicked}>
-                Continue without login
+                Continue without sign in
               </Button>
             </Stack>
           </Stack>

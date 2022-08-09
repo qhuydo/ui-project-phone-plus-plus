@@ -1,3 +1,5 @@
+import { users } from "features/auth/assets";
+import { random } from "lodash-es";
 import { createContext, useCallback, useContext, useMemo } from "react";
 import { useLocalStorage } from "hooks";
 import PropTypes from "prop-types";
@@ -15,10 +17,11 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useLocalStorage("auth", undefined);
 
   const signIn = useCallback(() => {
-    setUser({
-      name: "Huy cbd",
-      avatar: "https://i1.sndcdn.com/avatars-000098677007-iayi3j-t500x500.jpg",
-    });
+    let user = {
+      ...users[random(users.length - 1)],
+    };
+    delete user.password;
+    setUser(user);
   }, [setUser]);
 
   const signOut = useCallback(

@@ -130,7 +130,7 @@ export async function getOrderStatusAfter2Days(order) {
   if (!order) return null;
 
   const dateCreated = dayjs(order.timestamp);
-  const fromStore = STORES[random(Object.keys(STORES))];
+  const fromStore = STORES[random(Object.keys(STORES).length - 1)];
   const facility1 = getAddress(fromStore.idProvince, fromStore.idDistrict);
 
   const provinceId2 = order.contactDetails?.deliveryDetails.provinceId;

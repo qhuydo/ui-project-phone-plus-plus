@@ -43,6 +43,7 @@ export const initialPaymentState = {
   showConfirmationDialog: false,
   submittedOrder: null,
   cartItemSource: CART_ITEM_SOURCE.fromCart,
+  autoFill: false,
 };
 
 export const paymentReducer = (state, action) => {
@@ -100,6 +101,47 @@ export const paymentReducer = (state, action) => {
       return {
         ...state,
         submittedOrder: action?.payload ?? state.submittedOrder,
+      };
+    }
+    case "AUTO_FILL": {
+      const user = action.payload;
+      if (!user) return state;
+
+      const { customerDetails, deliveryDetails, billingDetails } =
+        state.contactDetails;
+
+      return {
+        ...state,
+        autoFill: true,
+        contactDetails: {
+          ...state.contactDetails,
+          customerDetails: {
+            fullName: user.name || customerDetails.fullName,
+            phoneIsoCode: user.phoneIsoCode || customerDetails.phoneIsoCode,
+            phoneNumber: user.phoneNumber || customerDetails.phoneNumber,
+            email: user.email || customerDetails.email,
+          },
+          deliveryDetails: {
+            ...deliveryDetails,
+            provinceId: user.provinceId || deliveryDetails.provinceId,
+            districtId: user.districtId || deliveryDetails.districtId,
+            communeId: user.communeId || deliveryDetails.communeId,
+            street: user.street || deliveryDetails.street,
+          },
+          billingDetails: {
+            ...state.billingDetails,
+            provinceId: user.provinceId || billingDetails.provinceId,
+            districtId: user.districtId || billingDetails.districtId,
+            communeId: user.communeId || billingDetails.communeId,
+            street: user.street || billingDetails.street,
+          },
+        },
+      };
+    }
+    case "SET_AUTO_FILL_FLAG": {
+      return {
+        ...state,
+        autoFill: true,
       };
     }
   }
