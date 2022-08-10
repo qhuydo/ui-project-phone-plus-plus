@@ -1,11 +1,12 @@
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
+import { useCallback } from "react";
 import { GOLDEN_RATIO } from "utils/constants";
 import AddIcon from "@mui/icons-material/Add";
 import PropTypes from "prop-types";
 import { usePhoneComparisonContext } from "features/comparison/context";
 
 const SearchResultPlaceholder = ({ recommendations, width }) => {
-  const { addPhone } = usePhoneComparisonContext();
+  const { addPhone, dispatch } = usePhoneComparisonContext();
 
   return (
     <Stack
@@ -52,6 +53,9 @@ const SearchResultPlaceholder = ({ recommendations, width }) => {
           variant="outlined"
           startIcon={<AddIcon />}
           sx={{ borderColor: "divider", width: 1 }}
+          onClick={useCallback(() => {
+            dispatch({ type: "SET_FORCE_FOCUS_SEARCH_BAR", payload: true });
+          }, [dispatch])}
         >
           Add a phone
         </Button>

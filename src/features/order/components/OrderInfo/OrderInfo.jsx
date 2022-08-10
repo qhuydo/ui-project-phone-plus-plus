@@ -8,6 +8,7 @@ import { PAYMENT_METHODS, PAYMENT_METHOD_TEXTS } from "features/payment/utils";
 import PropTypes from "prop-types";
 import { useMemo } from "react";
 import QRCode from "react-qr-code";
+import { Router } from "routes";
 
 const OrderInfo = ({ order, hideTitle, ...others }) => {
   const date = useMemo(
@@ -28,6 +29,11 @@ const OrderInfo = ({ order, hideTitle, ...others }) => {
               }`
         : "",
     [order]
+  );
+
+  const qrValue = useMemo(
+    () => Router.getOrderTrackingPageWithDomain(order?.id ?? ""),
+    [order?.id]
   );
 
   return order ? (
@@ -55,7 +61,7 @@ const OrderInfo = ({ order, hideTitle, ...others }) => {
             <TextRow title={"Payment method"} content={paymentMethod} />
           </Stack>
         </Stack>
-        <QRCode value="https://youtu.be/dQw4w9WgXcQ" size={200} />
+        <QRCode value={qrValue} size={200} />
       </Stack>
 
       <ProductBill order={order} />

@@ -24,7 +24,12 @@ const ControlSection = () => {
         <FilterDisplayDataButton />
       </Stack>
 
-      <Stack direction="row" spacing={1} alignItems="center">
+      <Stack
+        direction="row"
+        spacing={1}
+        alignItems="center"
+        sx={{ opacity: 0 }}
+      >
         <Typography variant="h6">Comparison mode</Typography>
         <ComparisonModeButton
           value={comparisonMode}

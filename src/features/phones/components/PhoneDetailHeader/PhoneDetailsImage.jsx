@@ -60,7 +60,7 @@ const PhoneDetailsImage = () => {
             xs: 200,
             sm: 250,
             md: 350,
-            lg: "auto",
+            lg: 500,
           }}
           maxWidth={500}
         >

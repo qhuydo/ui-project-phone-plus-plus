@@ -11,6 +11,7 @@ export const initialPhoneComparisonState = {
   displayedData: {},
   recommendations: [],
   isLoading: false,
+  forceFocusSearchBar: false,
 };
 
 export const phoneComparisonReducer = (state, action) => {
@@ -63,6 +64,12 @@ export const phoneComparisonReducer = (state, action) => {
       return {
         ...state,
         displayedFields: action.payload ?? state.displayedFields,
+      };
+    }
+    case "SET_FORCE_FOCUS_SEARCH_BAR": {
+      return {
+        ...state,
+        forceFocusSearchBar: action.payload ?? state.forceFocusSearchBar,
       };
     }
     default:

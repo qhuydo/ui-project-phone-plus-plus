@@ -24,7 +24,7 @@ import { Router } from "routes";
 
 const PhoneComparisonContext = createContext({
   state: initialPhoneComparisonState,
-  dispatcher: () => {},
+  dispatch: () => {},
 });
 
 export const usePhoneComparisonContext = () => {
