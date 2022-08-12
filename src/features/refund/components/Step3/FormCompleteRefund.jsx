@@ -1,6 +1,6 @@
 import { Box, Button, Stack, Typography, Link } from "@mui/material";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import { CompleteRefundExchange } from "features/phones/assets";
+import { RefundSucceed } from "features/refund/assets/index";
 import { Link as RouterLink } from "react-router-dom";
 import { Router } from "routes";
 
@@ -15,7 +15,7 @@ const FormCompleteRefund = () => {
       >
         <Box
           component="img"
-          src={CompleteRefundExchange}
+          src={RefundSucceed}
           width={{ xs: "100%", sm: 300, md: 450 }}
         />
         <Typography variant="h5">
@@ -31,9 +31,9 @@ const FormCompleteRefund = () => {
           <Button
             startIcon={<NavigateBeforeIcon />}
             sx={{
-              marginTop: 2
+              marginTop: 2,
             }}
-            variant="outlined"
+            variant="contained"
           >
             Go Back Home
           </Button>

@@ -45,16 +45,33 @@ const Refund = () => {
           ))}
         </Stepper>
 
-        <Box
+        {/* <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
           minHeight="100vh"
-          sx={{ my: 6 }}
+          sx={{ my: 4 }}
         >
           <RefundExchangeStep1></RefundExchangeStep1>
+        </Box> */}
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ my: 4 }}
+        >
+          <RefundExchangeStep2></RefundExchangeStep2>
         </Box>
-        {/* <RefundExchangeStep3></RefundExchangeStep3> */}
+
+        {/* <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          sx={{ my: 4 }}
+        >
+          <RefundExchangeStep3></RefundExchangeStep3>
+        </Box> */}
       </Container>
     </>
   );
