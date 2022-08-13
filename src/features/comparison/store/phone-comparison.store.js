@@ -66,6 +66,12 @@ export const phoneComparisonReducer = (state, action) => {
         displayedFields: action.payload ?? state.displayedFields,
       };
     }
+    case "CHANGE_DISPLAYED_DATA": {
+      return {
+        ...state,
+        displayedData: action.payload ?? state.displayedData,
+      };
+    }
     case "SET_FORCE_FOCUS_SEARCH_BAR": {
       return {
         ...state,

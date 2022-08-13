@@ -125,6 +125,25 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
     [navigate, state.phoneDetails]
   );
 
+  const clearFilters = useCallback(async () => {
+    const displayedFields = await getDisplayedFieldsFromPhoneDetails(
+      state.phoneDetails
+    );
+    dispatch({ type: "CHANGE_DISPLAYED_FIELDS", payload: displayedFields });
+  }, [state.phoneDetails]);
+
+  useEffect(() => {
+    (async () => {
+      if (state.phoneDetails && state.displayedFields) {
+        const displayedData = await getDisplayedDataFromPhoneDetails(
+          state.phoneDetails,
+          state.displayedFields
+        );
+        dispatch({ type: "CHANGE_DISPLAYED_DATA", payload: displayedData });
+      }
+    })();
+  }, [state.phoneDetails, state.displayedFields]);
+
   const contextValue = useMemo(
     () => ({
       state,
@@ -134,12 +153,14 @@ export const PhoneComparisonContextProvider = ({ ids, children }) => {
       changeViewMode,
       addPhone,
       removePhone,
+      clearFilters,
     }),
     [
       addPhone,
       changeComparisonMode,
       changeDisplayedField,
       changeViewMode,
+      clearFilters,
       removePhone,
       state,
     ]

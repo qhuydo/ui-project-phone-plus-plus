@@ -33,9 +33,11 @@ export async function getDisplayedDataFromPhoneDetails(
 
   const displayedSpecs = Object.entries(displayedFields).reduce(
     (map, [sectionName, sectionSpec]) => {
-      map[sectionName] = Object.keys(sectionSpec).reduce(
-        (sectionMap, specName) => {
-          sectionMap[specName] = { data: [], hasDifferences: false };
+      map[sectionName] = Object.entries(sectionSpec).reduce(
+        (sectionMap, [specName, isVisible]) => {
+          if (isVisible) {
+            sectionMap[specName] = { data: [], hasDifferences: false };
+          }
           return sectionMap;
         },
         {}

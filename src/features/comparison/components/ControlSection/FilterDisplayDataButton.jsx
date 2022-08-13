@@ -11,6 +11,7 @@ import {
   Stack,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
+import { useDebounce } from "hooks";
 import { useCallback, useMemo, useState } from "react";
 import { SearchBar } from "components/SearchBar";
 import { usePhoneComparisonContext } from "features/comparison/context";
@@ -19,18 +20,13 @@ const FilterDisplayDataButton = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpened = useMemo(() => !!anchorEl, [anchorEl]);
   const [keyword, setKeyword] = useState("");
+  const debouncedKeyword = useDebounce(keyword, 300);
 
   const {
     state: { displayedFields },
     changeDisplayedField,
+    clearFilters,
   } = usePhoneComparisonContext();
-
-  const handleClick = useCallback((event) => {
-    setAnchorEl(event.currentTarget);
-  }, []);
-  const handleClose = useCallback(() => {
-    setAnchorEl(null);
-  }, []);
 
   const onSearchKeyChanged = useCallback((e) => {
     setKeyword(e.currentTarget.value);
@@ -39,6 +35,20 @@ const FilterDisplayDataButton = () => {
   const clearKeyword = useCallback(() => {
     setKeyword("");
   }, []);
+
+  const handleClick = useCallback((event) => {
+    setAnchorEl(event.currentTarget);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setAnchorEl(null);
+  }, []);
+
+  const handleClear = useCallback(() => {
+    clearFilters();
+    handleClose();
+    clearKeyword();
+  }, [clearFilters, clearKeyword, handleClose]);
 
   const handleFilterItemValueChanged = useCallback(
     (e) => {
@@ -50,6 +60,25 @@ const FilterDisplayDataButton = () => {
     },
     [changeDisplayedField]
   );
+
+  const filteredFields = useMemo(() => {
+    const trimmedKeyword = debouncedKeyword.toLowerCase().trim();
+    return Object.entries(displayedFields).reduce(
+      (map, [sectionName, fields]) => {
+        map[sectionName] = Object.entries(fields).reduce(
+          (fieldMap, [fieldName, fieldValue]) => {
+            if (fieldName.toLowerCase().includes(trimmedKeyword)) {
+              fieldMap[fieldName] = fieldValue;
+            }
+            return fieldMap;
+          },
+          {}
+        );
+        return map;
+      },
+      {}
+    );
+  }, [debouncedKeyword, displayedFields]);
 
   return (
     <>
@@ -114,7 +143,7 @@ const FilterDisplayDataButton = () => {
             }}
             subheader={<li />}
           >
-            {Object.entries(displayedFields).map(([sectionName, fields]) => (
+            {Object.entries(filteredFields).map(([sectionName, fields]) => (
               <li key={`section-${sectionName}`}>
                 <ul>
                   <ListSubheader
@@ -157,8 +186,11 @@ const FilterDisplayDataButton = () => {
 
           <Divider />
           <Stack direction="row" spacing={1} justifyContent="end">
-            <Button>Clear</Button>
-            <Button variant="contained">Apply</Button>
+            <Button onClick={handleClear}>Clear</Button>
+
+            <Button variant="contained" onClick={handleClose}>
+              OK
+            </Button>
           </Stack>
         </Stack>
       </Menu>
