@@ -1,9 +1,11 @@
+import { getPushSaleMap } from "features/cart/api";
 import { useCartContext } from "features/cart/context/CartContext";
 import { submitOrder } from "features/payment/api";
 import { initialPaymentState, paymentReducer } from "features/payment/stores";
 import { CART_ITEM_SOURCE } from "features/payment/utils";
 import PropTypes from "prop-types";
 import {
+  useEffect,
   createContext,
   useContext,
   useReducer,
@@ -69,6 +71,15 @@ export const PaymentContextProvider = ({ children }) => {
       },
     });
   }, []);
+
+  useEffect(() => {
+    (async () => {
+      if (state.cartItems) {
+        const map = await getPushSaleMap(state.cartItems);
+        dispatch({ type: "SET_PUSH_SALE_MAP", payload: map });
+      }
+    })();
+  }, [state?.cartItems]);
 
   const contextValue = useMemo(() => {
     return {

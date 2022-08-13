@@ -1,10 +1,16 @@
 import { Paper, Stack, Typography } from "@mui/material";
-import { cartItemType } from "features/cart/types";
+import { cartItemType, pushSaleType } from "features/cart/types";
+import { usePhonePrice } from "hooks";
 import PropTypes from "prop-types";
 import { GOLDEN_RATIO } from "utils/constants";
-import formatNumberToVND from "utils/currency-formatter";
 
-const CartItem = ({ item, showPrice, showQuantity, ...others }) => {
+const CartItem = ({ item, showPrice, showQuantity, pushSale, ...others }) => {
+  const { displayTotalPrice, displayPushSalePrice, percentOff } = usePhonePrice(
+    item?.version,
+    item?.quantity,
+    pushSale
+  );
+
   return (
     <Stack direction="row" spacing={1} p={1} {...others}>
       <Paper
@@ -22,9 +28,7 @@ const CartItem = ({ item, showPrice, showQuantity, ...others }) => {
         <Stack direction="row" width={1} justifyContent="space-between">
           <Typography variant="h6">{item.phone.name}</Typography>
           {showPrice && (
-            <Typography variant="h6">
-              {formatNumberToVND(item.version.salePrice * item.quantity)}
-            </Typography>
+            <Typography variant="h6">{displayTotalPrice}</Typography>
           )}
         </Stack>
 
@@ -40,11 +44,34 @@ const CartItem = ({ item, showPrice, showQuantity, ...others }) => {
           </Typography>
 
           {showPrice && (
-            <Typography variant="subtitle1" color="text.secondary">
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              sx={{
+                textDecoration: pushSale ? "line-through" : null,
+              }}
+            >
               {`${item.version.displaySalePrice} per item`}
             </Typography>
           )}
         </Stack>
+
+        {pushSale && (
+          <Stack
+            direction="row"
+            width={1}
+            justifyContent="space-between"
+            spacing={1}
+          >
+            <Typography variant="subtitle1" color="error">
+              Save {percentOff}%
+            </Typography>
+
+            <Typography variant="subtitle1" color="error">
+              {`${displayPushSalePrice} per item`}
+            </Typography>
+          </Stack>
+        )}
 
         {showQuantity && (
           <Stack
@@ -73,6 +100,7 @@ CartItem.propTypes = {
   item: cartItemType.isRequired,
   showPrice: PropTypes.bool,
   showQuantity: PropTypes.bool,
+  pushSale: pushSaleType,
 };
 
 export default CartItem;

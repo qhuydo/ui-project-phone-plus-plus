@@ -80,7 +80,7 @@ const PaymentCheckoutSection = ({
             alignItems="baseline"
           >
             <Typography variant="subtitle1">Discount</Typography>
-            <Typography>-0 ₫</Typography>
+            <Typography>-0₫</Typography>
           </Stack>
 
           {buttonGroup}

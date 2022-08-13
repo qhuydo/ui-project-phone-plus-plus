@@ -1,4 +1,4 @@
-import { cartItemType } from "features/cart/types";
+import { cartItemType, pushSaleType } from "features/cart/types";
 import { ORDER_TRACKING_STEPS, ORDER_STEP_STATUS } from "features/order/utils";
 import { PAYMENT_METHODS, DELIVERY_METHODS } from "features/payment/utils";
 import PropTypes from "prop-types";
@@ -52,4 +52,5 @@ export const orderType = PropTypes.shape({
     })
   ),
   finishDelivery: PropTypes.bool,
+  pushSaleMap: PropTypes.objectOf(pushSaleType),
 });

@@ -25,8 +25,8 @@ export const useCheckoutPrices = (cartItems, deliveryMethod, pushSaleMap) => {
   }, [cartItems]);
 
   const savingPrice = useMemo(() => {
-    return formatNumberToVND(calculateSavingPrice(cartItems));
-  }, [cartItems]);
+    return formatNumberToVND(calculateSavingPrice(cartItems, pushSaleMap));
+  }, [cartItems, pushSaleMap]);
 
   return {
     estimatePrice,

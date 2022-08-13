@@ -14,7 +14,7 @@ import { useForm, FormProvider } from "react-hook-form";
 
 const PaymentStep1 = () => {
   const {
-    state: { cartItems, contactDetails, autoFill },
+    state: { cartItems, contactDetails, autoFill, pushSaleMap },
     changeContactDetailsValue,
     dispatch,
   } = usePaymentContext();
@@ -83,6 +83,7 @@ const PaymentStep1 = () => {
                 Next
               </Button>
             }
+            pushSaleMap={pushSaleMap}
           />
         </CheckoutSectionGrid>
       </PaymentContainerGrid>

@@ -14,7 +14,7 @@ import { useCallback } from "react";
 
 const PaymentStep0 = () => {
   const {
-    state: { cartItems },
+    state: { cartItems, pushSaleMap },
     dispatch,
   } = usePaymentContext();
 
@@ -72,7 +72,10 @@ const PaymentStep0 = () => {
       </InfoGrid>
 
       <CheckoutSectionGrid>
-        <PaymentCheckoutSection cartItems={cartItems} />
+        <PaymentCheckoutSection
+          cartItems={cartItems}
+          pushSaleMap={pushSaleMap}
+        />
       </CheckoutSectionGrid>
     </PaymentContainerGrid>
   );

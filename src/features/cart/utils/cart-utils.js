@@ -24,8 +24,11 @@ export function calculateSubtotalPrice(cartItems) {
   );
 }
 
-export function calculateSavingPrice(cartItems) {
-  return calculateSubtotalPrice(cartItems) - calculateEstimatePrice(cartItems);
+export function calculateSavingPrice(cartItems, pushSaleMap) {
+  return (
+    calculateSubtotalPrice(cartItems) -
+    calculateEstimatePrice(cartItems, pushSaleMap)
+  );
 }
 
 export function createCartItem(

@@ -6,5 +6,5 @@ const formatter = new Intl.NumberFormat("vi-VN", {
 });
 
 export default function formatNumberToVND(number) {
-  return formatter.format(number);
+  return formatter.format(number).replace(/\s/g, "");
 }

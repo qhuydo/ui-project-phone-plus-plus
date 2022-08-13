@@ -13,6 +13,7 @@ export async function submitOrder(orderInfo) {
     contactDetails: orderInfo.contactDetails,
     paymentMethod: orderInfo.paymentMethod,
     status: getInitialOrderStatus(createdDate),
+    pushSaleMap: orderInfo.pushSaleMap,
   };
 
   try {
