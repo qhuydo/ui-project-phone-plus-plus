@@ -4,6 +4,13 @@
   "category": "apple",
   "categoryName": "Apple",
   "thumbnail": "https://i.imgur.com/kL44mjP.jpg",
+  "recommendations": [
+    "1",
+    "5",
+    "6",
+    "7",
+    "8"
+  ],
   "versions": [
     {
       "id": "A2628",

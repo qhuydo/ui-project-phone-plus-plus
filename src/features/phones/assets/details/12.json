@@ -4,6 +4,13 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/FVNhgHT.jpg",
+  "recommendations": [
+    "10",
+    "13",
+    "11",
+    "9",
+    "8"
+  ],
   "versions": [
     {
       "id": "SM-A736B",

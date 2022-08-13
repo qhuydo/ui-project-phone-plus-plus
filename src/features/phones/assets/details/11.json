@@ -4,6 +4,31 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/qsoXPZ8.jpg",
+  "recommendations": [
+    "8",
+    "9",
+    "10",
+    "12",
+    "13"
+  ],
+  "pushSales": [
+    {
+      "phoneId": "13",
+      "description": "Buy Samsung Galaxy Z Flip3 and save off Samsung Galaxy A32",
+      "versions": {
+        "SM-A235F": {
+          "id": "SM-A235F",
+          "pushSalePrice": 3690000,
+          "displayPushSalePrice": "3.690.000₫"
+        },
+        "SM-A235F/DS": {
+          "id": "SM-A235F/DS",
+          "pushSalePrice": 4190000,
+          "displayPushSalePrice": "4.190.000₫"
+        }
+      }
+    }
+  ],
   "versions": [
     {
       "id": "SM-F711B",

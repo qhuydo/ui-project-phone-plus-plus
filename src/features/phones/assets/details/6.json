@@ -4,6 +4,31 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/FnS0OFv.png",
+  "recommendations": [
+    "7",
+    "8",
+    "9",
+    "10",
+    "11"
+  ],
+  "pushSales": [
+    {
+      "phoneId": "8",
+      "description": "Buy Samsung Galaxy Z Fold3 5G and save off Samsung Galaxy A03",
+      "versions": {
+        "SM-A035F/DS": {
+          "id": "SM-A035F/DS",
+          "pushSalePrice": 1990000,
+          "displayPushSalePrice": "1.990.000₫"
+        },
+        "SM-A035F": {
+          "id": "SM-A035F",
+          "pushSalePrice": 3490000,
+          "displayPushSalePrice": "2.490.000₫"
+        }
+      }
+    }
+  ],
   "versions": [
     {
       "id": "SM-F926B",
