@@ -23,3 +23,20 @@ export async function getSpecialOfferItems(phoneIds, minItems) {
   }
   return specialOffers;
 }
+
+export async function getPushSaleMap(cartItems) {
+  const map = {};
+
+  for (const item of cartItems) {
+    if (item.phone.pushSales && item.phone.pushSales.length !== 0) {
+      const id = item.phone.pushSales[0].phoneId;
+      const idx = cartItems.findIndex((item) => item.phone.id === id);
+      if (idx !== -1) {
+        map[id] = item.phone.pushSales[0];
+      }
+    }
+  }
+
+  // console.log(map);
+  return map;
+}

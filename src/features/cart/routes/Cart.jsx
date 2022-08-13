@@ -68,7 +68,10 @@ export const Cart = () => {
               })}
             >
               <Stack direction="column" spacing={1} alignItems="center">
-                <CartItemList items={state.cartItems} />
+                <CartItemList
+                  items={state.cartItems}
+                  pushSaleMap={state.pushSaleMap}
+                />
                 <SupportPaymentTypes />
                 <VoucherSection />
                 <CheckoutSection />

@@ -1,4 +1,4 @@
-import { getSpecialOfferItems } from "features/cart/api";
+import { getSpecialOfferItems, getPushSaleMap } from "features/cart/api";
 import { cartReducer, initialCartState } from "features/cart/stores";
 import PropTypes from "prop-types";
 import {
@@ -83,6 +83,15 @@ export const CartContextProvider = ({ children }) => {
   const removeAll = useCallback(() => {
     dispatch({ type: "REMOVE_ALL", cb: setCartItems });
   }, [setCartItems]);
+
+  useEffect(() => {
+    (async () => {
+      if (state.cartItems) {
+        const map = await getPushSaleMap(state.cartItems);
+        dispatch({ type: "ADD_PUSH_SALE_MAP", payload: map });
+      }
+    })();
+  }, [state?.cartItems]);
 
   const contextValue = useMemo(
     () => ({

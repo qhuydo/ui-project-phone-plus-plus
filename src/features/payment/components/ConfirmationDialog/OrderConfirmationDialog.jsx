@@ -23,7 +23,7 @@ const OrderConfirmationDialog = () => {
     await submitOrderCb();
   }, [onClosed, submitOrderCb]);
 
-  const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
+  const { estimatePrice, subTotalPrice, savingPrice, deliveryFee } =
     useCheckoutPrices(cartItems, state.contactDetails.deliveryMethod);
 
   return (

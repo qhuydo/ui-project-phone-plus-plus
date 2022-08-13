@@ -15,7 +15,7 @@ import { useCheckoutPrices } from "hooks";
 import formatNumberToVND from "utils/currency-formatter";
 
 const ProductBill = ({ order }) => {
-  const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
+  const { estimatePrice, subTotalPrice, savingPrice, deliveryFee } =
     useCheckoutPrices(order.cartItems, order.contactDetails.deliveryMethod);
 
   return (

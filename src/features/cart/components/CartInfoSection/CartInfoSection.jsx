@@ -25,7 +25,7 @@ const CartInfoSection = () => {
   const { state } = useCartContext();
   return (
     <Stack direction="column" spacing={1} alignItems="center" width={1}>
-      <CartItemList items={state.cartItems} />
+      <CartItemList items={state.cartItems} pushSaleMap={state.pushSaleMap} />
       <SupportPaymentTypes />
       <VoucherSection />
       <SpecialOfferSection />

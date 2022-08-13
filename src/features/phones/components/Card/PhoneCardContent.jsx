@@ -17,8 +17,9 @@ import { usePaymentContext } from "features/payment/context";
 import ColourSelector from "features/phones/components/Card/ColourSelector";
 import PhonePropertySelector from "features/phones/components/Card/PhonePropertySelector";
 import { usePhoneCardContext } from "features/phones/context";
+import { usePhonePrice } from "hooks";
 import PropTypes from "prop-types";
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Router } from "routes";
 
@@ -66,33 +67,8 @@ const PhoneCardContent = ({ sx }) => {
     [navigate, phone?.id]
   );
 
-  const percentOff = useMemo(
-    () => parseInt(priceOffPercentage),
-    [priceOffPercentage]
-  );
-
-  const pushSalePercentOff = useMemo(() => {
-    if (pushSale === null) return 0;
-
-    const currentPushSaleVersion = pushSale.versions[selectedVersion.id];
-
-    // console.log(selectedVersion);
-    // console.log(currentPushSaleVersion);
-
-    const percentOff =
-      ((selectedVersion.originalPrice - currentPushSaleVersion.pushSalePrice) /
-        selectedVersion.originalPrice) *
-      100;
-
-    return parseInt(percentOff);
-  }, [pushSale, selectedVersion]);
-
-  const displayPushSalePrice = useMemo(() => {
-    if (pushSale === null) return "0";
-
-    const currentPushSaleVersion = pushSale.versions[selectedVersion.id];
-    return currentPushSaleVersion.displayPushSalePrice;
-  }, [pushSale, selectedVersion.id]);
+  const { displayPushSalePrice, pushSalePercentOff, percentOff } =
+    usePhonePrice(selectedVersion, 1, pushSale);
 
   return (
     <CardContent component={Box} display="flex" flexDirection="column" sx={sx}>

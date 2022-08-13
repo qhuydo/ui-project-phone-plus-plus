@@ -4,6 +4,7 @@ export const initialCartState = {
   cartItems: [],
   voucher: null,
   specialOffers: [],
+  pushSaleMap: {},
 };
 
 export const cartReducer = (state, action) => {
@@ -113,6 +114,12 @@ export const cartReducer = (state, action) => {
       return {
         ...state,
         specialOffers: action.payload || state.specialOffers,
+      };
+    }
+    case "ADD_PUSH_SALE_MAP": {
+      return {
+        ...state,
+        pushSaleMap: action?.payload || state.pushSaleMap,
       };
     }
     default:

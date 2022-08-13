@@ -1,3 +1,5 @@
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   Box,
   Button,
@@ -7,20 +9,32 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { FALLBACK_IMG, GOLDEN_RATIO } from "utils/constants";
-import { useCartItemContext } from "features/cart/context";
 import ItemQuantityInput from "components/Input/ItemQuantityInput";
-import DeleteIcon from "@mui/icons-material/Delete";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { useCartItemContext } from "features/cart/context";
 import { useCartContext } from "features/cart/context/CartContext";
-import formatNumberToVND from "utils/currency-formatter";
+import { usePhonePrice } from "hooks";
+import { useCallback } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { Router } from "routes";
+import { FALLBACK_IMG, GOLDEN_RATIO } from "utils/constants";
 
 const CartItem = () => {
-  const { cartItem } = useCartItemContext();
+  const { cartItem, pushSale } = useCartItemContext();
   const { increaseItemQuantity, decreaseItemQuantity, removeItem } =
     useCartContext();
+
+  const increaseQuantityCb = useCallback(
+    () => increaseItemQuantity(cartItem),
+    [cartItem, increaseItemQuantity]
+  );
+
+  const decreaseQuantityCb = useCallback(
+    () => decreaseItemQuantity(cartItem),
+    [cartItem, decreaseItemQuantity]
+  );
+
+  const { displayTotalPrice, pushSalePercentOff, displayPushSalePrice } =
+    usePhonePrice(cartItem.version, cartItem.quantity, pushSale);
 
   return (
     <Stack direction="row" p={1} spacing={3}>
@@ -52,7 +66,7 @@ const CartItem = () => {
         />
       </Box>
 
-      <Stack direction="column" flexGrow={1} spacing={1}>
+      <Stack direction="column" flexGrow={1} spacing={pushSale ? 0.5 : 1}>
         <Stack
           direction="row"
           width={1}
@@ -78,9 +92,7 @@ const CartItem = () => {
             {cartItem.phone.name}
           </Link>
 
-          <Typography variant="h6">
-            {formatNumberToVND(cartItem.version.salePrice * cartItem.quantity)}
-          </Typography>
+          <Typography variant="h6">{displayTotalPrice}</Typography>
         </Stack>
 
         <Stack
@@ -94,12 +106,37 @@ const CartItem = () => {
             {`${cartItem.version.name}, ${cartItem.colour.colourName}`}
           </Typography>
 
-          {cartItem.quantity > 1 && (
-            <Typography variant="subtitle1" color="text.secondary">
+          {(cartItem.quantity > 1 || pushSale) && (
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              sx={{ textDecoration: pushSale ? "line-through" : null }}
+            >
               {`${cartItem.version.displaySalePrice} per item`}
             </Typography>
           )}
         </Stack>
+
+        {pushSale && (
+          <Stack
+            direction="row"
+            width={1}
+            justifyContent="space-between"
+            alignItems="center"
+            spacing={1}
+          >
+            <Typography variant="subtitle1" color="error.main">
+              Save {pushSalePercentOff}%
+            </Typography>
+
+            <Typography
+              variant="subtitle1"
+              color={pushSale ? "error.main" : "text.secondary"}
+            >
+              {`${displayPushSalePrice} per item`}
+            </Typography>
+          </Stack>
+        )}
 
         <Stack
           direction="row"
@@ -110,8 +147,8 @@ const CartItem = () => {
         >
           <ItemQuantityInput
             value={cartItem.quantity}
-            onQuantityIncremented={() => increaseItemQuantity(cartItem)}
-            onQuantityDecremented={() => decreaseItemQuantity(cartItem)}
+            onQuantityIncremented={increaseQuantityCb}
+            onQuantityDecremented={decreaseQuantityCb}
           />
 
           <IconButton onClick={() => removeItem(cartItem)}>
