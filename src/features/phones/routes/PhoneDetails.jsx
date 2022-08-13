@@ -44,9 +44,9 @@ const PhoneDetailsBody = () => {
 
   const renderRecommendedPhones = useCallback(
     () =>
-      recommendedPhones.map(({ phone }) => (
+      recommendedPhones.map(({ phone, pushSale }) => (
         <SwiperSlide key={phone.id} className="phone-swiper-slide">
-          <PhoneCardContextProvider phone={phone}>
+          <PhoneCardContextProvider phone={phone} pushSale={pushSale}>
             <PhoneCard />
           </PhoneCardContextProvider>
         </SwiperSlide>

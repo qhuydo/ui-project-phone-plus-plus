@@ -1,5 +1,5 @@
 import { Paper, Stack, Typography } from "@mui/material";
-import { cartItemType } from "features/payment/types";
+import { cartItemType } from "features/cart/types";
 import PropTypes from "prop-types";
 import { GOLDEN_RATIO } from "utils/constants";
 import formatNumberToVND from "utils/currency-formatter";

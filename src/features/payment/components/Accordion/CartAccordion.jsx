@@ -6,7 +6,7 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import { CartItemList } from "features/payment/components/Info";
-import { cartItemType } from "features/payment/types";
+import { cartItemType } from "features/cart/types";
 import { useAccordion } from "hooks";
 import PropTypes from "prop-types";
 

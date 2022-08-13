@@ -6,7 +6,7 @@ import {
   Divider,
   Link,
 } from "@mui/material";
-import { cartItemType } from "features/payment/types";
+import { cartItemType } from "features/cart/types";
 import { useCheckoutPrices } from "hooks";
 import PropTypes from "prop-types";
 

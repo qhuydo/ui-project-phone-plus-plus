@@ -1,5 +1,6 @@
-import { createContext, useContext } from "react";
+import { cartItemType } from "features/cart/types";
 import PropTypes from "prop-types";
+import { createContext, useContext } from "react";
 
 const CartItemContext = createContext({
   cartItem: null,
@@ -18,6 +19,6 @@ export const CartItemContextProvider = ({ cartItem, children }) => {
 };
 
 CartItemContextProvider.propTypes = {
-  cartItem: PropTypes.object,
+  cartItem: cartItemType,
   children: PropTypes.element,
 };

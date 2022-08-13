@@ -1,40 +1,20 @@
-import {
-  Container,
-  Divider,
-  Grid,
-  Stack,
-  SvgIcon,
-  Typography,
-} from "@mui/material";
+import { Container, Divider, Grid, Stack, Typography } from "@mui/material";
 import { APPBAR_LARGE } from "components/AppBar/AppBar";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
-import { CartIcon } from "features/cart/assets";
 import { CheckoutSection } from "features/cart/components";
 import CartInfoSection from "features/cart/components/CartInfoSection/CartInfoSection";
 import CartItemList from "features/cart/components/CartInfoSection/CartItemList";
 import VoucherSection from "features/cart/components/CartInfoSection/VoucherSection";
 import { useCartContext } from "features/cart/context/CartContext";
 import { SupportPaymentTypes } from "features/payment/components";
-import { useScroll } from "hooks";
 import EmptyCartBanner from "../components/CartInfoSection/EmptyCartBanner";
 import PeopleAlsoBuySection from "../components/CartInfoSection/PeopleAlsoBuySection";
 import SpecialOfferSection from "../components/CartInfoSection/SpecialOfferSection";
 
-const iconStyle = (theme) => ({
-  width: "20%",
-  height: "20%",
-  ".start-color": {
-    "--color-start": theme.palette.primary.main,
-  },
-  ".end-color": {
-    "--color-stop": theme.palette.secondary.main,
-  },
-});
-
 export const Cart = () => {
-  const { scrollY } = useScroll();
   const { state } = useCartContext();
+
   return (
     <>
       <Head title={"My cart"} />
@@ -129,8 +109,6 @@ export const Cart = () => {
             >
               <CheckoutSection
                 cardSx={{
-                  boxShadow: scrollY === 0 ? 0 : 3,
-                  borderColor: scrollY === 0 ? null : "primary.main",
                   borderWidth: "2.25px",
                 }}
               />

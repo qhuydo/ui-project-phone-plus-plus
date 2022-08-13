@@ -1,5 +1,5 @@
 import CartItem from "features/payment/components/Info/CartItem";
-import { cartItemType } from "features/payment/types";
+import { cartItemType } from "features/cart/types";
 import PropTypes from "prop-types";
 
 const CartItemList = ({ cartItems, ...others }) => {
