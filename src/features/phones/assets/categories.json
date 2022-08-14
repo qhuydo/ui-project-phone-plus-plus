@@ -3,31 +3,41 @@
     "key": "samsung",
     "name": "Samsung",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Samsung_wordmark.svg/1024px-Samsung_wordmark.svg.png",
-    "darkModeLogo": "https://i.imgur.com/aywPKKZ.png"
+    "darkModeLogo": "https://i.imgur.com/aywPKKZ.png",
+    "banner": "https://i.imgur.com/RhV3UUZ.jpg",
+    "bannerPhoneId": "6"
   },
   {
     "key": "apple",
     "name": "Apple",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/758px-Apple_logo_grey.svg.png",
-    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/758px-Apple_logo_grey.svg.png"
+    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Apple_logo_grey.svg/758px-Apple_logo_grey.svg.png",
+    "banner": "https://i.imgur.com/Ywgg6pa.jpg",
+    "bannerPhoneId": "1"
   },
   {
     "key": "sony",
     "name": "Sony",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Sony_logo.svg/1280px-Sony_logo.svg.png",
-    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sony_logo_%28white%29.svg/1024px-Sony_logo_%28white%29.svg.png"
+    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sony_logo_%28white%29.svg/1024px-Sony_logo_%28white%29.svg.png",
+    "banner": "https://i.imgur.com/bP3dmgs.png",
+    "bannerPhoneId": "3"
   },
   {
     "key": "google",
     "name": "Google",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1024px-Google_2015_logo.svg.png",
-    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1024px-Google_2015_logo.svg.png"
+    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1024px-Google_2015_logo.svg.png",
+    "banner": "https://i.imgur.com/lpRmpMQ.jpg",
+    "bannerPhoneId": "2"
   },
   {
     "key": "xiaomi",
     "name": "Xiaomi",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/1024px-Xiaomi_logo_%282021-%29.svg.png",
-    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/1024px-Xiaomi_logo_%282021-%29.svg.png"
+    "darkModeLogo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Xiaomi_logo_%282021-%29.svg/1024px-Xiaomi_logo_%282021-%29.svg.png",
+    "banner": "https://i.imgur.com/XZmlECV.png",
+    "bannerPhoneId": "0"
   },
   {
     "key": "nokia",

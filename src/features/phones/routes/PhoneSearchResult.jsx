@@ -1,20 +1,25 @@
-import { useSearchParams, useParams } from "react-router-dom";
-import { useEffect, useMemo } from "react";
-import { findPhoneAndFilter } from "features/phones/api";
-import { Box, Container, Grid, Typography } from "@mui/material";
-import { Head } from "components/Head/Head";
+import { Box, Container, Grid, Typography, Link } from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
+import { Head } from "components/Head/Head";
+import { findPhoneAndFilter } from "features/phones/api";
+import { categories } from "features/phones/assets";
+import FilterDialog from "features/phones/components/SearchResultSection/FilterDialog";
 import SearchResultSection from "features/phones/components/SearchResultSection/SearchResultSection";
 import {
   SearchResultContextProvider,
   useSearchResultContext,
 } from "features/phones/context/SearchResultContext";
-import FilterColumn from "../components/SearchResultSection/FilterColumn";
 import { useDebounce } from "hooks";
-import FilterDialog from "features/phones/components/SearchResultSection/FilterDialog";
-import { useForm, FormProvider } from "react-hook-form";
 import PropTypes from "prop-types";
-import { categories } from "features/phones/assets";
+import { useEffect, useMemo } from "react";
+import { useForm, FormProvider } from "react-hook-form";
+import {
+  useSearchParams,
+  useParams,
+  Link as RouterLink,
+} from "react-router-dom";
+import { Router } from "routes";
+import FilterColumn from "../components/SearchResultSection/FilterColumn";
 
 const PhoneSearchResult = ({ categoryPage }) => {
   const { brand } = useParams();
@@ -47,11 +52,21 @@ const PhoneSearchResultBody = () => {
     return searchParams.get("keyword") || "";
   }, [searchParams]);
 
-  const brandName = useMemo(() => {
-    const category = categories.find((item) => item.key === brand);
-
-    return category?.name ?? "category";
+  const category = useMemo(() => {
+    return categories.find((item) => item.key === brand);
   }, [brand]);
+
+  const displayCategory = useMemo(() => {
+    return categories.find((item) =>
+      brand
+        ? item.key === brand
+        : phones?.length && item.key === phones[0].category
+    );
+  }, [brand, phones]);
+
+  const brandName = useMemo(() => {
+    return category?.name ?? "category";
+  }, [category?.name]);
 
   const form = useForm({
     defaultValues: useMemo(() => filterOptions, [filterOptions]),
@@ -89,6 +104,7 @@ const PhoneSearchResultBody = () => {
   return (
     <>
       <Head title={`Search results for "${keyword}"`} />
+
       <Container>
         {showBrandFilterOption && (
           <DefaultBreadcrumb currentPage={`Search results for "${keyword}"`} />
@@ -96,22 +112,22 @@ const PhoneSearchResultBody = () => {
         {!showBrandFilterOption && (
           <DefaultBreadcrumb currentPage={brandName} />
         )}
-        <Box
-          height={300}
-          display="flex"
-          sx={(theme) => ({
-            my: 1,
-            bgcolor: "primary.50",
-            border: `2px solid ${theme.palette.divider}`,
-            borderRadius: `${theme.shape.borderRadius}px`,
-          })}
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Typography variant="h1" color="primary.main">
-            Banner
-          </Typography>
-        </Box>
+
+        {displayCategory?.banner && (
+          <Link
+            component={RouterLink}
+            to={Router.getPhoneDetailsPage(displayCategory?.bannerPhoneId, "")}
+          >
+            <Box
+              width={1}
+              component="img"
+              src={displayCategory?.banner}
+              sx={{
+                objectFit: "cover",
+              }}
+            />
+          </Link>
+        )}
 
         {showBrandFilterOption && (
           <Typography
