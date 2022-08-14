@@ -1,4 +1,5 @@
 import { Box, Stack } from "@mui/material";
+import { APPBAR_LARGE } from "components/AppBar/AppBar";
 import ComparisonItemHeader from "features/comparison/components/ComparisonSection/ComparisonItemHeader";
 import ComparisonTableGroup from "features/comparison/components/ComparisonSection/ComparisonTableGroup";
 import { ViewModeList } from "features/comparison/components/ControlSection";
@@ -45,7 +46,17 @@ const ComparisonSection = () => {
         width={`calc(${phoneDetails.length} * (100% - ${TABLE_HEADER_MAX_WIDTH}px) / ${MAX_ITEMS_PER_COMPARISON} + ${TABLE_HEADER_MAX_WIDTH}px)`}
         spacing={1}
       >
-        <Stack direction="row" width={1}>
+        <Stack
+          direction="row"
+          width={1}
+          position="sticky"
+          sx={{
+            paddingTop: 2,
+            top: APPBAR_LARGE,
+            zIndex: 10,
+            bgcolor: "background.default",
+          }}
+        >
           <Box width={TABLE_HEADER_MAX_WIDTH} mr={1}>
             <ViewModeList />
           </Box>
@@ -70,12 +81,14 @@ const ComparisonSection = () => {
 
         <ComparisonTableGroup />
       </Stack>
+
       {nRecommendations !== 0 && (
         <Stack
           direction="row"
           spacing={2}
           justifyContent="center"
           width={`calc(${nRecommendations} * (100% - ${TABLE_HEADER_MAX_WIDTH}px) / ${MAX_ITEMS_PER_COMPARISON})`}
+          pt={2}
         >
           {recommendations.slice(0, nRecommendations).map((phones, idx) => (
             <SearchResultPlaceholder

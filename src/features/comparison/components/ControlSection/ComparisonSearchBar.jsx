@@ -67,7 +67,7 @@ const ComparisonSearchBar = ({ ...others }) => {
   }, [dispatch, forceFocusSearchBar, phoneResults.length, recommendations]);
 
   return (
-    <Box width={0.74} display="flex" {...others}>
+    <Box width={1} display="flex" {...others}>
       <div style={{ display: "flex", width: "100%", position: "relative" }}>
         <SearchBar
           innerRef={searchBarRef}
@@ -77,7 +77,19 @@ const ComparisonSearchBar = ({ ...others }) => {
           onFocused={onSearchBarFocused}
           onSearchKeyChanged={onSearchKeyChanged}
           placeholder={"Search for phone to compare..."}
-          sx={{ m: 0 }}
+          sx={(theme) => ({
+            m: 0,
+            maxWidth: 1,
+            [theme.breakpoints.up("md")]: {
+              maxWidth: 1,
+            },
+            [theme.breakpoints.up("lg")]: {
+              maxWidth: 1,
+            },
+            [theme.breakpoints.up("xl")]: {
+              maxWidth: 1,
+            },
+          })}
         />
 
         <SearchResultsMenu
