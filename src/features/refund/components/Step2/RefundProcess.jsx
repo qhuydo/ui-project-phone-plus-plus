@@ -1,7 +1,6 @@
 import {
   Box,
   Typography,
-  Container,
   Stepper,
   Step,
   StepLabel,
@@ -33,10 +32,10 @@ const steps = [
 ];
 
 const FormCompleteRefund = () => {
-  const [activeStep, setActiveStep] = React.useState(2);
+  const [activeStep] = React.useState(2);
 
   return (
-    <Box sx={{ ml: 10 }}>
+    <Box width={700}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step) => (
           <Step key={step.label}>

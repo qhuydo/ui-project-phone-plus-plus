@@ -1,6 +1,14 @@
+import { getAllOrders } from "features/order/api";
+import { isOrderRefundable, getCurrentStatus } from "features/order/utils";
 import { initialRefundState, refundReducer } from "features/refund/stores";
 import PropTypes from "prop-types";
-import { createContext, useContext, useReducer, useMemo } from "react";
+import {
+  useEffect,
+  createContext,
+  useContext,
+  useReducer,
+  useMemo,
+} from "react";
 
 const RefundContext = createContext({
   state: initialRefundState,
@@ -13,6 +21,22 @@ export const useRefundContext = () => {
 
 export const RefundContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(refundReducer, initialRefundState);
+
+  useEffect(() => {
+    const savedOrders = getAllOrders();
+
+    const allOrders = savedOrders.filter((order) =>
+      isOrderRefundable(getCurrentStatus(order))
+    );
+
+    dispatch({
+      type: "SET_ALL_ORDERS",
+      payload: {
+        allOrders: allOrders,
+        orderIds: allOrders.map((order) => order.id),
+      },
+    });
+  }, []);
 
   const contextValue = useMemo(
     () => ({

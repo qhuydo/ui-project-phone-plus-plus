@@ -1,7 +1,7 @@
 export const initialRefundState = {
   currentStep: 0,
   selectedOrder: null,
-  selectedItem: null,
+  selectedCartItem: null,
   refundInfo: {
     fullName: "",
     email: "",
@@ -19,6 +19,9 @@ export const initialRefundState = {
     file: null,
   },
   autoFill: false,
+  allOrders: [],
+  orderIds: [],
+  searchId: "",
 };
 
 export const refundReducer = (state, action) => {
@@ -39,6 +42,20 @@ export const refundReducer = (state, action) => {
       return {
         ...state,
         currentStep: action?.payload ?? state.currentStep,
+      };
+    }
+    case "SET_ALL_ORDERS": {
+      return {
+        ...state,
+        allOrders: action?.payload?.allOrders ?? state.allOrders,
+        orderIds: action?.payload?.orderIds ?? state.orderIds,
+      };
+    }
+    case "SET_SELECTED_ORDER": {
+      return {
+        ...state,
+        selectedOrder: action?.payload?.order ?? null,
+        selectedCartItem: action?.payload?.cartItem ?? null,
       };
     }
     default:

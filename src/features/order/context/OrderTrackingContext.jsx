@@ -1,9 +1,12 @@
-import { findOrderById, refreshOrderStatus } from "features/order/api";
+import {
+  findOrderById,
+  refreshOrderStatus,
+  getAllOrders,
+} from "features/order/api";
 import {
   initialOrderTrackingState,
   orderTrackingReducer,
 } from "features/order/stores";
-import { ORDERS_KEY } from "features/payment/utils";
 import PropTypes from "prop-types";
 import {
   createContext,
@@ -32,15 +35,10 @@ export const OrderTrackingContextProvider = ({ id, children }) => {
   );
 
   useEffect(() => {
-    try {
-      const items = window?.localStorage.getItem(ORDERS_KEY) ?? "[]";
-      const savedOrders = items ? JSON.parse(items) : [];
+    const savedOrders = getAllOrders();
 
-      const ids = savedOrders.map((order) => order.id);
-      dispatch({ type: "SET_ORDER_IDS", payload: ids });
-    } catch (error) {
-      console.warn(`Error reading localStorage key “${ORDERS_KEY}”:`, error);
-    }
+    const ids = savedOrders.map((order) => order.id);
+    dispatch({ type: "SET_ORDER_IDS", payload: ids });
   }, []);
 
   useEffect(() => {

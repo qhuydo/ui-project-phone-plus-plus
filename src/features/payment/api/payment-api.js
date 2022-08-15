@@ -1,3 +1,4 @@
+import { getAllOrders } from "features/order/api";
 import { getInitialOrderStatus } from "features/order/utils";
 import { ORDERS_KEY } from "features/payment/utils";
 
@@ -17,8 +18,7 @@ export async function submitOrder(orderInfo) {
   };
 
   try {
-    const items = window?.localStorage.getItem(ORDERS_KEY) ?? "[]";
-    const savedOrders = items ? JSON.parse(items) : [];
+    const savedOrders = getAllOrders();
 
     savedOrders.push(order);
     window?.localStorage.setItem(ORDERS_KEY, JSON.stringify(savedOrders));

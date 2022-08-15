@@ -26,7 +26,7 @@ import DropzoneAreaExample from "./DropzoneAreaExample";
 const FormExchangeAndRefund = () => {
   const { user } = useAuth();
   const {
-    state: { refundInfo, autoFill },
+    state: { refundInfo, autoFill, selectedOrder },
     dispatch,
   } = useRefundContext();
 
@@ -60,7 +60,7 @@ const FormExchangeAndRefund = () => {
   const onNextPageButtonClicked = useCallback(async () => {
     await trigger();
     if (isValid) {
-      dispatch({ type: "SET_CURRENT_STEP", payload: 1 });
+      dispatch({ type: "SET_CURRENT_STEP", payload: 2 });
     }
   }, [dispatch, isValid, trigger]);
 
@@ -74,6 +74,10 @@ const FormExchangeAndRefund = () => {
     },
     [setValue]
   );
+
+  const moveBack = useCallback(() => {
+    dispatch({ type: "SET_CURRENT_STEP", payload: 0 });
+  }, [dispatch]);
 
   return (
     <FormProvider {...form}>
@@ -92,7 +96,7 @@ const FormExchangeAndRefund = () => {
           variant="outlined"
           required
           label="Order ID"
-          defaultValue="#956897232"
+          defaultValue={selectedOrder?.id}
         />
 
         <FormControl required fullWidth>
@@ -207,7 +211,11 @@ const FormExchangeAndRefund = () => {
           justifyContent="center"
           marginTop={4}
         >
-          <Button startIcon={<NavigateBeforeIcon />} variant="outlined">
+          <Button
+            startIcon={<NavigateBeforeIcon />}
+            variant="outlined"
+            onClick={moveBack}
+          >
             Go Back
           </Button>
 

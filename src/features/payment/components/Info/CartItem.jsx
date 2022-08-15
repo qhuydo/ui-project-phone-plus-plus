@@ -1,7 +1,9 @@
-import { Paper, Stack, Typography } from "@mui/material";
+import { Paper, Stack, Typography, Link } from "@mui/material";
 import { cartItemType, pushSaleType } from "features/cart/types";
 import { usePhonePrice } from "hooks";
 import PropTypes from "prop-types";
+import { Link as RouterLink } from "react-router-dom";
+import { Router } from "routes";
 import { GOLDEN_RATIO } from "utils/constants";
 
 const CartItem = ({ item, showPrice, showQuantity, pushSale, ...others }) => {
@@ -26,7 +28,20 @@ const CartItem = ({ item, showPrice, showQuantity, pushSale, ...others }) => {
 
       <Stack direction="column" flexGrow={1}>
         <Stack direction="row" width={1} justifyContent="space-between">
-          <Typography variant="h6">{item.phone.name}</Typography>
+          <Link
+            color="inherit"
+            underline="none"
+            component={RouterLink}
+            to={`${Router.getPhoneDetailsPage(item.phone.id, item.phone.name)}`}
+            sx={{
+              typography: "h6",
+              "&:hover": {
+                color: "primary.dark",
+              },
+            }}
+          >
+            <Typography variant="h6">{item.phone.name}</Typography>
+          </Link>
           {showPrice && (
             <Typography variant="h6">{displayTotalPrice}</Typography>
           )}

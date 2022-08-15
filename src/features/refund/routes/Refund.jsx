@@ -12,9 +12,13 @@ import {
   RefundExchangeStep1,
   RefundExchangeStep2,
   RefundExchangeStep3,
+  RefundExchangeStep0,
 } from "features/refund/components/Steps";
-import { RefundContextProvider } from "features/refund/context";
-import { useState } from "react";
+import {
+  RefundContextProvider,
+  useRefundContext,
+} from "features/refund/context";
+import { useEffect } from "react";
 
 const steps = ["Fill the form", "Processing", "Finished"];
 
@@ -27,7 +31,14 @@ const Refund = () => {
 };
 
 const RefundBody = () => {
-  const [activeStep, setActiveStep] = useState(0);
+  const {
+    state: { currentStep },
+  } = useRefundContext();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]);
+
   return (
     <>
       <Head title={"Refund/Exchange"} />
@@ -35,36 +46,28 @@ const RefundBody = () => {
       <Container sx={{ mb: 3 }}>
         <DefaultBreadcrumb currentPage={"Refunds And Exchanges"} />
 
-        <Typography
-          variant={"h3"}
-          textAlign="center"
-          fontWeight="bold"
-          my={5}
-          sx={{ textTransform: "uppercase" }}
-        >
+        <Typography variant="h3" textAlign="center" mt={3} mb={2}>
           Refunds And Exchanges
         </Typography>
 
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map((label) => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
+        {currentStep === 0 && <RefundExchangeStep0 />}
+        {currentStep > 0 && (
+          <>
+            <Stepper activeStep={currentStep} alternativeLabel>
+              {steps.map((label) => (
+                <Step key={label}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
 
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="100vh"
-          sx={{ my: 4 }}
-        >
-          {/*{activeStep === 0 && <RefundExchangeStep0/>}*/}
-          {activeStep === 0 && <RefundExchangeStep1 />}
-          {activeStep === 1 && <RefundExchangeStep2 />}
-          {activeStep === 2 && <RefundExchangeStep3 />}
-        </Box>
+            <Box display="flex" justifyContent="center" sx={{ my: 4 }}>
+              {currentStep === 1 && <RefundExchangeStep1 />}
+              {currentStep === 2 && <RefundExchangeStep2 />}
+              {currentStep === 3 && <RefundExchangeStep3 />}
+            </Box>
+          </>
+        )}
       </Container>
     </>
   );

@@ -8,6 +8,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ChangeCircleOutlinedIcon from "@mui/icons-material/ChangeCircleOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import { useAuth } from "features/auth";
+import { Router } from "routes";
 
 const profileMenu = {
   elevation: 0,
@@ -87,7 +88,7 @@ const ProfileMenu = ({ id, anchorEl, onMenuClosed }) => {
         Favourite list
       </MenuItem>
 
-      <MenuItem component={RouterLink} to="/">
+      <MenuItem component={RouterLink} to={Router.REFUND}>
         <ListItemIcon>
           <ChangeCircleOutlinedIcon fontSize="small" />
         </ListItemIcon>
