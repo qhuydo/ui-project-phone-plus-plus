@@ -1,3 +1,4 @@
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import {
   Stack,
   Typography,
@@ -6,137 +7,199 @@ import {
   FormControl,
   Select,
   MenuItem,
-  Box,
   Button,
   Checkbox,
   FormGroup,
   FormControlLabel,
   Link,
 } from "@mui/material";
+import { useAuth } from "features/auth";
 import { ReasonRefund, Policy } from "features/refund/assets";
-import { useState, useCallback } from "react";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import UserAddressFormSection from "features/refund/components/Step1/UserAddressFormSection";
+import UserInfoFormSection from "features/refund/components/Step1/UserInfoFormSection";
+import { useRefundContext } from "features/refund/context";
+import { getRefundInfoDetailsFromUser } from "features/refund/utils";
+import { useCallback, useMemo, useEffect } from "react";
+import { useForm, FormProvider, Controller } from "react-hook-form";
 import DropzoneAreaExample from "./DropzoneAreaExample";
 
 const FormExchangeAndRefund = () => {
-  const [reasonId, setReasonId] = useState(1);
-  const [policyId, setPolicyId] = useState(1);
-  const handleReasonChange = useCallback((event) => {
-    setReasonId(event.target.value);
-  }, []);
-  const handlePolicyChange = useCallback((event) => {
-    setPolicyId(event.target.value);
-  }, []);
+  const { user } = useAuth();
+  const {
+    state: { refundInfo, autoFill },
+    dispatch,
+  } = useRefundContext();
+
+  const form = useForm({
+    defaultValues: useMemo(() => refundInfo, [refundInfo]),
+    mode: "onTouched",
+  });
+
+  const {
+    trigger,
+    formState: { isValid },
+    reset,
+  } = form;
+
+  useEffect(() => {
+    if (user && !autoFill) {
+      const refundInfo2 = getRefundInfoDetailsFromUser(user, refundInfo);
+      dispatch({ type: "SET_REFUND_INFO", payload: refundInfo2 });
+      dispatch({ type: "SET_AUTO_FILL_FLAG", payload: true });
+      reset(refundInfo2);
+    }
+  }, [autoFill, dispatch, refundInfo, reset, user]);
+
+  useEffect(() => {
+    const subscription = form.watch((value) => {
+      dispatch({ type: "SET_REFUND_INFO", payload: value });
+    });
+    return () => subscription.unsubscribe();
+  }, [dispatch, form]);
+
+  const onNextPageButtonClicked = useCallback(async () => {
+    await trigger();
+    if (isValid) {
+      dispatch({ type: "SET_CURRENT_STEP", payload: 1 });
+    }
+  }, [dispatch, isValid, trigger]);
+
+  const { control, setValue } = form;
+
+  const onTermsAndConditionsChecked = useCallback(
+    async (e) => {
+      setValue("termsAndConditionsChecked", e.target.checked, {
+        shouldValidate: true,
+      });
+    },
+    [setValue]
+  );
+
   return (
-    <Stack direction="column" spacing={1}>
-      <Stack direction="column" spacing={2} pb={5}>
-        <TextField
-          variant="outlined"
-          required
-          label="Full name"
-          defaultValue="Nguyen Duc Huy"
-          placeholder="Enter your full name here"
-        />
-        <TextField
-          variant="outlined"
-          required
-          label="Email"
-          defaultValue="huycbd@gmail.com"
-          placeholder="Enter your email here"
-        />
-        <TextField
-          variant="outlined"
-          required
-          label="Phone number"
-          defaultValue="0901257031"
-          placeholder="Enter your phone number here"
-        />
-        <TextField
-          variant="outlined"
-          required
-          label="Content"
-          defaultValue="I want to exchange my product"
-          placeholder="Enter your content here"
-        />
-        <TextField
-          variant="outlined"
-          required
-          label="Address"
-          defaultValue="227 Nguyen Van Cu District 5 HCMC"
-          placeholder="Enter your address here"
-        />
+    <FormProvider {...form}>
+      <Stack
+        direction="column"
+        spacing={2}
+        sx={{ width: 800, pb: 3, borderRadius: "8px" }}
+      >
+        <UserInfoFormSection />
+        <UserAddressFormSection />
+
         <TextField
           //id="outlined-disabled"
           //disabled
+          InputProps={{ readOnly: true }}
           variant="outlined"
           required
           label="Order ID"
           defaultValue="#956897232"
         />
+
         <FormControl required fullWidth>
           <InputLabel id="reason-support-id-label" shrink={true}>
             Choose the problem you want to support
           </InputLabel>
-          <Select
-            labelId="reason-support-id-label"
-            id="reason-support-id-select"
-            value={reasonId}
-            label="Choose the problem you want to support"
-            onChange={handleReasonChange}
-          >
-            {Object.values(ReasonRefund).map((r) => (
-              <MenuItem value={r.id} key={r.id}>
-                <Typography> {r.reason}</Typography>
-              </MenuItem>
-            ))}
-          </Select>
+
+          <Controller
+            control={control}
+            name="reasonToRefund"
+            render={({ field }) => (
+              <Select
+                {...field}
+                labelId="reason-support-id-label"
+                id="reason-support-id-select"
+                label="Choose the problem you want to support"
+              >
+                {Object.values(ReasonRefund).map((r) => (
+                  <MenuItem value={r.id} key={r.id}>
+                    <Typography> {r.reason}</Typography>
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
         </FormControl>
+
         <FormControl required fullWidth>
           <InputLabel id="policy-id-label" shrink={true}>
             Choose policy
           </InputLabel>
-          <Select
-            labelId="policy-id-label"
-            id="policy-id-select"
-            value={policyId}
-            label="Choose policy"
-            onChange={handlePolicyChange}
-          >
-            {Object.values(Policy).map((r) => (
-              <MenuItem value={r.id} key={r.id}>
-                <Typography> {r.type}</Typography>
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox defaultChecked />}
-            label="Receive 24/7 Support"
+
+          <Controller
+            control={control}
+            name="policy"
+            render={({ field }) => (
+              <Select
+                {...field}
+                labelId="policy-id-label"
+                id="policy-id-select"
+                label="Choose policy"
+              >
+                {Object.values(Policy).map((r) => (
+                  <MenuItem value={r.id} key={r.id}>
+                    <Typography> {r.type}</Typography>
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
           />
-        </FormGroup>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "left"
-          }}
-        >
-          <FormGroup sx={{ width: 1000 }}>
+        </FormControl>
+
+        <Stack direction="column">
+          <FormGroup>
             <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="By checking the boxes, you acknowledge that you have read and agree to the Refund And Exchanges Policy"
+              control={<Checkbox />}
+              label="Receive 24/7 Support"
             />
           </FormGroup>
-          {/* <Link
-            href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7"
-            target={"_blank"}
-          >
-            Refund And Exchanges Policy
-          </Link> */}
-        </Box>
+
+          <FormGroup>
+            <FormControlLabel
+              label={
+                <Typography>
+                  I have read and accept the{" "}
+                  <Link
+                    href={"https://mui.com/material-ui/react-link/"}
+                    underline="none"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Refund And Exchanges Policy
+                  </Link>
+                </Typography>
+              }
+              color="inherit"
+              sx={{ px: 0, width: 1 }}
+              control={
+                <Controller
+                  name="termsAndConditionsChecked"
+                  defaultValue={false}
+                  control={control}
+                  rules={{
+                    required:
+                      "You need to read the terms and conditions before processing the refund",
+                  }}
+                  render={({ field: props }) => (
+                    <Checkbox
+                      {...props}
+                      // eslint-disable-next-line react/prop-types
+                      value={props.value}
+                      //eslint-disable-next-line react/prop-types
+                      checked={props.value}
+                      //eslint-disable-next-line react/prop-types
+                      onChange={onTermsAndConditionsChecked}
+                    />
+                  )}
+                />
+              }
+            />
+          </FormGroup>
+        </Stack>
+
         <h4>Attach Files</h4>
-        <DropzoneAreaExample></DropzoneAreaExample>
+
+        <DropzoneAreaExample />
+
         <Stack
           width={1}
           direction="row"
@@ -147,10 +210,17 @@ const FormExchangeAndRefund = () => {
           <Button startIcon={<NavigateBeforeIcon />} variant="outlined">
             Go Back
           </Button>
-          <Button variant="contained">Submit Form</Button>
+
+          <Button
+            variant="contained"
+            disabled={!isValid}
+            onClick={onNextPageButtonClicked}
+          >
+            Submit Form
+          </Button>
         </Stack>
       </Stack>
-    </Stack>
+    </FormProvider>
   );
 };
 export default FormExchangeAndRefund;
