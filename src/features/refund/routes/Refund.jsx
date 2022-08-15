@@ -8,18 +8,26 @@ import {
 } from "@mui/material";
 import { DefaultBreadcrumb } from "components/Breadcrumb";
 import { Head } from "components/Head/Head";
-import Placeholder from "components/Placeholder/Placeholder";
 import {
-  RefundExchangeStep0,
   RefundExchangeStep1,
   RefundExchangeStep2,
   RefundExchangeStep3,
 } from "features/refund/components/Steps";
-import React from "react";
+import { RefundContextProvider } from "features/refund/context";
+import { useState } from "react";
+
 const steps = ["Fill the form", "Processing", "Finished"];
 
 const Refund = () => {
-  const [activeStep, setActiveStep] = React.useState(0);
+  return (
+    <RefundContextProvider>
+      <RefundBody />
+    </RefundContextProvider>
+  );
+};
+
+const RefundBody = () => {
+  const [activeStep, setActiveStep] = useState(0);
   return (
     <>
       <Head title={"Refund/Exchange"} />
@@ -45,33 +53,18 @@ const Refund = () => {
           ))}
         </Stepper>
 
-        {/* <Box
+        <Box
           display="flex"
           justifyContent="center"
           alignItems="center"
           minHeight="100vh"
           sx={{ my: 4 }}
         >
-          <RefundExchangeStep1></RefundExchangeStep1>
-        </Box> */}
-
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ my: 4 }}
-        >
-          <RefundExchangeStep2></RefundExchangeStep2>
+          {/*{activeStep === 0 && <RefundExchangeStep0/>}*/}
+          {activeStep === 0 && <RefundExchangeStep1 />}
+          {activeStep === 1 && <RefundExchangeStep2 />}
+          {activeStep === 2 && <RefundExchangeStep3 />}
         </Box>
-
-        {/* <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          sx={{ my: 4 }}
-        >
-          <RefundExchangeStep3></RefundExchangeStep3>
-        </Box> */}
       </Container>
     </>
   );
