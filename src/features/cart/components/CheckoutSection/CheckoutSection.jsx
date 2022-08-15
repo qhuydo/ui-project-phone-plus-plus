@@ -10,7 +10,7 @@ import { Router } from "routes";
 
 const CheckoutSection = ({ cardSx }) => {
   const {
-    state: { cartItems },
+    state: { cartItems, pushSaleMap },
   } = useCartContext();
 
   const { dispatch: paymentDispatch } = usePaymentContext();
@@ -40,6 +40,7 @@ const CheckoutSection = ({ cardSx }) => {
           Checkout
         </Button>
       }
+      pushSaleMap={pushSaleMap}
     />
   );
 };

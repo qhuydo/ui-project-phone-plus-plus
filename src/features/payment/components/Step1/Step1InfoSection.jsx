@@ -7,7 +7,7 @@ import { usePaymentContext } from "features/payment/context";
 
 const Step1InfoSection = () => {
   const {
-    state: { cartItems },
+    state: { cartItems, pushSaleMap },
   } = usePaymentContext();
 
   const { isAuth, signIn } = useAuth();
@@ -41,7 +41,11 @@ const Step1InfoSection = () => {
         </Stack>
       )}
 
-      <CartAccordion cartItems={cartItems} openWhenFirstShow />
+      <CartAccordion
+        cartItems={cartItems}
+        pushSaleMap={pushSaleMap}
+        openWhenFirstShow
+      />
       <Step1Form />
       <SupportPaymentTypes />
     </Stack>

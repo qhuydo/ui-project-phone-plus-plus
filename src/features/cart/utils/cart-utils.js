@@ -5,12 +5,15 @@ export function getNumberOfCartItem(cartItems) {
   );
 }
 
-export function calculateEstimatePrice(cartItems) {
-  return cartItems.reduce(
-    (partialSum, item) =>
-      partialSum + (item.version.salePrice ?? 0) * (item.quantity ?? 0),
-    0
-  );
+export function calculateEstimatePrice(cartItems, pushSaleMap) {
+  return cartItems.reduce((partialSum, item) => {
+    const pushSale = pushSaleMap ? pushSaleMap[item.phone?.id ?? "-1"] : null;
+    const salePrice =
+      (pushSale ? pushSale.versions[item.version.id]?.pushSalePrice : null) ??
+      item.version?.salePrice;
+
+    return partialSum + (salePrice ?? 0) * (item.quantity ?? 0);
+  }, 0);
 }
 
 export function calculateSubtotalPrice(cartItems) {
@@ -21,8 +24,11 @@ export function calculateSubtotalPrice(cartItems) {
   );
 }
 
-export function calculateSavingPrice(cartItems) {
-  return calculateSubtotalPrice(cartItems) - calculateEstimatePrice(cartItems);
+export function calculateSavingPrice(cartItems, pushSaleMap) {
+  return (
+    calculateSubtotalPrice(cartItems) -
+    calculateEstimatePrice(cartItems, pushSaleMap)
+  );
 }
 
 export function createCartItem(

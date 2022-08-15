@@ -1,3 +1,4 @@
+import { getSpecialOfferItems, getPushSaleMap } from "features/cart/api";
 import { cartReducer, initialCartState } from "features/cart/stores";
 import PropTypes from "prop-types";
 import {
@@ -6,6 +7,7 @@ import {
   useContext,
   useMemo,
   useReducer,
+  useEffect,
 } from "react";
 
 const cartContextInitialState = {
@@ -82,6 +84,15 @@ export const CartContextProvider = ({ children }) => {
     dispatch({ type: "REMOVE_ALL", cb: setCartItems });
   }, [setCartItems]);
 
+  useEffect(() => {
+    (async () => {
+      if (state.cartItems) {
+        const map = await getPushSaleMap(state.cartItems);
+        dispatch({ type: "ADD_PUSH_SALE_MAP", payload: map });
+      }
+    })();
+  }, [state?.cartItems]);
+
   const contextValue = useMemo(
     () => ({
       state,
@@ -101,6 +112,16 @@ export const CartContextProvider = ({ children }) => {
       state,
     ]
   );
+
+  useEffect(() => {
+    (async () => {
+      const phoneIds = [
+        ...new Set(state.cartItems.map((item) => item.phone.id)),
+      ];
+      const specialOffers = await getSpecialOfferItems(phoneIds);
+      dispatch({ type: "ADD_SPECIAL_OFFER_ITEMS", payload: specialOffers });
+    })();
+  }, [state.cartItems]);
 
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>

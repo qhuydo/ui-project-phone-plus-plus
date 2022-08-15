@@ -12,7 +12,7 @@ import HideOnScroll from "components/AppBar/HideOnScroll";
 import StyledAppBar from "components/AppBar/StyledAppBar";
 import StyledToolbar from "components/AppBar/StyledToolbar";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate, useLocation } from "react-router-dom";
 import router from "routes/router";
 import { SearchBar } from "components/SearchBar";
 import ProfileMenuButton from "components/AppBar/ProfileMenuButton";
@@ -38,6 +38,7 @@ const AppBar = () => {
   const [showSearchResults, setShowSearchResults] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { state: cartState } = useCartContext();
 
@@ -73,6 +74,7 @@ const AppBar = () => {
       setShowSearchResults(true);
     }
   }, [phoneResults.length]);
+
   const onSearchBarOutOfFocused = useCallback(() => {
     setShowSearchResults(false);
   }, []);
@@ -86,6 +88,10 @@ const AppBar = () => {
     () => getNumberOfCartItem(cartState.cartItems),
     [cartState]
   );
+
+  const forceShowAppBarWhenScrolling = useMemo(() => {
+    return location?.pathname === Router.PHONE_COMPARISON;
+  }, [location?.pathname]);
 
   useEffect(() => {
     if (debouncedKeyword.trim().length === 0) {
@@ -105,7 +111,7 @@ const AppBar = () => {
 
   return (
     <>
-      <HideOnScroll>
+      <HideOnScroll forceShow={forceShowAppBarWhenScrolling}>
         <StyledAppBar>
           <StyledToolbar>
             <AppBarLogo />

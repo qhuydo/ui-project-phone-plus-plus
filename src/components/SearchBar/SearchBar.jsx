@@ -15,6 +15,7 @@ const SearchBar = ({
   onCleared,
   placeholder,
   sx,
+  innerRef,
 }) => {
   return (
     <SearchBarContainer sx={sx}>
@@ -26,6 +27,7 @@ const SearchBar = ({
         onChange={onSearchKeyChanged}
         onFocus={onFocused}
         onBlur={onBlurred}
+        inputRef={innerRef}
       />
 
       <SearchIconWrapper>
@@ -52,6 +54,7 @@ SearchBar.propTypes = {
   onCleared: PropTypes.func,
   placeholder: PropTypes.string,
   sx: PropTypes.any,
+  innerRef: PropTypes.any,
 };
 
 export default SearchBar;

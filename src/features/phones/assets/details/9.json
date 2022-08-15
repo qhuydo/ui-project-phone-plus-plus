@@ -4,6 +4,13 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/XLjmcsH.jpg",
+  "recommendations": [
+    "6",
+    "7",
+    "8",
+    "10",
+    "11"
+  ],
   "versions": [
     {
       "id": "SM-A528B",

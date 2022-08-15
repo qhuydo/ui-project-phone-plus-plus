@@ -1,12 +1,17 @@
 import CartItem from "features/payment/components/Info/CartItem";
-import { cartItemType } from "features/payment/types";
+import { cartItemType, pushSaleType } from "features/cart/types";
 import PropTypes from "prop-types";
 
-const CartItemList = ({ cartItems, ...others }) => {
+const CartItemList = ({ cartItems, pushSaleMap, ...others }) => {
   return (
     <>
       {cartItems?.map((item, idx) => (
-        <CartItem key={idx} item={item} {...others} />
+        <CartItem
+          key={idx}
+          item={item}
+          pushSale={pushSaleMap ? pushSaleMap[item.phone.id] : undefined}
+          {...others}
+        />
       ))}
     </>
   );
@@ -14,6 +19,7 @@ const CartItemList = ({ cartItems, ...others }) => {
 
 CartItemList.propTypes = {
   cartItems: PropTypes.arrayOf(cartItemType),
+  pushSaleMap: PropTypes.objectOf(pushSaleType),
 };
 
 export default CartItemList;

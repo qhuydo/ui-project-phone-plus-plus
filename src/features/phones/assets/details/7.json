@@ -4,6 +4,31 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/qr1IgLm.jpg",
+  "recommendations": [
+    "8",
+    "9",
+    "10",
+    "11",
+    "12"
+  ],
+  "pushSales": [
+    {
+      "phoneId": "9",
+      "description": "Buy Samsung Galaxy S22 Ultra and save off Samsung Galaxy A52s",
+      "versions": {
+        "SM-A528B": {
+          "id": "SM-A528B",
+          "pushSalePrice": 6490000,
+          "displayPushSalePrice": "6.490.000₫"
+        },
+        "SM-A528B/DS": {
+          "id": "SM-A528B/DS",
+          "pushSalePrice": 6690000,
+          "displayPushSalePrice": "6.690.000₫"
+        }
+      }
+    }
+  ],
   "versions": [
     {
       "id": "SM-S908B",

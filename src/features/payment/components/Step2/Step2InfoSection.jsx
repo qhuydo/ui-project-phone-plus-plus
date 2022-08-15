@@ -8,12 +8,12 @@ import { usePaymentContext } from "features/payment/context";
 
 const Step2InfoSection = () => {
   const {
-    state: { cartItems },
+    state: { cartItems, pushSaleMap },
   } = usePaymentContext();
 
   return (
     <Stack spacing={2} direction="column">
-      <CartAccordion cartItems={cartItems} />
+      <CartAccordion cartItems={cartItems} pushSaleMap={pushSaleMap} />
       <DeliveryInfoAccordion />
       <Typography variant="h5" fontWeight="bold" px={2}>
         Payment method

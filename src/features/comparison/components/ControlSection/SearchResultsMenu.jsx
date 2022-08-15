@@ -1,8 +1,6 @@
-import PropTypes from "prop-types";
-import { useMemo } from "react";
+import AddIcon from "@mui/icons-material/Add";
 import {
   Box,
-  Button,
   ButtonBase,
   Divider,
   Grid,
@@ -10,9 +8,14 @@ import {
   Paper,
   Stack,
   Typography,
+  ListItemButton,
+  ListItemText,
+  Button,
+  List,
 } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
 import { usePhoneComparisonContext } from "features/comparison/context";
+import PropTypes from "prop-types";
+import { useMemo } from "react";
 import { GOLDEN_RATIO } from "utils/constants";
 
 const N_ITEMS = 8;
@@ -42,13 +45,20 @@ const searchBarMenuStyle = {
 
 const SearchResultsMenu = ({ searchResults, shouldShowSearchMenu }) => {
   const {
-    state: { recommendations },
+    state: { recommendations, phoneDetails },
     addPhone,
   } = usePhoneComparisonContext();
 
   const result = useMemo(
-    () => searchResults.slice(0, N_ITEMS),
-    [searchResults]
+    () =>
+      searchResults
+        .filter((result) => {
+          return (
+            phoneDetails?.findIndex((phone) => phone.id === result.id) === -1
+          );
+        })
+        .slice(0, N_ITEMS),
+    [phoneDetails, searchResults]
   );
 
   return (
@@ -66,23 +76,53 @@ const SearchResultsMenu = ({ searchResults, shouldShowSearchMenu }) => {
         sx={searchBarMenuStyle}
         bgcolor="background.paper"
       >
-        <Stack
-          direction="column"
-          flex={1}
-          spacing={1}
-          alignItems="start"
-          py={1}
-          px={1}
-        >
+        <List direction="column" py={1} px={1} sx={{ flex: 1 }}>
           {result.map((item) => (
-            <Stack
-              direction="row"
-              spacing={1.5}
-              py={0.5}
-              px={0.5}
+            <ListItemButton
               key={item.id}
-              alignItems="center"
+              disableGutters
+              divider
+              dense
+              sx={{
+                width: 1,
+                display: "flex",
+                flexDirection: "row",
+              }}
+              onClick={() => addPhone(item.id)}
             >
+              <Stack spacing={1} direction="row" flexGrow={1}>
+                <Box
+                  component={"img"}
+                  src={item.colours[0].thumbnail}
+                  style={{
+                    height: 54,
+                    aspectRatio: `${GOLDEN_RATIO}`,
+                    border: (theme) => `1px solid ${theme.palette.divider}`,
+                  }}
+                />
+
+                <ListItemText
+                  primaryTypographyProps={{
+                    variant: "body1",
+                  }}
+                  primary={item.name}
+                  secondary={
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        mt: 0.5,
+                        display: "flex",
+                        alignItems: "center",
+                        color: "text.disabled",
+                        alignContent: "center",
+                      }}
+                    >
+                      {item.versions[0].displaySalePrice}
+                    </Typography>
+                  }
+                />
+              </Stack>
+
               <Button
                 variant="outlined"
                 startIcon={<AddIcon />}
@@ -90,11 +130,9 @@ const SearchResultsMenu = ({ searchResults, shouldShowSearchMenu }) => {
               >
                 Add
               </Button>
-
-              <Typography>{item.name}</Typography>
-            </Stack>
+            </ListItemButton>
           ))}
-        </Stack>
+        </List>
         <Divider orientation="vertical" flexItem />
 
         <Stack

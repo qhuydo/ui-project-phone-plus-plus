@@ -14,7 +14,7 @@ import { useCallback } from "react";
 
 const PaymentStep0 = () => {
   const {
-    state: { cartItems },
+    state: { cartItems, pushSaleMap },
     dispatch,
   } = usePaymentContext();
 
@@ -48,7 +48,7 @@ const PaymentStep0 = () => {
             justifyContent="center"
           >
             <Typography>
-              Already have a Phone++ account and want to sign in here?
+              Already have a Phone++ account and want to login here?
             </Typography>
             <Stack
               width={1}
@@ -57,10 +57,10 @@ const PaymentStep0 = () => {
               justifyContent="center"
             >
               <Button variant="contained" onClick={onSigninButtonClicked}>
-                Sign in
+                Login
               </Button>
               <Button variant="outlined" onClick={onSkipButtonClicked}>
-                Continue without sign in
+                Continue without login
               </Button>
             </Stack>
           </Stack>
@@ -72,7 +72,10 @@ const PaymentStep0 = () => {
       </InfoGrid>
 
       <CheckoutSectionGrid>
-        <PaymentCheckoutSection cartItems={cartItems} />
+        <PaymentCheckoutSection
+          cartItems={cartItems}
+          pushSaleMap={pushSaleMap}
+        />
       </CheckoutSectionGrid>
     </PaymentContainerGrid>
   );

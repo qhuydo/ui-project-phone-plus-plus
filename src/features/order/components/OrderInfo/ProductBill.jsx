@@ -9,14 +9,63 @@ import {
   Box,
 } from "@mui/material";
 import { SpecsTableRow, SpecsTableCell } from "components/Table";
+import { cartItemType, pushSaleType } from "features/cart/types";
 import { orderType } from "features/order/types";
 import CartItem from "features/payment/components/Info/CartItem";
-import { useCheckoutPrices } from "hooks";
-import formatNumberToVND from "utils/currency-formatter";
+import { useCheckoutPrices, usePhonePrice } from "hooks";
+
+const CartItemTableRow = ({ item, pushSale }) => {
+  const { displayPushSalePrice, displayTotalPrice } = usePhonePrice(
+    item?.version,
+    item?.quantity,
+    pushSale
+  );
+
+  return (
+    <SpecsTableRow>
+      <SpecsTableCell sx={{ verticalAlign: "top" }}>
+        <CartItem item={item} showPrice={false} showQuantity={false} />
+      </SpecsTableCell>
+
+      <SpecsTableCell sx={{ verticalAlign: "top" }}>
+        <Typography
+          textAlign="end"
+          sx={{
+            textDecoration: pushSale ? "line-through" : null,
+          }}
+        >
+          {item.version.displaySalePrice}
+        </Typography>
+        {pushSale && (
+          <Typography textAlign="end" color="error.main">
+            {displayPushSalePrice}
+          </Typography>
+        )}
+      </SpecsTableCell>
+
+      <SpecsTableCell sx={{ verticalAlign: "top" }}>
+        <Typography textAlign="end">{item.quantity}</Typography>
+      </SpecsTableCell>
+
+      <SpecsTableCell sx={{ verticalAlign: "top" }}>
+        <Typography textAlign="end">{displayTotalPrice}</Typography>
+      </SpecsTableCell>
+    </SpecsTableRow>
+  );
+};
+
+CartItemTableRow.propTypes = {
+  item: cartItemType,
+  pushSale: pushSaleType,
+};
 
 const ProductBill = ({ order }) => {
-  const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
-    useCheckoutPrices(order.cartItems, order.contactDetails.deliveryMethod);
+  const { estimatePrice, subTotalPrice, savingPrice, deliveryFee } =
+    useCheckoutPrices(
+      order.cartItems,
+      order.contactDetails.deliveryMethod,
+      order.pushSaleMap
+    );
 
   return (
     <TableContainer component={Paper} variant="outlined">
@@ -67,31 +116,15 @@ const ProductBill = ({ order }) => {
         <TableBody>
           {order.cartItems.map((item, idx) => {
             return (
-              <SpecsTableRow key={idx}>
-                <SpecsTableCell sx={{ verticalAlign: "top" }}>
-                  <CartItem
-                    item={item}
-                    showPrice={false}
-                    showQuantity={false}
-                  />
-                </SpecsTableCell>
-
-                <SpecsTableCell sx={{ verticalAlign: "top" }}>
-                  <Typography textAlign="end">
-                    {item.version.displaySalePrice}
-                  </Typography>
-                </SpecsTableCell>
-
-                <SpecsTableCell sx={{ verticalAlign: "top" }}>
-                  <Typography textAlign="end">{item.quantity}</Typography>
-                </SpecsTableCell>
-
-                <SpecsTableCell sx={{ verticalAlign: "top" }}>
-                  <Typography textAlign="end">
-                    {formatNumberToVND(item.version.salePrice * item.quantity)}
-                  </Typography>
-                </SpecsTableCell>
-              </SpecsTableRow>
+              <CartItemTableRow
+                key={idx}
+                item={item}
+                pushSale={
+                  order.pushSaleMap
+                    ? order.pushSaleMap[item.phone?.id ?? "-1"]
+                    : undefined
+                }
+              />
             );
           })}
           <SpecsTableRow>

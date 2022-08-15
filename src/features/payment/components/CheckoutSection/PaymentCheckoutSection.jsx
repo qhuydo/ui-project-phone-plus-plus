@@ -6,7 +6,7 @@ import {
   Divider,
   Link,
 } from "@mui/material";
-import { cartItemType } from "features/payment/types";
+import { cartItemType, pushSaleType } from "features/cart/types";
 import { useCheckoutPrices } from "hooks";
 import PropTypes from "prop-types";
 
@@ -16,9 +16,10 @@ const PaymentCheckoutSection = ({
   buttonGroup,
   deliveryMethod,
   showDeliveryFee,
+  pushSaleMap,
 }) => {
-  const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
-    useCheckoutPrices(cartItems, deliveryMethod);
+  const { estimatePrice, subTotalPrice, savingPrice, deliveryFee } =
+    useCheckoutPrices(cartItems, deliveryMethod, pushSaleMap);
 
   return (
     <Stack direction="column" spacing={1}>
@@ -79,7 +80,7 @@ const PaymentCheckoutSection = ({
             alignItems="baseline"
           >
             <Typography variant="subtitle1">Discount</Typography>
-            <Typography>-0 ₫</Typography>
+            <Typography>-0₫</Typography>
           </Stack>
 
           {buttonGroup}
@@ -105,6 +106,7 @@ PaymentCheckoutSection.propTypes = {
   buttonGroup: PropTypes.element,
   deliveryMethod: PropTypes.string,
   showDeliveryFee: PropTypes.bool,
+  pushSaleMap: PropTypes.objectOf(pushSaleType),
 };
 
 export default PaymentCheckoutSection;

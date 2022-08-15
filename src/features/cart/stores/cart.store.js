@@ -3,6 +3,8 @@ import { isCartItemTheSame } from "features/cart/utils";
 export const initialCartState = {
   cartItems: [],
   voucher: null,
+  specialOffers: [],
+  pushSaleMap: {},
 };
 
 export const cartReducer = (state, action) => {
@@ -107,6 +109,18 @@ export const cartReducer = (state, action) => {
         action.cb(newState.cartItems);
       }
       return newState;
+    }
+    case "ADD_SPECIAL_OFFER_ITEMS": {
+      return {
+        ...state,
+        specialOffers: action.payload || state.specialOffers,
+      };
+    }
+    case "ADD_PUSH_SALE_MAP": {
+      return {
+        ...state,
+        pushSaleMap: action?.payload || state.pushSaleMap,
+      };
     }
     default:
       return state;

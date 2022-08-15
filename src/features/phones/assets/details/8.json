@@ -4,6 +4,13 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/H4te372.jpg",
+  "recommendations": [
+    "9",
+    "10",
+    "11",
+    "12",
+    "13"
+  ],
   "versions": [
     {
       "id": "SM-A035F/DS",

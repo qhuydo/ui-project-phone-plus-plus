@@ -1,13 +1,31 @@
 import { Stack, Typography } from "@mui/material";
-import { shuffle } from "lodash-es";
+import { useCartContext } from "features/cart/context/CartContext";
+import { PhoneCard } from "features/phones/components/Card";
 import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCarousel";
-import { useMemo } from "react";
-import { allPhones } from "features/phones/assets";
+import { PhoneCardContextProvider } from "features/phones/context";
+import { useMemo, useCallback } from "react";
+import { SwiperSlide } from "swiper/react";
 
 const SpecialOfferSection = () => {
+  const {
+    state: { specialOffers },
+  } = useCartContext();
+
   const offers = useMemo(() => {
-    return shuffle(allPhones).slice(0, 3);
-  }, []);
+    return specialOffers.slice(0, 3);
+  }, [specialOffers]);
+
+  const renderSpecialOfferCb = useCallback(
+    () =>
+      offers.map(({ phone, pushSale }) => (
+        <SwiperSlide key={phone.id} className="phone-swiper-slide">
+          <PhoneCardContextProvider phone={phone} pushSale={pushSale}>
+            <PhoneCard />
+          </PhoneCardContextProvider>
+        </SwiperSlide>
+      )),
+    [offers]
+  );
 
   return (
     <Stack
@@ -28,7 +46,7 @@ const SpecialOfferSection = () => {
 
       <PhoneCardCarousel
         id="cart-special-offers"
-        phones={offers}
+        renderPhoneCb={renderSpecialOfferCb}
         phonesPerView={{
           xs: 1,
           sm: 2,

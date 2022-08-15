@@ -1,26 +1,30 @@
 import { AuthProvider } from "features/auth";
 import { CartContextProvider } from "features/cart/context/CartContext";
 import { ThemeConfig } from "features/misc";
+import ErrorFallback from "features/misc/components/ErrorFallback";
 import { PaymentContextProvider } from "features/payment/context";
 import { GlobalListProvider } from "features/phones/context/GlobalPhoneListContext";
+import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { GlobalRouter } from "./routes";
 
 function App() {
   return (
-    <AuthProvider>
-      <HelmetProvider>
-        <CartContextProvider>
-          <PaymentContextProvider>
+    <HelmetProvider>
+      <ThemeConfig>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <AuthProvider>
             <GlobalListProvider>
-              <ThemeConfig>
-                <GlobalRouter />
-              </ThemeConfig>
+              <CartContextProvider>
+                <PaymentContextProvider>
+                  <GlobalRouter />
+                </PaymentContextProvider>
+              </CartContextProvider>
             </GlobalListProvider>
-          </PaymentContextProvider>
-        </CartContextProvider>
-      </HelmetProvider>
-    </AuthProvider>
+          </AuthProvider>
+        </ErrorBoundary>
+      </ThemeConfig>
+    </HelmetProvider>
   );
 }
 

@@ -4,6 +4,26 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/UlHSLAE.jpg",
+  "recommendations": [
+    "6",
+    "7",
+    "8",
+    "9",
+    "12"
+  ],
+  "pushSales": [
+    {
+      "phoneId": "12",
+      "description": "Buy Samsung Galaxy S22 and save off Samsung Galaxy A73",
+      "versions": {
+        "SM-A736B": {
+          "id": "SM-A736B",
+          "pushSalePrice": 9990000,
+          "displayPushSalePrice": "9.990.000₫"
+        }
+      }
+    }
+  ],
   "versions": [
     {
       "id": "SM-S901B",

@@ -20,7 +20,7 @@ const PhoneCardCarousel = ({ phones, phonesPerView, renderPhoneCb, id }) => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 500);
   }, []);
 
   return (

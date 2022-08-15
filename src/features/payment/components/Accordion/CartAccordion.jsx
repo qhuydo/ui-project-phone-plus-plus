@@ -6,11 +6,11 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import { CartItemList } from "features/payment/components/Info";
-import { cartItemType } from "features/payment/types";
+import { cartItemType, pushSaleType } from "features/cart/types";
 import { useAccordion } from "hooks";
 import PropTypes from "prop-types";
 
-const CartAccordion = ({ cartItems, openWhenFirstShow }) => {
+const CartAccordion = ({ cartItems, openWhenFirstShow, pushSaleMap }) => {
   const { isOpen, handleChange } = useAccordion(!!openWhenFirstShow);
 
   return (
@@ -33,7 +33,7 @@ const CartAccordion = ({ cartItems, openWhenFirstShow }) => {
       </AccordionSummary>
 
       <AccordionDetails>
-        <CartItemList cartItems={cartItems} />
+        <CartItemList cartItems={cartItems} pushSaleMap={pushSaleMap} />
       </AccordionDetails>
     </Accordion>
   );
@@ -42,6 +42,7 @@ const CartAccordion = ({ cartItems, openWhenFirstShow }) => {
 CartAccordion.propTypes = {
   cartItems: PropTypes.arrayOf(cartItemType),
   openWhenFirstShow: PropTypes.bool,
+  pushSaleMap: PropTypes.objectOf(pushSaleType),
 };
 
 export default CartAccordion;

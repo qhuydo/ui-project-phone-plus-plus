@@ -1,15 +1,20 @@
 import { SearchBar } from "components/SearchBar";
 import { Box } from "@mui/material";
+import { usePhoneComparisonContext } from "features/comparison/context";
 import { useDebounce } from "hooks";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { findPhoneByKeyword } from "features/phones/api";
 import SearchResultsMenu from "features/comparison/components/ControlSection/SearchResultsMenu";
 
-const ComparisonSearchBar = () => {
+const ComparisonSearchBar = ({ ...others }) => {
   const [keyword, setKeyword] = useState("");
   const debouncedKeyword = useDebounce(keyword, 300);
   const [phoneResults, setPhoneResults] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
+  const {
+    state: { forceFocusSearchBar, recommendations },
+    dispatch,
+  } = usePhoneComparisonContext();
 
   const searchBarRef = useRef(null);
 
@@ -49,20 +54,42 @@ const ComparisonSearchBar = () => {
     });
   }, [debouncedKeyword]);
 
+  useEffect(() => {
+    if (forceFocusSearchBar) {
+      searchBarRef?.current?.focus();
+      if (phoneResults.length === 0) {
+        setPhoneResults(recommendations);
+      }
+      setShowSearchResults(true);
+
+      dispatch({ type: "SET_FORCE_FOCUS_SEARCH_BAR", payload: false });
+    }
+  }, [dispatch, forceFocusSearchBar, phoneResults.length, recommendations]);
+
   return (
-    <Box width={0.74} display="flex">
-      <div
-        ref={searchBarRef}
-        style={{ display: "flex", width: "100%", position: "relative" }}
-      >
+    <Box width={1} display="flex" {...others}>
+      <div style={{ display: "flex", width: "100%", position: "relative" }}>
         <SearchBar
+          innerRef={searchBarRef}
           value={keyword}
           onCleared={onKeywordCleared}
           onBlurred={onSearchBarOutOfFocused}
           onFocused={onSearchBarFocused}
           onSearchKeyChanged={onSearchKeyChanged}
           placeholder={"Search for phone to compare..."}
-          sx={{ m: 0 }}
+          sx={(theme) => ({
+            m: 0,
+            maxWidth: 1,
+            [theme.breakpoints.up("md")]: {
+              maxWidth: 1,
+            },
+            [theme.breakpoints.up("lg")]: {
+              maxWidth: 1,
+            },
+            [theme.breakpoints.up("xl")]: {
+              maxWidth: 1,
+            },
+          })}
         />
 
         <SearchResultsMenu

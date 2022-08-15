@@ -4,6 +4,13 @@
   "category": "samsung",
   "categoryName": "Samsung",
   "thumbnail": "https://i.imgur.com/FnYgDhx.jpg",
+  "recommendations": [
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
+  ],
   "versions": [
     {
       "id": "SM-A235F",

@@ -4,6 +4,31 @@
   "category": "google",
   "categoryName": "Google",
   "thumbnail": "https://i.imgur.com/FmyNPUq.jpg",
+  "recommendations": [
+    "0",
+    "1",
+    "3",
+    "4",
+    "5"
+  ],
+  "pushSales": [
+    {
+      "phoneId": "4",
+      "description": "Buy Google Pixel 6 Pro and save off iPhone 13 mini",
+      "versions": {
+        "A2628": {
+          "id": "A2628",
+          "pushSalePrice": 13990000,
+          "displayPushSalePrice": "13.990.000₫"
+        },
+        "A2481": {
+          "id": "A2481",
+          "pushSalePrice": 15990000,
+          "displayPushSalePrice": "15.990.000₫"
+        }
+      }
+    }
+  ],
   "versions": [
     {
       "id": "GLUOG_128",

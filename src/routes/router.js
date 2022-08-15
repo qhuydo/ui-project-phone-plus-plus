@@ -14,6 +14,9 @@ const router = {
   getOrderTrackingPage(id) {
     return `/order/track?id=${id}`;
   },
+  getOrderTrackingPageWithDomain(id) {
+    return `${process.env.REACT_APP_DOMAIN}/order/track?id=${id}`;
+  },
   getPhoneDetailsPage(id, name) {
     return `/phone/${id}?q=${name}`;
   },

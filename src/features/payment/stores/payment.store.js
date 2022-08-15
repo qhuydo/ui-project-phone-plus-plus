@@ -45,6 +45,7 @@ export const initialPaymentState = {
   cartItemSource: CART_ITEM_SOURCE.fromCart,
   autoFill: false,
   submitFailed: false,
+  pushSaleMap: null,
 };
 
 export const paymentReducer = (state, action) => {
@@ -150,6 +151,12 @@ export const paymentReducer = (state, action) => {
       return {
         ...state,
         submitFailed: action?.payload ?? state.submitFailed,
+      };
+    }
+    case "SET_PUSH_SALE_MAP": {
+      return {
+        ...state,
+        pushSaleMap: action?.payload ?? state.pushSaleMap,
       };
     }
   }

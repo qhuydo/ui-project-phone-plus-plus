@@ -1,11 +1,11 @@
 import { Container, Typography } from "@mui/material";
-import PhoneBannerCarousel from "features/home/components/Banner/PhoneBannerCarousel";
 import { Head } from "components/Head/Head";
+import PhoneBannerCarousel from "features/home/components/Banner/PhoneBannerCarousel";
 import ServiceList from "features/home/components/Service/ServiceList";
+import { allPhones } from "features/phones/assets";
 import PhoneCardCarousel from "features/phones/components/Carousel/PhoneCardCarousel";
 import { PhoneCategoryRow } from "features/phones/components/CategoryRow";
 import { NearbyStoreList } from "features/stores/components";
-import { allPhones } from "features/phones/assets";
 import { shuffle } from "lodash-es";
 
 export const Home = () => {

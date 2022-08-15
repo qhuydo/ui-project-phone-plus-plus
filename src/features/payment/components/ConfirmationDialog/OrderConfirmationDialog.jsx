@@ -12,7 +12,7 @@ import { useCallback } from "react";
 const OrderConfirmationDialog = () => {
   const { state, dispatch, submitOrderCb } = usePaymentContext();
 
-  const { showConfirmationDialog, cartItems } = state;
+  const { showConfirmationDialog, cartItems, pushSaleMap } = state;
 
   const onClosed = useCallback(() => {
     dispatch({ type: "CHANGE_CONFIRMATION_DIALOG_VISIBILITY", payload: false });
@@ -23,8 +23,12 @@ const OrderConfirmationDialog = () => {
     await submitOrderCb();
   }, [onClosed, submitOrderCb]);
 
-  const [estimatePrice, subTotalPrice, savingPrice, deliveryFee] =
-    useCheckoutPrices(cartItems, state.contactDetails.deliveryMethod);
+  const { estimatePrice, subTotalPrice, savingPrice, deliveryFee } =
+    useCheckoutPrices(
+      cartItems,
+      state.contactDetails.deliveryMethod,
+      pushSaleMap
+    );
 
   return (
     <Dialog
@@ -43,7 +47,7 @@ const OrderConfirmationDialog = () => {
             p={0}
           />
 
-          <CartItemList cartItems={cartItems} />
+          <CartItemList cartItems={cartItems} pushSaleMap={pushSaleMap} />
           <Stack direction="column">
             <Stack
               pt={1}

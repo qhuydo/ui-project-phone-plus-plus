@@ -14,7 +14,9 @@ import { SpecsTableCell, SpecsTableRow } from "components/Table";
 const PhoneSpecificationTable = ({ spec }) => {
   return (
     <Stack direction="column" spacing={1} width={1} p={1}>
-      <Typography variant="h6">{spec.section}</Typography>
+      <Typography variant="h6">
+        {spec.section.replaceAll("&amp;", "&")}
+      </Typography>
       <TableContainer component={Paper} variant="outlined">
         <Table sx={{ width: "100%" }}>
           <TableBody>

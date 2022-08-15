@@ -26,43 +26,35 @@ export const getPhoneById = (id) => {
   });
 };
 
-export const getRecommendedPhones = (fromPhoneId) => {
-  return new Promise((resolve) => {
-    const trimmedId = fromPhoneId.trim();
+export const getRecommendedPhones = async (fromPhoneId) => {
+  const trimmedId = fromPhoneId.trim();
 
-    const phoneDetails = allPhoneDetails.find(
-      (phone) => phone.id === trimmedId
-    );
+  const phoneDetails = allPhoneDetails.find((phone) => phone.id === trimmedId);
 
-    if (!phoneDetails.recommendations) {
-      resolve([]);
-      return;
-    }
+  if (!phoneDetails.recommendations) {
+    return [];
+  }
 
-    const list = phoneDetails.recommendations
-      .map((id) => {
-        const recommendedItemDetails = allPhoneDetails.find(
-          (phone) => phone.id === id
-        );
+  return phoneDetails.recommendations
+    .map((id) => {
+      const recommendedItemDetails = allPhoneDetails.find(
+        (phone) => phone.id === id
+      );
 
-        if (!recommendedItemDetails) return null;
+      if (!recommendedItemDetails) return null;
 
-        const pushSale = phoneDetails.pushSales
-          ? phoneDetails.pushSales.find(
-              (pushSaleItem) => pushSaleItem.phoneId === id
-            )
-          : null;
+      const pushSale = phoneDetails.pushSales
+        ? phoneDetails.pushSales.find(
+            (pushSaleItem) => pushSaleItem.phoneId === id
+          )
+        : null;
 
-        return {
-          phone: recommendedItemDetails,
-          pushSale: pushSale ?? null,
-        };
-      })
-      .filter((item) => item != null);
-
-    // console.log(list);
-    resolve(list);
-  });
+      return {
+        phone: recommendedItemDetails,
+        pushSale: pushSale ?? null,
+      };
+    })
+    .filter((item) => item != null);
 };
 
 export const findPhoneByFilterBrand = (phoneList, filterOptions) => {
@@ -391,7 +383,7 @@ function comparePrice(phone1, phone2) {
 }
 
 export const findPhoneAndFilter = async (keyword, filterOptions, sortBy) => {
-  console.log(sortBy);
+  // console.log(sortBy);
 
   await new Promise((resolve) => setTimeout(resolve, 900));
 
@@ -400,20 +392,20 @@ export const findPhoneAndFilter = async (keyword, filterOptions, sortBy) => {
 
   //filter
   const brandFilterOptions = Object.entries(filterOptions.brand)
-    .filter(([key, value]) => value)
-    .map(([key, value]) => key);
+    .filter(([, value]) => value)
+    .map(([key]) => key);
   const memoryFilterOptions = Object.entries(filterOptions.memory)
-    .filter(([key, value]) => value)
-    .map(([key, value]) => key);
+    .filter(([, value]) => value)
+    .map(([key]) => key);
   const ramFilterOptions = Object.entries(filterOptions.ram)
-    .filter(([key, value]) => value)
-    .map(([key, value]) => key);
+    .filter(([, value]) => value)
+    .map(([key]) => key);
   const ratingsFilterOptions = Object.entries(filterOptions.ratings)
-    .filter(([key, value]) => value)
-    .map(([key, value]) => key);
+    .filter(([, value]) => value)
+    .map(([key]) => key);
   const screenSizeFilterOptions = Object.entries(filterOptions.screenSize)
-    .filter(([key, value]) => value)
-    .map(([key, value]) => key);
+    .filter(([, value]) => value)
+    .map(([key]) => key);
 
   if (brandFilterOptions.length > 0) {
     result = findPhoneByFilterBrand(result, brandFilterOptions);
