@@ -1,3 +1,5 @@
+import { REFUND_METHODS } from "features/refund/utils";
+
 export const initialRefundState = {
   currentStep: 0,
   selectedOrder: null,
@@ -23,6 +25,15 @@ export const initialRefundState = {
   orderIds: [],
   searchId: "",
   refundCurrentStep: 0,
+  refundMethod: {
+    method: REFUND_METHODS.creditOrDebitCard,
+    creditOrDebitCard: {
+      nameOnCard: "",
+      cardNumber: "",
+      mmyy: "",
+      cvcCvv: "",
+    },
+  },
 };
 
 export const refundReducer = (state, action) => {
@@ -63,6 +74,12 @@ export const refundReducer = (state, action) => {
       return {
         ...state,
         refundCurrentStep: action?.payload ?? state?.refundCurrentStep,
+      };
+    }
+    case "SET_REFUND_METHOD": {
+      return {
+        ...state,
+        refundMethod: action?.payload ?? state.refundMethod,
       };
     }
     default:

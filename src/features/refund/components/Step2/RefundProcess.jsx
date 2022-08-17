@@ -1,8 +1,9 @@
 import { Box, Typography, Stepper, Step, StepLabel } from "@mui/material";
 import { useRefundContext } from "features/refund/context";
-import React from "react";
+import { POLICY_REFUND } from "features/refund/utils";
+import { useMemo } from "react";
 
-const steps = [
+const exchangeSteps = [
   {
     label: "Customer submit form to PHONE++",
     time: `02/05/2022 09:02:00`,
@@ -25,10 +26,42 @@ const steps = [
   },
 ];
 
+const refundSteps = [
+  {
+    label: "Customer submit form to PHONE++",
+    time: `02/05/2022 09:02:00`,
+  },
+  {
+    label: "Form is confirmed by PHONE++",
+    time: "02/05/2022 09:02:00",
+  },
+  {
+    label: "PHONE++ sends to customer an instruction email and a sms",
+    time: `02/05/2022 09:02:00`,
+  },
+  {
+    label: "PHONE++ received the product which need to be exchanged/refunded",
+    time: `02/05/2022 09:02:00`,
+  },
+  {
+    label: "Customer entered payment method to receive refunded money",
+    time: `02/05/2022 09:02:00`,
+  },
+];
+
 const FormCompleteRefund = () => {
   const {
-    state: { refundCurrentStep },
+    state: {
+      refundCurrentStep,
+      refundInfo: { policy },
+    },
   } = useRefundContext();
+
+  const isRefundPolicy = useMemo(() => policy === POLICY_REFUND, [policy]);
+
+  const steps = useMemo(() => {
+    return isRefundPolicy ? refundSteps : exchangeSteps;
+  }, [isRefundPolicy]);
 
   return (
     <Box width={700}>

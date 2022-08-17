@@ -2,14 +2,21 @@ import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { Box, Stack, Button, IconButton } from "@mui/material";
 import ExchangeItem from "features/refund/components/Step2/ExchangeItem";
+import RefundItem from "features/refund/components/Step2/RefundItem";
 import { useRefundContext } from "features/refund/context";
+import { POLICY_REFUND } from "features/refund/utils";
 import { TOTAL_REFUND_EXCHANGE_STEPS } from "features/refund/utils/small-step-exchange";
 import { useCallback, useMemo, useState } from "react";
 import { RefundProcess } from "../Step2/index";
 
 const RefundExchangeStep2 = () => {
   const {
-    state: { refundCurrentStep, selectedCartItem, selectedOrder },
+    state: {
+      refundCurrentStep,
+      selectedCartItem,
+      selectedOrder,
+      refundInfo: { policy },
+    },
     dispatch,
   } = useRefundContext();
 
@@ -50,6 +57,8 @@ const RefundExchangeStep2 = () => {
     [dispatch]
   );
 
+  const isRefundPolicy = useMemo(() => policy === POLICY_REFUND, [policy]);
+
   return (
     <Box position="relative">
       <Stack spacing={2} justifyContent="center" alignItems="center">
@@ -58,7 +67,7 @@ const RefundExchangeStep2 = () => {
           py={4}
           sx={{
             display: "flex",
-            width: 800,
+            width: 832,
             border: 1,
             borderColor: "primary.main",
             borderRadius: "8px",
@@ -69,14 +78,18 @@ const RefundExchangeStep2 = () => {
           <RefundProcess />
         </Box>
 
-        {refundCurrentStep >= TOTAL_REFUND_EXCHANGE_STEPS - 1 && (
-          <ExchangeItem
-            cartItem={selectedCartItem}
-            order={selectedOrder}
-            checked={isChecked}
-            onCheckChanged={onCheckedChanged}
-          />
-        )}
+        {refundCurrentStep >= TOTAL_REFUND_EXCHANGE_STEPS - 1 &&
+          !isRefundPolicy && (
+            <ExchangeItem
+              cartItem={selectedCartItem}
+              order={selectedOrder}
+              checked={isChecked}
+              onCheckChanged={onCheckedChanged}
+            />
+          )}
+
+        {refundCurrentStep >= TOTAL_REFUND_EXCHANGE_STEPS - 1 &&
+          isRefundPolicy && <RefundItem />}
 
         <Box>
           <Button

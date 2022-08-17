@@ -180,16 +180,18 @@ const RefundExchangeStep0 = () => {
         </Box>
       )}
 
-      <Box alignSelf="center">
-        <Button
-          startIcon={<NavigateNextIcon />}
-          variant="contained"
-          disabled={!canMoveToNextStep}
-          onClick={moveToNext}
-        >
-          Next step
-        </Button>
-      </Box>
+      {displayOrders.length !== 0 && (
+        <Box alignSelf="center">
+          <Button
+            startIcon={<NavigateNextIcon />}
+            variant="contained"
+            disabled={!canMoveToNextStep}
+            onClick={moveToNext}
+          >
+            Next step
+          </Button>
+        </Box>
+      )}
     </Stack>
   );
 };

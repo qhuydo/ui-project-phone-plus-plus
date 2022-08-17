@@ -1,5 +1,6 @@
 import { ListItemIcon, Menu, MenuItem } from "@mui/material";
 import PropTypes from "prop-types";
+import { useCallback } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
@@ -88,7 +89,11 @@ const ProfileMenu = ({ id, anchorEl, onMenuClosed }) => {
         Favourite list
       </MenuItem>
 
-      <MenuItem component={RouterLink} to={Router.REFUND}>
+      <MenuItem
+        component={RouterLink}
+        to={Router.REFUND}
+        onClick={onMenuClosed}
+      >
         <ListItemIcon>
           <ChangeCircleOutlinedIcon fontSize="small" />
         </ListItemIcon>
@@ -98,11 +103,13 @@ const ProfileMenu = ({ id, anchorEl, onMenuClosed }) => {
       <MenuItem
         component={RouterLink}
         to="/"
-        onClick={() =>
-          signOut(() => {
-            onMenuClosed();
-          })
-        }
+        onClick={useCallback(
+          () =>
+            signOut(() => {
+              onMenuClosed();
+            }),
+          [onMenuClosed, signOut]
+        )}
       >
         <ListItemIcon>
           <LogoutOutlinedIcon fontSize="small" />
