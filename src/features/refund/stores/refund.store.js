@@ -22,6 +22,7 @@ export const initialRefundState = {
   allOrders: [],
   orderIds: [],
   searchId: "",
+  refundCurrentStep: 0,
 };
 
 export const refundReducer = (state, action) => {
@@ -56,6 +57,12 @@ export const refundReducer = (state, action) => {
         ...state,
         selectedOrder: action?.payload?.order ?? null,
         selectedCartItem: action?.payload?.cartItem ?? null,
+      };
+    }
+    case "SET_REFUND_CURRENT_STEP": {
+      return {
+        ...state,
+        refundCurrentStep: action?.payload ?? state?.refundCurrentStep,
       };
     }
     default:

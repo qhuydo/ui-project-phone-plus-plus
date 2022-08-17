@@ -28,9 +28,10 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => {
         Unexpected error occurred
       </Typography>
 
-      <pre>{error.message}</pre>
-
-      <pre>{error.stack}</pre>
+      <Typography fontStyle="monospace" color="dander">
+        {error.message}
+      </Typography>
+      <Typography fontStyle="monospace">{error.stack}</Typography>
 
       <Stack spacing={1} direction="row" pt={2}>
         <Link sx={{ textDecoration: "none", color: "text.primary" }} href="/">

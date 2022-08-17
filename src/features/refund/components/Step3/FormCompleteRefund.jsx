@@ -33,7 +33,7 @@ const FormCompleteRefund = () => {
             sx={{
               marginTop: 2,
             }}
-            variant="contained"
+            variant="outlined"
           >
             Go Back Home
           </Button>

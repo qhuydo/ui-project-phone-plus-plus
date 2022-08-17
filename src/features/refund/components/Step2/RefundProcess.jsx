@@ -1,11 +1,5 @@
-import {
-  Box,
-  Typography,
-  Stepper,
-  Step,
-  StepLabel,
-  StepContent,
-} from "@mui/material";
+import { Box, Typography, Stepper, Step, StepLabel } from "@mui/material";
+import { useRefundContext } from "features/refund/context";
 import React from "react";
 
 const steps = [
@@ -32,21 +26,23 @@ const steps = [
 ];
 
 const FormCompleteRefund = () => {
-  const [activeStep] = React.useState(2);
+  const {
+    state: { refundCurrentStep },
+  } = useRefundContext();
 
   return (
     <Box width={700}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((step) => (
+      <Stepper activeStep={refundCurrentStep} orientation="vertical">
+        {steps.map((step, idx) => (
           <Step key={step.label}>
-            <StepLabel sx={{ py: 0 }} variant="body1">
-              {step.label}
+            <StepLabel sx={{ py: 0 }}>
+              <Typography variant="subtitle1">{step.label}</Typography>
+              {idx <= refundCurrentStep && (
+                <Typography color="primary" variant="body2">
+                  {step.time}
+                </Typography>
+              )}
             </StepLabel>
-            <StepContent>
-              <Typography color="primary" variant="body2">
-                {step.time}
-              </Typography>
-            </StepContent>
           </Step>
         ))}
       </Stepper>

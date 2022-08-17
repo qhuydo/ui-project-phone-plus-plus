@@ -21,7 +21,7 @@ import { useRefundContext } from "features/refund/context";
 import { getRefundInfoDetailsFromUser } from "features/refund/utils";
 import { useCallback, useMemo, useEffect } from "react";
 import { useForm, FormProvider, Controller } from "react-hook-form";
-import DropzoneAreaExample from "./DropzoneAreaExample";
+import DropzoneArea from "features/refund/components/Step1/DropzoneArea";
 
 const FormExchangeAndRefund = () => {
   const { user } = useAuth();
@@ -202,7 +202,7 @@ const FormExchangeAndRefund = () => {
 
         <h4>Attach Files</h4>
 
-        <DropzoneAreaExample />
+        <DropzoneArea />
 
         <Stack
           width={1}

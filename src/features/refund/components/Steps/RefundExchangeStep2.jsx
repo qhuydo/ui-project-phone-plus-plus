@@ -1,32 +1,110 @@
+import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { Box, Stack, Button } from "@mui/material";
+import { Box, Stack, Button, IconButton } from "@mui/material";
+import ExchangeItem from "features/refund/components/Step2/ExchangeItem";
+import { useRefundContext } from "features/refund/context";
+import { TOTAL_REFUND_EXCHANGE_STEPS } from "features/refund/utils/small-step-exchange";
+import { useCallback, useMemo, useState } from "react";
 import { RefundProcess } from "../Step2/index";
 
 const RefundExchangeStep2 = () => {
-  return (
-    <Stack spacing={2} justifyContent="center" alignItems="center">
-      <Box
-        p={2}
-        py={4}
-        sx={{
-          display: "flex",
-          width: 800,
-          border: 1,
-          borderColor: "primary.main",
-          borderRadius: "8px",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <RefundProcess />
-      </Box>
+  const {
+    state: { refundCurrentStep, selectedCartItem, selectedOrder },
+    dispatch,
+  } = useRefundContext();
 
-      <Box>
-        <Button startIcon={<NavigateNextIcon />} variant="contained" disabled>
-          Next step
-        </Button>
-      </Box>
-    </Stack>
+  const changeToNextRefundStep = useCallback(() => {
+    if (refundCurrentStep < TOTAL_REFUND_EXCHANGE_STEPS - 1) {
+      dispatch({
+        type: "SET_REFUND_CURRENT_STEP",
+        payload: refundCurrentStep + 1,
+      });
+    }
+  }, [dispatch, refundCurrentStep]);
+
+  const changeToNextStep = useCallback(() => {
+    dispatch({ type: "SET_CURRENT_STEP", payload: 3 });
+  }, [dispatch]);
+
+  const [isChecked, setIsChecked] = useState(false);
+
+  const canNavigateToNext = useMemo(() => {
+    return refundCurrentStep === TOTAL_REFUND_EXCHANGE_STEPS;
+  }, [refundCurrentStep]);
+
+  const onCheckedChanged = useCallback(
+    (event, isChecked) => {
+      setIsChecked(isChecked);
+      if (isChecked) {
+        dispatch({
+          type: "SET_REFUND_CURRENT_STEP",
+          payload: TOTAL_REFUND_EXCHANGE_STEPS,
+        });
+      } else {
+        dispatch({
+          type: "SET_REFUND_CURRENT_STEP",
+          payload: TOTAL_REFUND_EXCHANGE_STEPS - 1,
+        });
+      }
+    },
+    [dispatch]
+  );
+
+  return (
+    <Box position="relative">
+      <Stack spacing={2} justifyContent="center" alignItems="center">
+        <Box
+          p={2}
+          py={4}
+          sx={{
+            display: "flex",
+            width: 800,
+            border: 1,
+            borderColor: "primary.main",
+            borderRadius: "8px",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <RefundProcess />
+        </Box>
+
+        {refundCurrentStep >= TOTAL_REFUND_EXCHANGE_STEPS - 1 && (
+          <ExchangeItem
+            cartItem={selectedCartItem}
+            order={selectedOrder}
+            checked={isChecked}
+            onCheckChanged={onCheckedChanged}
+          />
+        )}
+
+        <Box>
+          <Button
+            startIcon={<NavigateNextIcon />}
+            variant="contained"
+            disabled={!canNavigateToNext}
+            onClick={changeToNextStep}
+          >
+            Next step
+          </Button>
+        </Box>
+      </Stack>
+
+      <IconButton
+        sx={{
+          bottom: 0,
+          right: 0,
+          position: "absolute",
+          display:
+            refundCurrentStep >= TOTAL_REFUND_EXCHANGE_STEPS - 1
+              ? "none"
+              : null,
+        }}
+        onClick={changeToNextRefundStep}
+      >
+        <AccessTimeOutlinedIcon />
+      </IconButton>
+    </Box>
   );
 };
 
