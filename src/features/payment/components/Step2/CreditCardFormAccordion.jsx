@@ -113,8 +113,12 @@ const CreditCardFormAccordion = ({ onSubmitted }) => {
               <Controller
                 name="creditOrDebitCard.nameOnCard"
                 rules={{
-                  required:
-                    "Please enter your name on the credit or debit card",
+                  validate: {
+                    required: (v) =>
+                      !isOpen ||
+                      v.length !== 0 ||
+                      "Please enter your name on the credit or debit card",
+                  },
                 }}
                 render={({ field }) => (
                   <TextField

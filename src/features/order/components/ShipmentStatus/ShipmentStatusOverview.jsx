@@ -14,6 +14,8 @@ import { useOrderStatus } from "features/order/hooks";
 import { ORDER_TRACKING_STEPS } from "features/order/utils";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { Link as RouterLink } from "react-router-dom";
+import { Router } from "routes";
 
 const ShipmentStatusOverview = () => {
   const {
@@ -97,9 +99,11 @@ const ShipmentStatusOverview = () => {
             </Typography>
           </Stack>
           <Box>
-            <Button variant="outlined" fullWidth={false}>
-              Refund
-            </Button>
+            <Link component={RouterLink} underline="none" to={Router.REFUND}>
+              <Button variant="outlined" fullWidth={false}>
+                Refund
+              </Button>
+            </Link>
           </Box>
         </Stack>
       )}
