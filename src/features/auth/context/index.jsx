@@ -1,6 +1,13 @@
 import { users } from "features/auth/assets";
+import { provinces } from "features/payment/assets";
 import { random } from "lodash-es";
-import { createContext, useCallback, useContext, useMemo } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useEffect,
+} from "react";
 import { useLocalStorage } from "hooks";
 import PropTypes from "prop-types";
 
@@ -31,6 +38,18 @@ export const AuthProvider = ({ children }) => {
     },
     [setUser]
   );
+
+  useEffect(() => {
+    if (user) {
+      const commune =
+        provinces[user.provinceId]?.districts?.[user.districtId]?.communes?.[
+          user.communeId
+        ];
+      if (!commune) {
+        signOut(() => {});
+      }
+    }
+  }, [signOut, user]);
 
   const contextValue = useMemo(() => {
     return {

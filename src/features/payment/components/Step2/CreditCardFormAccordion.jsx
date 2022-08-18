@@ -110,7 +110,21 @@ const CreditCardFormAccordion = ({ onSubmitted }) => {
         <AccordionDetails>
           <Stack display="column" spacing={1} px={2}>
             <Stack display="column" spacing={2} py={0.5}>
-              <TextField variant="outlined" label="Name on card" required />
+              <Controller
+                name="creditOrDebitCard.nameOnCard"
+                rules={{
+                  required:
+                    "Please enter your name on the credit or debit card",
+                }}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    variant="outlined"
+                    label="Name on card"
+                    required
+                  />
+                )}
+              />
 
               <Stack direction="row" spacing={1} width={1}>
                 <Controller

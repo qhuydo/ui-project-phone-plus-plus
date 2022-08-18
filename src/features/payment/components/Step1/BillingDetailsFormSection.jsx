@@ -170,7 +170,7 @@ const DeliveryDetailsFormSection = () => {
                     onChange={handleDistrictChange}
                     error={!!errors["billingDetails"]?.["districtId"]}
                   >
-                    {provinces[provinceId]
+                    {provinces[provinceId]?.districts
                       ? Object.values(provinces[provinceId]?.districts).map(
                           (d) => (
                             <MenuItem value={d.idDistrict} key={d.idDistrict}>
@@ -213,9 +213,9 @@ const DeliveryDetailsFormSection = () => {
                     onChange={handleCommuneChange}
                     error={!!errors["billingDetails"]?.["communeId"]}
                   >
-                    {provinces[provinceId]?.districts[districtId]
+                    {provinces[provinceId]?.districts[districtId]?.communes
                       ? Object.values(
-                          provinces[provinceId].districts[districtId].communes
+                          provinces[provinceId]?.districts[districtId]?.communes
                         ).map((c) => (
                           <MenuItem value={c.idCommune} key={c.idCommune}>
                             <Typography> {c.name}</Typography>
